@@ -7,6 +7,7 @@ const images = {
   logoCopyright: require('../assets/imgs/copyright.png'),
   facebook: require('../assets/imgs/facebook.png'),
   youtube: require('../assets/imgs/youtube.png'),
+  arrowRight: require('../assets/imgs/arrow-right.png'),
 };
 
 export default images;

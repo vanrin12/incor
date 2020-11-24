@@ -1,10 +1,12 @@
 $font-size-base: 16;
 $font-size-base-response: 20;
 $border-width-base: 2;
-$viewPort: 360;
+$viewPort: 414;
 $viewPort1920: 1920;
 // font weight
 $Roboto-Font: 'Roboto',
+'sans-serif';
+$Lato-Font: 'Lato',
 'sans-serif';
 $thin: 100;
 $extraLight: 200;
@@ -29,4 +31,5 @@ $color-title-point: #3f3f3f;
 $btn-color: rgba(0, 0, 0, 0.16);
 $bg-light: #5e5e5e;
 $color-black: #000000;
-$color-light2: #676767
+$color-light2: #676767;
+$color-light3: #fafafa;

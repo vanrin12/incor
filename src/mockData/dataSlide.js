@@ -22,4 +22,48 @@ const listSlideHome = [
     image: IMAGES.imageSlideUrl,
   },
 ];
-export { listSlideHome };
+
+const listSlideConsultancy = [
+  {
+    id: 1,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 2,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 3,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 4,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+];
+
+const listClientHome = [
+  {
+    id: 1,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 2,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideUrl,
+  },
+];
+export { listSlideHome, listClientHome, listSlideConsultancy };

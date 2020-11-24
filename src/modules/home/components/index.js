@@ -7,7 +7,13 @@ import Button from '../../../commons/components/Button';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ItemSlideMain from './ItemSlide';
-import { listSlideHome } from '../../../mockData/dataSlide';
+import ItemClient from './ItemClient';
+import ItemConsultancy from './ItemConsultancy';
+import {
+  listSlideHome,
+  listClientHome,
+  listSlideConsultancy,
+} from '../../../mockData/dataSlide';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -48,11 +54,26 @@ const HomeMain = ({ history }: Props) => {
     },
   };
 
+  // render list slide
   const renderListSlideMain =
     listSlideHome.length > 0 &&
     listSlideHome.map((item) => (
       <SwiperSlide key={item.id}>
         <ItemSlideMain itemObj={item} history={history} />
+      </SwiperSlide>
+    ));
+
+  // Render list client
+  const renderListClientMain =
+    listClientHome.length > 0 &&
+    listClientHome.map((item) => <ItemClient itemObj={item} key={item.id} />);
+
+  // render list slide Consultancy
+  const renderListSlideConsultancy =
+    listSlideConsultancy.length > 0 &&
+    listSlideConsultancy.map((item) => (
+      <SwiperSlide key={item.id}>
+        <ItemConsultancy itemObj={item} history={history} />
       </SwiperSlide>
     ));
 
@@ -64,9 +85,10 @@ const HomeMain = ({ history }: Props) => {
           <div className="title-slide">
             Giải pháp xây dựng cho ngôi nhà của bạn
           </div>
-          <Button customClass="big mt-5">YÊU CẦU TƯ VẤN</Button>
+          <Button customClass="big">YÊU CẦU TƯ VẤN</Button>
         </div>
       </div>
+
       <div className="session-promotions">
         <div className="container-fluid">
           <div className="heading-title text-uppercase text-center">
@@ -75,24 +97,48 @@ const HomeMain = ({ history }: Props) => {
           <div className="slide-promotions">
             <Swiper {...params} navigation>
               {renderListSlideMain}
-              {/* <!-- Add Arrows --> */}
-              {/* <div
-                class="swiper-button-prev"
-                tabindex="0"
-                role="button"
-                aria-label="Previous slide"
-                aria-controls="swiper-wrapper-62b7ce1a49b87439"
-              ></div>
-              <div
-                class="swiper-button-next"
-                tabindex="0"
-                role="button"
-                aria-label="Next slide"
-                aria-controls="swiper-wrapper-f29247e6b10b17610d"
-              ></div> */}
             </Swiper>
           </div>
         </div>
+      </div>
+
+      <div className="session-client">
+        <div className="container-fluid">
+          <div className="heading-title text-uppercase text-center">
+            CẢM NHẬN KHÁCH HÀNG
+          </div>
+          <div className="client">
+            <div className="row">{renderListClientMain}</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="session-promotions consultancy">
+        <div className="container-fluid">
+          <div className="heading-title text-uppercase text-center">
+            TƯ VẤN XÂY DỰNG
+          </div>
+          <div className="slide-promotions">
+            <Swiper {...params} navigation>
+              {renderListSlideConsultancy}
+            </Swiper>
+          </div>
+        </div>
+      </div>
+
+      <div className="session-video">
+        <div className="video-info">
+          <h3>Về chúng tôi</h3>
+          <div className="desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+            ultrices accumsan ornare. Phasellus tristique ullamcorper luctus.
+            Nunc varius ullamcorper felis. Nulla nibh ipsum, rutrum.
+          </div>
+        </div>
+        <div
+          className="bg-session-video"
+          style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
+        />
       </div>
     </MainLayout>
   );

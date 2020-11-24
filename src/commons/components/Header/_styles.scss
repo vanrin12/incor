@@ -18,7 +18,10 @@
     }
 
     .menu-main {
-      margin-top: pxToRem(10);
+
+      @media screen and (min-width:1200px) {
+        margin-top: pxToRem(10);
+      }
 
       ul {
         padding: 0;

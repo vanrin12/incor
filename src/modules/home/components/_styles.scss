@@ -1,5 +1,6 @@
-.session-slide {
-  height: pxToRem(680);
+.session-slide,
+.session-video {
+  height: pxToRem(1080);
   background-position: center center;
   background-size: cover;
   position: relative;
@@ -7,7 +8,8 @@
   &::before {
     content: "";
     opacity: 0.49;
-    background-color: $bg-black;
+    top: 0;
+    background-color: $color-black;
     width: 100%;
     height: 100%;
     left: 0;
@@ -35,12 +37,68 @@
   }
 }
 
+.session-video {
+  position: relative;
+
+  .bg-session-video {
+    position: relative;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      content: "";
+      opacity: 0.49;
+      top: 0;
+      background-color: $color-black;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: 0;
+    }
+  }
+
+  .video-info {
+    padding: pxToRem(160) pxToRem(15);
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    color: $white;
+    text-align: center;
+    max-width: pxToRem(1100);
+    margin: 0 auto;
+
+    h3 {
+      font-size: pxToRem(40);
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: pxToRem(20);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .desc {
+      font-size: pxToRem(30);
+      line-height: 1.33;
+      letter-spacing: pxToRem(0.3);
+      text-align: center;
+    }
+  }
+}
+
 .session-promotions {
   padding: pxToRem(75) pxToRem(30);
 
   .slide-promotions {
     padding: pxToRem(20) pxToRem(55);
-position: relative;
+    position: relative;
+
     .swiper-wrapper {
       .swiper-slide {
         padding: 10px;
@@ -51,6 +109,15 @@ position: relative;
         box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
         padding-bottom: pxToRem(40);
         text-align: center;
+        @include transition(0.3s all);
+        border: pxToRem(4) solid transparent;
+        position: relative;
+
+        &:hover,
+        &:active,
+        &:focus {
+          border: pxToRem(4) solid $bg-main;
+        }
 
         .bg-image {
           background-color: $bg-light;
@@ -61,14 +128,24 @@ position: relative;
           background-size: cover;
         }
 
+        a {
+          &:hover {
+            h3 {
+              color: $bg-main;
+              opacity: 1;
+            }
+          }
+        }
+
         h3 {
-          margin: pxToRem(20) pxToRem(15);
+          margin: pxToRem(20) pxToRem(25);
           font-size: pxToRem(25);
           line-height: 1.2;
           letter-spacing: pxToRem(0.63);
           opacity: 0.8;
           color: $color-black;
           text-align: center;
+          text-transform: uppercase;
         }
 
         button {
@@ -77,6 +154,122 @@ position: relative;
           border-radius: pxToRem(10);
         }
       }
+    }
+  }
+
+  &.consultancy {
+    .slide-promotions {
+      .swiper-wrapper {
+        .slide-content {
+          text-align: left;
+
+          h3 {
+            font-size: pxToRem(30);
+            opacity: 1;
+            text-align: left;
+          }
+
+          .desc {
+            margin: pxToRem(20) pxToRem(25);
+            font-size: pxToRem(20);
+            font-style: italic;
+            line-height: 1.2;
+            letter-spacing: normal;
+            color: $color-black;
+          }
+        }
+
+        .row-right {
+          margin: pxToRem(30) pxToRem(25) 0 pxToRem(20);
+          text-align: right;
+          display: block;
+
+          img {
+            width: pxToRem(50);
+          }
+        }
+      }
+    }
+  }
+}
+
+.session-client {
+  .client {
+    margin-top: pxToRem(30);
+
+    .row .item-client {
+      &:nth-child(2n+2) {
+        display: flex;
+        flex-direction: column-reverse;
+
+        .item-client-desc {
+          text-align: right;
+
+          &::after {
+            left: auto;
+            right: 0;
+          }
+        }
+
+        .item-client-name,
+        .item-client-address {
+          text-align: right
+        }
+      }
+    }
+  }
+
+  .item-client {
+    padding: 0;
+  }
+
+  .item-client-image {
+    height: pxToRem(480);
+    background-position: center center;
+    background-size: cover;
+    background-color: $bg-light;
+  }
+
+  .item-client-content {
+    padding: pxToRem(30) pxToRem(168);
+    @include bgMain();
+    color: $white;
+    height: pxToRem(480);
+
+    .item-client-desc {
+      font-family: $Lato-Font;
+      font-size: pxToRem(50);
+      font-weight: 300;
+      line-height: pxToRem(70);
+      text-align: left;
+      margin-bottom: pxToRem(20);
+      position: relative;
+      padding-bottom: pxToRem(40);
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: pxToRem(300);
+        bottom: 0;
+        border-bottom: pxToRem(2) solid $white;
+      }
+    }
+
+    .item-client-name {
+      font-size: pxToRem(30);
+      font-weight: bold;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: pxToRem(0.3);
+    }
+
+    .item-client-address {
+      font-size: pxToRem(20);
+      font-style: italic;
+      line-height: 1.5;
+      color: $color-light3;
+      letter-spacing: pxToRem(0.2);
     }
   }
 }

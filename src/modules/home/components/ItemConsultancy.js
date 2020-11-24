@@ -1,8 +1,8 @@
 // @flow
 
 import React, { memo } from 'react';
-import Button from '../../../commons/components/Button';
 import { Link } from 'react-router-dom';
+import IMAGES from '../../../themes/images';
 // import ROUTERS from 'constants/router';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
   },
 };
 
-const SlideMain = ({ history, itemObj }: Props) => {
+const ItemConsultancy = ({ history, itemObj }: Props) => {
   return (
     <>
       <div className="slide-content">
@@ -27,13 +27,22 @@ const SlideMain = ({ history, itemObj }: Props) => {
           tabIndex={0}
         />
         <Link to="#">
-          <h3>{itemObj?.name}</h3>
+          <h3
+            onClick={() => history.push('#')}
+            onKeyDown={() => history.push('#')}
+            role="button"
+            tabIndex={0}
+          >
+            {itemObj?.name}
+          </h3>
         </Link>
-
-        <Button onClick={() => history.push('#')}>XEM</Button>
+        <p className="desc">{itemObj?.desc}</p>
+        <Link to="#" className="row-right">
+          <img src={IMAGES.arrowRight} alt="" />
+        </Link>
       </div>
     </>
   );
 };
 
-export default memo<Props>(SlideMain);
+export default memo<Props>(ItemConsultancy);
