@@ -1,0 +1,87 @@
+.user-info {
+  min-width: pxToRem(135);
+
+  .ico-up {
+    @include transform-rotate(-90deg);
+    position: relative;
+    top: pxToRem(4);
+    width: pxToRem(11);
+    min-width: 9px;
+    left: pxToRem(-3);
+  }
+
+}
+
+button.btn-outline {
+  outline: none;
+  border: 0;
+  font-size: pxToRem(20);
+  font-weight: 500;
+  line-height: pxToRem(24);
+  letter-spacing: pxToRem(2);
+  color: $white;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+.from-login {
+  position: relative;
+
+  .form-content {
+    position: absolute;
+    top: calc(100% + 20px);
+    right: 0;
+    width: pxToRem(347);
+    min-height: pxToRem(316);
+    padding: pxToRem(25) pxToRem(34) pxToRem(33);
+    background-color: $white;
+    border-radius: pxToRem(20);
+    box-shadow: 0 pxToRem(6) pxToRem(10) 0 rgba(0, 0, 0, 0.16);
+
+    .btn-summit {
+      margin-top: pxToRem(50);
+    }
+
+    .button {
+      height: pxToRem(41);
+      width: pxToRem(151);
+      min-width: pxToRem(151);
+      font-size: pxToRem(15);
+      letter-spacing: pxToRem(0.15);
+      border-radius: pxToRem(10);
+    }
+  }
+}
+
+.modal-info-user {
+  position: absolute;
+  top: calc(100% + 20px);
+  right: 0;
+  width: pxToRem(210);
+  min-height: pxToRem(160);
+  padding: pxToRem(25) pxToRem(30) pxToRem(33);
+  background-color: $white;
+  border-radius: pxToRem(15);
+  box-shadow: 0 pxToRem(6) pxToRem(10) 0 rgba(0, 0, 0, 0.16);
+
+  li {
+    margin-bottom: pxToRem(10);
+
+    a {
+      font-size: pxToRem(20);
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: left;
+      color: $color-black;
+    }
+
+    button.btn-outline {
+      font-size: pxToRem(20);
+      font-weight: 500;
+      line-height: 1.5;
+      padding: 0;
+      text-align: left;
+      color: $red;
+    }
+  }
+}

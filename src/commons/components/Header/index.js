@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import IMAGES from 'themes/images';
 import ROUTERS from 'constants/router';
+import LoginForm from '../../../modules/accounts/components';
 
 type Props = {
   children?: any,
@@ -21,7 +22,7 @@ const Header = ({ children = '' }: Props) => {
           </Link>
         </div>
         <div className="menu-main d-flex align-items-center w-100">
-          <ul>
+          <ul className="menu-nav">
             <li>
               <Link to="#" title="GIỚI THIỆU">
                 GIỚI THIỆU
@@ -53,9 +54,8 @@ const Header = ({ children = '' }: Props) => {
               </Link>
             </li>
           </ul>
-          <div className="user-info">
-            <button>ĐĂNG NHẬP</button>
-          </div>
+
+          <LoginForm />
         </div>
       </header>
     </div>

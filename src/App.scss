@@ -14,5 +14,15 @@
 
 // button
 @import './commons/components/Button/styles';
+// input
+@import './commons/components/Input/styles';
+// Select
+@import './commons/components/Select/styles';
+// Modal
+@import './commons/components/Modal/styles';
+// Form
+@import './commons/components/Form/styles';
 //Main
-@import './modules/home/components/styles'
+@import './modules/home/components/styles';
+//Login
+@import "./modules/accounts/components/styles"

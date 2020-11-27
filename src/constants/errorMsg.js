@@ -1,8 +1,8 @@
 const ERROR_MESSAGE = {
   EMAIL_FORMAT: 'Email format does not match.',
   EMAIL_REQUIRED: 'Email does not exist.',
-  NICK_NAME_REQUIRED: 'Nickname does not exist.',
-  PASSWORD_REQUIRED: 'Password does not exist.',
+  NICK_NAME_REQUIRED: 'Vui lòng nhập tên đăng nhập.',
+  PASSWORD_REQUIRED: 'Vui lòng nhập password.',
   PASSWORD_FORMAT: `Up to 13 digits, including one special character. It doesn't fit`,
   PASSWORD_NOT_MATCH: `The password you want to change does not match.`,
   PASSWORD_CONFIRM_REQUIRED: 'Password confirm does not exist.',

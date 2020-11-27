@@ -14,7 +14,7 @@
     transform: translate(-50%, -50%);
     padding: 0 pxToRem(30);
     margin: 0;
-    max-width: pxToRem(500);
+    max-width: pxToRem(780);
   }
 }
 
@@ -31,10 +31,10 @@
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
-  color: $popup-txt;
-  padding: 0;
   border: none;
-  @include radius(#{pxToRem(39)});
+  padding: pxToRem(54) pxToRem(59) pxToRem(53) pxToRem(64);
+  border-radius: pxToRem(20);
+  box-shadow: 0 pxToRem(6) pxToRem(5) 0;
 
   &__iconClose {
     position: absolute;
@@ -60,7 +60,7 @@
   .modal-body {
     width: 100%;
     white-space: pre-line;
-    padding: 0 pxToRem(50);
+    padding: 0;
     margin: 0;
   }
 }

@@ -12,7 +12,7 @@ type Props = {
   },
 };
 
-const SlideMain = ({ history, itemObj }: Props) => {
+const SlideMainSale = ({ history, itemObj }: Props) => {
   return (
     <>
       <div className="slide-content">
@@ -36,4 +36,4 @@ const SlideMain = ({ history, itemObj }: Props) => {
   );
 };
 
-export default memo<Props>(SlideMain);
+export default memo<Props>(SlideMainSale);

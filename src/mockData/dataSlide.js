@@ -56,14 +56,62 @@ const listClientHome = [
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     name: 'Anh Hoàng',
     address: 'TP. Đà Nẵng',
-    image: IMAGES.imageSlideUrl,
+    image: IMAGES.imageSlideCline1,
   },
   {
     id: 2,
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     name: 'Anh Hoàng',
     address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideCline2,
+  },
+  {
+    id: 3,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 4,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideCline2,
+  },
+  {
+    id: 5,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideCline2,
+  },
+  {
+    id: 6,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
     image: IMAGES.imageSlideUrl,
   },
 ];
-export { listSlideHome, listClientHome, listSlideConsultancy };
+
+const listSlideMain = [
+  {
+    id: 1,
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 2,
+    image: IMAGES.imageSlideCline1,
+  },
+  {
+    id: 3,
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 4,
+    image: IMAGES.imageSlideCline1,
+  },
+];
+
+export { listSlideHome, listClientHome, listSlideConsultancy, listSlideMain };

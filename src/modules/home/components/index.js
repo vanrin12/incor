@@ -1,18 +1,22 @@
 // @flow
 
-import React, { memo } from 'react';
+import React, { memo, useState, useRef } from 'react';
 import MainLayout from '../../../commons/components/MainLayout';
 import IMAGES from 'themes/images';
 import Button from '../../../commons/components/Button';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ItemSlideMain from './ItemSlide';
+import ItemSlideSale from './ItemSlideSale';
+import ItemSlideMain from './itemSlideMain';
 import ItemClient from './ItemClient';
 import ItemConsultancy from './ItemConsultancy';
+import FormSearchMain from '../../../commons/components/Form/FormSearchMain';
+import FormContactUs from '../../../commons/components/Form/FormContactUs';
 import {
   listSlideHome,
   listClientHome,
   listSlideConsultancy,
+  listSlideMain,
 } from '../../../mockData/dataSlide';
 
 // install Swiper components
@@ -25,11 +29,21 @@ type Props = {
 };
 
 const HomeMain = ({ history }: Props) => {
-  const sectionStyle = {
-    backgroundImage: `url(${IMAGES.imageSlideUrl})`,
+  const [valueSearch, setValueSearch] = useState('');
+
+  const paramsOptionSlideMain = {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    slidesPerGroup: 1,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
   };
 
-  //Options in Swi
+  //Options in Swiper
   const params = {
     loop: true,
     slidesPerView: 3,
@@ -40,33 +54,75 @@ const HomeMain = ({ history }: Props) => {
         spaceBetween: 35,
       },
       768: {
-        slidesPerView: 3,
+        slidesPerView: 2,
         spaceBetween: 20,
       },
-      640: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
       320: {
-        slidesPerView: 1,
-        spaceBetween: 5,
+        slidesPerView: 2,
+        spaceBetween: 10,
       },
     },
   };
 
-  // render list slide
+  const paramsOptionSlide = {
+    loop: true,
+    slidesPerView: 2,
+    spaceBetween: 0,
+    slidesPerGroup: 2,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  };
+
+  // Select Search
+  const [optionSearchDefault, setOptionSearchDefault] = useState({
+    value: 'product',
+    label: 'Sản phẩm',
+  });
+
+  const handleSelectChange = (option) => {
+    setOptionSearchDefault(option);
+  };
+  // handle search
+  const typingTimeOut = useRef(null);
+  // onsubmit call api
+
+  const handleChangeInput = (value) => {
+    setValueSearch(value);
+    if (typingTimeOut.current) {
+      clearInterval(typingTimeOut.current);
+    }
+    typingTimeOut.current = setTimeout(() => {
+      // code sau 0.3s thi goi api
+    }, 300);
+  };
+  // render list slide Main top
   const renderListSlideMain =
+    listSlideMain.length > 0 &&
+    listSlideMain.map((item) => (
+      <SwiperSlide key={item.id}>
+        <ItemSlideMain itemObj={item} />
+      </SwiperSlide>
+    ));
+
+  // render list slide
+  const renderListSlideSale =
     listSlideHome.length > 0 &&
     listSlideHome.map((item) => (
       <SwiperSlide key={item.id}>
-        <ItemSlideMain itemObj={item} history={history} />
+        <ItemSlideSale itemObj={item} history={history} />
       </SwiperSlide>
     ));
 
   // Render list client
   const renderListClientMain =
     listClientHome.length > 0 &&
-    listClientHome.map((item) => <ItemClient itemObj={item} key={item.id} />);
+    listClientHome.map((item) => (
+      <SwiperSlide key={item.id}>
+        <ItemClient itemObj={item} key={item.id} />
+      </SwiperSlide>
+    ));
 
   // render list slide Consultancy
   const renderListSlideConsultancy =
@@ -79,11 +135,22 @@ const HomeMain = ({ history }: Props) => {
 
   return (
     <MainLayout>
-      <div className="session-slide" style={sectionStyle}>
+      <div className="session-slide">
+        <div className="slider-home">
+          <Swiper {...paramsOptionSlideMain}>{renderListSlideMain}</Swiper>
+        </div>
         {/* Session panner */}
         <div className="slide-info">
           <div className="title-slide">
             Giải pháp xây dựng cho ngôi nhà của bạn
+          </div>
+          <div className="search-main">
+            <FormSearchMain
+              handleChangeInput={handleChangeInput}
+              handleSelectChange={handleSelectChange}
+              valueSearch={valueSearch}
+              optionSelect={optionSearchDefault}
+            />
           </div>
           <Button customClass="big">YÊU CẦU TƯ VẤN</Button>
         </div>
@@ -96,7 +163,7 @@ const HomeMain = ({ history }: Props) => {
           </div>
           <div className="slide-promotions">
             <Swiper {...params} navigation>
-              {renderListSlideMain}
+              {renderListSlideSale}
             </Swiper>
           </div>
         </div>
@@ -108,7 +175,9 @@ const HomeMain = ({ history }: Props) => {
             CẢM NHẬN KHÁCH HÀNG
           </div>
           <div className="client">
-            <div className="row">{renderListClientMain}</div>
+            <div className="row">
+              <Swiper {...paramsOptionSlide}>{renderListClientMain}</Swiper>
+            </div>
           </div>
         </div>
       </div>
@@ -138,8 +207,12 @@ const HomeMain = ({ history }: Props) => {
         <div
           className="bg-session-video"
           style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
-        />
+        >
+          <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+        </div>
       </div>
+      {/* Modal form contact Us */}
+      <FormContactUs />
     </MainLayout>
   );
 };

@@ -20,10 +20,10 @@
     .menu-main {
 
       @media screen and (min-width:1200px) {
-        margin-top: pxToRem(10);
+        margin-top: pxToRem(5);
       }
 
-      ul {
+      ul.menu-nav {
         padding: 0;
         display: flex;
         width: 100%;
@@ -33,28 +33,22 @@
           margin-left: pxToRem(35);
 
           a {
+            border-bottom: pxToRem(2) solid transparent;
+            padding: 10px 0;
             font-size: pxToRem(20);
             font-weight: 500;
             line-height: pxToRem(24);
             letter-spacing: pxToRem(2);
             color: $white;
           }
-        }
-      }
 
-      .user-info {
-        min-width: pxToRem(135);
-
-        button {
-          outline: none;
-          border: 0;
-          font-size: pxToRem(20);
-          font-weight: 500;
-          line-height: pxToRem(24);
-          letter-spacing: pxToRem(2);
-          color: $white;
-          background-color: transparent;
-          white-space: nowrap;
+          &:hover,
+          &:active,
+          &.active {
+            a {
+              border-bottom: pxToRem(2) solid $white;
+            }
+          }
         }
       }
     }

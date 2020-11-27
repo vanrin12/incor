@@ -1,0 +1,172 @@
+.form-search {
+  margin-bottom: pxToRem(40);
+
+  .form-group {
+    position: relative;
+    display: inline-block;
+
+    .customer-select {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: pxToRem(135);
+      min-width: 120px;
+
+      * {
+
+        cursor: pointer;
+      }
+
+      &:after {
+        position: absolute;
+        right: 0;
+        content: "";
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 9;
+        background-image: url("../../../assets/imgs/ic-back-white.png");
+        width: pxToRem(25);
+        height: pxToRem(25);
+        background-size: contain;
+        cursor: pointer;
+        top: calc(50% - #{pxToRem(15)});
+        z-index: -1;
+        @include transform-rotate(-90deg);
+      }
+
+      .css-1uccc91-singleValue {
+        color: $white;
+        font-size: pxToRem(20);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: pxToRem(0.4);
+        text-align: left;
+      }
+
+      .css-26l3qy-menu {
+        padding: pxToRem(8) pxToRem(15) pxToRem(8) pxToRem(12);
+        border-radius: pxToRem(10);
+        box-shadow: pxToRem(10) pxToRem(10) pxToRem(30) 0 rgba(0, 0, 0, 0.16);
+        cursor: pointer;
+        font-size: pxToRem(20);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: pxToRem(0.4);
+        text-align: left;
+        color: $color-light4;
+
+        >div>div {
+          padding: pxToRem(5) !important;
+          background-color: transparent;
+          cursor: pointer;
+          font-size: pxToRem(20);
+          font-weight: 500;
+          line-height: 1.2;
+          letter-spacing: pxToRem(0.4);
+          text-align: left;
+          color: $color-light4;
+
+          &:hover {
+            color: $color-blue-light;
+          }
+        }
+
+        * {
+          border: 0 !important;
+        }
+      }
+
+      .css-26l3qy-menu {
+        margin: 0;
+      }
+
+      .css-g1d714-ValueContainer {
+        height: pxToRem(72);
+        padding-left: pxToRem(15);
+        width: pxToRem(135);
+        min-width: 120px;
+      }
+
+      .css-yk16xz-control {
+        background-color: transparent;
+        border: 0;
+
+        * {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .css-1hb7zxy-IndicatorsContainer {
+    display: none !important;
+  }
+
+  .css-1pahdxg-control {
+    min-height: auto;
+    max-height: initial;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    border: 0;
+
+    * {
+      background-color: transparent;
+    }
+
+    &:focus {
+      outline: none;
+      border: 0;
+    }
+  }
+}
+
+.form-contact-us {
+  h2 {
+    text-align: center;
+    font-size: pxToRem(40);
+    font-weight: bold;
+    line-height: 0.75;
+    letter-spacing: pxToRem(0.4);
+    color: $bg-main;
+    margin-bottom: pxToRem(32);
+  }
+
+  input,
+  textarea {
+    border-radius: pxToRem(10);
+
+    &::-webkit-input-placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(15);
+      letter-spacing: pxToRem(-0.25);
+      font-style: italic;
+    }
+
+    &::placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(15);
+      font-style: italic;
+      letter-spacing: pxToRem(-0.25);
+    }
+
+    &::-moz-placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(15);
+      font-style: italic;
+      letter-spacing: pxToRem(-0.25);
+    }
+
+    &:-ms-input-placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(15);
+      font-style: italic;
+      letter-spacing: pxToRem(-0.25);
+    }
+  }
+}

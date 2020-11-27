@@ -9,7 +9,7 @@ type Props = {
 const ItemClient = ({ itemObj }: Props) => {
   return (
     <>
-      <div className="item-client col-6">
+      <div className="item-client">
         <div className="item-client-content d-flex align-items-center">
           <div>
             <div className="item-client-desc">{itemObj?.desc}</div>
