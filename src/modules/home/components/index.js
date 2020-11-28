@@ -6,6 +6,8 @@ import IMAGES from 'themes/images';
 import Button from '../../../commons/components/Button';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ERROR_MESSAGE from '../../../constants/errorMsg';
+import ModalPopup from '../../../commons/components/Modal';
 import ItemSlideSale from './ItemSlideSale';
 import ItemSlideMain from './itemSlideMain';
 import ItemClient from './ItemClient';
@@ -75,6 +77,15 @@ const HomeMain = ({ history }: Props) => {
     },
   };
 
+  // Modal client
+  const [openSuccessClient, setOpenSuccessClient] = useState({
+    isShow: false,
+    content: ERROR_MESSAGE.TEXT_SUCCUSS,
+  });
+
+  // Modal client
+  const [isOpenModalClient, setIsOpenModalClient] = useState(false);
+
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
     value: 'product',
@@ -96,6 +107,20 @@ const HomeMain = ({ history }: Props) => {
     typingTimeOut.current = setTimeout(() => {
       // code sau 0.3s thi goi api
     }, 300);
+  };
+  // close modal Tu van khach hang
+  const handleClose = () => {
+    setIsOpenModalClient(false);
+  };
+
+  // handleSubmitForm Tu van khach hang
+  const handleSubmitForm = (object) => {
+    console.log(object);
+    setIsOpenModalClient(false);
+    setOpenSuccessClient({
+      ...openSuccessClient,
+      isShow: true,
+    });
   };
   // render list slide Main top
   const renderListSlideMain =
@@ -152,7 +177,9 @@ const HomeMain = ({ history }: Props) => {
               optionSelect={optionSearchDefault}
             />
           </div>
-          <Button customClass="big">YÊU CẦU TƯ VẤN</Button>
+          <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>
+            YÊU CẦU TƯ VẤN
+          </Button>
         </div>
       </div>
 
@@ -212,7 +239,26 @@ const HomeMain = ({ history }: Props) => {
         </div>
       </div>
       {/* Modal form contact Us */}
-      <FormContactUs />
+      <FormContactUs
+        handleSubmitForm={handleSubmitForm}
+        isOpenModalClient={isOpenModalClient}
+        handleClose={handleClose}
+      />
+      {/* Modal success */}
+      <ModalPopup
+        isOpen={openSuccessClient.isShow}
+        isShowFooter
+        textBtnRight="ĐÓNG"
+        handleClose={() => {
+          setOpenSuccessClient({
+            ...openSuccessClient,
+            isShow: false,
+          });
+        }}
+      >
+        <h2 className="modal-title">CẢM ƠN BẠN !</h2>
+        <div className="text-modal-content">{openSuccessClient.content}</div>
+      </ModalPopup>
     </MainLayout>
   );
 };

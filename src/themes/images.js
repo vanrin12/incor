@@ -12,6 +12,7 @@ const images = {
   imageSlideCline2: require('../assets/imgs/client2.jpg'),
   iconPlay: require('../assets/imgs/icon-play.png'),
   iconUp: require('../assets/imgs/ic-back-white.png'),
+  icon_close: require('../assets/imgs/ic-close.png'),
 };
 
 export default images;

@@ -11,7 +11,8 @@
       left: 0;
       top: 0;
       width: pxToRem(135);
-      min-width: 120px;
+      // min-width: 120px;
+      height: pxToRem(72);
 
       * {
 
@@ -20,7 +21,7 @@
 
       &:after {
         position: absolute;
-        right: 0;
+        right: pxToRem(-10);
         content: "";
         background-size: contain;
         background-repeat: no-repeat;
@@ -30,7 +31,7 @@
         height: pxToRem(25);
         background-size: contain;
         cursor: pointer;
-        top: calc(50% - #{pxToRem(15)});
+        top: calc(50% - #{pxToRem(10)});
         z-index: -1;
         @include transform-rotate(-90deg);
       }
@@ -81,11 +82,16 @@
         margin: 0;
       }
 
-      .css-g1d714-ValueContainer {
+      .css-g1d714-ValueContainer,
+      .css-2b097c-container {
         height: pxToRem(72);
-        padding-left: pxToRem(15);
+        padding-left: 0;
         width: pxToRem(135);
-        min-width: 120px;
+        border: 0;
+
+        .css-1uccc91-singleValue {
+          padding-left: pxToRem(15);
+        }
       }
 
       .css-yk16xz-control {
@@ -123,6 +129,12 @@
 }
 
 .form-contact-us {
+  .input__error-msg {
+    margin-left: 0;
+    margin-top: 0;
+    text-align: left;
+  }
+
   h2 {
     text-align: center;
     font-size: pxToRem(40);
@@ -136,6 +148,16 @@
   input,
   textarea {
     border-radius: pxToRem(10);
+    font-size: pxToRem(20);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: pxToRem(0.4);
+    text-align: left;
+    color: $color-light4;
+
+    &:hover {
+      color: $color-blue-light;
+    }
 
     &::-webkit-input-placeholder {
       color: $color-placeholder;
@@ -167,6 +189,131 @@
       font-size: pxToRem(15);
       font-style: italic;
       letter-spacing: pxToRem(-0.25);
+    }
+  }
+
+  .style-line {
+    align-items: flex-end;
+
+    &.date-time .w-100 {
+      width: auto !important;
+    }
+
+    .input__label {
+      min-width: pxToRem(200);
+      margin-right: pxToRem(10);
+      margin-bottom: 0;
+      line-height: 1;
+      white-space: nowrap;
+      position: relative;
+      top: pxToRem(5);
+
+      &.w-auto {
+        min-width: auto;
+      }
+
+      span {
+        font-size: pxToRem(15);
+        font-weight: normal;
+        font-style: italic;
+        line-height: 1.4;
+      }
+    }
+
+    .customer-select {
+      width: 100%;
+      min-width: pxToRem(100);
+
+      &::after {
+        right: 0;
+        top: 75%;
+      }
+
+      .css-1uccc91-singleValue {
+        top: 70%;
+      }
+
+      .css-yk16xz-control,
+      .css-1pahdxg-control {
+
+        >div {
+          border-top: 0;
+          border-right: 0;
+          border-left: 0;
+          padding: 0;
+          border-radius: 0;
+        }
+      }
+    }
+
+    input {
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      border-radius: 0;
+      padding-left: 0;
+      padding-bottom: 0;
+    }
+
+    &.date-time {
+      .customer-select {
+        width: auto;
+        max-width: pxToRem(109);
+      }
+    }
+
+    .react-datepicker-wrapper {
+      input {
+        max-width: pxToRem(150);
+        background-size: pxToRem(15);
+        background-repeat: no-repeat;
+        background-image: url("../../../assets/imgs/arrow-up.png");
+        background-position: right bottom pxToRem(5);
+      }
+    }
+
+  }
+
+  .group-btn-file {
+    position: relative;
+    z-index: 0;
+
+    * {
+      cursor: pointer
+    }
+
+    .d-group {
+      width: 100%;
+    }
+
+    .custom-file-input {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      opacity: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    button {
+      width: pxToRem(91);
+      height: pxToRem(28);
+      padding: pxToRem(6) pxToRem(11) pxToRem(5);
+      border-radius: pxToRem(5);
+      background-color: $color_primary;
+
+      font-size: pxToRem(14);
+      font-weight: 500;
+      line-height: 1;
+    }
+  }
+
+  .form-group.btn-group {
+    margin-top: pxToRem(20);
+
+    button {
+      width: pxToRem(237);
+      border-radius: pxToRem(10);
     }
   }
 }

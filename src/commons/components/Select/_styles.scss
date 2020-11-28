@@ -58,6 +58,34 @@
 .customer-select {
   position: relative;
 
+  .css-1wa3eu0-placeholder {
+    color: $color-placeholder;
+    font-weight: $regular;
+    font-size: pxToRem(15);
+    letter-spacing: pxToRem(-0.25);
+    font-style: italic;
+  }
+
+  .css-1uccc91-singleValue {
+    overflow: initial;
+    cursor: pointer;
+    font-size: pxToRem(20);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: pxToRem(0.4);
+    text-align: left;
+    color: $color-light4;
+
+    &:hover {
+      color: $color-blue-light;
+    }
+  }
+
+  .input__box,
+  .css-2b097c-container {
+    height: pxToRem(44);
+  }
+
   &:after {
     position: absolute;
     right: pxToRem(15);
@@ -65,11 +93,11 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url("../../../assets/imgs/arrow-up.png");
-    width: pxToRem(25);
-    height: pxToRem(25);
+    width: pxToRem(15);
+    height: pxToRem(15);
     background-position: center center;
     cursor: pointer;
-    top: 50%;
+    top: 55%;
     z-index: -1;
     @include transform-translateY(-50%)
   }
@@ -102,7 +130,7 @@
 
   .css-26l3qy-menu {
     margin: 0;
-    padding: pxToRem(8) pxToRem(15) pxToRem(8) pxToRem(12);
+    padding: pxToRem(8) pxToRem(0) pxToRem(8) pxToRem(12);
     border-radius: pxToRem(10);
     box-shadow: pxToRem(10) pxToRem(10) pxToRem(30) 0 rgba(0, 0, 0, 0.16);
     cursor: pointer;
@@ -134,13 +162,22 @@
     }
   }
 
+  &.red {
+
+    .css-yk16xz-control,
+    .css-1pahdxg-control {
+      >div {
+        border-color: $red;
+      }
+    }
+  }
+
   .css-yk16xz-control,
   .css-1pahdxg-control {
     border: 0;
     background-color: transparent;
 
     >div {
-
       border: pxToRem(1) solid $color-border;
       height: pxToRem(44);
       display: block;

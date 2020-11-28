@@ -49,9 +49,9 @@ export const ModalPopup = ({
 }: Props) => (
   <Modal
     animation={animation}
-    onHide={() => {
-      return true;
-    }}
+    // onHide={() => {
+    //   return true;
+    // }}
     show={isOpen}
     size={size}
     className={customClass}
