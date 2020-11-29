@@ -54,9 +54,7 @@ const TableConstructionManager = ({
         />
       ))
     ) : (
-      <div className="table-no-data">
-        <div className="item-table d-flex">Bạn chưa có dự án nào.</div>
-      </div>
+      <div className="table-no-data">Bạn chưa có dự án nào.</div>
     );
 
   return (

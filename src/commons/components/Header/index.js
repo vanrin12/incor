@@ -1,13 +1,18 @@
 /* eslint-disable no-nested-ternary */
 // @flow
 
-import React from 'react';
+import React, { memo } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import IMAGES from 'themes/images';
 import ROUTERS from 'constants/router';
 import LoginForm from '../../../modules/accounts/components';
+import Menu from './Menu';
 
-const Header = () => {
+type Props = {
+  location: Object,
+};
+
+const Header = ({ location }: Props) => {
   return (
     <div className="header-main">
       <header className="header d-flex align-items-center">
@@ -17,38 +22,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="menu-main d-flex align-items-center w-100">
-          <ul className="menu-nav">
-            <li>
-              <Link to="#" title="GIỚI THIỆU">
-                GIỚI THIỆU
-              </Link>
-            </li>
-            <li>
-              <Link to="#" title="DỊCH VỤ">
-                DỊCH VỤ
-              </Link>
-            </li>
-            <li>
-              <Link to="#" title="KHÁCH HÀNG">
-                KHÁCH HÀNG
-              </Link>
-            </li>
-            <li>
-              <Link to="#" title="HỢP TÁC">
-                HỢP TÁC
-              </Link>
-            </li>
-            <li>
-              <Link to="#" title="TUYỂN DỤNG">
-                TUYỂN DỤNG
-              </Link>
-            </li>
-            <li>
-              <Link to="#" title="LIÊN HỆ">
-                LIÊN HỆ
-              </Link>
-            </li>
-          </ul>
+          <Menu location={location} />
           <LoginForm />
         </div>
       </header>
@@ -56,8 +30,4 @@ const Header = () => {
   );
 };
 
-Header.defaultProps = {
-  children: '',
-};
-
-export default withRouter(Header);
+export default withRouter(memo<Props>(Header));

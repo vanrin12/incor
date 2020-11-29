@@ -17,6 +17,11 @@ const ConstructionManager = lazy(() =>
   import('modules/construction/components')
 );
 
+const ClientManager = lazy(() => import('modules/clientManager/components'));
+const ClientDetailManager = lazy(() =>
+  import('modules/clientManager/components/detail')
+);
+
 const Router = () => {
   // const history = createBrowserHistory();
   // const token = useSelector((state) => state.account.token);
@@ -35,6 +40,12 @@ const Router = () => {
             exact
             path={ROUTERS.PAGE_CONSTRUCTION}
             component={ConstructionManager}
+          />
+          <Route exact path={ROUTERS.PAGE_CLIENT} component={ClientManager} />
+          <Route
+            exact
+            path={ROUTERS.PAGE_CLIENT_DETAIL}
+            component={ClientDetailManager}
           />
         </Switch>
       </Suspense>

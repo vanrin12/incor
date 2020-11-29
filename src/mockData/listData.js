@@ -1,3 +1,4 @@
+import IMAGES from 'themes/images';
 const listConstruction = {
   dataInfo: {
     projectOfName: 'Dự án 1',
@@ -161,4 +162,54 @@ const listCategory = [
   },
 ];
 
-export { listConstruction, listCategory, listPartner };
+const listDataClient = [
+  {
+    id: 1,
+    title: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit',
+    date: '13:00 - 11/11/2020',
+    image: IMAGES.img_client,
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ',
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit',
+    date: '13:00 - 11/11/2020',
+    image: IMAGES.img_client,
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ',
+  },
+  {
+    id: 3,
+    title: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit',
+    date: '13:00 - 11/11/2020',
+    image: IMAGES.img_client,
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ',
+  },
+  {
+    id: 4,
+    title: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit',
+    date: '13:00 - 11/11/2020',
+    image: IMAGES.img_client,
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ',
+  },
+  {
+    id: 5,
+    title: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit',
+    date: '13:00 - 11/11/2020',
+    image: IMAGES.img_client,
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ',
+  },
+  {
+    id: 6,
+    title: 'Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit',
+    date: '13:00 - 11/11/2020',
+    image: IMAGES.img_client,
+    desc:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ',
+  },
+];
+export { listConstruction, listCategory, listPartner, listDataClient };

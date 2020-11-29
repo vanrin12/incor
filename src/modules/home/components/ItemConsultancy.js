@@ -27,14 +27,7 @@ const ItemConsultancy = ({ history, itemObj }: Props) => {
           tabIndex={0}
         />
         <Link to="#">
-          <h3
-            onClick={() => history.push('#')}
-            onKeyDown={() => history.push('#')}
-            role="button"
-            tabIndex={0}
-          >
-            {itemObj?.name}
-          </h3>
+          <h3>{itemObj?.name}</h3>
         </Link>
         <p className="desc">{itemObj?.desc}</p>
         <Link to="#" className="row-right">

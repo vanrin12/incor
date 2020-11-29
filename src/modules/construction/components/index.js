@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import MainLayout from '../../../commons/components/MainLayout';
 import TableConstructionManager from './TableConstruction';
 import ModalRating from './ModalRating';
+import ModalPopup from '../../../commons/components/Modal';
 import {
   listConstruction,
   listCategory,
@@ -12,8 +13,12 @@ import {
 
 const ConstructionManager = () => {
   const { dataInfo, dataTotal, dataList } = listConstruction;
+  const [openModalNumberRating, setOpenModalNumberRating] = useState(true);
   const [isShowModalRating, setIsShowModalRating] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
+
+  const quantityRating =
+    dataList && dataList.filter((item) => item.progress > 75);
 
   const handleShowModalRating = (boolean) => {
     setIsShowModalRating(boolean);
@@ -85,6 +90,25 @@ const ConstructionManager = () => {
         isShowModalRating={isShowModalRating}
         handleCloseIcon={handleCloseIcon}
       />
+
+      {/* Modal success */}
+      <ModalPopup
+        isOpen={openModalNumberRating}
+        isShowFooter
+        textBtnRight="ĐÓNG"
+        handleClose={() => {
+          setOpenModalNumberRating(false);
+        }}
+      >
+        <h2 className="modal-title">THÔNG BÁO</h2>
+        <div className="text-modal-content">
+          Bạn có
+          <span className="red">{` ${
+            quantityRating && quantityRating.length
+          } `}</span>
+          hạng mục cần đánh giá
+        </div>
+      </ModalPopup>
     </MainLayout>
   );
 };

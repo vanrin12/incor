@@ -13,6 +13,8 @@ const images = {
   iconPlay: require('../assets/imgs/icon-play.png'),
   iconUp: require('../assets/imgs/ic-back-white.png'),
   icon_close: require('../assets/imgs/ic-close.png'),
+  bg_title_client: require('../assets/imgs/bg-client.jpg'),
+  img_client: require('../assets/imgs/client3.jpg'),
 };
 
 export default images;
