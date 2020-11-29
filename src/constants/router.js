@@ -8,6 +8,7 @@ const ROUTERS = {
   PAGE_COOPERATION: `/cooperation`,
   CONTACT_US: `/contact-us`,
   PAGE_RECRUITMENT: `/recruitment`,
+  PAGE_SEARCH: `/search`,
   LOGIN: `/login`,
   SIGN_UP: '/sign-up',
 };

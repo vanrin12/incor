@@ -3,9 +3,9 @@
 import React, { memo } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import ERROR_MESSAGE from 'constants/errorMsg';
 import SelectDropdown from '../../../commons/components/Select';
 import Button from '../../../commons/components/Button';
-import ERROR_MESSAGE from 'constants/errorMsg';
 
 type Props = {
   handleSubmitForm: Function,
@@ -40,13 +40,14 @@ const ModalSort = ({ handleSubmitForm, listPartner, listCategory }: Props) => {
   });
 
   const handleSelectChange = (option, name) => {
-    formik.setFieldError([name], '');
     switch (name) {
       case 'partner':
         formik.setFieldValue('partner', option);
+        formik.setFieldError('partner', '');
         break;
       case 'category':
         formik.setFieldValue('category', option);
+        formik.setFieldError('category', '');
         break;
       default:
         break;

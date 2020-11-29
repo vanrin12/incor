@@ -5,8 +5,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import StarRatings from 'react-star-ratings';
 import REGEX from 'constants/regexs';
-import ModalPopup from '../../../commons/components/Modal';
 import ERROR_MESSAGE from 'constants/errorMsg';
+import ModalPopup from '../../../commons/components/Modal';
 
 type Props = {
   handleSubmitRating: Function,
@@ -49,8 +49,8 @@ const ModalRating = ({
     formik.setFieldValue('rating', rating);
   };
 
-  const handelFocus = (name) => {
-    formik.setFieldError([name], '');
+  const handelFocus = () => {
+    formik.setFieldError('note', '');
   };
 
   const { note, rating } = formik.values;
@@ -91,7 +91,7 @@ const ModalRating = ({
             placeholder="Vui lòng để lại đánh giá chi tiết về hạng mục này"
             onChange={formik.handleChange}
             name="note"
-            onFocus={() => handelFocus('note')}
+            onFocus={() => handelFocus()}
           />
           {formik?.errors?.note && (
             <p className="error-msg select">{formik?.errors?.note}</p>

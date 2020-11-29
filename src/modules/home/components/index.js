@@ -1,11 +1,11 @@
 // @flow
 
 import React, { memo, useState, useRef } from 'react';
-import MainLayout from '../../../commons/components/MainLayout';
 import IMAGES from 'themes/images';
-import Button from '../../../commons/components/Button';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Button from '../../../commons/components/Button';
+import MainLayout from '../../../commons/components/MainLayout';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import ModalPopup from '../../../commons/components/Modal';
 import ItemSlideSale from './ItemSlideSale';
@@ -45,21 +45,21 @@ const HomeMain = ({ history }: Props) => {
     },
   };
 
-  //Options in Swiper
+  // Options in Swiper
   const params = {
     loop: true,
     slidesPerView: 3,
     spaceBetween: 35,
     breakpoints: {
-      1024: {
+      '1024': {
         slidesPerView: 3,
         spaceBetween: 35,
       },
-      768: {
+      '768': {
         slidesPerView: 2,
         spaceBetween: 20,
       },
-      320: {
+      '320': {
         slidesPerView: 2,
         spaceBetween: 10,
       },
@@ -102,14 +102,14 @@ const HomeMain = ({ history }: Props) => {
   const handleChangeInput = (value) => {
     setValueSearch(value);
     if (typingTimeOut.current) {
-      clearInterval(typingTimeOut.current);
+      clearTimeout(typingTimeOut.current);
     }
     typingTimeOut.current = setTimeout(() => {
       // code sau 0.3s thi goi api
     }, 300);
   };
   // close modal Tu van khach hang
-  const handleClose = () => {
+  const handleCloseModal = () => {
     setIsOpenModalClient(false);
   };
 
@@ -242,7 +242,7 @@ const HomeMain = ({ history }: Props) => {
       <FormContactUs
         handleSubmitForm={handleSubmitForm}
         isOpenModalClient={isOpenModalClient}
-        handleClose={handleClose}
+        handleCloseModal={handleCloseModal}
       />
       {/* Modal success */}
       <ModalPopup

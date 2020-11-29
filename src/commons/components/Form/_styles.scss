@@ -126,6 +126,51 @@
       border: 0;
     }
   }
+
+  &.form2 {
+    margin-bottom: 0;
+    padding-bottom: pxToRem(90);
+
+    .form-group {
+      width: 100%;
+
+      .input__box {
+        input {
+          width: 100%;
+          border-radius: pxToRem(15);
+          border: pxToRem(2) solid $bg-main;
+          background: $white;
+          font-size: pxToRem(20);
+          color: $color-black;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+          font-weight: normal;
+        }
+      }
+
+      .customer-select {
+        color: $color-black;
+
+        &:after {
+          background-image: url("../../../assets/imgs/arrow-up.png");
+          @include transform-rotate(0);
+        }
+
+        .css-1uccc91-singleValue {
+          color: $color-black;
+        }
+      }
+    }
+
+    .btn-wrap {
+      button {
+        width: pxToRem(227);
+        height: pxToRem(72);
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
 }
 
 .form-contact-us {

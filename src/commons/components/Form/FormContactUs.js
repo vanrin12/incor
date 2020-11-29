@@ -1,11 +1,12 @@
 // @flow
 import React, { memo, useState, useRef, useEffect } from 'react';
-import vi from 'date-fns/locale/vi';
-import DatePicker, { registerLocale } from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Input from '../Input';
 import REGEX from 'constants/regexs';
+import { isNumberKey, isOnPasteNumber } from 'helpers/validate';
+// import vi from 'date-fns/locale/vi';
+import Input from '../Input';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import SelectDropdown from '../Select';
 import ModalPopup from '../Modal';
@@ -15,20 +16,19 @@ import {
   listTypeOfSpace,
   listTime,
 } from '../../../constants/list';
-import { isNumberKey, isOnPasteNumber } from 'helpers/validate';
 
-registerLocale('vi', vi);
+// registerLocale('vi', vi);
 
 type Props = {
   handleSubmitForm: Function,
   isOpenModalClient: boolean,
-  handleClose: Function,
+  handleCloseModal: Function,
 };
 
 const FormContactUs = ({
   handleSubmitForm,
   isOpenModalClient,
-  handleClose,
+  handleCloseModal,
 }: Props) => {
   const [listSelectSubType, setListSelectSubType] = useState([]);
   const [dateTime, setDateTime] = useState('');
@@ -100,13 +100,14 @@ const FormContactUs = ({
     // eslint-disable-next-line
   }, [isOpenModalClient]);
   const handleSelectChange = (option, name) => {
-    formik.setFieldError([name], '');
     switch (name) {
       case 'selectCity':
         formik.setFieldValue('selectCity', option);
+        formik.setFieldError('selectCity', '');
         break;
       case 'selectType':
         formik.setFieldValue('selectType', option);
+        formik.setFieldError('selectType', '');
         if (option.value === 'khongGiangNhaO') {
           setListSelectSubType(option.list1);
         }
@@ -120,8 +121,10 @@ const FormContactUs = ({
         break;
       case 'selectSubType':
         formik.setFieldValue('selectSubType', option);
+        formik.setFieldError('selectSubType', '');
         break;
       case 'selectTime':
+        formik.setFieldError('selectTime', '');
         formik.setFieldValue('selectTime', option);
         break;
       default:
@@ -130,7 +133,22 @@ const FormContactUs = ({
   };
 
   const handelFocus = (name) => {
-    formik.setFieldError([name], '');
+    switch (name) {
+      case 'selectCity':
+        formik.setFieldError('selectCity', '');
+        break;
+      case 'nameClient':
+        formik.setFieldError('nameClient', '');
+        break;
+      case 'phone':
+        formik.setFieldError('phone', '');
+        break;
+      case 'email':
+        formik.setFieldError('email', '');
+        break;
+      default:
+        break;
+    }
   };
 
   const handleChangeFile = (e) => {
@@ -164,7 +182,8 @@ const FormContactUs = ({
       isOpen={isOpenModalClient}
       size="lg"
       isShowIconClose
-      handleCloseIcon={handleClose}
+      handleClose={handleCloseModal}
+      handleCloseIcon={handleCloseModal}
     >
       <div className="form-contact-us">
         <h2>FORM YÊU CẦU TƯ VẤN</h2>
@@ -291,7 +310,7 @@ const FormContactUs = ({
             showMonthDropdown
             showYearDropdown
             dropdownMode="select"
-            locale="vi"
+            // locale="vi"
             dateFormat="yyyy-MM-dd"
             disabledKeyboardNavigation
             onChangeRaw={(e) => e.preventDefault()}
