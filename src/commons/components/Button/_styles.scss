@@ -15,4 +15,8 @@ button.button.btn {
     font-size: pxToRem(25);
     min-height: pxToRem(72);
   }
+
+  &:disabled {
+    background: $bg-disabled;
+  }
 }

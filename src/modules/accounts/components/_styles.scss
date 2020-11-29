@@ -1,15 +1,20 @@
 .user-info {
   min-width: pxToRem(135);
+}
 
-  .ico-up {
-    @include transform-rotate(-90deg);
-    position: relative;
-    top: pxToRem(4);
-    width: pxToRem(11);
-    min-width: 9px;
-    left: pxToRem(-3);
+.ico-up {
+  @include transform-rotate(-90deg);
+  position: relative;
+  top: pxToRem(4);
+  width: pxToRem(11);
+  min-width: 9px;
+  left: pxToRem(-3);
+  cursor: pointer;
+
+  &.style1 {
+    top: 0;
+    left: pxToRem(10);
   }
-
 }
 
 button.btn-outline {

@@ -18,6 +18,10 @@
 @import './commons/components/Input/styles';
 // Select
 @import './commons/components/Select/styles';
+// Rating
+@import './commons/components/Rating/styles';
+// Progress bar
+@import './commons/components/progressBar/styles';
 // Modal
 @import './commons/components/Modal/styles';
 // Form
@@ -25,4 +29,6 @@
 //Main
 @import './modules/home/components/styles';
 //Login
-@import "./modules/accounts/components/styles"
+@import "./modules/accounts/components/styles";
+//Page construction
+@import "./modules/construction/components/styles"

@@ -13,6 +13,10 @@ import ROUTERS from 'constants/router';
 
 const HomeMain = lazy(() => import('modules/home/components'));
 
+const ConstructionManager = lazy(() =>
+  import('modules/construction/components')
+);
+
 const Router = () => {
   // const history = createBrowserHistory();
   // const token = useSelector((state) => state.account.token);
@@ -27,6 +31,11 @@ const Router = () => {
       <Suspense>
         <Switch>
           <Route exact path={ROUTERS.MAIN_PAGE} component={HomeMain} />
+          <Route
+            exact
+            path={ROUTERS.PAGE_CONSTRUCTION}
+            component={ConstructionManager}
+          />
         </Switch>
       </Suspense>
     </BrowserRouter>

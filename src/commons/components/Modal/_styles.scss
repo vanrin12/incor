@@ -75,6 +75,12 @@
     padding: 0;
     margin: 0;
 
+    .sub-title {
+      font-size: pxToRem(20);
+      margin-top: pxToRem(21);
+      line-height: 2;
+    }
+
     .text-modal-content {
       font-size: pxToRem(30);
       font-weight: 500;
@@ -82,6 +88,22 @@
       text-align: center;
       color: $color-black;
       margin-top: pxToRem(30);
+
+      &.rating {
+        margin-top: pxToRem(15);
+
+        .mb-30 {
+          margin-bottom: pxToRem(30);
+        }
+
+        .star-ratings {
+
+          svg {
+            width: pxToRem(37) !important;
+            height: pxToRem(37) !important;
+          }
+        }
+      }
     }
 
     .modal-title {
@@ -92,5 +114,52 @@
       text-align: center;
       color: $bg-main;
     }
+
+    textarea {
+      border-radius: pxToRem(10);
+      font-size: pxToRem(20);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: pxToRem(0.4);
+      text-align: left;
+      color: $color-light4;
+
+      &:hover {
+        color: $color-blue-light;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        letter-spacing: pxToRem(-0.25);
+        font-style: italic;
+      }
+
+      &::placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        font-style: italic;
+        letter-spacing: pxToRem(-0.25);
+      }
+
+      &::-moz-placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        font-style: italic;
+        letter-spacing: pxToRem(-0.25);
+      }
+
+      &:-ms-input-placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        font-style: italic;
+        letter-spacing: pxToRem(-0.25);
+      }
+    }
+
   }
 }

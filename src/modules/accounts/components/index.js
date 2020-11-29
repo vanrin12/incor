@@ -8,6 +8,7 @@ import Input from '../../../commons/components/Input';
 import Button from '../../../commons/components/Button';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import IMAGES from '../../../themes/images';
+import ROUTERS from 'constants/router';
 
 const LoginForm = () => {
   const [isShowLoading, setIsShowLoading] = useState(false);
@@ -106,7 +107,7 @@ const LoginForm = () => {
         <div className="modal-info-user">
           <ul>
             <li>
-              <Link to="/" title="Quản lý tiến độ">
+              <Link to={ROUTERS.PAGE_CONSTRUCTION} title="Quản lý tiến độ">
                 Quản lý tiến độ
               </Link>
             </li>

@@ -97,8 +97,10 @@ const FormContactUs = ({
       formik.setFieldError('note', '');
       formik.setFieldError('fileName', '');
     }
+    // eslint-disable-next-line
   }, [isOpenModalClient]);
   const handleSelectChange = (option, name) => {
+    formik.setFieldError([name], '');
     switch (name) {
       case 'selectCity':
         formik.setFieldValue('selectCity', option);
@@ -107,12 +109,12 @@ const FormContactUs = ({
         formik.setFieldValue('selectType', option);
         if (option.value === 'khongGiangNhaO') {
           setListSelectSubType(option.list1);
-          formik.setFieldValue('selectSubType', option);
         }
         if (option.value === 'khongGiangKhinhDoanh') {
           setListSelectSubType(option.list2);
         }
         if (option.value === 'khongGiangLamViec') {
+          setListSelectSubType(option.list3);
         }
         formik.setFieldValue('selectSubType', null);
         break;
@@ -162,7 +164,7 @@ const FormContactUs = ({
       isOpen={isOpenModalClient}
       size="lg"
       isShowIconClose
-      handleClose={handleClose}
+      handleCloseIcon={handleClose}
     >
       <div className="form-contact-us">
         <h2>FORM YÊU CẦU TƯ VẤN</h2>

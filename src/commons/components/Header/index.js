@@ -1,18 +1,13 @@
 /* eslint-disable no-nested-ternary */
 // @flow
 
-import React, { memo } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import IMAGES from 'themes/images';
 import ROUTERS from 'constants/router';
 import LoginForm from '../../../modules/accounts/components';
 
-type Props = {
-  children?: any,
-};
-
-const Header = ({ children = '' }: Props) => {
+const Header = () => {
   return (
     <div className="header-main">
       <header className="header d-flex align-items-center">
@@ -54,7 +49,6 @@ const Header = ({ children = '' }: Props) => {
               </Link>
             </li>
           </ul>
-
           <LoginForm />
         </div>
       </header>
@@ -66,4 +60,4 @@ Header.defaultProps = {
   children: '',
 };
 
-export default withRouter(memo<Props>(Header));
+export default withRouter(Header);

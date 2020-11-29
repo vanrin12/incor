@@ -1,6 +1,6 @@
 // @flow
 
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 
@@ -10,6 +10,9 @@ type Props = {
 };
 
 const MainLayout = ({ children, customClass = '' }: Props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={`main-layout ${customClass}`}>
       <Header />

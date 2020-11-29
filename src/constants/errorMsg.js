@@ -21,6 +21,10 @@ const ERROR_MESSAGE = {
     'Email authentication is not complete.<br /> Would you like me to resend you<br /> the authentication email?',
   UN_AUTHENTICATED: 'Unauthenticated.',
   TEXT_SUCCUSS: 'Incor đã nhận được yêu cầu của bạn \n và sẽ liên hệ bạn',
+  PARTNER: 'Chọn đối tác',
+  CATEGORY: 'Chọn hạng mục',
+  RATING: 'Vui lòng chọn đánh giá',
+  TEXT_RATING: 'Vui lòng nhập nội dung đánh giá',
 };
 
 export default ERROR_MESSAGE;
