@@ -22,4 +22,96 @@ const listSlideHome = [
     image: IMAGES.imageSlideUrl,
   },
 ];
-export { listSlideHome };
+
+const listSlideConsultancy = [
+  {
+    id: 1,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 2,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 3,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 4,
+    name: 'Lorem ipsum dolor sit amet, consectetur',
+    desc: 'Lorem ipsum dolor sit amet, consectetur',
+    image: IMAGES.imageSlideUrl,
+  },
+];
+
+const listClientHome = [
+  {
+    id: 1,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideCline1,
+  },
+  {
+    id: 2,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideCline2,
+  },
+  {
+    id: 3,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 4,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideCline2,
+  },
+  {
+    id: 5,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideCline2,
+  },
+  {
+    id: 6,
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'Anh Hoàng',
+    address: 'TP. Đà Nẵng',
+    image: IMAGES.imageSlideUrl,
+  },
+];
+
+const listSlideMain = [
+  {
+    id: 1,
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 2,
+    image: IMAGES.imageSlideCline1,
+  },
+  {
+    id: 3,
+    image: IMAGES.imageSlideUrl,
+  },
+  {
+    id: 4,
+    image: IMAGES.imageSlideCline1,
+  },
+];
+
+export { listSlideHome, listClientHome, listSlideConsultancy, listSlideMain };

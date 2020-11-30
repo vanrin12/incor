@@ -1,16 +1,99 @@
-.input {
+.input,
+.react-datepicker-wrapper {
   &__error-msg {
     margin-top: pxToRem(10);
-    font-size: pxToRem(13);
+    font-size: pxToRem(15);
+    color: $red;
   }
 
   &__label {
-    font-size: pxToRem(14);
-    font-weight: $medium;
-    line-height: pxToRem(19);
-    color: $black-active;
+    font-size: pxToRem(20);
+    font-weight: 500;
+    line-height: 1.5;
+    color: $color-black;
     margin-bottom: pxToRem(5);
     display: flex;
+  }
+
+  input {
+    border: pxToRem(1) solid $color-border;
+    height: pxToRem(44);
+    display: block;
+    font-size: pxToRem(16);
+    padding: pxToRem(15);
+    color: $color-black;
+    width: 100%;
+    letter-spacing: pxToRem(-0.25);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: $regular;
+
+    &::-webkit-input-placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(14);
+      letter-spacing: pxToRem(-0.25);
+    }
+
+    &::placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(14);
+      letter-spacing: pxToRem(-0.25);
+    }
+
+    &::-moz-placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(14);
+      letter-spacing: pxToRem(-0.25);
+    }
+
+    &:-ms-input-placeholder {
+      color: $color-placeholder;
+      font-weight: $regular;
+      font-size: pxToRem(14);
+      letter-spacing: pxToRem(-0.25);
+    }
+
+    &.input-search {
+      margin: auto;
+      width: pxToRem(756);
+      height: pxToRem(72);
+      padding: pxToRem(15) pxToRem(25) pxToRem(13) pxToRem(156);
+
+      color: $white;
+      border-radius: pxToRem(15);
+      border: solid pxToRem(2) rgba($white, 0.85);
+      background-color: rgba($color-light0, 0.85);
+      font-size: pxToRem(20);
+
+      &::-webkit-input-placeholder {
+        color: $color-light1;
+        font-size: pxToRem(20);
+        opacity: 0.58;
+      }
+
+      &::placeholder {
+        color: $color-light1;
+        font-size: pxToRem(20);
+        opacity: 0.58;
+      }
+
+      &::-moz-placeholder {
+        color: $color-light1;
+        font-size: pxToRem(20);
+        opacity: 0.58;
+      }
+
+      &:-ms-input-placeholder {
+        color: $color-light1;
+        font-size: pxToRem(20);
+        opacity: 0.58;
+      }
+    }
   }
 
   &__box {
@@ -50,50 +133,6 @@
       }
     }
 
-    input {
-      border: pxToRem(1) solid $color-border;
-      height: pxToRem(49);
-      display: block;
-      font-size: pxToRem(16);
-      padding: pxToRem(15);
-      color: $color-input;
-      width: 100%;
-      letter-spacing: pxToRem(-0.25);
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-weight: $regular;
-
-      &::-webkit-input-placeholder {
-        color: $color-placeholder;
-        font-weight: $regular;
-        font-size: pxToRem(14);
-        letter-spacing: pxToRem(-0.25);
-      }
-
-      &::placeholder {
-        color: $color-placeholder;
-        font-weight: $regular;
-        font-size: pxToRem(14);
-        letter-spacing: pxToRem(-0.25);
-      }
-
-      &::-moz-placeholder {
-        color: $color-placeholder;
-        font-weight: $regular;
-        font-size: pxToRem(14);
-        letter-spacing: pxToRem(-0.25);
-      }
-
-      &:-ms-input-placeholder {
-        color: $color-placeholder;
-        font-weight: $regular;
-        font-size: pxToRem(14);
-        letter-spacing: pxToRem(-0.25);
-      }
-    }
-
     &__custom {
       input {
         padding-right: pxToRem(35);
@@ -102,13 +141,32 @@
   }
 }
 
+.btn-wrap {
+  position: relative;
+  display: inline-block;
+
+  .spinner-wrap {
+    position: absolute;
+    right: pxToRem(-20);
+    top: 50%;
+    @include transform-translateY(-50%);
+  }
+}
+.textarea{
+  
+}
 input,
 textarea {
   -webkit-appearance: none;
-  font-family: $Noto-Sans-Font;
+  font-family: $Roboto-Font;
+  border-radius: pxToRem(10);
 
   &:focus {
-    border: pxToRem(1) solid $color-border-active;
+    border: pxToRem(1) solid $bg-main;
     outline: none;
+  }
+
+  &.red {
+    border-color: $red !important;
   }
 }

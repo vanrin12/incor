@@ -13,6 +13,7 @@ a,
 button {
   outline: none;
   @include transition(0.3s all);
+  color: inherit;
 
   &:focus {
     border: 0;

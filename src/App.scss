@@ -14,5 +14,35 @@
 
 // button
 @import './commons/components/Button/styles';
+// input
+@import './commons/components/Input/styles';
+// Select
+@import './commons/components/Select/styles';
+// Rating
+@import './commons/components/Rating/styles';
+// Progress bar
+@import './commons/components/progressBar/styles';
+// Modal
+@import './commons/components/Modal/styles';
+// Form
+@import './commons/components/Form/styles';
 //Main
-@import './modules/home/components/styles'
+@import './modules/home/components/styles';
+//Login
+@import "./modules/accounts/components/styles";
+//Page construction
+@import "./modules/construction/components/styles";
+//Page client
+@import "./modules/clientManager/components/styles";
+//Page aboutUs
+@import "./modules/aboutUs/components/styles";
+//Page contactUs
+@import "./modules/contactUs/components/styles";
+//Page cooperation
+@import "./modules/cooperation/components/styles";
+//Page recruitment
+@import "./modules/recruitment/components/styles";
+//Page service
+@import "./modules/service/components/styles";
+//Page Search
+@import "./modules/searchPage/components/styles"
