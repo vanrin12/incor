@@ -1,4 +1,116 @@
 .page-search {
   background-color: $bg-light6;
-  padding: pxToRem(200) pxToRem(90) 0 pxToRem(90);
+  padding: pxToRem(200) 0 0 pxToRem(90);
+
+  .form-search {
+    padding-right: pxToRem(90);
+  }
+
+  .content {
+    .content-left {
+      width: pxToRem(300);
+
+      .filter-sort {
+        h3 {
+          font-size: pxToRem(30);
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          color: $bg-main;
+          line-height: 1.2;
+          margin-bottom: pxToRem(30);
+        }
+      }
+    }
+
+    .content-right {
+      padding: pxToRem(75) pxToRem(60) pxToRem(75) pxToRem(60);
+      width:calc(100% - #{pxToRem(300)});
+      box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
+      background-color: $white;
+      border-top-left-radius: pxToRem(30);
+    }
+  }
+}
+
+.item-search {
+  border-radius: pxToRem(20);
+  box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
+  padding-bottom: pxToRem(40);
+  text-align: center;
+  @include transition(0.3s all);
+  border: pxToRem(4) solid transparent;
+  position: relative;
+  margin-bottom: pxToRem(40);
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: pxToRem(4) solid $bg-main;
+  }
+
+  .bg-image {
+    min-height: pxToRem(356);
+    width: 100%;
+    border-top-left-radius: pxToRem(20);
+    border-top-right-radius: pxToRem(20);
+    background-position: center center;
+    background-size: cover;
+  }
+
+  a h3 {
+    text-transform: uppercase;
+    font-size: pxToRem(25);
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    text-align: left;
+    color: $bg-main;
+    margin-bottom: pxToRem(12);
+  }
+
+  .gr-footer {
+    padding: pxToRem(18);
+
+    .hashtag {
+      font-size: pxToRem(20);
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: pxToRem(30);
+      text-align: left;
+      color: $color-black;
+      max-width: 60%;
+      margin-right: pxToRem(10);
+      position: relative;
+      padding-left: pxToRem(35);
+
+      &::before {
+        content: "";
+        width: pxToRem(29);
+        height: pxToRem(29);
+        background-color: $color-black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+      }
+    }
+
+    .location {
+      display: block;
+      text-align: left;
+      margin-top: pxToRem(25);
+      font-size: pxToRem(20);
+      font-weight: normal;
+      font-style: italic;
+      line-height: 1.5;
+      color: $bg-light7;
+
+      svg {
+        margin-right: pxToRem(8);
+      }
+    }
+  }
 }

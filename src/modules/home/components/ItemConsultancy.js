@@ -14,27 +14,25 @@ type Props = {
 
 const ItemConsultancy = ({ history, itemObj }: Props) => {
   return (
-    <>
-      <div className="slide-content">
-        <div
-          className="bg-image"
-          style={{
-            backgroundImage: `url(${itemObj?.image})`,
-          }}
-          onClick={() => history.push('#')}
-          onKeyDown={() => history.push('#')}
-          role="button"
-          tabIndex={0}
-        />
-        <Link to="#">
-          <h3>{itemObj?.name}</h3>
-        </Link>
-        <p className="desc">{itemObj?.desc}</p>
-        <Link to="#" className="row-right">
-          <img src={IMAGES.arrowRight} alt="" />
-        </Link>
-      </div>
-    </>
+    <div className="slide-content">
+      <div
+        className="bg-image"
+        style={{
+          backgroundImage: `url(${itemObj?.image})`,
+        }}
+        onClick={() => history.push('#')}
+        onKeyDown={() => history.push('#')}
+        role="button"
+        tabIndex={0}
+      />
+      <Link to="#">
+        <h3>{itemObj?.name}</h3>
+      </Link>
+      <p className="desc">{itemObj?.desc}</p>
+      <Link to="#" className="row-right">
+        <img src={IMAGES.arrowRight} alt="" />
+      </Link>
+    </div>
   );
 };
 

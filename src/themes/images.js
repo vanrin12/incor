@@ -15,6 +15,7 @@ const images = {
   icon_close: require('../assets/imgs/ic-close.png'),
   bg_title_client: require('../assets/imgs/bg-client.jpg'),
   img_client: require('../assets/imgs/client3.jpg'),
+  img_product: require('../assets/imgs/product.jpg'),
 };
 
 export default images;

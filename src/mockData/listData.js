@@ -212,4 +212,85 @@ const listDataClient = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ',
   },
 ];
-export { listConstruction, listCategory, listPartner, listDataClient };
+
+const listDataSearchPage = [
+  {
+    id: 1,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 4,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 2,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 3,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 3,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 5,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 4,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 2,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 5,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 1,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 6,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 2,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 7,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 1,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 8,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 2,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+  {
+    id: 9,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+    rating: 1,
+    hashtag: 'Cửa Đẹp Adoor',
+    location: 'Đà nẵng',
+  },
+];
+export {
+  listConstruction,
+  listCategory,
+  listPartner,
+  listDataClient,
+  listDataSearchPage,
+};

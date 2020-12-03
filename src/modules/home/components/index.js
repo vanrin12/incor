@@ -2,7 +2,13 @@
 
 import React, { memo, useState, useRef } from 'react';
 import IMAGES from 'themes/images';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '../../../commons/components/Button';
 import MainLayout from '../../../commons/components/MainLayout';
@@ -22,7 +28,7 @@ import {
 } from '../../../mockData/dataSlide';
 
 // install Swiper components
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 type Props = {
   history: {
@@ -40,7 +46,7 @@ const HomeMain = ({ history }: Props) => {
     slidesPerGroup: 1,
     centeredSlides: true,
     autoplay: {
-      delay: 3000,
+      delay: 5000,
       disableOnInteraction: false,
     },
   };
@@ -64,6 +70,10 @@ const HomeMain = ({ history }: Props) => {
         spaceBetween: 10,
       },
     },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
   };
 
   const paramsOptionSlide = {
@@ -72,7 +82,7 @@ const HomeMain = ({ history }: Props) => {
     spaceBetween: 0,
     slidesPerGroup: 2,
     autoplay: {
-      delay: 3000,
+      delay: 4000,
       disableOnInteraction: false,
     },
   };
