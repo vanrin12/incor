@@ -81,10 +81,10 @@ const HomeMain = ({ history }: Props) => {
     slidesPerView: 2,
     spaceBetween: 0,
     slidesPerGroup: 2,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: false,
+    // },
   };
 
   // Modal client

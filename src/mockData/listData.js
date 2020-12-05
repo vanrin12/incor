@@ -294,26 +294,231 @@ const listProductCompany = [
     id: 1,
     title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
     image: IMAGES.img_product,
+    gallery: [
+      {
+        id: 1,
+        original: 'https://picsum.photos/id/1011/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1011/1000/600/',
+      },
+      {
+        id: 2,
+        original: 'https://picsum.photos/id/1012/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1012/1000/600/',
+      },
+      {
+        id: 3,
+        original: 'https://picsum.photos/id/1013/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1013/1000/600/',
+      },
+      {
+        id: 4,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1018/1000/600/',
+      },
+      {
+        id: 5,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1014/1000/600/',
+      },
+      {
+        id: 6,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1015/1000/600/',
+      },
+      {
+        id: 7,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1016/1000/600/',
+      },
+    ],
   },
   {
     id: 2,
     title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
     image: IMAGES.img_product,
+    gallery: [
+      {
+        id: 1,
+        original: 'https://picsum.photos/id/1011/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1011/1000/600/',
+      },
+      {
+        id: 2,
+        original: 'https://picsum.photos/id/1012/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1012/1000/600/',
+      },
+      {
+        id: 3,
+        original: 'https://picsum.photos/id/1013/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1013/1000/600/',
+      },
+      {
+        id: 4,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1018/1000/600/',
+      },
+      {
+        id: 5,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1014/1000/600/',
+      },
+      {
+        id: 6,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1015/1000/600/',
+      },
+      {
+        id: 7,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1016/1000/600/',
+      },
+      {
+        id: 8,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1015/1000/600/',
+      },
+      {
+        id: 9,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1016/1000/600/',
+      },
+      {
+        id: 10,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1015/1000/600/',
+      },
+      {
+        id: 11,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1016/1000/600/',
+      },
+    ],
   },
   {
     id: 3,
     title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
     image: IMAGES.img_product,
+    gallery: [
+      {
+        id: 1,
+        original: 'https://picsum.photos/id/1011/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1011/1000/600/',
+      },
+      {
+        id: 2,
+        original: 'https://picsum.photos/id/1012/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1012/1000/600/',
+      },
+      {
+        id: 3,
+        original: 'https://picsum.photos/id/1013/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1013/1000/600/',
+      },
+      {
+        id: 4,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1018/1000/600/',
+      },
+      {
+        id: 5,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1014/1000/600/',
+      },
+      {
+        id: 6,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1015/1000/600/',
+      },
+      {
+        id: 7,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1016/1000/600/',
+      },
+    ],
   },
   {
     id: 4,
     title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
     image: IMAGES.img_product,
+    gallery: [
+      {
+        id: 1,
+        original: 'https://picsum.photos/id/1011/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1011/1000/600/',
+      },
+      {
+        id: 2,
+        original: 'https://picsum.photos/id/1012/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1012/1000/600/',
+      },
+      {
+        id: 3,
+        original: 'https://picsum.photos/id/1013/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1013/1000/600/',
+      },
+      {
+        id: 4,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1018/1000/600/',
+      },
+      {
+        id: 5,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1014/1000/600/',
+      },
+      {
+        id: 6,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1015/1000/600/',
+      },
+      {
+        id: 7,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1016/1000/600/',
+      },
+    ],
   },
   {
     id: 5,
     title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
     image: IMAGES.img_product,
+    gallery: [
+      {
+        id: 1,
+        original: 'https://picsum.photos/id/1011/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1011/1000/600/',
+      },
+      {
+        id: 2,
+        original: 'https://picsum.photos/id/1012/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1012/1000/600/',
+      },
+      {
+        id: 3,
+        original: 'https://picsum.photos/id/1013/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1013/1000/600/',
+      },
+      {
+        id: 4,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1018/1000/600/',
+      },
+      {
+        id: 5,
+        original: 'https://picsum.photos/id/1014/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1014/1000/600/',
+      },
+      {
+        id: 6,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1015/1000/600/',
+      },
+      {
+        id: 7,
+        original: 'https://picsum.photos/id/1015/1000/600/',
+        thumbnail: 'https://picsum.photos/id/1016/1000/600/',
+      },
+    ],
   },
 ];
 

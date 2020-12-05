@@ -34,7 +34,6 @@ const PageSearch = ({ history }: Props) => {
   };
 
   const handleSelectChange = (option, name) => {
-    console.log(option, 'handleSelectChange');
     switch (name) {
       case 'selectMain':
         setOptionSearchDefault(option);

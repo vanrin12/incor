@@ -19,6 +19,7 @@ import ItemProduct from './ItemProduct';
 import ItemComment from './ItemComment';
 import Rating from '../../../commons/components/Rating';
 import ModalQuotation from './ModalQuotation';
+import Gallery from '../../../commons/components/Gallery';
 import {
   listProductCompany,
   listRatingCompanyName,
@@ -94,9 +95,10 @@ const PagePartner = ({ history }: Props) => {
     value: 'product',
     label: 'Sản phẩm',
   });
-
+  const [isOpenModalGallery, setIsOpenModalGallery] = useState(false);
   const [openModalQuotation, setOpenModalQuotation] = useState(false);
   const [paginationIndex, setPaginationIndex] = useState(0);
+  const [listGallery, setListGallery] = useState([]);
   const [listId, setListId] = useState([]);
   const handleSelectPagination = (eventKey) => {
     setPaginationIndex(eventKey.selected);
@@ -139,6 +141,15 @@ const PagePartner = ({ history }: Props) => {
     setOpenModalQuotation(false);
   };
 
+  const handleModalGallery = (gallery) => {
+    setListGallery(gallery);
+    setIsOpenModalGallery(true);
+  };
+
+  const handleCloseModalGallery = (boolean) => {
+    setIsOpenModalGallery(boolean);
+  };
+
   const handleCheckBox = (qnaId) => {
     let dataSubmit = [];
     if (listId.includes({ ...qnaId }[0])) {
@@ -153,13 +164,33 @@ const PagePartner = ({ history }: Props) => {
     listProductCompany && listProductCompany.length > 0 ? (
       listProductCompany.map((item) => (
         <SwiperSlide key={item.id}>
-          <ItemProduct key={item.id} itemObj={item} history={history} />
+          <ItemProduct
+            key={item.id}
+            itemObj={item}
+            history={history}
+            handleModalGallery={handleModalGallery}
+          />
         </SwiperSlide>
       ))
     ) : (
       <div className="no-data">KHÔNG CÓ SẢN PHẨM NÀO.</div>
     );
 
+  const renderItemProductReality =
+    listProductCompany && listProductCompany.length > 0 ? (
+      listProductCompany.map((item) => (
+        <SwiperSlide key={item.id}>
+          <ItemProduct
+            key={item.id}
+            itemObj={item}
+            history={history}
+            handleModalGallery={handleModalGallery}
+          />
+        </SwiperSlide>
+      ))
+    ) : (
+      <div className="no-data">KHÔNG CÓ SẢN PHẨM NÀO.</div>
+    );
   const renderItemComment =
     listRatingCompanyName &&
     listRatingCompanyName.map((item) => (
@@ -168,7 +199,7 @@ const PagePartner = ({ history }: Props) => {
 
   return (
     <MainLayout>
-      <div className="page-partner">
+      <div className="page-partner wrap-slide">
         <div
           className="bg-title-partner"
           style={{ backgroundImage: `url(${IMAGES?.img_product})` }}
@@ -209,7 +240,7 @@ const PagePartner = ({ history }: Props) => {
             <h3 className="title-page">CÔNG TRÌNH THỰC TẾ</h3>
             <div className="product-list-company">
               <Swiper {...params2} navigation>
-                {renderItemProduct}
+                {renderItemProductReality}
               </Swiper>
             </div>
           </div>
@@ -249,7 +280,12 @@ const PagePartner = ({ history }: Props) => {
           </div>
         </div>
       </div>
-
+      {isOpenModalGallery && listGallery.length > 0 && (
+        <Gallery
+          listGallery={listGallery}
+          handleCloseModalGallery={handleCloseModalGallery}
+        />
+      )}
       <div
         className="quotation"
         onKeyDown={() => {

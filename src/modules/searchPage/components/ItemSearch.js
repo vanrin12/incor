@@ -23,12 +23,8 @@ const ItemSearch = ({ history, itemObj }: Props) => {
           style={{
             backgroundImage: `url(${itemObj?.image})`,
           }}
-          onClick={() =>
-            history.push(ROUTERS.push(`${ROUTERS.PARTNER}/${itemObj.id}`))
-          }
-          onKeyDown={() =>
-            history.push(ROUTERS.push(`${ROUTERS.PARTNER}/${itemObj.id}`))
-          }
+          onClick={() => history.push(`${ROUTERS.PARTNER}/${itemObj.id}`)}
+          onKeyDown={() => history.push(`${ROUTERS.PARTNER}/${itemObj.id}`)}
           role="button"
           tabIndex={0}
         />
