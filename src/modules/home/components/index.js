@@ -2,7 +2,13 @@
 
 import React, { memo, useState, useRef } from 'react';
 import IMAGES from 'themes/images';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '../../../commons/components/Button';
 import MainLayout from '../../../commons/components/MainLayout';
@@ -19,18 +25,20 @@ import {
   listClientHome,
   listSlideConsultancy,
   listSlideMain,
+  listAutocompleteSearch,
 } from '../../../mockData/dataSlide';
 
 // install Swiper components
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 type Props = {
   history: {
     push: Function,
   },
+  isLoading: boolean,
 };
 
-const HomeMain = ({ history }: Props) => {
+const HomeMain = ({ history, isLoading }: Props) => {
   const [valueSearch, setValueSearch] = useState('');
 
   const paramsOptionSlideMain = {
@@ -40,7 +48,7 @@ const HomeMain = ({ history }: Props) => {
     slidesPerGroup: 1,
     centeredSlides: true,
     autoplay: {
-      delay: 3000,
+      delay: 5000,
       disableOnInteraction: false,
     },
   };
@@ -64,6 +72,10 @@ const HomeMain = ({ history }: Props) => {
         spaceBetween: 10,
       },
     },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
   };
 
   const paramsOptionSlide = {
@@ -71,10 +83,10 @@ const HomeMain = ({ history }: Props) => {
     slidesPerView: 2,
     spaceBetween: 0,
     slidesPerGroup: 2,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: false,
+    // },
   };
 
   // Modal client
@@ -175,6 +187,9 @@ const HomeMain = ({ history }: Props) => {
               handleSelectChange={handleSelectChange}
               valueSearch={valueSearch}
               optionSelect={optionSearchDefault}
+              history={history}
+              listAutocompleteSearch={listAutocompleteSearch}
+              isLoading={isLoading}
             />
           </div>
           <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>

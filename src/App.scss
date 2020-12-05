@@ -8,10 +8,14 @@
 
 // Header
 @import './commons/components/Header/styles';
-
+// Loading
+@import './commons/components/Loading/styles';
 // Footer
 @import './commons/components/Footer/styles';
-
+// Check box
+@import './commons/components/Checkbox/styles';
+// Gallery
+@import './commons/components/Gallery/styles';
 // button
 @import './commons/components/Button/styles';
 // input
@@ -26,6 +30,7 @@
 @import './commons/components/Modal/styles';
 // Form
 @import './commons/components/Form/styles';
+
 //Main
 @import './modules/home/components/styles';
 //Login
@@ -45,4 +50,7 @@
 //Page service
 @import "./modules/service/components/styles";
 //Page Search
-@import "./modules/searchPage/components/styles"
+@import "./modules/searchPage/components/styles";
+
+//Page Partner
+@import "./modules/partner/components/styles"

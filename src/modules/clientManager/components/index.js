@@ -33,7 +33,7 @@ const ClientManager = ({ history }: Props) => {
 
   return (
     <MainLayout>
-      <div className="page-client">
+      <div className="page-client wrap-slide">
         <div
           className="bg-page-title"
           style={{

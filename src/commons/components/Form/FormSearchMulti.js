@@ -1,21 +1,17 @@
 // @flow
 import React, { memo } from 'react';
-import Input from '../Input';
+import Select from 'react-select';
 import SelectDropdown from '../Select';
 import Button from '../Button';
-import { listSelectSearch } from '../../../constants/list';
+import { listSelectSearch, listSelectCity } from '../../../constants/list';
 
 type Props = {
-  handleChangeInput: Function,
-  valueSearch: string,
   handleSelectChange: Function,
   optionSelect: Object,
   handelSubmitSearch: Function,
 };
 
 const FormSearch = ({
-  handleChangeInput,
-  valueSearch,
   handleSelectChange,
   optionSelect,
   handelSubmitSearch,
@@ -29,15 +25,18 @@ const FormSearch = ({
           onChange={(option) => handleSelectChange(option, 'selectMain')}
           option={optionSelect}
         />
-        <Input
+        <Select
+          isMulti
+          // menuIsOpen
+          name="colors"
           placeholder="Nhập nội dung cần tìm"
-          value={valueSearch}
-          onChange={(e) => handleChangeInput(e.target.value)}
-          customClass="input-search"
+          options={listSelectCity}
+          className="basic-multi-select"
+          classNamePrefix="select"
         />
-      </div>
-      <div>
-        <Button onClick={() => handelSubmitSearch()}>TÌM KIẾM</Button>
+        <div>
+          <Button onClick={() => handelSubmitSearch()}>TÌM KIẾM</Button>
+        </div>
       </div>
     </div>
   );

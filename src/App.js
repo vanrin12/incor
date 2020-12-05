@@ -8,6 +8,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 // import 'swiper/components/pagination/pagination.scss';
+
+import 'react-image-gallery/styles/scss/image-gallery.scss';
+
 import './App.scss';
 import { Provider } from 'react-redux';
 import Router from 'routers';

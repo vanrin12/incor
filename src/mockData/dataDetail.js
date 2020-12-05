@@ -33,4 +33,31 @@ const listRecentClient = [
       'HOÀN THÀNH & BÀN GIAO CÔNG TRÌNH KHÁCH HÀNG ANH AN VÀ NHÀ THẦU CITEXCO',
   },
 ];
-export { dataDetailClient, listRecentClient };
+
+const dataPartnerInfo = {
+  logoPartner: IMAGES.imageSlideUrl,
+  partnerName: 'Đối tác 1',
+  rating: 5,
+  partnerInfo: {
+    companyName: 'CÔNG TY CỬA ĐẸP ADOOR',
+    location: '83 Tô Hiệu, Hòa Minh, Liên Chiểu, TP. Đà Nẵng',
+    personnelSize: '100 - 500người',
+    taxCode: '0123344445',
+    image: IMAGES.img_product,
+    career: [
+      {
+        id: 1,
+        name: 'Sofa',
+      },
+      {
+        id: 2,
+        name: 'Giừơng ngủ',
+      },
+      {
+        id: 3,
+        name: 'Thạch cao',
+      },
+    ],
+  },
+};
+export { dataDetailClient, listRecentClient, dataPartnerInfo };
