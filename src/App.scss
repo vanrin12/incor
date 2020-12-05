@@ -11,6 +11,8 @@
 
 // Footer
 @import './commons/components/Footer/styles';
+// Check box
+@import './commons/components/Checkbox/styles';
 
 // button
 @import './commons/components/Button/styles';
@@ -45,4 +47,7 @@
 //Page service
 @import "./modules/service/components/styles";
 //Page Search
-@import "./modules/searchPage/components/styles"
+@import "./modules/searchPage/components/styles";
+
+//Page Partner
+@import "./modules/partner/components/styles"

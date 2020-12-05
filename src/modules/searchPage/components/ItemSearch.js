@@ -2,9 +2,10 @@
 
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import Rating from '../../../commons/components/Rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import Rating from '../../../commons/components/Rating';
+import ROUTERS from '../../../constants/router';
 
 type Props = {
   itemObj: Object,
@@ -22,13 +23,17 @@ const ItemSearch = ({ history, itemObj }: Props) => {
           style={{
             backgroundImage: `url(${itemObj?.image})`,
           }}
-          onClick={() => history.push('#')}
-          onKeyDown={() => history.push('#')}
+          onClick={() =>
+            history.push(ROUTERS.push(`${ROUTERS.PARTNER}/${itemObj.id}`))
+          }
+          onKeyDown={() =>
+            history.push(ROUTERS.push(`${ROUTERS.PARTNER}/${itemObj.id}`))
+          }
           role="button"
           tabIndex={0}
         />
         <div className="gr-footer">
-          <Link to="#" title={itemObj?.title}>
+          <Link to={`${ROUTERS.PARTNER}/${itemObj.id}`} title={itemObj?.title}>
             <h3>{itemObj?.title}</h3>
           </Link>
           <div className="d-flex justify-content-between align-items-center">

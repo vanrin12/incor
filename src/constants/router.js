@@ -11,6 +11,8 @@ const ROUTERS = {
   PAGE_SEARCH: `/search`,
   LOGIN: `/login`,
   SIGN_UP: '/sign-up',
+  PARTNER: '/partner',
+  PARTNER_DETAIL: '/partner/:id',
 };
 
 export default ROUTERS;

@@ -1,4 +1,5 @@
 import IMAGES from 'themes/images';
+
 const listConstruction = {
   dataInfo: {
     projectOfName: 'Dự án 1',
@@ -287,10 +288,128 @@ const listDataSearchPage = [
     location: 'Đà nẵng',
   },
 ];
+
+const listProductCompany = [
+  {
+    id: 1,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+  },
+  {
+    id: 2,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+  },
+  {
+    id: 3,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+  },
+  {
+    id: 4,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+  },
+  {
+    id: 5,
+    title: 'CỬA NHÔM HỆ XINGFA mở xếp adoor aluminium',
+    image: IMAGES.img_product,
+  },
+];
+
+const listRatingCompanyName = [
+  {
+    id: 1,
+    logo: IMAGES.img_product,
+    nameClient: 'Khách hàng 1',
+    rating: 3,
+    time: '19:22 - 14.11.2020',
+    comment:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.',
+  },
+  {
+    id: 2,
+    logo: IMAGES.img_product,
+    nameClient: 'Khách hàng 1',
+    rating: 5,
+    time: '19:22 - 14.11.2020',
+    comment:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.',
+  },
+  {
+    id: 3,
+    logo: IMAGES.img_product,
+    nameClient: 'Khách hàng 1',
+    rating: 3,
+    time: '19:22 - 14.11.2020',
+    comment:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.',
+  },
+  {
+    id: 4,
+    logo: IMAGES.img_product,
+    nameClient: 'Khách hàng 1',
+    rating: 5,
+    time: '19:22 - 14.11.2020',
+    comment:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.',
+  },
+  {
+    id: 5,
+    logo: IMAGES.img_product,
+    nameClient: 'Khách hàng 1',
+    rating: 2,
+    time: '19:22 - 14.11.2020',
+    comment:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.',
+  },
+];
+
+const listQuotation = [
+  {
+    id: 1,
+    name: 'Dự án 1',
+  },
+  {
+    id: 2,
+    name: 'Dự án 2',
+  },
+  {
+    id: 3,
+    name: 'Dự án 3',
+  },
+  {
+    id: 4,
+    name: 'Dự án 1',
+  },
+  {
+    id: 5,
+    name: 'Dự án 2',
+  },
+  {
+    id: 6,
+    name: 'Dự án 3',
+  },
+  {
+    id: 7,
+    name: 'Dự án 1',
+  },
+  {
+    id: 8,
+    name: 'Dự án 2',
+  },
+  {
+    id: 9,
+    name: 'Dự án 3',
+  },
+];
 export {
   listConstruction,
   listCategory,
   listPartner,
   listDataClient,
   listDataSearchPage,
+  listProductCompany,
+  listRatingCompanyName,
+  listQuotation,
 };

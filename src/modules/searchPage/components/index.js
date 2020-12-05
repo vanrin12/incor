@@ -26,7 +26,7 @@ const PageSearch = ({ history }: Props) => {
 
   const [selectCity, setSelectCity] = useState(null);
   const [selectScale, setSelectScale] = useState(null);
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(0);
   const [paginationIndex, setPaginationIndex] = useState(0);
 
   const handleSelectPagination = (eventKey) => {

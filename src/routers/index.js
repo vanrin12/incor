@@ -33,6 +33,8 @@ const CooperationPage = lazy(() => import('modules/cooperation/components'));
 
 const PageSearch = lazy(() => import('modules/searchPage/components'));
 
+const PagePartner = lazy(() => import('modules/partner/components'));
+
 const Router = () => {
   // const history = createBrowserHistory();
   // const token = useSelector((state) => state.account.token);
@@ -72,6 +74,7 @@ const Router = () => {
             component={CooperationPage}
           />
           <Route exact path={ROUTERS.PAGE_SEARCH} component={PageSearch} />
+          <Route exact path={ROUTERS.PARTNER_DETAIL} component={PagePartner} />
         </Switch>
       </Suspense>
     </BrowserRouter>
