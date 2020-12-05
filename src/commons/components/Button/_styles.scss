@@ -13,6 +13,10 @@ button.button.btn {
   &.big {
     width: pxToRem(390);
     font-size: pxToRem(25);
-    min-height: 60px;
+    min-height: pxToRem(72);
+  }
+
+  &:disabled {
+    background: $bg-disabled;
   }
 }

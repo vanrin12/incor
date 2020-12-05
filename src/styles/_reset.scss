@@ -154,7 +154,7 @@ a {
 
 @media screen and (min-width: 1200px) {
   .container {
-    max-width: 1277px;
+    max-width: pxToRem(1185);
   }
 }
 

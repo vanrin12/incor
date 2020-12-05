@@ -1,6 +1,6 @@
 // @flow
-import React, { useState } from 'react';
-import Select, { components } from 'react-select';
+import React from 'react';
+import Select from 'react-select';
 
 type Props = {
   placeholder?: string,
@@ -40,50 +40,43 @@ const SelectDropdown = ({
   noLabel = false,
   listItem,
 }: Props) => {
-  const [isActive, setIsActive] = useState(false);
-
-  const DropdownIndicator = (props) => {
-    setIsActive(props?.selectProps?.menuIsOpen);
-    return (
-      <components.DropdownIndicator {...props}>
-        <div className="d-none" />
-      </components.DropdownIndicator>
-    );
-  };
-
   return (
-    <div
-      className={`customer-select ${customClass.length > 0 ? customClass : ''}`}
-    >
-      {!!label && (
-        <p className="input__label">
-          {label}
-          {request && <span className="request">*</span>}
-        </p>
-      )}
-      <div className={`input__box ${isActive ? 'down' : ''}`}>
-        <Select
-          placeholder={placeholder}
-          components={{ DropdownIndicator }}
-          ref={innerRef}
-          value={option || null}
-          onChange={onChange}
-          noOptionsMessage={noOptionsMessage}
-          options={
-            noLabel
-              ? listOptionString.map((item) => ({
-                  id: item.id,
-                  value: item.name,
-                  label: item.name,
-                }))
-              : listItem
-          }
-          blurInputOnSelect={onBlur}
-          isDisabled={disabled}
-          isSearchable={isSearchable}
-        />
+    <div className="w-100 position-relative">
+      <div
+        className={`customer-select ${
+          customClass.length > 0 ? customClass : ''
+        }`}
+      >
+        {!!label && (
+          <p className="input__label">
+            {label}
+            {request && <span className="request">*</span>}
+          </p>
+        )}
+        <div className="input__box">
+          <Select
+            placeholder={placeholder}
+            ref={innerRef}
+            value={option || null}
+            onChange={onChange}
+            // menuIsOpen
+            noOptionsMessage={noOptionsMessage}
+            options={
+              noLabel
+                ? listOptionString.map((item) => ({
+                    id: item.id,
+                    value: item.name,
+                    label: item.name,
+                  }))
+                : listItem
+            }
+            blurInputOnSelect={onBlur}
+            isDisabled={disabled}
+            isSearchable={isSearchable}
+          />
+        </div>
       </div>
-      {errorMsg && <p className="error-msg">{errorMsg}</p>}
+      {errorMsg && <p className="error-msg select">{errorMsg}</p>}
     </div>
   );
 };

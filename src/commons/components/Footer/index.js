@@ -1,5 +1,5 @@
 // @flow
-import React, { memo } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import IMAGES from 'themes/images';
 import ROUTERS from 'constants/router';
@@ -72,4 +72,4 @@ const Footer = () => {
   );
 };
 
-export default memo<Props>(Footer);
+export default Footer;

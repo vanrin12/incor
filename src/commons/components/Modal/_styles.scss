@@ -14,7 +14,7 @@
     transform: translate(-50%, -50%);
     padding: 0 pxToRem(30);
     margin: 0;
-    max-width: pxToRem(500);
+    max-width: pxToRem(780);
   }
 }
 
@@ -31,25 +31,25 @@
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
-  color: $popup-txt;
-  padding: 0;
   border: none;
-  @include radius(#{pxToRem(39)});
+  padding: pxToRem(40);
+  border-radius: pxToRem(20);
+  box-shadow: 0 pxToRem(6) pxToRem(5) 0;
 
   &__iconClose {
     position: absolute;
-    right: pxToRem(30);
-    top: pxToRem(20);
-    width: pxToRem(20);
-    height: pxToRem(18);
+    right: pxToRem(-20);
+    top: pxToRem(-20);
+    width: pxToRem(35);
+    height: pxToRem(35);
 
     &:focus {
       outline: none;
     }
 
     img {
-      width: pxToRem(19);
-      height: pxToRem(19);
+      width: pxToRem(25);
+      height: pxToRem(25);
 
       &:focus {
         outline: none;
@@ -57,10 +57,113 @@
     }
   }
 
+  .modal-footer {
+    padding-bottom: 0;
+    margin-top: pxToRem(40);
+    padding-top: 0;
+    border: 0;
+
+    button.button {
+      min-width: pxToRem(164);
+      border-radius: pxToRem(10);
+    }
+  }
+
   .modal-body {
     width: 100%;
     white-space: pre-line;
-    padding: 0 pxToRem(50);
+    padding: 0;
     margin: 0;
+
+    .sub-title {
+      font-size: pxToRem(20);
+      margin-top: pxToRem(21);
+      line-height: 2;
+    }
+
+    .text-modal-content {
+      font-size: pxToRem(30);
+      font-weight: 500;
+      line-height: 1.33;
+      text-align: center;
+      color: $color-black;
+      margin-top: pxToRem(30);
+
+      &.rating {
+        margin-top: pxToRem(15);
+
+        .mb-30 {
+          margin-bottom: pxToRem(30);
+        }
+
+        .star-ratings {
+
+          svg {
+            width: pxToRem(37) !important;
+            height: pxToRem(37) !important;
+          }
+        }
+      }
+
+      .red {
+        color: $red;
+      }
+    }
+
+    .modal-title {
+      font-size: pxToRem(40);
+      font-weight: bold;
+      line-height: 0.75;
+      letter-spacing: pxToRem(0.4);
+      text-align: center;
+      color: $bg-main;
+    }
+
+    textarea {
+      border-radius: pxToRem(10);
+      font-size: pxToRem(20);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: pxToRem(0.4);
+      text-align: left;
+      color: $color-light4;
+
+      &:hover {
+        color: $color-blue-light;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        letter-spacing: pxToRem(-0.25);
+        font-style: italic;
+      }
+
+      &::placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        font-style: italic;
+        letter-spacing: pxToRem(-0.25);
+      }
+
+      &::-moz-placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        font-style: italic;
+        letter-spacing: pxToRem(-0.25);
+      }
+
+      &:-ms-input-placeholder {
+        color: $color-placeholder;
+        font-weight: $regular;
+        font-size: pxToRem(15);
+        font-style: italic;
+        letter-spacing: pxToRem(-0.25);
+      }
+    }
+
   }
 }

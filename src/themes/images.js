@@ -7,6 +7,14 @@ const images = {
   logoCopyright: require('../assets/imgs/copyright.png'),
   facebook: require('../assets/imgs/facebook.png'),
   youtube: require('../assets/imgs/youtube.png'),
+  arrowRight: require('../assets/imgs/arrow-right.png'),
+  imageSlideCline1: require('../assets/imgs/client1.jpg'),
+  imageSlideCline2: require('../assets/imgs/client2.jpg'),
+  iconPlay: require('../assets/imgs/icon-play.png'),
+  iconUp: require('../assets/imgs/ic-back-white.png'),
+  icon_close: require('../assets/imgs/ic-close.png'),
+  bg_title_client: require('../assets/imgs/bg-client.jpg'),
+  img_client: require('../assets/imgs/client3.jpg'),
 };
 
 export default images;
