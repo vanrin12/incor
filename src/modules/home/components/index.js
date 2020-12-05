@@ -25,6 +25,7 @@ import {
   listClientHome,
   listSlideConsultancy,
   listSlideMain,
+  listAutocompleteSearch,
 } from '../../../mockData/dataSlide';
 
 // install Swiper components
@@ -34,9 +35,10 @@ type Props = {
   history: {
     push: Function,
   },
+  isLoading: boolean,
 };
 
-const HomeMain = ({ history }: Props) => {
+const HomeMain = ({ history, isLoading }: Props) => {
   const [valueSearch, setValueSearch] = useState('');
 
   const paramsOptionSlideMain = {
@@ -185,6 +187,9 @@ const HomeMain = ({ history }: Props) => {
               handleSelectChange={handleSelectChange}
               valueSearch={valueSearch}
               optionSelect={optionSearchDefault}
+              history={history}
+              listAutocompleteSearch={listAutocompleteSearch}
+              isLoading={isLoading}
             />
           </div>
           <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>

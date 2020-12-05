@@ -114,4 +114,37 @@ const listSlideMain = [
   },
 ];
 
-export { listSlideHome, listClientHome, listSlideConsultancy, listSlideMain };
+const listAutocompleteSearch = [
+  {
+    id: 1,
+    name: 'Sản phẩm 1',
+  },
+  {
+    id: 2,
+    name: 'Sản phẩm 2',
+  },
+  {
+    id: 3,
+    name: 'Sản phẩm 3',
+  },
+  {
+    id: 4,
+    name: 'Sản phẩm 4',
+  },
+  {
+    id: 5,
+    name: 'Sản phẩm 5',
+  },
+  {
+    id: 6,
+    name: 'Sản phẩm 6',
+  },
+];
+
+export {
+  listSlideHome,
+  listClientHome,
+  listSlideConsultancy,
+  listSlideMain,
+  listAutocompleteSearch,
+};

@@ -73,7 +73,11 @@ const Router = () => {
             path={ROUTERS.PAGE_COOPERATION}
             component={CooperationPage}
           />
-          <Route exact path={ROUTERS.PAGE_SEARCH} component={PageSearch} />
+          <Route
+            exact
+            path={ROUTERS.PAGE_SEARCH_DETAIL}
+            component={PageSearch}
+          />
           <Route exact path={ROUTERS.PARTNER_DETAIL} component={PagePartner} />
         </Switch>
       </Suspense>
