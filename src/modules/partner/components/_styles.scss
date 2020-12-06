@@ -249,6 +249,11 @@
     border: solid pxToRem(1) $color-border;
     margin-bottom: pxToRem(10);
     cursor: pointer;
+    @include transition(0.3s all);
+
+    &:hover {
+      border-color: $bg-main;
+    }
   }
 
   .checkbox {
@@ -259,4 +264,322 @@
 .content-quotation {
   max-height: pxToRem(600);
   overflow: hidden;
+}
+
+@include breakpoint(sm992) {
+  .page-partner {
+    .bg-title-partner {
+      height: pxToRem(800);
+      padding: pxToRem(200) pxToRem(90) pxToRem(60) pxToRem(90);
+      background-color: rgba($bg-black2, 0.4);
+      background-position: center center;
+      background-size: cover;
+      position: relative;
+
+      &::before {
+        content: "";
+        opacity: 0.49;
+        top: 0;
+        background-color: #000000;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        z-index: 0;
+      }
+
+      .form-search {
+        padding-bottom: pxToRem(60);
+      }
+
+      .info-partner {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        margin: auto;
+        max-width: pxToRem(460);
+
+        img {
+          width: pxToRem(270);
+          height: pxToRem(270);
+          border-radius: 50%;
+        }
+      }
+
+      h3 {
+        font-size: pxToRem(50);
+        margin-top: pxToRem(15);
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.2;
+        color: $white;
+      }
+
+      .rating {
+        margin: pxToRem(10) 0;
+
+        svg {
+          margin: pxToRem(6);
+          width: pxToRem(25)
+        }
+      }
+
+      .form-search.form2 {
+        position: relative;
+        z-index: 2;
+
+        .form-group .basic-multi-select {
+          .select__value-container {
+            background-color: rgba($bg-light9, 0.6);
+          }
+        }
+      }
+    }
+
+    &.wrap-slide {
+      .item-client {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding-bottom: pxToVW(30);
+
+        .company-name {
+
+          .title {
+            font-size: pxToVW(24);
+            height: auto;
+          }
+        }
+
+        .desc {
+          font-size: pxToVW(15) !important;
+          height: 100%;
+        }
+
+        .information {
+          display: flex;
+          flex-wrap: wrap;
+
+          >div {
+            flex: 0 0 50%;
+            max-width: 50%;
+            width: 50%;
+          }
+
+          .hashtag-size {
+            margin-top: pxToVW(25);
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+
+            li {
+              height: pxToVW(22);
+              padding: pxToVW(5) pxToVW(8);
+              font-size: pxToVW(9);
+              border-radius: pxToVW(15);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .content-company {
+    padding: pxToVW(25) pxToVW(23) pxToVW(50) pxToVW(23);
+
+    .company-info {
+      margin-bottom: pxToVW(40);
+    }
+  }
+
+  .title-page {
+    font-size: pxToRem(50);
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: center;
+    color: $bg-main;
+    margin-bottom: pxToRem(35);
+    padding-bottom: pxToRem(20);
+    text-transform: uppercase;
+    position: relative;
+
+    &::after {
+      content: "";
+      border-bottom: solid pxToRem(5) $bg-main;
+      position: absolute;
+      width: pxToRem(250);
+      left: 50%;
+      bottom: 0;
+      @include transform-translateX(-50%)
+    }
+  }
+
+  .product-company {
+    margin-bottom: pxToRem(80);
+  }
+
+  .product-list-company {
+    .swiper-container {
+      padding: 0 0 pxToRem(30) 0;
+    }
+
+    .company-item {
+      min-height: pxToRem(400);
+      border-radius: pxToRem(20);
+      box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
+      padding-bottom: pxToRem(40);
+      text-align: center;
+      @include transition(0.3s all);
+      border: pxToRem(4) solid transparent;
+      position: relative;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border: pxToRem(4) solid $bg-main;
+      }
+
+      .bg-image {
+        background-color: $bg-light;
+        border-radius: pxToRem(20);
+        height: 100%;
+        background-position: center center;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .title {
+        cursor: pointer;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        padding: pxToRem(25) pxToRem(15);
+        background-color: rgba($bg-main, 0.8);
+        border-bottom-left-radius: pxToRem(20);
+        border-bottom-right-radius: pxToRem(20);
+      }
+
+      h3 {
+        font-size: pxToRem(20);
+        font-weight: bold;
+        line-height: 1.2;
+        color: $white;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .product-list-rating {
+    background-color: $white;
+    padding: pxToRem(10) pxToRem(40);
+
+    img {
+      width: 100%;
+    }
+
+    .comment-item {
+      border-bottom: solid pxToRem(0.5) rgba($bg-black3, 0.4);
+      padding: pxToRem(30) pxToRem(20) pxToRem(30) pxToRem(0);
+
+      .name,
+      .date,
+      .desc {
+        font-size: pxToRem(20);
+        font-weight: 300;
+        line-height: 2;
+        color: $bg-black3;
+      }
+
+      .desc {
+        font-size: pxToRem(22);
+      }
+
+      .logo {
+        margin-right: pxToRem(25);
+
+        img {
+          background-color: $bg-light11;
+          width: pxToRem(85);
+          height: pxToRem(85);
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .quotation {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    width: pxToRem(289);
+    border-top-left-radius: pxToRem(20);
+    padding: pxToRem(20);
+    border-bottom-left-radius: pxToRem(20);
+    height: pxToRem(85);
+    box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
+    background-image: linear-gradient(to left, rgba(153, 42, 42, 0.9) 19%, rgba(255, 201, 93, 0.9) 105%);
+    cursor: pointer;
+    color: $white;
+    font-size: pxToRem(40);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: pxToRem(0.8);
+    text-align: center;
+    z-index: 99;
+  }
+
+  .quotation-chose {
+    height: 100%;
+    overflow-y: auto;
+    max-height: pxToRem(600);
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 pxToRem(1) rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+      width: pxToRem(1);
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+      border: pxToRem(1) solid transparent;
+    }
+
+    li {
+      padding: pxToRem(19) pxToRem(54);
+      border-radius: pxToRem(3);
+      border: solid pxToRem(1) $color-border;
+      margin-bottom: pxToRem(10);
+      cursor: pointer;
+      @include transition(0.3s all);
+
+      &:hover {
+        border-color: $bg-main;
+      }
+    }
+
+    .checkbox {
+      z-index: -1;
+    }
+  }
+
+  .content-quotation {
+    max-height: pxToRem(600);
+    overflow: hidden;
+  }
 }

@@ -9,6 +9,7 @@ import SwiperCore, {
   A11y,
   Autoplay,
 } from 'swiper';
+import ReactPlayer from 'react-player';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '../../../commons/components/Button';
 import MainLayout from '../../../commons/components/MainLayout';
@@ -40,7 +41,7 @@ type Props = {
 
 const HomeMain = ({ history, isLoading }: Props) => {
   const [valueSearch, setValueSearch] = useState('');
-
+  const [isShowVideo, setIsShowVideo] = useState(false);
   const paramsOptionSlideMain = {
     loop: true,
     slidesPerView: 1,
@@ -151,7 +152,6 @@ const HomeMain = ({ history, isLoading }: Props) => {
         <ItemSlideSale itemObj={item} history={history} />
       </SwiperSlide>
     ));
-
   // Render list client
   const renderListClientMain =
     listClientHome.length > 0 &&
@@ -246,12 +246,30 @@ const HomeMain = ({ history, isLoading }: Props) => {
             Nunc varius ullamcorper felis. Nulla nibh ipsum, rutrum.
           </div>
         </div>
-        <div
-          className="bg-session-video"
-          style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
-        >
-          <img src={IMAGES.iconPlay} alt="" className="icon-play" />
-        </div>
+        {isShowVideo ? (
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=CTcoCHKnkT8"
+            width="100%"
+            className="video-play"
+            height="100%"
+            playing
+            onPause={() => setIsShowVideo(false)}
+          />
+        ) : (
+          <div
+            className="bg-session-video"
+            style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
+          >
+            <div
+              onClick={() => setIsShowVideo(true)}
+              onKeyDown={() => setIsShowVideo(true)}
+              role="button"
+              tabIndex={0}
+            >
+              <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+            </div>
+          </div>
+        )}
       </div>
       {/* Modal form contact Us */}
       <FormContactUs
