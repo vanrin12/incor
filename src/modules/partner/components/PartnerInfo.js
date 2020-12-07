@@ -39,7 +39,7 @@ const PartnerInfo = ({ itemObj }: Props) => {
             <label>Mã số thuế</label>
             <div className="desc"> {itemObj?.taxCode}</div>
           </div>
-          <div className="personnel-size">
+          <div className="hashtag-size">
             <label>Ngành nghề</label>
             <ul className="d-flex align-items-center">{renderHashtag}</ul>
           </div>

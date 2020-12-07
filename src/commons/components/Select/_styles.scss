@@ -58,6 +58,10 @@
 .customer-select {
   position: relative;
 
+  .css-1wy0on6 {
+    display: none !important
+  }
+
   .css-1wa3eu0-placeholder {
     color: $color-placeholder;
     font-weight: $regular;
@@ -192,6 +196,10 @@
       overflow: hidden;
       text-overflow: ellipsis;
       font-weight: $regular;
+
+      &:last-child {
+        display: none !important;
+      }
 
       &::-webkit-input-placeholder {
         color: $color-placeholder;

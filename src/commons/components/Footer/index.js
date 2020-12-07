@@ -9,11 +9,22 @@ const Footer = () => {
     <footer className="footer">
       <div className=" container-fluid">
         <div className="content-footer row">
-          <div className="col-left col-12 col-md-4 align-self-center">
+          <div className="col-left col-4 align-self-center">
             <div className="logo-footer">
               <Link to={ROUTERS.MAIN_PAGE} title="">
                 <img src={IMAGES.logoFooter} alt="Logo" />
               </Link>
+            </div>
+            <div className="mobile-social">
+              <div className="address-title">Social</div>
+              <div className="address-name d-flex align-items-center">
+                <Link to={ROUTERS.MAIN_PAGE} title="">
+                  <img src={IMAGES.facebook} alt="" />
+                </Link>
+                <Link to={ROUTERS.MAIN_PAGE} title="">
+                  <img src={IMAGES.youtube} alt="" />
+                </Link>
+              </div>
             </div>
             <div className="logo-copyright">
               <Link to={ROUTERS.MAIN_PAGE} title="">
@@ -21,7 +32,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="col-right col-12 col-md-8 align-self-center">
+          <div className="col-right col-8 align-self-center">
             <div className="info-company">
               <h3>CÔNG TY TNHH INCOR</h3>
               <div className="company-desc">
@@ -48,7 +59,7 @@ const Footer = () => {
                     <div className="address-title">Email</div>
                     <div className="address-name">info@incor.vn</div>
                   </li>
-                  <li>
+                  <li className="desktop">
                     <div className="address-title">Social</div>
                     <div className="address-name d-flex align-items-center">
                       <Link to={ROUTERS.MAIN_PAGE} title="">

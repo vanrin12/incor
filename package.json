@@ -36,6 +36,7 @@
     "react-image-gallery": "^1.0.8",
     "react-lottie": "^1.2.3",
     "react-paginate": "^6.5.0",
+    "react-player": "^2.7.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
