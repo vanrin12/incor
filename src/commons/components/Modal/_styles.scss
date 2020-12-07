@@ -168,6 +168,106 @@
   }
 }
 
+@include breakpoint(sm992) {
+
+  .modal {
+    .modal-dialog {
+      padding: 0;
+      max-width: pxToVW(360);
+    }
+  }
+
+  .modal-content {
+    padding: pxToVW(30);
+    border-radius: pxToVW(10);
+    box-shadow: 0 pxToVW(6) pxToVW(5) 0;
+
+    &__iconClose {
+      right: pxToVW(-20);
+      top: pxToVW(-20);
+      width: pxToVW(35);
+      height: pxToVW(35);
+
+      img {
+        width: pxToVW(25);
+        height: pxToVW(25);
+      }
+    }
+
+    .modal-footer {
+      margin-top: pxToVW(20);
+
+      button.button {
+        min-width: pxToVW(100);
+        border-radius: pxToVW(10);
+        min-height: pxToVW(31);
+        font-size: pxToVW(16);
+        line-height: 1.2;
+      }
+    }
+
+    .modal-body {
+      .sub-title {
+        font-size: pxToVW(16);
+        margin-top: pxToVW(21);
+        line-height: 1.4;
+      }
+
+      .text-modal-content {
+        font-size: pxToVW(16);
+        margin-top: pxToVW(16);
+
+        &.rating {
+          margin-top: pxToVW(15);
+
+          .mb-30 {
+            margin-bottom: pxToVW(16);
+          }
+
+          .star-ratings {
+
+            svg {
+              width: pxToVW(21) !important;
+              height: pxToVW(21) !important;
+            }
+          }
+        }
+      }
+
+      .modal-title {
+        font-size: pxToVW(25);
+        letter-spacing: pxToVW(0.4);
+      }
+
+      textarea {
+        border-radius: pxToVW(10);
+        font-size: pxToVW(16);
+        letter-spacing: pxToVW(0.4);
+
+        &::-webkit-input-placeholder {
+          font-size: pxToVW(10);
+          letter-spacing: pxToVW(-0.25);
+        }
+
+        &::placeholder {
+          font-size: pxToVW(10);
+          letter-spacing: pxToVW(-0.25);
+        }
+
+        &::-moz-placeholder {
+          font-size: pxToVW(10);
+          letter-spacing: pxToVW(-0.25);
+        }
+
+        &:-ms-input-placeholder {
+          font-size: pxToVW(10);
+          letter-spacing: pxToVW(-0.25);
+        }
+      }
+    }
+  }
+}
+
 .modal-content__iconClose {
   display: none !important;
 }

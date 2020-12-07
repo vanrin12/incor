@@ -93,7 +93,8 @@ const ConstructionManager = () => {
 
       {/* Modal success */}
       <ModalPopup
-        isOpen={openModalNumberRating}
+        // isOpen
+        // isOpen={openModalNumberRating}
         isShowFooter
         textBtnRight="ĐÓNG"
         handleClose={() => {

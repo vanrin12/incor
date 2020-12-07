@@ -269,71 +269,34 @@
 @include breakpoint(sm992) {
   .page-partner {
     .bg-title-partner {
-      height: pxToRem(800);
-      padding: pxToRem(200) pxToRem(90) pxToRem(60) pxToRem(90);
-      background-color: rgba($bg-black2, 0.4);
-      background-position: center center;
-      background-size: cover;
-      position: relative;
-
-      &::before {
-        content: "";
-        opacity: 0.49;
-        top: 0;
-        background-color: #000000;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        right: 0;
-        z-index: 0;
-      }
+      height: pxToVW(280);
+      padding: pxToVW(60) pxToVW(20) pxToVW(30) pxToVW(20);
 
       .form-search {
-        padding-bottom: pxToRem(60);
+        padding-bottom: pxToVW(30);
       }
 
       .info-partner {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        margin: auto;
-        max-width: pxToRem(460);
+        max-width: pxToVW(460);
 
         img {
-          width: pxToRem(270);
-          height: pxToRem(270);
-          border-radius: 50%;
+          width: pxToVW(82);
+          height: pxToVW(82);
         }
       }
 
       h3 {
-        font-size: pxToRem(50);
-        margin-top: pxToRem(15);
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.2;
-        color: $white;
+        font-size: pxToVW(18);
+        margin-top: pxToVW(15);
       }
 
       .rating {
-        margin: pxToRem(10) 0;
+        margin: pxToVW(5) 0;
 
         svg {
-          margin: pxToRem(6);
-          width: pxToRem(25)
-        }
-      }
-
-      .form-search.form2 {
-        position: relative;
-        z-index: 2;
-
-        .form-group .basic-multi-select {
-          .select__value-container {
-            background-color: rgba($bg-light9, 0.6);
-          }
+          margin: pxToVW(8);
+          width: pxToVW(10);
+          margin: pxToVW(3);
         }
       }
     }
@@ -397,32 +360,18 @@
   }
 
   .title-page {
-    font-size: pxToRem(50);
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.22;
-    letter-spacing: normal;
-    text-align: center;
-    color: $bg-main;
-    margin-bottom: pxToRem(35);
-    padding-bottom: pxToRem(20);
-    text-transform: uppercase;
-    position: relative;
+    font-size: pxToVW(20);
+    margin-bottom: pxToVW(20);
+    padding-bottom: pxToVW(10);
 
     &::after {
-      content: "";
-      border-bottom: solid pxToRem(5) $bg-main;
-      position: absolute;
-      width: pxToRem(250);
-      left: 50%;
-      bottom: 0;
-      @include transform-translateX(-50%)
+      border-bottom: solid pxToVW(2) $bg-main;
+      width: pxToVW(140);
     }
   }
 
   .product-company {
-    margin-bottom: pxToRem(80);
+    margin-bottom: pxToVW(50);
   }
 
   .product-list-company {
@@ -520,66 +469,38 @@
   }
 
   .quotation {
-    position: fixed;
-    top: 50%;
-    right: 0;
-    width: pxToRem(289);
-    border-top-left-radius: pxToRem(20);
-    padding: pxToRem(20);
-    border-bottom-left-radius: pxToRem(20);
-    height: pxToRem(85);
-    box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
-    background-image: linear-gradient(to left, rgba(153, 42, 42, 0.9) 19%, rgba(255, 201, 93, 0.9) 105%);
-    cursor: pointer;
-    color: $white;
-    font-size: pxToRem(40);
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: pxToRem(0.8);
-    text-align: center;
-    z-index: 99;
+    width: pxToVW(130);
+    border-top-left-radius: pxToVW(10);
+    padding: pxToVW(10);
+    border-bottom-left-radius: pxToVW(10);
+    height: pxToVW(60);
+    box-shadow: 0 pxToVW(3) pxToVW(6) 0 rgba(0, 0, 0, 0.16);
+    font-size: pxToVW(20);
+    letter-spacing: pxToVW(0.8);
+    line-height: 2;
   }
 
   .quotation-chose {
-    height: 100%;
-    overflow-y: auto;
     max-height: pxToRem(600);
-
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 pxToRem(1) rgba(0, 0, 0, 0.3);
-      background-color: transparent;
-    }
+    min-height: 400px;
 
     &::-webkit-scrollbar {
-      width: pxToRem(1);
-      background-color: transparent;
+      width: pxToVW(1);
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: transparent;
-      border: pxToRem(1) solid transparent;
+      border: pxToVW(1) solid transparent;
     }
 
     li {
-      padding: pxToRem(19) pxToRem(54);
-      border-radius: pxToRem(3);
-      border: solid pxToRem(1) $color-border;
-      margin-bottom: pxToRem(10);
-      cursor: pointer;
-      @include transition(0.3s all);
-
-      &:hover {
-        border-color: $bg-main;
-      }
-    }
-
-    .checkbox {
-      z-index: -1;
+      padding: pxToVW(10) pxToVW(30);
+      border-radius: pxToVW(3);
+      border: solid pxToVW(1) $color-border;
+      margin-bottom: pxToVW(10);
     }
   }
 
   .content-quotation {
-    max-height: pxToRem(600);
-    overflow: hidden;
+    max-height: pxToVW(600);
   }
 }

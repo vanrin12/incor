@@ -8,6 +8,10 @@
     border-color: transparent;
     background-color: transparent;
 
+    >div {
+      border: 0;
+    }
+
     * {
       background-color: transparent;
     }

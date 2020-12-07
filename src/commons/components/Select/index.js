@@ -59,7 +59,7 @@ const SelectDropdown = ({
             ref={innerRef}
             value={option || null}
             onChange={onChange}
-            // menuIsOpen
+            menuIsOpen
             noOptionsMessage={noOptionsMessage}
             options={
               noLabel
