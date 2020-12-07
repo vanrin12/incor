@@ -146,6 +146,10 @@
         width: pxToRem(135);
         border: 0;
 
+        >div {
+          height: pxToRem(72);
+        }
+
         .css-1uccc91-singleValue {
           padding-left: pxToRem(15);
         }
@@ -154,6 +158,11 @@
       .css-yk16xz-control {
         background-color: transparent;
         border: 0;
+        height: pxToRem(72);
+
+        >div {
+          border: 0 !important;
+        }
 
         * {
           background-color: transparent;
