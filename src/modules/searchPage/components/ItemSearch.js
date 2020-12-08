@@ -16,7 +16,7 @@ type Props = {
 
 const ItemSearch = ({ history, itemObj }: Props) => {
   return (
-    <div className="item col-12 col-md-6 col-lg-4">
+    <div className="item col-6 col-md-6 col-lg-4">
       <div className="item-search">
         <div
           className="bg-image"

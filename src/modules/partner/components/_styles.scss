@@ -287,7 +287,7 @@
 
       h3 {
         font-size: pxToVW(18);
-        margin-top: pxToVW(15);
+        margin-top: pxToVW(8);
       }
 
       .rating {
@@ -352,10 +352,14 @@
   }
 
   .content-company {
-    padding: pxToVW(25) pxToVW(23) pxToVW(50) pxToVW(23);
+    padding: pxToVW(25) pxToVW(23) pxToVW(0) pxToVW(23);
 
     .company-info {
       margin-bottom: pxToVW(40);
+    }
+
+    .product-company:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -371,98 +375,69 @@
   }
 
   .product-company {
-    margin-bottom: pxToVW(50);
+    margin-bottom: pxToVW(30);
   }
 
   .product-list-company {
     .swiper-container {
-      padding: 0 0 pxToRem(30) 0;
+      padding: 0 0 pxToVW(20) 0;
     }
 
     .company-item {
-      min-height: pxToRem(400);
-      border-radius: pxToRem(20);
-      box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
-      padding-bottom: pxToRem(40);
-      text-align: center;
-      @include transition(0.3s all);
-      border: pxToRem(4) solid transparent;
-      position: relative;
+      min-height: pxToVW(210);
+      border-radius: pxToVW(5);
+      box-shadow: 0 pxToVW(3) pxToVW(6) 0 rgba(0, 0, 0, 0.16);
+      padding-bottom: pxToVW(20);
+      border: pxToVW(2) solid transparent;
 
       &:hover,
       &:active,
       &:focus {
-        border: pxToRem(4) solid $bg-main;
+        border: pxToVW(2) solid $bg-main;
       }
 
       .bg-image {
-        background-color: $bg-light;
-        border-radius: pxToRem(20);
-        height: 100%;
-        background-position: center center;
-        background-size: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        cursor: pointer;
+        border-radius: pxToVW(5);
       }
 
       .title {
-        cursor: pointer;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        bottom: 0;
-        padding: pxToRem(25) pxToRem(15);
-        background-color: rgba($bg-main, 0.8);
-        border-bottom-left-radius: pxToRem(20);
-        border-bottom-right-radius: pxToRem(20);
+        padding: pxToVW(10) pxToVW(5);
+        border-bottom-left-radius: pxToVW(5);
+        border-bottom-right-radius: pxToVW(5);
       }
 
       h3 {
-        font-size: pxToRem(20);
-        font-weight: bold;
-        line-height: 1.2;
-        color: $white;
-        text-transform: uppercase;
+        font-size: pxToVW(12);
+        text-align: left;
       }
     }
   }
 
   .product-list-rating {
-    background-color: $white;
-    padding: pxToRem(10) pxToRem(40);
-
-    img {
-      width: 100%;
-    }
+    padding: 0;
+    background-color: transparent;
 
     .comment-item {
-      border-bottom: solid pxToRem(0.5) rgba($bg-black3, 0.4);
-      padding: pxToRem(30) pxToRem(20) pxToRem(30) pxToRem(0);
+      border-bottom: solid pxToVW(1) rgba($bg-black3, 0.4);
+      padding: pxToVW(15) 0 pxToVW(15) pxToVW(0);
 
       .name,
       .date,
       .desc {
-        font-size: pxToRem(20);
-        font-weight: 300;
-        line-height: 2;
-        color: $bg-black3;
+        font-size: pxToVW(12);
       }
 
       .desc {
-        font-size: pxToRem(22);
+        font-size: pxToVW(14);
+        line-height: 1.4;
       }
 
       .logo {
-        margin-right: pxToRem(25);
+        margin-right: pxToVW(10);
 
         img {
-          background-color: $bg-light11;
-          width: pxToRem(85);
-          height: pxToRem(85);
-          border-radius: 50%;
+          width: pxToVW(45);
+          height: pxToVW(45);
         }
       }
     }
@@ -481,7 +456,6 @@
   }
 
   .quotation-chose {
-    max-height: pxToRem(600);
     min-height: 400px;
 
     &::-webkit-scrollbar {
@@ -503,4 +477,27 @@
   .content-quotation {
     max-height: pxToVW(600);
   }
+
+  .swiper-button-prev {
+    left: 0;
+  }
+
+  .swiper-button-next {
+    right: 0;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    &::after {
+      font-size: pxToVW(30);
+      color: $bg-main;
+    }
+  }
+}
+
+.more-btn {
+  cursor: pointer;
+  color: $bg-main;
+  text-decoration: underline;
+  font-weight: 300;
 }

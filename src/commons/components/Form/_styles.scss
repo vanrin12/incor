@@ -555,6 +555,10 @@
     }
   }
 
+  .btn-wrap {
+    margin-top: pxToRem(30);
+  }
+
   .customer-select {
     &::after {
       z-index: 0;
@@ -563,6 +567,9 @@
 }
 
 @include breakpoint(sm992) {
+  .css-yk16xz-control {
+    min-height: auto !important;
+  }
 
   .form-search {
     margin-bottom: pxToVW(40);
@@ -593,7 +600,7 @@
           right: pxToVW(-10);
           width: pxToVW(10);
           height: pxToVW(10);
-          top: calc(50% - #{pxToVW(4)});
+          top: calc(50% - #{pxToVW(3)});
         }
 
         .css-1uccc91-singleValue {
@@ -636,61 +643,62 @@
           height: pxToVW(32);
 
           .css-1uccc91-singleValue {
-            margin-top: pxToVW(-2);
+            margin-top: 0;
           }
         }
       }
     }
 
     &.form2 {
-      padding-bottom: pxToRem(90);
+      padding-bottom: pxToVW(30);
 
       .form-group {
 
         .input__box {
           input {
-            border-radius: pxToRem(15);
-            border: pxToRem(2) solid $bg-main;
-            font-size: pxToRem(20);
+            border-radius: pxToVW(5);
+            border: pxToVW(1) solid $bg-main;
+            font-size: pxToVW(15);
           }
         }
 
         .basic-multi-select {
           .select__menu {
-            margin-top: pxToRem(-2);
-            height: pxToRem(400);
-            border-radius: pxToRem(15);
-            border: solid pxToRem(2) $bg-main;
+            margin-top: pxToVW(-1);
+            height: pxToVW(300);
+            border-radius: pxToVW(5);
+            border: solid pxToVW(1) $bg-main;
 
             .select__menu-list {
               &::-webkit-scrollbar-thumb {
-                border: pxToRem(1) solid $bg-main;
+                border: pxToVW(1) solid $bg-main;
               }
             }
 
             .select__option {
-              height: pxToRem(70);
-              font-size: pxToRem(25);
-              line-height: pxToRem(48);
+              height: pxToVW(35);
+              font-size: pxToVW(15);
+              line-height: pxToVW(25);
+              padding: pxToVW(5) pxToVW(15) !important;
             }
           }
 
           input {
-            font-size: pxToRem(20) !important;
+            font-size: pxToVW(15) !important;
           }
 
           .select__value-container {
-            padding: 0.78125vw pxToRem(227) 0.67708vw 8.125vw;
-            border-radius: pxToRem(15);
-            border: pxToRem(2) solid $bg-main;
-            font-size: pxToRem(20);
-
+            padding: 0 pxToVW(80);
+            border-radius: pxToVW(5);
+            border: pxToVW(1) solid $bg-main;
+            font-size: pxToVW(15);
             font-weight: normal;
-            height: pxToRem(72);
+            height: pxToVW(35);
+            // margin-top: -3px;
 
             .select__multi-value__label {
-              font-size: pxToRem(18);
-              padding: pxToRem(8) pxToRem(5);
+              font-size: pxToVW(10);
+              padding: pxToVW(4) pxToVW(5);
             }
           }
         }
@@ -699,8 +707,11 @@
       .btn-wrap {
 
         button {
-          width: pxToRem(227);
-          height: pxToRem(72);
+          margin-top: 0;
+          width: pxToVW(78);
+          height: pxToVW(35);
+          font-size: pxToVW(13);
+          padding: 0;
         }
       }
     }
@@ -793,19 +804,28 @@
   }
 
   .form-search-page {
-    margin-bottom: pxToRem(40);
-    padding-right: pxToRem(54);
+    margin-bottom: pxToVW(40);
+    padding-right: 0;
 
     .form-group {
-      margin-bottom: pxToRem(30);
+      margin-bottom: pxToVW(17);
     }
 
     .rating {
-      margin-left: pxToRem(-6);
-      margin-bottom: pxToRem(8);
+      margin-left: pxToVW(-6);
+      margin-bottom: pxToVW(8);
 
       svg.svg-inline--fa {
-        margin-left: pxToRem(5);
+        margin-left: pxToVW(5);
+      }
+    }
+
+    .btn-wrap {
+      margin-top: pxToVW(30);
+
+      button {
+        font-size: pxToVW(10);
+        height: pxToVW(32);
       }
     }
   }
