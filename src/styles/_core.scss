@@ -18,6 +18,20 @@
   }
 }
 
+@include breakpoint(sm992) {
+  .error-msg {
+    margin-top: pxToVW(10);
+    font-size: pxToVW(12);
+    margin-top: pxToVW(5);
+  }
+
+  .select {
+    &.error-msg {
+      margin-top: pxToVW(5);
+    }
+  }
+}
+
 .pt-7 {
   padding-top: pxToVW(50);
 }

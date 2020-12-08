@@ -7,6 +7,7 @@ import FormSearchMulti from '../../../commons/components/Form/FormSearchMulti';
 import FormSearchPage from '../../../commons/components/Form/FormSearchPage';
 import ItemSearch from './ItemSearch';
 import { listDataSearchPage } from '../../../mockData/listData';
+import IMAGES from '../../../themes/images';
 
 type Props = {
   history: {
@@ -17,6 +18,7 @@ type Props = {
 const PageSearch = ({ history }: Props) => {
   const totalRows = 50;
   const [valueSearch, setValueSearch] = useState('');
+  const [isAddClassSorting, setIsAddClassSorting] = useState(false);
 
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
@@ -51,6 +53,13 @@ const PageSearch = ({ history }: Props) => {
         break;
     }
   };
+
+  // handelClickShowSorting
+
+  const handelClickShowSorting = (boolean) => {
+    setIsAddClassSorting(boolean);
+  };
+
   // handle search
   const typingTimeOut = useRef(null);
   // onsubmit call api
@@ -81,16 +90,27 @@ const PageSearch = ({ history }: Props) => {
   return (
     <MainLayout>
       <div className="page-search">
-        <FormSearchMulti
-          handleChangeInput={handleChangeInput}
-          handleSelectChange={handleSelectChange}
-          valueSearch={valueSearch}
-          optionSelect={optionSearchDefault}
-          handelSubmitSearch={handelSubmitSearch}
-        />
+        <div className="sort-mobile">
+          <div
+            className="icon-sort-mobile"
+            onClick={() => handelClickShowSorting(true)}
+            onKeyDown={() => handelClickShowSorting(true)}
+            role="button"
+            tabIndex={0}
+          >
+            <img src={IMAGES.img_Search} alt="" />
+          </div>
+          <FormSearchMulti
+            handleChangeInput={handleChangeInput}
+            handleSelectChange={handleSelectChange}
+            valueSearch={valueSearch}
+            optionSelect={optionSearchDefault}
+            handelSubmitSearch={handelSubmitSearch}
+          />
+        </div>
 
         <div className="content d-flex">
-          <div className="content-left">
+          <div className={`content-left ${isAddClassSorting ? 'active' : ''}`}>
             <div className="filter-sort">
               <FormSearchPage
                 handleSelectChange={handleSelectChange}
@@ -99,6 +119,13 @@ const PageSearch = ({ history }: Props) => {
                 rating={rating}
               />
             </div>
+            <div
+              className="overflow"
+              onClick={() => handelClickShowSorting(false)}
+              onKeyDown={() => handelClickShowSorting(false)}
+              role="button"
+              tabIndex={0}
+            />
           </div>
 
           <div className="content-right">

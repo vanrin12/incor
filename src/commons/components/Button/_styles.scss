@@ -20,3 +20,24 @@ button.button.btn {
     background: $bg-disabled;
   }
 }
+
+
+@include breakpoint(sm992) {
+  button.button.btn {
+    height: pxToVW(25);
+    border-radius: pxToVW(5);
+    box-shadow: 0 pxToVW(3) pxToVW(6) 0 rgba(0, 0, 0, 0.16);
+    min-width: pxToVW(80);
+    letter-spacing: pxToVW(0.5);
+    color: $white;
+    font-size: pxToVW(12);
+    padding: pxToVW(2) pxToVW(5);
+
+    &.big {
+      width: pxToVW(130);
+      font-size: pxToVW(12);
+      min-height: pxToVW(35);
+      padding: pxToVW(5) pxToVW(10);
+    }
+  }
+}

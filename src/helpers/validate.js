@@ -28,4 +28,14 @@ export function getFormatBlock(str, $1, $2, $3, $unit) {
   return data;
 }
 
-export default { isNumberKey, isOnPasteNumber, getFormatBlock };
+export const truncateString = (str: string, num: any) => {
+  if (str.length <= num || num === 0) {
+    return str;
+  }
+  if (str.split(' ').slice(0, num).length >= num) {
+    return `${str.split(' ').slice(0, num).join(' ')}...`;
+  }
+  return str;
+};
+
+export default { isNumberKey, isOnPasteNumber, getFormatBlock, truncateString };

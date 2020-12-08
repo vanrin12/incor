@@ -19,3 +19,19 @@
     transition-delay: 3s;
   }
 }
+
+
+@include breakpoint(sm992) {
+  .progress-wrap .progress {
+    border-radius: pxToVW(10);
+    border: solid pxToRem(1) $bg-main;
+    height: pxToVW(15);
+
+    .progress-bar {
+      height: pxToVW(15);
+      border-radius: pxToVW(10);
+      font-size: pxToVW(13);
+      line-height: 1;
+    }
+  }
+}

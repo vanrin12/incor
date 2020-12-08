@@ -8,7 +8,7 @@
     top: 100%;
     left: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 999;
     overflow: hidden;
 
     ul {
@@ -113,6 +113,7 @@
         letter-spacing: pxToRem(0.4);
         text-align: left;
         color: $color-light4;
+        height: auto !important;
 
         >div>div {
           padding: pxToRem(5) !important;
@@ -146,12 +147,15 @@
         width: pxToRem(135);
         border: 0;
 
-        >div {
-          height: pxToRem(72);
-        }
-
         .css-1uccc91-singleValue {
           padding-left: pxToRem(15);
+        }
+      }
+
+      .css-2b097c-container {
+
+        >div {
+          height: pxToRem(72);
         }
       }
 
@@ -551,9 +555,278 @@
     }
   }
 
+  .btn-wrap {
+    margin-top: pxToRem(30);
+  }
+
   .customer-select {
     &::after {
       z-index: 0;
+    }
+  }
+}
+
+@include breakpoint(sm992) {
+  .css-yk16xz-control {
+    min-height: auto !important;
+  }
+
+  .form-search {
+    margin-bottom: pxToVW(40);
+
+    .list-autocomplete-search {
+      ul {
+        padding: pxToVW(15) 0;
+        margin-top: pxToVW(-2);
+        height: pxToVW(200);
+        border-radius: pxToVW(6);
+        border: solid pxToVW(2) $bg-main;
+
+        li {
+          height: pxToVW(40);
+          font-size: pxToVW(15);
+          line-height: pxToVW(28);
+          padding: pxToVW(8) pxToVW(10);
+        }
+      }
+    }
+
+    .form-group {
+      .customer-select {
+        width: pxToVW(70);
+        height: pxToVW(32);
+
+        &:after {
+          right: pxToVW(-10);
+          width: pxToVW(10);
+          height: pxToVW(10);
+          top: calc(50% - #{pxToVW(3)});
+        }
+
+        .css-1uccc91-singleValue {
+          font-size: pxToVW(12);
+          letter-spacing: pxToVW(0.4);
+        }
+
+        .css-26l3qy-menu {
+          padding: pxToVW(8) pxToVW(10) pxToVW(8) pxToVW(12);
+          border-radius: pxToVW(10);
+          font-size: pxToVW(12);
+          letter-spacing: pxToVW(0.4);
+
+          >div>div {
+            padding: pxToVW(5) !important;
+            font-size: pxToVW(12);
+            letter-spacing: pxToVW(0.4);
+          }
+        }
+
+        .css-g1d714-ValueContainer,
+        .css-2b097c-container {
+          height: pxToVW(32);
+          width: pxToVW(100);
+          margin-right: pxToVW(-2);
+
+          .css-1uccc91-singleValue {
+            padding-left: pxToVW(5);
+          }
+        }
+
+        .css-2b097c-container {
+
+          >div {
+            height: pxToVW(32);
+          }
+        }
+
+        .css-yk16xz-control {
+          height: pxToVW(32);
+
+          .css-1uccc91-singleValue {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    &.form2 {
+      padding-bottom: pxToVW(30);
+
+      .form-group {
+
+        .input__box {
+          input {
+            border-radius: pxToVW(5);
+            border: pxToVW(1) solid $bg-main;
+            font-size: pxToVW(15);
+          }
+        }
+
+        .basic-multi-select {
+          .select__menu {
+            margin-top: pxToVW(-1);
+            height: pxToVW(300);
+            border-radius: pxToVW(5);
+            border: solid pxToVW(1) $bg-main;
+
+            .select__menu-list {
+              &::-webkit-scrollbar-thumb {
+                border: pxToVW(1) solid $bg-main;
+              }
+            }
+
+            .select__option {
+              height: pxToVW(35);
+              font-size: pxToVW(15);
+              line-height: pxToVW(25);
+              padding: pxToVW(5) pxToVW(15) !important;
+            }
+          }
+
+          input {
+            font-size: pxToVW(15) !important;
+          }
+
+          .select__value-container {
+            padding: 0 pxToVW(80);
+            border-radius: pxToVW(5);
+            border: pxToVW(1) solid $bg-main;
+            font-size: pxToVW(15);
+            font-weight: normal;
+            height: pxToVW(35);
+            // margin-top: -3px;
+
+            .select__multi-value__label {
+              font-size: pxToVW(10);
+              padding: pxToVW(4) pxToVW(5);
+            }
+          }
+        }
+      }
+
+      .btn-wrap {
+
+        button {
+          margin-top: 0;
+          width: pxToVW(78);
+          height: pxToVW(35);
+          font-size: pxToVW(13);
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .form-contact-us {
+    h2 {
+      font-size: pxToRem(40);
+      letter-spacing: pxToRem(0.4);
+      margin-bottom: pxToRem(32);
+    }
+
+    input,
+    textarea {
+      border-radius: pxToRem(10);
+      font-size: pxToRem(20);
+      letter-spacing: pxToRem(0.4);
+
+      &::-webkit-input-placeholder {
+        font-size: pxToRem(15);
+        letter-spacing: pxToRem(-0.25);
+      }
+
+      &::placeholder {
+        font-size: pxToRem(15);
+        letter-spacing: pxToRem(-0.25);
+      }
+
+      &::-moz-placeholder {
+        font-size: pxToRem(15);
+        letter-spacing: pxToRem(-0.25);
+      }
+
+      &:-ms-input-placeholder {
+        font-size: pxToRem(15);
+        letter-spacing: pxToRem(-0.25);
+      }
+    }
+
+    .style-line {
+      .input__label {
+        min-width: pxToRem(200);
+        margin-right: pxToRem(10);
+        top: pxToRem(5);
+
+        span {
+          font-size: pxToRem(15);
+        }
+      }
+
+      .customer-select {
+        width: 100%;
+        min-width: pxToRem(100);
+      }
+
+      &.date-time {
+        .customer-select {
+          max-width: pxToRem(109);
+        }
+      }
+
+      .react-datepicker-wrapper {
+        input {
+          max-width: pxToRem(150);
+          background-size: pxToRem(15);
+          background-position: right bottom pxToRem(5);
+        }
+      }
+
+    }
+
+    .group-btn-file {
+      button {
+        width: pxToRem(91);
+        height: pxToRem(28);
+        padding: pxToRem(6) pxToRem(11) pxToRem(5);
+        border-radius: pxToRem(5);
+        font-size: pxToRem(14);
+      }
+    }
+
+    .form-group.btn-group {
+      margin-top: pxToRem(20);
+
+      button {
+        width: pxToRem(237);
+        border-radius: pxToRem(10);
+      }
+    }
+  }
+
+  .form-search-page {
+    margin-bottom: pxToVW(40);
+    padding-right: 0;
+
+    .form-group {
+      margin-bottom: pxToVW(17);
+    }
+
+    .rating {
+      margin-left: pxToVW(-6);
+      margin-bottom: pxToVW(8);
+
+      svg.svg-inline--fa {
+        margin-left: pxToVW(5);
+      }
+    }
+
+    .btn-wrap {
+      margin-top: pxToVW(30);
+
+      button {
+        font-size: pxToVW(10);
+        height: pxToVW(32);
+      }
     }
   }
 }

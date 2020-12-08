@@ -1,6 +1,7 @@
 // @flow
 
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
+import { truncateString } from 'helpers/validate';
 import Rating from '../../../commons/components/Rating';
 
 type Props = {
@@ -8,6 +9,12 @@ type Props = {
 };
 
 const ItemComment = ({ itemObj }: Props) => {
+  const [isShowAllWord, setIsShowAllWord] = useState(false);
+
+  const splitWord = itemObj && itemObj.comment && itemObj.comment.split(' ');
+  const checksLengthWord =
+    splitWord && splitWord.slice(0, 15) && splitWord.slice(0, 15).length >= 15;
+
   return (
     <div className="comment-item d-flex">
       <div className="logo">
@@ -19,7 +26,25 @@ const ItemComment = ({ itemObj }: Props) => {
           <Rating numberStar={itemObj?.rating} />
         </div>
         <div className="date">{itemObj?.time}</div>
-        <div className="desc">{itemObj?.comment}</div>
+        <div className="desc">
+          {truncateString(itemObj?.comment || '', isShowAllWord ? 0 : 25)}
+          {checksLengthWord && (
+            <p
+              className="more-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsShowAllWord(!isShowAllWord);
+              }}
+              onKeyDown={(e) => {
+                e.preventDefault();
+                setIsShowAllWord(!isShowAllWord);
+              }}
+              role="presentation"
+            >
+              {isShowAllWord ? 'Rút gọn' : 'Xem thêm'}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

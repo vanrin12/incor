@@ -152,9 +152,7 @@
     @include transform-translateY(-50%);
   }
 }
-.textarea{
-  
-}
+
 input,
 textarea {
   -webkit-appearance: none;
@@ -168,5 +166,122 @@ textarea {
 
   &.red {
     border-color: $red !important;
+  }
+}
+
+@include breakpoint(sm992) {
+
+  .input,
+  .react-datepicker-wrapper {
+    &__error-msg {
+      margin-top: pxToVW(10);
+      font-size: pxToRpxToVWem(15);
+    }
+
+    &__label {
+      font-size: pxToVW(15);
+      margin-bottom: pxToVW(5);
+    }
+
+    input {
+      border: pxToVW(1) solid $color-border;
+      height: pxToVW(44);
+      font-size: pxToVW(16);
+      padding: pxToVW(10);
+      letter-spacing: pxToVW(-0.25);
+
+      &::-webkit-input-placeholder {
+        font-size: pxToVW(14);
+        letter-spacing: pxToVW(-0.25);
+      }
+
+      &::placeholder {
+        font-size: pxToVW(14);
+        letter-spacing: pxToVW(-0.25);
+      }
+
+      &::-moz-placeholder {
+        font-size: pxToVW(14);
+        letter-spacing: pxToVW(-0.25);
+      }
+
+      &:-ms-input-placeholder {
+        font-size: pxToVW(14);
+        letter-spacing: pxToVW(-0.25);
+      }
+
+      &.input-search {
+        width: 70%;
+        min-width: pxToVW(320);
+        height: pxToVW(32);
+        padding: pxToVW(5) pxToVW(15) pxToVW(5) pxToVW(80);
+        border-radius: pxToVW(6);
+        border: solid pxToVW(1) rgba($white, 0.85);
+        font-size: pxToVW(16);
+
+        &::-webkit-input-placeholder {
+          font-size: pxToVW(16);
+        }
+
+        &::placeholder {
+          font-size: pxToVW(16);
+        }
+
+        &::-moz-placeholder {
+          font-size: pxToVW(16);
+        }
+
+        &:-ms-input-placeholder {
+          font-size: pxToVW(16);
+        }
+      }
+    }
+
+    &__box {
+      &.left {
+        .input {
+          padding-left: pxToRem(30);
+        }
+      }
+
+      &__icon {
+        width: pxToRem(19);
+        height: pxToRem(19);
+
+        &__right {
+          right: pxToRem(15);
+
+          img {
+            width: pxToRem(19);
+            height: pxToRem(19);
+          }
+        }
+
+        &.left {
+          left: pxToRem(15);
+        }
+      }
+
+      &__custom {
+        input {
+          padding-right: pxToRem(35);
+        }
+      }
+    }
+  }
+
+  .btn-wrap {
+    .spinner-wrap {
+      right: pxToVW(-20);
+    }
+  }
+
+  input,
+  textarea {
+    border-radius: pxToVW(6);
+
+    &:focus {
+      border: pxToVW(1) solid $bg-main;
+    }
   }
 }
