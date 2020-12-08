@@ -261,6 +261,13 @@
       position: relative;
       padding-bottom: pxToRem(40);
 
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      max-height: pxToRem(290);
+
       &::after {
         content: "";
         position: absolute;
@@ -433,9 +440,10 @@
         line-height: 1.4;
         margin-bottom: pxToVW(5);
         padding-bottom: pxToVW(5);
+        max-height: pxToVW(70);
 
         &::after {
-          width: pxToVW(100);
+          width: pxToVW(60);
           border-bottom: pxToVW(1) solid $white;
         }
       }
