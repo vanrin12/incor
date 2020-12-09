@@ -26,7 +26,7 @@ const FormSearch = ({
         <SelectDropdown
           name="selectMain"
           listItem={listSelectSearch}
-          onChange={(option) => handleSelectChange(option)}
+          onChange={(option) => handleSelectChange(option, 'selectMain')}
           option={optionSelect}
         />
         <Input

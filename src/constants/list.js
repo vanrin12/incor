@@ -646,4 +646,33 @@ const listTime = [
     value: '23:30',
   },
 ];
-export { listSelectSearch, listSelectCity, listTypeOfSpace, listTime };
+
+const listSelectScale = [
+  {
+    id: 1,
+    value: '50-100',
+    label: '50 - 100 người',
+  },
+  {
+    id: 2,
+    value: '100-200',
+    label: '100 - 200 người',
+  },
+  {
+    id: 3,
+    value: '200-300',
+    label: '200 - 300 người',
+  },
+  {
+    id: 4,
+    value: '300-400',
+    label: '300 - 400 người',
+  },
+];
+export {
+  listSelectSearch,
+  listSelectCity,
+  listTypeOfSpace,
+  listTime,
+  listSelectScale,
+};

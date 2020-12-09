@@ -20,6 +20,7 @@ const Menu = ({ location }: Props) => {
             to={item.to}
             label={item.label}
             location={location}
+            name={item.name}
           />
         );
       });

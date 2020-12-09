@@ -8,6 +8,10 @@
     border-color: transparent;
     background-color: transparent;
 
+    >div {
+      border: 0;
+    }
+
     * {
       background-color: transparent;
     }
@@ -57,6 +61,10 @@
 
 .customer-select {
   position: relative;
+
+  .css-1wy0on6 {
+    display: none !important
+  }
 
   .css-1wa3eu0-placeholder {
     color: $color-placeholder;
@@ -193,6 +201,10 @@
       text-overflow: ellipsis;
       font-weight: $regular;
 
+      &:last-child {
+        display: none !important;
+      }
+
       &::-webkit-input-placeholder {
         color: $color-placeholder;
         font-weight: $regular;
@@ -222,4 +234,120 @@
       }
     }
   }
+}
+
+
+@include breakpoint(sm992) {
+  .css-tlfecz-indicatorContainer {
+    max-height: pxToVW(35);
+  }
+
+  .css-4ljt47-MenuList {
+    font-size: pxToVW(16) !important;
+  }
+
+  .css-9gakcf-option {
+    border-top: pxToVW(1) solid $color-border;
+    border-bottom: pxToVW(1) solid $color-border;
+    padding: pxToVW(8) pxToVW(17) !important;
+    letter-spacing: pxToVW(-0.33);
+  }
+
+  .css-yt9ioa-option,
+  .css-1n7v3ny-option {
+    padding: pxToVW(8) pxToVW(17) !important;
+    letter-spacing: pxToVW(-0.33);
+  }
+
+  .css-4ljt47-MenuList {
+    max-height: pxToVW(220) !important;
+  }
+
+  .customer-select {
+
+    .css-1wa3eu0-placeholder {
+      font-size: pxToVW(15);
+      letter-spacing: pxToVW(-0.25);
+    }
+
+    .css-1uccc91-singleValue {
+      font-size: pxToVW(15);
+      letter-spacing: pxToVW(0.4);
+    }
+
+    .input__box,
+    .css-2b097c-container {
+      height: pxToVW(32);
+    }
+
+    &:after {
+      right: pxToVW(15);
+      width: pxToVW(15);
+      height: pxToVW(15);
+    }
+
+    .css-g1d714-ValueContainer {
+      height: pxToVW(32);
+
+      &:focus {
+        border: pxToVW(1) solid $bg-main;
+      }
+    }
+
+    .css-26l3qy-menu {
+      padding: pxToVW(3) pxToRem(0) pxToVW(3) pxToVW(10);
+      border-radius: pxToVW(5);
+      box-shadow: pxToVW(10) pxToVW(10) pxToVW(30) 0 rgba(0, 0, 0, 0.16);
+      font-size: pxToVW(15);
+      letter-spacing: pxToVW(0.4);
+
+      >div>div {
+        padding: pxToVW(5) !important;
+        font-size: pxToVW(15);
+        letter-spacing: pxToVW(0.4);
+      }
+    }
+
+    .css-yk16xz-control,
+    .css-1pahdxg-control {
+
+      >div {
+        border: pxToVW(1) solid $color-border;
+        height: pxToVW(32);
+        font-size: pxToVW(15);
+        padding: pxToVW(5);
+        letter-spacing: pxToVW(-0.25);
+        border-radius: pxToVW(5);
+
+        &::-webkit-input-placeholder {
+          font-size: pxToVW(14);
+          letter-spacing: pxToVW(-0.25);
+        }
+
+        &::placeholder {
+          font-size: pxToVW(14);
+          letter-spacing: pxToVW(-0.25);
+        }
+
+        &::-moz-placeholder {
+          font-size: pxToVW(14);
+          letter-spacing: pxToVW(-0.25);
+        }
+
+        &:-ms-input-placeholder {
+          font-size: pxToVW(14);
+          letter-spacing: pxToVW(-0.25);
+        }
+      }
+
+      &:focus {
+        border: 0 !important;
+
+        >div {
+          border: 0 !important;
+        }
+      }
+    }
+  }
+
 }

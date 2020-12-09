@@ -11,13 +11,13 @@
 }
 
 .loader {
-  color: $orange;
+  color: $bg-main;
   font-size: pxToRem(10);
   position: absolute;
   text-indent: -9999em;
   top: 50%;
   left: 50%;
-  z-index: 9999;
+  z-index: 99999;
   @include transform-translate(-50%, -50%);
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;

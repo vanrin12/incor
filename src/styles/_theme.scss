@@ -36,6 +36,11 @@ body p {
   line-height: 1.2;
   color: $color_primary;
   margin-bottom: pxToRem(15);
+
+  @include breakpoint(sm992) {
+    font-size: pxToVW(20);
+    margin-bottom: pxToVW(15);
+  }
 }
 
 .swiper-button-prev,
