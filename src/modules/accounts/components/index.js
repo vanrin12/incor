@@ -61,7 +61,7 @@ const LoginForm = () => {
     <div className="from-login">
       <div className="user-info">
         {nickName ? (
-          <button onClick={handleShowModalInfo} className="btn-outline">
+          <button onClick={handleShowModalInfo} className="btn-outline btn-dk">
             <img src={IMAGES.iconUp} alt="" className="ico-up" /> {nickName}
           </button>
         ) : (
@@ -71,59 +71,59 @@ const LoginForm = () => {
         )}
       </div>
       {/* Show modal form login */}
-      {isShowModal && (
-        <div className="form-content">
-          <div className="form-group">
-            <Input
-              placeholder="Tên đăng nhập"
-              label="Tên đăng nhập"
-              name="userName"
-              onKeyPress={(e) => handleKeyDown(e)}
-              value={userName}
-              onChange={formik.handleChange}
-              errorMsg={formik?.errors?.userName}
-            />
-          </div>
-          <div className="form-group">
-            <Input
-              placeholder="Mật khẩu"
-              label="Mật khẩu"
-              name="password"
-              onKeyPress={(e) => handleKeyDown(e)}
-              value={password}
-              onChange={formik.handleChange}
-              errorMsg={formik?.errors?.password}
-            />
-          </div>
-          <div className="form-group mb-0 text-center btn-summit">
-            <Button onClick={handleSubmit} isShowLoading={isShowLoading}>
-              ĐĂNG NHẬP
-            </Button>
-          </div>
+      <div className={`form-content ${isShowModal ? 'd-block' : 'd-none'}`}>
+        <div className="form-group">
+          <Input
+            placeholder="Tên đăng nhập"
+            label="Tên đăng nhập"
+            name="userName"
+            onKeyPress={(e) => handleKeyDown(e)}
+            value={userName}
+            onChange={formik.handleChange}
+            errorMsg={formik?.errors?.userName}
+          />
         </div>
-      )}
+        <div className="form-group">
+          <Input
+            placeholder="Mật khẩu"
+            label="Mật khẩu"
+            name="password"
+            onKeyPress={(e) => handleKeyDown(e)}
+            value={password}
+            onChange={formik.handleChange}
+            errorMsg={formik?.errors?.password}
+          />
+        </div>
+        <div className="form-group mb-0 text-center btn-summit">
+          <Button onClick={handleSubmit} isShowLoading={isShowLoading}>
+            ĐĂNG NHẬP
+          </Button>
+        </div>
+      </div>
       {/* Show modal link info */}
-      {isShowModalInfo && (
-        <div className="modal-info-user">
-          <ul>
-            <li>
-              <Link to={ROUTERS.PAGE_CONSTRUCTION} title="Quản lý tiến độ">
-                Quản lý tiến độ
-              </Link>
-            </li>
-            <li>
-              <Link to="/" title="Phản hồi dịch vụ">
-                Phản hồi dịch vụ
-              </Link>
-            </li>
-            <li>
-              <button className="btn-outline" onClick={handleLogout}>
-                Đăng xuất
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+      <div
+        className={`modal-info-user ${
+          isShowModalInfo && nickName ? 'd-block' : 'd-none'
+        }`}
+      >
+        <ul>
+          <li>
+            <Link to={ROUTERS.PAGE_CONSTRUCTION} title="Quản lý tiến độ">
+              Quản lý tiến độ
+            </Link>
+          </li>
+          <li>
+            <Link to="/" title="Phản hồi dịch vụ">
+              Phản hồi dịch vụ
+            </Link>
+          </li>
+          <li>
+            <button className="btn-outline" onClick={handleLogout}>
+              Đăng xuất
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

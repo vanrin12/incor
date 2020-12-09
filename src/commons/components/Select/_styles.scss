@@ -339,6 +339,14 @@
           letter-spacing: pxToVW(-0.25);
         }
       }
+
+      &:focus {
+        border: 0 !important;
+
+        >div {
+          border: 0 !important;
+        }
+      }
     }
   }
 

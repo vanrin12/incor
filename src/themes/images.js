@@ -17,6 +17,7 @@ const images = {
   img_client: require('../assets/imgs/client3.jpg'),
   img_product: require('../assets/imgs/product.jpg'),
   img_Search: require('../assets/imgs/icon-filter.png'),
+  logo_blue: require('../assets/imgs/logo-blue.png'),
 };
 
 export default images;
