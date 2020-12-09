@@ -269,8 +269,9 @@
 @include breakpoint(sm992) {
   .page-partner {
     .bg-title-partner {
-      height: pxToVW(280);
-      padding: pxToVW(60) pxToVW(20) pxToVW(30) pxToVW(20);
+      height: pxToVW(300);
+      min-height: 300px;
+      padding: pxToVW(90) pxToVW(20) pxToVW(30) pxToVW(20);
 
       .form-search {
         padding-bottom: pxToVW(30);
