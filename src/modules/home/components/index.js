@@ -66,11 +66,11 @@ const HomeMain = ({ history, isLoading }: Props) => {
       },
       '768': {
         slidesPerView: 2,
-        spaceBetween: 20,
+        spaceBetween: 0,
       },
       '320': {
         slidesPerView: 2,
-        spaceBetween: 10,
+        spaceBetween: 0,
       },
     },
     autoplay: {
@@ -84,10 +84,10 @@ const HomeMain = ({ history, isLoading }: Props) => {
     slidesPerView: 2,
     spaceBetween: 0,
     slidesPerGroup: 2,
-    // autoplay: {
-    //   delay: 4000,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
   };
 
   // Modal client

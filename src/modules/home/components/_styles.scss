@@ -161,6 +161,14 @@
           color: $color-black;
           text-align: center;
           text-transform: uppercase;
+
+          overflow: hidden;
+          font-weight: 700;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          max-height: pxToRem(60);
         }
 
         button {
@@ -179,7 +187,7 @@
           text-align: left;
 
           h3 {
-            font-size: pxToRem(30);
+            font-size: pxToRem(25);
             opacity: 1;
             text-align: left;
           }
@@ -191,6 +199,14 @@
             line-height: 1.2;
             letter-spacing: normal;
             color: $color-black;
+
+            overflow: hidden;
+            font-weight: 700;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            max-height: pxToRem(70);
           }
         }
 
@@ -353,20 +369,25 @@
   }
 
   .session-promotions {
-    padding: pxToVW(35) pxToRem(20);
+    padding: pxToVW(35) 0;
+
+    .container-fluid {
+      padding-left: pxToVW(10);
+      padding-right: pxToVW(10);
+    }
 
     .slide-promotions {
-      padding: pxToRem(20) pxToRem(55);
+      padding: 0;
 
       .swiper-wrapper {
         .swiper-slide {
-          padding: 10px;
+          padding: pxToVW(7);
         }
 
         .slide-content {
-          border-radius: pxToRem(20);
+          border-radius: pxToVW(10);
           box-shadow: 0 pxToVW(3) pxToVW(6) 0 rgba(0, 0, 0, 0.16);
-          padding-bottom: pxToRem(40);
+          padding-bottom: pxToVW(10);
           border: pxToVW(2) solid transparent;
 
           &:hover,
@@ -376,20 +397,24 @@
           }
 
           .bg-image {
-            border-top-right-radius: pxToRem(20);
-            border-top-left-radius: pxToRem(20);
-            height: pxToRem(360);
+            width: 100%;
+            min-height: pxToVW(152);
+            border-top-left-radius: pxToVW(10);
+            border-bottom-left-radius: 0;
+            border-top-right-radius: pxToVW(10);
           }
 
           h3 {
-            margin: pxToRem(20) pxToRem(25);
-            font-size: pxToRem(25);
-            letter-spacing: pxToRem(0.63);
+            font-size: pxToVW(10);
+            margin: pxToVW(8) pxToVW(10);
+            max-height: pxToVW(23);
           }
 
           button {
-            min-width: pxToRem(180);
-            border-radius: pxToRem(10);
+            min-width: pxToVW(65);
+            border-radius: pxToVW(5);
+            height: pxToVW(20);
+            font-size: pxToVW(10);
           }
         }
       }
@@ -399,14 +424,16 @@
       .slide-promotions {
         .swiper-wrapper {
           .slide-content {
-
             h3 {
-              font-size: pxToRem(30);
+              font-size: pxToVW(10);
+              margin-bottom: pxToVW(8);
+              max-height: pxToVW(23);
             }
 
             .desc {
-              margin: pxToRem(20) pxToRem(25);
-              font-size: pxToRem(20);
+              font-size: pxToVW(10);
+              max-height: pxToVW(33);
+              margin: pxToVW(8) pxToVW(10);
             }
           }
 
@@ -414,7 +441,7 @@
             margin: pxToRem(30) pxToRem(25) 0 pxToRem(20);
 
             img {
-              width: pxToRem(50);
+              width: pxToVW(20);
             }
           }
         }
