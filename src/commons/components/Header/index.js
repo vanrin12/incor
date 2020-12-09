@@ -27,7 +27,7 @@ const Header = ({ location }: Props) => {
     },
     { iconRef }
   );
-  console.log(isOpen, 'isOpen');
+
   return (
     <div className="header-main">
       <header className="header d-flex align-items-center">
