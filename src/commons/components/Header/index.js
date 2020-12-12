@@ -17,6 +17,7 @@ const Header = ({ location }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const refMenu = useRef(null);
   const iconRef = useRef(null);
+  const [isOpenModalMobile, setIsOpenModalMobile] = useState(false);
 
   useClickOutside(
     refMenu,
@@ -27,6 +28,11 @@ const Header = ({ location }: Props) => {
     },
     { iconRef }
   );
+
+  const handleGetIsShowModal = (boolean) => {
+    setIsOpenModalMobile(boolean);
+    setIsOpen(false);
+  };
 
   return (
     <div className="header-main">
@@ -61,12 +67,16 @@ const Header = ({ location }: Props) => {
         ref={iconRef}
         className={`click-off ${isOpen ? 'open' : ''}`}
       />
-      <div className={`menu-mobile ${isOpen ? 'open' : ''}`}>
+      <div
+        className={`menu-mobile ${isOpenModalMobile ? 'login-open' : ''} ${
+          isOpen ? 'open' : ''
+        }`}
+      >
         <Link to={ROUTERS.MAIN_PAGE} title="Logo" className="logo-blue">
           <img src={IMAGES.logo_blue} alt="Logo" />
         </Link>
         <Menu location={location} />
-        <LoginForm />
+        <LoginForm handleGetIsShowModal={handleGetIsShowModal} />
       </div>
     </div>
   );

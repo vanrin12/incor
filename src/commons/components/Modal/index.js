@@ -64,7 +64,7 @@ export const ModalPopup = ({
         tabIndex={0}
         onKeyUp={handleCloseIcon}
       >
-        <img src={images.icon_close} alt="" />
+        <img src={images.icon_close2} alt="" />
       </div>
     )}
 

@@ -25,7 +25,7 @@ type Props = {
   handleCloseModal: Function,
 };
 
-const FormContactUs = ({
+const FormContactUsMobile = ({
   handleSubmitForm,
   isOpenModalClient,
   handleCloseModal,
@@ -33,7 +33,7 @@ const FormContactUs = ({
   const [listSelectSubType, setListSelectSubType] = useState([]);
   const [dateTime, setDateTime] = useState('');
   const dateTimeRef = useRef('');
-
+  const [pageStep, setPageStep] = useState(1);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formik = useFormik({
     initialValues: {
@@ -73,6 +73,7 @@ const FormContactUs = ({
 
   useEffect(() => {
     if (!isOpenModalClient) {
+      setPageStep(1);
       formik.setFieldValue('selectCity', '');
       formik.setFieldValue('selectType', '');
       formik.setFieldValue('selectSubType', '');
@@ -96,6 +97,7 @@ const FormContactUs = ({
       formik.setFieldError('file', '');
       formik.setFieldError('note', '');
       formik.setFieldError('fileName', '');
+      setDateTime(null);
     }
     // eslint-disable-next-line
   }, [isOpenModalClient]);
@@ -181,15 +183,15 @@ const FormContactUs = ({
     <ModalPopup
       isOpen={isOpenModalClient}
       size="lg"
-      customClass="FormContactUs"
+      customClass="FormContactUsMobile"
       isShowIconClose
       handleClose={handleCloseModal}
       handleCloseIcon={handleCloseModal}
     >
       <div className="form-contact-us">
         <h2>FORM YÊU CẦU TƯ VẤN</h2>
-        <div className="form-group row">
-          <div className="col-12 col-md-6">
+        <div className={`group-1 ${pageStep === 1 ? 'd-block' : 'd-none'}`}>
+          <div className="form-group">
             <Input
               placeholder="Tên khách hàng"
               label="Tên khách hàng"
@@ -201,7 +203,7 @@ const FormContactUs = ({
               onFocus={() => handelFocus('nameClient')}
             />
           </div>
-          <div className="col-12 col-md-6">
+          <div className="form-group">
             <Input
               placeholder="Số điện thoại"
               label="Số điện thoại"
@@ -218,9 +220,7 @@ const FormContactUs = ({
               customClass={formik?.errors?.phone && 'red'}
             />
           </div>
-        </div>
-        <div className="form-group row">
-          <div className="col-12 col-md-6">
+          <div className="form-group">
             <Input
               placeholder="Email"
               label="Email"
@@ -232,7 +232,7 @@ const FormContactUs = ({
               onFocus={() => handelFocus('email')}
             />
           </div>
-          <div className="col-12 col-md-6">
+          <div className="form-group">
             <p className="input__label">Khu vực</p>
             <SelectDropdown
               name="selectCity"
@@ -244,100 +244,131 @@ const FormContactUs = ({
               errorMsg={formik?.errors?.selectCity}
             />
           </div>
+          <div className="form-group mb-0 btn-group">
+            <Button
+              onClick={() => {
+                setPageStep(2);
+              }}
+            >
+              TIẾP THEO
+            </Button>
+          </div>
         </div>
-        <div className="form-group d-flex style-line">
-          <p className="input__label">Loại hình không gian</p>
-          <SelectDropdown
-            name="selectType"
-            listItem={listTypeOfSpace || []}
-            onChange={(option) => handleSelectChange(option, 'selectType')}
-            option={selectType}
-            errorMsg={formik?.errors?.selectType}
-            customClass={formik?.errors?.selectType && 'red'}
-          />
-        </div>
-        <div className="form-group d-flex style-line">
-          <p className="input__label">Phân chia không gian</p>
-          <SelectDropdown
-            name="selectSubType"
-            listItem={listSelectSubType || []}
-            onChange={(option) => handleSelectChange(option, 'selectSubType')}
-            option={selectSubType}
-            errorMsg={formik?.errors?.selectSubType}
-            customClass={formik?.errors?.selectSubType && 'red'}
-          />
-        </div>
-
-        <div className="group-btn-file d-flex style-line form-group">
-          <p className="input__label">
-            Bản vẽ 3D <span>(tùy chọn)</span>
-          </p>
-          <div className="d-group">
-            <input
-              type="file"
-              className="custom-file-input"
-              value=""
-              onChange={(e) => handleChangeFile(e)}
-              accept="image/jpg, image/jpeg, image/png"
-            />
-            <Input
-              placeholder="Chưa có file nào được chọn"
-              name="fileName"
-              value={fileName}
-              onChange={() => {}}
+        <div className={`group-2 ${pageStep === 2 ? 'd-block' : 'd-none'}`}>
+          <div className="form-group style-line">
+            <p className="input__label">Loại hình không gian</p>
+            <SelectDropdown
+              name="selectType"
+              listItem={listTypeOfSpace || []}
+              onChange={(option) => handleSelectChange(option, 'selectType')}
+              option={selectType}
+              errorMsg={formik?.errors?.selectType}
+              customClass={formik?.errors?.selectType && 'red'}
             />
           </div>
-          <Button type="submit" variant="secondary w-150" onClick={() => {}}>
-            CHỌN FILE
-          </Button>
+          <div className="form-group style-line">
+            <p className="input__label">Phân chia không gian</p>
+            <SelectDropdown
+              name="selectSubType"
+              listItem={listSelectSubType || []}
+              onChange={(option) => handleSelectChange(option, 'selectSubType')}
+              option={selectSubType}
+              errorMsg={formik?.errors?.selectSubType}
+              customClass={formik?.errors?.selectSubType && 'red'}
+            />
+          </div>
+          <div className="group-btn-file style-line form-group">
+            <p className="input__label">
+              Bản vẽ 3D <span>(tùy chọn)</span>
+            </p>
+            <div className="d-flex align-items-end">
+              <div className="d-group">
+                <input
+                  type="file"
+                  className="custom-file-input"
+                  value=""
+                  onChange={(e) => handleChangeFile(e)}
+                  accept="image/jpg, image/jpeg, image/png"
+                />
+                <Input
+                  placeholder="Chưa có file nào được chọn"
+                  name="fileName"
+                  value={fileName}
+                  onChange={() => {}}
+                />
+              </div>
+              <Button
+                type="submit"
+                variant="secondary w-150"
+                onClick={() => {}}
+              >
+                CHỌN FILE
+              </Button>
+            </div>
+          </div>
+          <div className="style-line form-group date-time">
+            <p className="input__label">Thời gian tư vấn</p>
+            <div className="d-flex align-items-end">
+              <p className="input__label w-auto">Giờ</p>
+              <SelectDropdown
+                name="selectSubType"
+                listItem={listTime || []}
+                onChange={(option) => handleSelectChange(option, 'selectTime')}
+                option={selectTime}
+              />
+              <p className="input__label w-auto ml-2">Ngày tháng</p>
+              <DatePicker
+                selected={dateTime}
+                onChange={(date) => {
+                  setDateTime(date);
+                }}
+                minDate={new Date()}
+                peekNextMonth
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
+                // locale="vi"
+                dateFormat="yyyy-MM-dd"
+                disabledKeyboardNavigation
+                onChangeRaw={(e) => e.preventDefault()}
+                onFocus={(e) => e.preventDefault()}
+                onKeyDown={(e) => e.preventDefault()}
+                // popperPlacement="right-start"
+                ref={dateTimeRef}
+              />
+            </div>
+          </div>
+          <div className="form-group mb-0 btn-group">
+            <Button
+              onClick={() => {
+                setPageStep(3);
+              }}
+            >
+              TIẾP THEO
+            </Button>
+          </div>
         </div>
-        <div className="d-flex style-line form-group date-time">
-          <p className="input__label">Thời gian tư vấn</p>
-          <p className="input__label w-auto">Giờ</p>
-          <SelectDropdown
-            name="selectSubType"
-            listItem={listTime || []}
-            onChange={(option) => handleSelectChange(option, 'selectTime')}
-            option={selectTime}
-          />
-          <p className="input__label w-auto ml-2">Ngày tháng</p>
-          <DatePicker
-            selected={dateTime}
-            onChange={(date) => {
-              setDateTime(date);
-            }}
-            minDate={new Date()}
-            peekNextMonth
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-            // locale="vi"
-            dateFormat="yyyy-MM-dd"
-            disabledKeyboardNavigation
-            onChangeRaw={(e) => e.preventDefault()}
-            onFocus={(e) => e.preventDefault()}
-            onKeyDown={(e) => e.preventDefault()}
-            popperPlacement="left-start"
-            ref={dateTimeRef}
-          />
-        </div>
-        <div className="form-group">
-          <p className="input__label">Ghi chú thêm</p>
-          <textarea
-            className="form-control"
-            rows="4"
-            value={note}
-            placeholder="Ghi chú về số lượng - kích thước từng loại"
-            onChange={formik.handleChange}
-            name="note"
-          />
-        </div>
-        <div className="form-group mb-0 btn-group">
-          <Button onClick={() => formik.handleSubmit()}>YÊU CẦU TƯ VẤN</Button>
+        <div className={`group-3 ${pageStep === 3 ? 'd-block' : 'd-none'}`}>
+          <div className="form-group">
+            <p className="input__label">Ghi chú thêm</p>
+            <textarea
+              className="form-control"
+              rows="4"
+              value={note}
+              placeholder="Ghi chú về số lượng - kích thước từng loại"
+              onChange={formik.handleChange}
+              name="note"
+            />
+          </div>
+          <div className="form-group mb-0 btn-group">
+            <Button onClick={() => formik.handleSubmit()}>
+              YÊU CẦU TƯ VẤN
+            </Button>
+          </div>
         </div>
       </div>
     </ModalPopup>
   );
 };
 
-export default memo<Props>(FormContactUs);
+export default memo<Props>(FormContactUsMobile);

@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 // @flow
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,11 @@ import ERROR_MESSAGE from '../../../constants/errorMsg';
 import IMAGES from '../../../themes/images';
 import ROUTERS from 'constants/router';
 
-const LoginForm = () => {
+type Props = {
+  handleGetIsShowModal?: Function,
+};
+
+const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
   const [isShowLoading, setIsShowLoading] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
@@ -35,6 +39,7 @@ const LoginForm = () => {
   // handle show modal form login
   const handleShowModal = () => {
     setIsShowModal(!isShowModal);
+    handleGetIsShowModal(true);
   };
   // handle show modal  Info user
   const handleShowModalInfo = () => {
@@ -60,7 +65,7 @@ const LoginForm = () => {
   return (
     <div className="from-login">
       <div className="user-info">
-        {nickName ? (
+        {!nickName ? (
           <button onClick={handleShowModalInfo} className="btn-outline btn-dk">
             <img src={IMAGES.iconUp} alt="" className="ico-up" /> {nickName}
           </button>
@@ -71,7 +76,24 @@ const LoginForm = () => {
         )}
       </div>
       {/* Show modal form login */}
+
       <div className={`form-content ${isShowModal ? 'd-block' : 'd-none'}`}>
+        <div
+          className="icon-close"
+          onClick={() => {
+            handleGetIsShowModal(false);
+            setIsShowModal(false);
+          }}
+          tabIndex={0}
+          role="menuitem"
+          onKeyPress={() => {}}
+        >
+          <img src={IMAGES.icon_close2} alt="" />
+        </div>
+        <div className="logo-login">
+          <img src={IMAGES.logo_blue2} alt="" />
+          <h3 className="text-login-mobile">ĐĂNG NHẬP</h3>
+        </div>
         <div className="form-group">
           <Input
             placeholder="Tên đăng nhập"
@@ -128,4 +150,7 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+LoginForm.defaultProps = {
+  handleGetIsShowModal: () => {},
+};
+export default memo<Props>(LoginForm);
