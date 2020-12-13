@@ -94,17 +94,26 @@
   height: 100vh;
   @include transition(0.4s all);
   background-color: rgba($color-black, 0.4);
+
   &.open {
-  opacity: 1;
-  visibility: visible;
-  left: 0;
-}
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+  }
 }
 
+.form-content {
+
+  .icon-close,
+  .text-login-mobile,
+  .logo-login {
+    display: none;
+  }
+}
 
 .menu-mobile {
-  opacity: 0;
-  visibility: hidden;
+  overflow: visible;
+  opacity: 1;
   position: fixed;
   z-index: 9999999;
   top: 0;
@@ -157,6 +166,7 @@
 
   .from-login {
     margin-top: 10%;
+    right: 0;
 
     @media screen and(max-width:600px) {
       position: absolute;
@@ -237,6 +247,102 @@
 }
 
 @include breakpoint(sm992) {
+  .login-open {
+    display: block;
+    overflow: visible;
+    opacity: 1;
+
+    &::after {
+      content: "";
+      background-color: rgba($color-black, 0.4);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+    }
+
+    .icon-close,
+    .text-login-mobile,
+    .logo-login {
+      display: block;
+    }
+
+    .icon-close {
+      width: pxToVW(30);
+      height: pxToVW(30);
+      position: absolute;
+      top: pxToVW(-10);
+      right: pxToVW(-10);
+      z-index: 99;
+    }
+
+    .text-login-mobile {
+      margin-top: pxToVW(10);
+      font-size: pxToVW(30);
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.23;
+      letter-spacing: pxToVW(-0.6);
+      text-align: center;
+      color: $bg-main;
+      margin-bottom: pxToVW(20);
+    }
+
+    .logo-login {
+      text-align: center;
+
+      img {
+        margin: auto;
+        width: pxToVW(160);
+        height: pxToVW(155);
+      }
+    }
+
+    .from-login {
+      .form-content {
+        border-radius: pxToVW(20);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        @include transform-translate(-50%, -50%);
+        width: calc(100% - #{pxToVW(60)});
+        padding: pxToVW(34);
+        z-index: 999;
+
+        &.d-none {
+          display: none !important;
+        }
+
+        &.d-block {
+          display: block !important;
+        }
+
+        .input__error-msg {
+          font-size: pxToVW(15);
+        }
+
+        .input__box {
+          input {
+            height: pxToVW(44);
+          }
+        }
+
+        .btn-wrap {
+          margin-top: pxToVW(20);
+
+          button {
+            min-width: pxToVW(150);
+            height: pxToVW(40);
+            font-size: pxToVW(15);
+            border-radius: pxToVW(10);
+          }
+        }
+      }
+    }
+  }
+
   .icon-menu {
     display: block !important;
   }

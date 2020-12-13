@@ -277,7 +277,7 @@
 
     .input__box,
     .css-2b097c-container {
-      height: pxToVW(32);
+      height: pxToVW(40);
     }
 
     &:after {
@@ -287,7 +287,7 @@
     }
 
     .css-g1d714-ValueContainer {
-      height: pxToVW(32);
+      height: pxToVW(40);
 
       &:focus {
         border: pxToVW(1) solid $bg-main;
@@ -313,7 +313,7 @@
 
       >div {
         border: pxToVW(1) solid $color-border;
-        height: pxToVW(32);
+        height: pxToVW(42);
         font-size: pxToVW(15);
         padding: pxToVW(5);
         letter-spacing: pxToVW(-0.25);
@@ -349,5 +349,4 @@
       }
     }
   }
-
 }

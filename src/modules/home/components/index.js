@@ -21,6 +21,7 @@ import ItemClient from './ItemClient';
 import ItemConsultancy from './ItemConsultancy';
 import FormSearchMain from '../../../commons/components/Form/FormSearchMain';
 import FormContactUs from '../../../commons/components/Form/FormContactUs';
+import FormContactUsMobile from '../../../commons/components/Form/FormContacUsMobile';
 import {
   listSlideHome,
   listClientHome,
@@ -272,11 +273,21 @@ const HomeMain = ({ history, isLoading }: Props) => {
         )}
       </div>
       {/* Modal form contact Us */}
-      <FormContactUs
-        handleSubmitForm={handleSubmitForm}
-        isOpenModalClient={isOpenModalClient}
-        handleCloseModal={handleCloseModal}
-      />
+      <div className="FormContactUs">
+        <FormContactUs
+          handleSubmitForm={handleSubmitForm}
+          isOpenModalClient={isOpenModalClient}
+          handleCloseModal={handleCloseModal}
+        />
+      </div>
+      {/* Modal form contact Us on Mobile*/}
+      <div className="FormContactUsMobile">
+        <FormContactUsMobile
+          handleSubmitForm={handleSubmitForm}
+          isOpenModalClient={isOpenModalClient}
+          handleCloseModal={handleCloseModal}
+        />
+      </div>
       {/* Modal success */}
       <ModalPopup
         isOpen={openSuccessClient.isShow}

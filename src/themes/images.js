@@ -18,6 +18,8 @@ const images = {
   img_product: require('../assets/imgs/product.jpg'),
   img_Search: require('../assets/imgs/icon-filter.png'),
   logo_blue: require('../assets/imgs/logo-blue.png'),
+  logo_blue2: require('../assets/imgs/logo-blue2.png'),
+  icon_close2: require('../assets/imgs/icon-close.png'),
 };
 
 export default images;
