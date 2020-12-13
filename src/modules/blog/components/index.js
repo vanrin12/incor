@@ -3,15 +3,16 @@
 import React, { memo, useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
+import { getListBlog } from 'modules/blog/redux';
 import MainLayout from '../../../commons/components/MainLayout';
 import IMAGES from '../../../themes/images';
 import ItemClientManager from './ItemClient';
 import Loading from '../../../commons/components/Loading';
-import { getListBlog } from 'modules/blog/redux';
 
 type Props = {
   history: {
     push: Function,
+    location: Object,
   },
 };
 

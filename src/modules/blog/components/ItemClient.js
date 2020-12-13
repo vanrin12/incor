@@ -7,6 +7,7 @@ import IMAGES from '../../../themes/images';
 type Props = {
   history: {
     push: Function,
+    location: Object,
   },
   itemObj: Object,
 };
@@ -29,8 +30,7 @@ const ItemClientManager = ({ history, itemObj }: Props) => {
           className="title"
           onClick={() => history.push(`${ROUTERS.PAGE_BLOG}/${itemObj?.id}`)}
           onKeyDown={() => {}}
-          role="button"
-          tabIndex={0}
+          role="presentation"
         >
           {itemObj?.title}
         </h3>
