@@ -1,8 +1,8 @@
 const ROUTERS = {
   MAIN_PAGE: `/`,
   PAGE_CONSTRUCTION: `/project-construction`,
-  PAGE_CLIENT: `/client`,
-  PAGE_CLIENT_DETAIL: `/client/:id`,
+  PAGE_BLOG: `/blog`,
+  PAGE_BLOG_DETAIL: `/blog/:id`,
   PAGE_ABOUT_US: `/about`,
   PAGE_SERVICE: `/service`,
   PAGE_COOPERATION: `/cooperation`,

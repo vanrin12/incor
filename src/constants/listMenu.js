@@ -16,8 +16,8 @@ const LIST_MENU = [
   {
     id: 3,
     label: 'KHÁCH HÀNG',
-    to: ROUTERS.PAGE_CLIENT,
-    name: 'client',
+    to: ROUTERS.PAGE_BLOG,
+    name: 'blog',
   },
   {
     id: 5,

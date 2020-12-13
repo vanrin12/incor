@@ -20,6 +20,8 @@ const images = {
   logo_blue: require('../assets/imgs/logo-blue.png'),
   logo_blue2: require('../assets/imgs/logo-blue2.png'),
   icon_close2: require('../assets/imgs/icon-close.png'),
+  iconLoading: require('../assets/imgs/loading.gif'),
+  imgNotFound: require('../assets/imgs/image-not-found.jpg'),
 };
 
 export default images;
