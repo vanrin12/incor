@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 // @flow
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -9,38 +10,70 @@ import Button from '../../../commons/components/Button';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import IMAGES from '../../../themes/images';
 import ROUTERS from 'constants/router';
+import { signInRequest, resetSingIn, logout } from 'modules/accounts/redux';
+import { API } from 'apis';
 
 type Props = {
   handleGetIsShowModal?: Function,
 };
 
 const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
-  const [isShowLoading, setIsShowLoading] = useState(false);
+  const dispatch = useDispatch();
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
+  const [errorMess, setErrorMess] = useState('');
+  const { type, userInfo, errorMsg, token, isProcessingLogin } = useSelector(
+    (state) => state.account
+  );
+
+  useEffect(() => {
+    dispatch(resetSingIn());
+    setErrorMess('');
+    // eslint-disable-next-line
+  }, []);
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formik = useFormik({
     initialValues: {
-      userName: '',
+      name: '',
       password: '',
     },
     validationSchema: Yup.object().shape({
-      userName: Yup.string().required(ERROR_MESSAGE.NICK_NAME_REQUIRED),
+      name: Yup.string().required(ERROR_MESSAGE.NICK_NAME_REQUIRED),
       password: Yup.string().required(ERROR_MESSAGE.PASSWORD_REQUIRED),
     }),
 
     onSubmit: (values) => {
-      setIsShowLoading(true);
-      console.log(values, 'dddddddddddd');
+      dispatch(signInRequest(values));
     },
 
     validateOnChange: false,
   });
+  /** Show popup sign in success */
+  useEffect(() => {
+    switch (type) {
+      case 'accounts/signInRequestSuccess':
+        API.setHeader('Authorization', `${token}`);
+        setIsShowModal(false);
+        setErrorMess('');
+        break;
+      case 'accounts/signInRequestFailed':
+        setErrorMess(errorMsg);
+        break;
+      default:
+        break;
+    }
+    // eslint-disable-next-line
+  }, [type, errorMsg, userInfo]);
   // handle show modal form login
   const handleShowModal = () => {
     setIsShowModal(!isShowModal);
     handleGetIsShowModal(true);
+    setErrorMess('');
+    formik.setFieldValue('name', '');
+    formik.setFieldValue('password', '');
   };
+
   // handle show modal  Info user
   const handleShowModalInfo = () => {
     setIsShowModalInfo(!isShowModalInfo);
@@ -58,14 +91,16 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
   // handle logout
   const handleLogout = () => {
     console.log('Logout');
+    dispatch(logout());
   };
-  const nickName = 'NGUYỄN ĐÌNH PHƯƠNG';
-  const { userName, password } = formik.values;
+
+  const nickName = userInfo?.name;
+  const { name, password } = formik.values;
 
   return (
     <div className="from-login">
       <div className="user-info">
-        {!nickName ? (
+        {nickName ? (
           <button onClick={handleShowModalInfo} className="btn-outline btn-dk">
             <img src={IMAGES.iconUp} alt="" className="ico-up" /> {nickName}
           </button>
@@ -98,11 +133,11 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
           <Input
             placeholder="Tên đăng nhập"
             label="Tên đăng nhập"
-            name="userName"
+            name="name"
             onKeyPress={(e) => handleKeyDown(e)}
-            value={userName}
+            value={name}
             onChange={formik.handleChange}
-            errorMsg={formik?.errors?.userName}
+            errorMsg={formik?.errors?.name}
           />
         </div>
         <div className="form-group">
@@ -116,8 +151,13 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
             errorMsg={formik?.errors?.password}
           />
         </div>
+        {errorMess && (
+          <div className="form-group">
+            <p className="input__error-msg">{errorMess}</p>
+          </div>
+        )}
         <div className="form-group mb-0 text-center btn-summit">
-          <Button onClick={handleSubmit} isShowLoading={isShowLoading}>
+          <Button onClick={handleSubmit} isShowLoading={isProcessingLogin}>
             ĐĂNG NHẬP
           </Button>
         </div>
@@ -150,7 +190,4 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
   );
 };
 
-LoginForm.defaultProps = {
-  handleGetIsShowModal: () => {},
-};
 export default memo<Props>(LoginForm);

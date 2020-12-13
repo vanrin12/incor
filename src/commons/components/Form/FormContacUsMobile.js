@@ -61,11 +61,9 @@ const FormContactUsMobile = ({
         .required(ERROR_MESSAGE.PHONE)
         .matches(REGEX.PHONE, { message: ERROR_MESSAGE.PHONE_FORMAT }),
     }),
-
     onSubmit: (values) => {
       handleSubmitForm(values);
     },
-
     validateOnChange: false,
   });
 

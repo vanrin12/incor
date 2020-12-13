@@ -27,6 +27,10 @@ button.btn-outline {
   color: $white;
   background-color: transparent;
   white-space: nowrap;
+
+  &.btn-dk {
+    text-transform: uppercase;
+  }
 }
 
 .from-login {

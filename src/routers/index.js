@@ -2,14 +2,11 @@
 
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-
-// import { createBrowserHistory } from 'history';
+import { useSelector } from 'react-redux';
 
 import ROUTERS from 'constants/router';
 
-// import { API } from '../apis';
-// import PrivateRoute from './PrivateRoute';
+import { API } from '../apis';
 
 const HomeMain = lazy(() => import('modules/home/components'));
 
@@ -36,13 +33,11 @@ const PageSearch = lazy(() => import('modules/searchPage/components'));
 const PagePartner = lazy(() => import('modules/partner/components'));
 
 const Router = () => {
-  // const history = createBrowserHistory();
-  // const token = useSelector((state) => state.account.token);
+  const token = useSelector((state) => state.account.token);
   // const isAuthenticated = token !== '';
-
-  // if (token) {
-  //   API.setHeader('Authorization', `Bearer ${token}`);
-  // }
+  if (token) {
+    API.setHeader('Authorization', `Bearer ${token}`);
+  }
 
   return (
     <BrowserRouter>
