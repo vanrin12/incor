@@ -22,7 +22,7 @@ const ClientDetailManager = ({ history }: Props) => {
     listRecentClient &&
     listRecentClient.map((item) => (
       <li key={item.id}>
-        <Link to={`${ROUTERS.PAGE_CLIENT}/${item.id}`} title={item.title}>
+        <Link to={`${ROUTERS.PAGE_BLOG}/${item.id}`} title={item.title}>
           {item.title}
         </Link>
       </li>
@@ -46,7 +46,7 @@ const ClientDetailManager = ({ history }: Props) => {
               </li>
               <li className="line"> / </li>
               <li>
-                <Link to={ROUTERS.PAGE_CLIENT} title="Trang chủ">
+                <Link to={ROUTERS.PAGE_BLOG} title="Trang chủ">
                   Khách hàng
                 </Link>
               </li>
@@ -76,15 +76,13 @@ const ClientDetailManager = ({ history }: Props) => {
                   <h3>CHUYÊN MỤC KHÁC</h3>
                   <ul>
                     <li>
-                      <Link to={ROUTERS.PAGE_CLIENT}>TƯ VẤN XÂY DỰNG</Link>
+                      <Link to={ROUTERS.PAGE_BLOG}>TƯ VẤN XÂY DỰNG</Link>
                     </li>
                     <li>
-                      <Link to={ROUTERS.PAGE_CLIENT}>KHÁCH HÀNG</Link>
+                      <Link to={ROUTERS.PAGE_BLOG}>KHÁCH HÀNG</Link>
                     </li>
                     <li>
-                      <Link to={ROUTERS.PAGE_CLIENT}>
-                        CHƯƠNG TRÌNH KHUYẾN MÃI
-                      </Link>
+                      <Link to={ROUTERS.BLOG}>CHƯƠNG TRÌNH KHUYẾN MÃI</Link>
                     </li>
                     <li>
                       <Link to={ROUTERS.PAGE_RECRUITMENT}>TUYỂN DỤNG</Link>

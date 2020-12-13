@@ -14,10 +14,8 @@ const ConstructionManager = lazy(() =>
   import('modules/construction/components')
 );
 
-const ClientManager = lazy(() => import('modules/clientManager/components'));
-const ClientDetailManager = lazy(() =>
-  import('modules/clientManager/components/detail')
-);
+const blogManager = lazy(() => import('modules/blog/components'));
+const BlogDetail = lazy(() => import('modules/blog/components/detail'));
 const AboutUs = lazy(() => import('modules/aboutUs/components'));
 
 const ContactUs = lazy(() => import('modules/contactUs/components'));
@@ -49,12 +47,8 @@ const Router = () => {
             path={ROUTERS.PAGE_CONSTRUCTION}
             component={ConstructionManager}
           />
-          <Route exact path={ROUTERS.PAGE_CLIENT} component={ClientManager} />
-          <Route
-            exact
-            path={ROUTERS.PAGE_CLIENT_DETAIL}
-            component={ClientDetailManager}
-          />
+          <Route exact path={ROUTERS.PAGE_BLOG} component={blogManager} />
+          <Route exact path={ROUTERS.PAGE_BLOG_DETAIL} component={BlogDetail} />
           <Route exact path={ROUTERS.PAGE_ABOUT_US} component={AboutUs} />
           <Route exact path={ROUTERS.CONTACT_US} component={ContactUs} />
           <Route

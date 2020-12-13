@@ -19,7 +19,7 @@ const ItemClientManager = ({ history, itemObj }: Props) => {
         style={{
           backgroundImage: `url(${itemObj?.image})`,
         }}
-        onClick={() => history.push(`${ROUTERS.PAGE_CLIENT}/${itemObj?.id}`)}
+        onClick={() => history.push(`${ROUTERS.PAGE_BLOG}/${itemObj?.id}`)}
         onKeyDown={() => {}}
         role="button"
         tabIndex={0}
@@ -27,7 +27,7 @@ const ItemClientManager = ({ history, itemObj }: Props) => {
       <div className="item-content">
         <h3
           className="title"
-          onClick={() => history.push(`${ROUTERS.PAGE_CLIENT}/${itemObj?.id}`)}
+          onClick={() => history.push(`${ROUTERS.PAGE_BLOG}/${itemObj?.id}`)}
           onKeyDown={() => {}}
           role="button"
           tabIndex={0}
@@ -38,7 +38,7 @@ const ItemClientManager = ({ history, itemObj }: Props) => {
         <p className="desc">{itemObj?.desc}</p>
         <div
           className="row-right"
-          onClick={() => history.push(`${ROUTERS.PAGE_CLIENT}/${itemObj?.id}`)}
+          onClick={() => history.push(`${ROUTERS.PAGE_BLOG}/${itemObj?.id}`)}
           onKeyDown={() => {}}
           role="button"
           tabIndex={0}
