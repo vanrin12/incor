@@ -47,7 +47,11 @@ const Router = () => {
             path={ROUTERS.PAGE_CONSTRUCTION}
             component={ConstructionManager}
           />
-          <Route exact path={ROUTERS.PAGE_BLOG} component={blogManager} />
+          <Route
+            exact
+            path={ROUTERS.PAGE_CATEGORY_DETAIL}
+            component={blogManager}
+          />
           <Route exact path={ROUTERS.PAGE_BLOG_DETAIL} component={BlogDetail} />
           <Route exact path={ROUTERS.PAGE_ABOUT_US} component={AboutUs} />
           <Route exact path={ROUTERS.CONTACT_US} component={ContactUs} />

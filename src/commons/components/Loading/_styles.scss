@@ -73,13 +73,14 @@
   height: 100%;
   top: 0;
   left: 0;
+  background-color: rgba($color-black, 0.5);
 
   img {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: pxToRem(80);
-    height: pxToRem(80);
+    width: 80px !important;
+    height: 80px !important;
   }
 }

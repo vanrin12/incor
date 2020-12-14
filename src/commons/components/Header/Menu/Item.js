@@ -18,7 +18,13 @@ const ItemMenu = ({ label, to, location, name }: Props) => {
 
   return (
     <li className={activeClass}>
-      <Link to={to} title={label}>
+      <Link
+        title={label}
+        to={{
+          pathname: to,
+          state: { label },
+        }}
+      >
         {!!label && <>{label}</>}
       </Link>
     </li>

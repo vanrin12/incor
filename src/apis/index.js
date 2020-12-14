@@ -8,6 +8,9 @@ export const ROUTES = {
   API_LOGIN: `auth/login`,
   API_LOGOUT: `auth/logout`,
   API_BLOG: `site/blogs`,
+  API_DETAIL_BLOG: (blogId) => `/site/blogs/${blogId}`,
+  API_GET_CATEGORY_BLOG: `/site/categories`,
+  API_LIST_BLOG_OFF_CATEGORY: (slug) => `/site/categories/${slug}`,
 };
 
 export const API = create({

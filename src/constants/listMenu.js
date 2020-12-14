@@ -16,8 +16,8 @@ const LIST_MENU = [
   {
     id: 3,
     label: 'KHÁCH HÀNG',
-    to: ROUTERS.PAGE_BLOG,
-    name: 'blog',
+    to: `${ROUTERS.PAGE_BLOG}/khach-hang`,
+    name: 'khach-hang',
   },
   {
     id: 5,
@@ -28,8 +28,8 @@ const LIST_MENU = [
   {
     id: 6,
     label: 'TUYỂN DỤNG',
-    to: ROUTERS.PAGE_RECRUITMENT,
-    name: 'recruitment',
+    to: `${ROUTERS.PAGE_BLOG}/tuyen-dung`,
+    name: 'tuyen-dung',
   },
   {
     id: 7,

@@ -3,7 +3,7 @@
 import React, { memo, useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
-import { getListBlog } from 'modules/blog/redux';
+import { getListBlogOffCategory } from 'modules/blog/redux';
 import MainLayout from '../../../commons/components/MainLayout';
 import IMAGES from '../../../themes/images';
 import ItemClientManager from './ItemClient';
@@ -14,39 +14,56 @@ type Props = {
     push: Function,
     location: Object,
   },
+  match: {
+    params: {
+      slug: string,
+    },
+  },
 };
 
-const ClientManager = ({ history }: Props) => {
+const ClientManager = ({ history, match }: Props) => {
+  const { slug } = match?.params;
+  const { label } = history?.location?.state;
   const dispatch = useDispatch();
-  const { listBlogs, isProcessing, totalRow } = useSelector(
-    (state) => state?.blog
-  );
+  const {
+    listBlogOffCategory,
+    isProcessing,
+    totalRow,
+    nameCategory,
+  } = useSelector((state) => state?.blog);
+
   const [paginationIndex, setPaginationIndex] = useState(0);
 
   const handleSelectPagination = (eventKey) => {
     setPaginationIndex(eventKey.selected);
   };
 
-  const handleGetListBlog = useCallback(
+  const handleGetListBlogOffCategory = useCallback(
     (params) => {
-      dispatch(getListBlog(params));
+      dispatch(getListBlogOffCategory(params));
     },
     // eslint-disable-next-line
-    [dispatch, getListBlog]
+    [dispatch, getListBlogOffCategory]
   );
 
   useEffect(() => {
-    handleGetListBlog({
+    handleGetListBlogOffCategory({
+      slug_or_id: slug,
       page: paginationIndex + 1,
       paged: 6,
     });
-  }, [handleGetListBlog, paginationIndex]);
+  }, [handleGetListBlogOffCategory, paginationIndex, slug, nameCategory]);
 
   // Render list item
   const renderListClient =
-    listBlogs && listBlogs.length > 0 ? (
-      listBlogs.map((item) => (
-        <ItemClientManager key={item.id} history={history} itemObj={item} />
+    listBlogOffCategory && listBlogOffCategory.length > 0 ? (
+      listBlogOffCategory.map((item) => (
+        <ItemClientManager
+          key={item.id}
+          history={history}
+          itemObj={item}
+          slug={slug}
+        />
       ))
     ) : (
       <div className="no-data">KHÔNG CÓ BÀI VIẾT NÀO.</div>
@@ -62,7 +79,7 @@ const ClientManager = ({ history }: Props) => {
           }}
         />
         <div className="container">
-          <div className="page-title">KHÁCH HÀNG</div>
+          <div className="page-title">{nameCategory || label}</div>
           {isProcessing ? (
             <Loading />
           ) : (
