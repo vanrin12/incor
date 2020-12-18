@@ -1,39 +1,58 @@
 // @flow
 import React, { memo, useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import REGEX from 'constants/regexs';
 import { isNumberKey, isOnPasteNumber } from 'helpers/validate';
-// import vi from 'date-fns/locale/vi';
 import Input from '../Input';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import SelectDropdown from '../Select';
 import ModalPopup from '../Modal';
 import Button from '../Button';
+import Loading from '../Loading/LoadingSmall';
+import { listTime } from '../../../constants/list';
 import {
-  listSelectCity,
-  listTypeOfSpace,
-  listTime,
-} from '../../../constants/list';
-
-// registerLocale('vi', vi);
+  getListAreas,
+  getListSpaceType,
+  getSpaceDivisionSelecting,
+  formRequest,
+} from '../../../modules/home/redux';
 
 type Props = {
-  handleSubmitForm: Function,
   isOpenModalClient: boolean,
   handleCloseModal: Function,
 };
 
 const FormContactUsMobile = ({
-  handleSubmitForm,
   isOpenModalClient,
   handleCloseModal,
 }: Props) => {
+  const dispatch = useDispatch();
+
   const [listSelectSubType, setListSelectSubType] = useState([]);
   const [dateTime, setDateTime] = useState('');
   const dateTimeRef = useRef('');
   const [pageStep, setPageStep] = useState(1);
+
+  const {
+    dataListAreas,
+    dataListSpaceType,
+    dataListSpaceDivision,
+    isProcessing,
+  } = useSelector((state) => state?.home);
+
+  useEffect(() => {
+    dispatch(getListAreas());
+    dispatch(getListSpaceType());
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    setListSelectSubType(dataListSpaceDivision);
+  }, [dataListSpaceDivision, dataListSpaceDivision.length]);
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formik = useFormik({
     initialValues: {
@@ -62,7 +81,18 @@ const FormContactUsMobile = ({
         .matches(REGEX.PHONE, { message: ERROR_MESSAGE.PHONE_FORMAT }),
     }),
     onSubmit: (values) => {
-      handleSubmitForm(values);
+      const formData = new window.FormData();
+      formData.append('name', values?.nameClient);
+      formData.append('email', values?.email);
+      formData.append('phone', values?.phone);
+      formData.append('area_id', values?.selectCity?.id);
+      formData.append('space_type_id', values?.selectType?.id);
+      formData.append('space_division_id', values?.selectSubType?.id);
+      formData.append('file', values?.file || null);
+      formData.append('time', values?.selectTime?.label);
+      formData.append('date', values?.date || new Date());
+      formData.append('description', values?.note);
+      dispatch(formRequest(formData));
     },
     validateOnChange: false,
   });
@@ -108,15 +138,7 @@ const FormContactUsMobile = ({
       case 'selectType':
         formik.setFieldValue('selectType', option);
         formik.setFieldError('selectType', '');
-        if (option.value === 'khongGiangNhaO') {
-          setListSelectSubType(option.list1);
-        }
-        if (option.value === 'khongGiangKhinhDoanh') {
-          setListSelectSubType(option.list2);
-        }
-        if (option.value === 'khongGiangLamViec') {
-          setListSelectSubType(option.list3);
-        }
+        dispatch(getSpaceDivisionSelecting(option.id));
         formik.setFieldValue('selectSubType', null);
         break;
       case 'selectSubType':
@@ -234,7 +256,7 @@ const FormContactUsMobile = ({
             <p className="input__label">Khu vực</p>
             <SelectDropdown
               name="selectCity"
-              listItem={listSelectCity || []}
+              listItem={dataListAreas || []}
               placeholder="Chọn tỉnh/thành phố"
               onChange={(option) => handleSelectChange(option, 'selectCity')}
               option={selectCity}
@@ -257,7 +279,7 @@ const FormContactUsMobile = ({
             <p className="input__label">Loại hình không gian</p>
             <SelectDropdown
               name="selectType"
-              listItem={listTypeOfSpace || []}
+              listItem={dataListSpaceType || []}
               onChange={(option) => handleSelectChange(option, 'selectType')}
               option={selectType}
               errorMsg={formik?.errors?.selectType}
@@ -361,6 +383,7 @@ const FormContactUsMobile = ({
           <div className="form-group mb-0 btn-group">
             <Button onClick={() => formik.handleSubmit()}>
               YÊU CẦU TƯ VẤN
+              {isProcessing && <Loading />}
             </Button>
           </div>
         </div>

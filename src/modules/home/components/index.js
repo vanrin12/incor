@@ -1,6 +1,7 @@
 // @flow
 
-import React, { memo, useState, useRef } from 'react';
+import React, { memo, useState, useRef, useEffect } from 'react';
+
 import IMAGES from 'themes/images';
 import SwiperCore, {
   Navigation,
@@ -11,6 +12,7 @@ import SwiperCore, {
 } from 'swiper';
 import ReactPlayer from 'react-player';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from 'react-redux';
 import Button from '../../../commons/components/Button';
 import MainLayout from '../../../commons/components/MainLayout';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
@@ -43,6 +45,9 @@ type Props = {
 const HomeMain = ({ history, isLoading }: Props) => {
   const [valueSearch, setValueSearch] = useState('');
   const [isShowVideo, setIsShowVideo] = useState(false);
+
+  const { type } = useSelector((state) => state?.home);
+
   const paramsOptionSlideMain = {
     loop: true,
     slidesPerView: 1,
@@ -111,6 +116,22 @@ const HomeMain = ({ history, isLoading }: Props) => {
   };
   // handle search
   const typingTimeOut = useRef(null);
+
+  useEffect(() => {
+    switch (type) {
+      case 'homes/formRequestSuccess':
+        setIsOpenModalClient(false);
+        setOpenSuccessClient({
+          ...openSuccessClient,
+          isShow: true,
+        });
+        break;
+      default:
+        break;
+    }
+    // eslint-disable-next-line
+  }, [type]);
+
   // onsubmit call api
 
   const handleChangeInput = (value) => {
@@ -127,15 +148,6 @@ const HomeMain = ({ history, isLoading }: Props) => {
     setIsOpenModalClient(false);
   };
 
-  // handleSubmitForm Tu van khach hang
-  const handleSubmitForm = (object) => {
-    console.log(object);
-    setIsOpenModalClient(false);
-    setOpenSuccessClient({
-      ...openSuccessClient,
-      isShow: true,
-    });
-  };
   // render list slide Main top
   const renderListSlideMain =
     listSlideMain.length > 0 &&
@@ -275,15 +287,13 @@ const HomeMain = ({ history, isLoading }: Props) => {
       {/* Modal form contact Us */}
       <div className="FormContactUs">
         <FormContactUs
-          handleSubmitForm={handleSubmitForm}
           isOpenModalClient={isOpenModalClient}
           handleCloseModal={handleCloseModal}
         />
       </div>
-      {/* Modal form contact Us on Mobile*/}
+      {/* Modal form contact Us on Mobile */}
       <div className="FormContactUsMobile">
         <FormContactUsMobile
-          handleSubmitForm={handleSubmitForm}
           isOpenModalClient={isOpenModalClient}
           handleCloseModal={handleCloseModal}
         />

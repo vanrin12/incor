@@ -7,6 +7,14 @@ import getDetailBlog from 'modules/blog/sagas/getDetailBlogSaga';
 import getListCategory from 'modules/blog/sagas/getListCategorySaga';
 import getListBlogOffCategory from 'modules/blog/sagas/getListBlogOffCategorySaga';
 
+/**
+ * Home
+ */
+
+import getListAreasSaga from 'modules/home/sagas/getListAreasSaga';
+import getListSpaceTypeSaga from 'modules/home/sagas/getListSpaceTypeSaga';
+import formRequestSaga from 'modules/home/sagas/formRequestSaga';
+
 export default function* RootSagas() {
   yield all([
     signInSaga(),
@@ -15,5 +23,8 @@ export default function* RootSagas() {
     getDetailBlog(),
     getListCategory(),
     getListBlogOffCategory(),
+    getListAreasSaga(),
+    getListSpaceTypeSaga(),
+    formRequestSaga(),
   ]);
 }
