@@ -145,6 +145,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
             placeholder="Mật khẩu"
             label="Mật khẩu"
             name="password"
+            type="password"
             onKeyPress={(e) => handleKeyDown(e)}
             value={password}
             onChange={formik.handleChange}
