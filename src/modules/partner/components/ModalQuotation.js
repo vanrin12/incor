@@ -12,7 +12,7 @@ type Props = {
   listQuotation: Array<{
     id: number,
   }>,
-  listId: Array<number>,
+  itemQuote: number,
   handleCheckBox: Function,
 };
 
@@ -22,7 +22,7 @@ const ModalQuotation = ({
   handleSubmitModalQuotation,
   listQuotation,
   handleCheckBox,
-  listId,
+  itemQuote,
 }: Props) => {
   const renderListQuotation =
     listQuotation && listQuotation.length > 0 ? (
@@ -31,7 +31,7 @@ const ModalQuotation = ({
           itemObj={item}
           key={item.id}
           handleCheckBox={handleCheckBox}
-          listId={listId}
+          itemQuote={itemQuote}
         />
       ))
     ) : (

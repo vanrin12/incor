@@ -715,7 +715,7 @@
 
         .basic-multi-select {
           .select__menu {
-            margin-top: pxToVW(-1);
+            margin-top: pxToVW(0);
             height: pxToVW(300);
             border-radius: pxToVW(5);
             border: solid pxToVW(1) $bg-main;
@@ -744,8 +744,7 @@
             border: pxToVW(1) solid $bg-main;
             font-size: pxToVW(15);
             font-weight: normal;
-            height: pxToVW(35);
-            // margin-top: -3px;
+            height: pxToVW(40);
 
             .select__multi-value__label {
               font-size: pxToVW(10);
@@ -760,7 +759,7 @@
         button {
           margin-top: 0;
           width: pxToVW(78);
-          height: pxToVW(35);
+          height: pxToVW(40);
           font-size: pxToVW(13);
           padding: 0;
         }

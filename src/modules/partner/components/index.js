@@ -99,7 +99,8 @@ const PagePartner = ({ history }: Props) => {
   const [openModalQuotation, setOpenModalQuotation] = useState(false);
   const [paginationIndex, setPaginationIndex] = useState(0);
   const [listGallery, setListGallery] = useState([]);
-  const [listId, setListId] = useState([]);
+  // const [listId, setListId] = useState([]);
+  const [itemQuote, setItemQuote] = useState(0);
   const handleSelectPagination = (eventKey) => {
     setPaginationIndex(eventKey.selected);
   };
@@ -150,14 +151,18 @@ const PagePartner = ({ history }: Props) => {
     setIsOpenModalGallery(boolean);
   };
 
+  // const handleCheckBox = (qnaId) => {
+  //   let dataSubmit = [];
+  //   if (listId.includes({ ...qnaId }[0])) {
+  //     dataSubmit = listId.filter((items) => items !== { ...qnaId }[0]);
+  //   } else {
+  //     dataSubmit = [...listId, ...qnaId];
+  //   }
+  //   setListId(dataSubmit);
+  // };
+
   const handleCheckBox = (qnaId) => {
-    let dataSubmit = [];
-    if (listId.includes({ ...qnaId }[0])) {
-      dataSubmit = listId.filter((items) => items !== { ...qnaId }[0]);
-    } else {
-      dataSubmit = [...listId, ...qnaId];
-    }
-    setListId(dataSubmit);
+    setItemQuote(qnaId);
   };
 
   const renderItemProduct =
@@ -290,13 +295,13 @@ const PagePartner = ({ history }: Props) => {
         className="quotation"
         onKeyDown={() => {
           setOpenModalQuotation(true);
-          setListId([]);
+          setItemQuote(0);
         }}
         role="button"
         tabIndex={0}
         onClick={() => {
           setOpenModalQuotation(true);
-          setListId([]);
+          setItemQuote(0);
         }}
       >
         BÁO GIÁ
@@ -306,7 +311,7 @@ const PagePartner = ({ history }: Props) => {
         handleCloseModalQuotation={handleCloseModalQuotation}
         handleSubmitModalQuotation={handleSubmitModalQuotation}
         listQuotation={listQuotation}
-        listId={listId}
+        itemQuote={itemQuote}
         handleCheckBox={handleCheckBox}
       />
     </MainLayout>
