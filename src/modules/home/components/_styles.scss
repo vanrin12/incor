@@ -40,6 +40,15 @@
       text-align: center;
       color: $white;
     }
+
+    .form-search {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-wrap {
+      z-index: 0;
+    }
   }
 }
 

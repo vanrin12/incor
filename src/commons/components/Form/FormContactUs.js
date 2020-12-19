@@ -6,18 +6,13 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import REGEX from 'constants/regexs';
 import { isNumberKey, isOnPasteNumber } from 'helpers/validate';
+import { getSpaceDivisionSelecting, formRequest } from 'modules/home/redux';
 import Input from '../Input';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import SelectDropdown from '../Select';
 import ModalPopup from '../Modal';
 import Button from '../Button';
 import Loading from '../Loading/LoadingSmall';
-import {
-  getListAreas,
-  getListSpaceType,
-  getSpaceDivisionSelecting,
-  formRequest,
-} from '../../../modules/home/redux';
 import { listTime } from '../../../constants/list';
 
 type Props = {
@@ -37,12 +32,6 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
     dataListSpaceDivision,
     isProcessing,
   } = useSelector((state) => state?.home);
-
-  useEffect(() => {
-    dispatch(getListAreas());
-    dispatch(getListSpaceType());
-    // eslint-disable-next-line
-  }, []);
 
   useEffect(() => {
     setListSelectSubType(dataListSpaceDivision);
@@ -86,7 +75,7 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
       formData.append('space_division_id', values?.selectSubType?.id);
       formData.append('file', values?.file || null);
       formData.append('time', values?.selectTime?.label);
-      formData.append('date', values?.date || new Date());
+      formData.append('date', dateTime || new Date());
       formData.append('description', values?.note);
       dispatch(formRequest(formData));
     },

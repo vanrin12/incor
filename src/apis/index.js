@@ -15,6 +15,9 @@ export const ROUTES = {
   API_SPACE_DIVISION: `/site/space-division`,
   API_SPACE_TYPE: `/site/space-type`,
   API_CONTACT_FORM: `/site/form-requests`,
+  API_SEARCH: `/site/search`,
+  API_SCALES: `/site/scales`,
+  API_RATING_PROJECT: `/site/evaluates`,
 };
 
 export const API = create({

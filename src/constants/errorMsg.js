@@ -25,6 +25,10 @@ const ERROR_MESSAGE = {
   CATEGORY: 'Chọn hạng mục',
   RATING: 'Vui lòng chọn đánh giá',
   TEXT_RATING: 'Vui lòng nhập nội dung đánh giá',
+  TEXT_RATING_SUCCUSS:
+    'Incor đã nhận được yêu cầu đáng giá của bạn \n cảm ơn bạn',
+  TEXT_RATING_FAILED:
+    ' Đánh giá của bạn đã bị lỗi \n xin vui lòng đánh giá lại. cảm ơn bạn',
 };
 
 export default ERROR_MESSAGE;

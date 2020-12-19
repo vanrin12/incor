@@ -7,7 +7,7 @@ import IMAGES from 'themes/images';
 import ROUTERS from 'constants/router';
 import LoginForm from '../../../modules/accounts/components';
 import Menu from './Menu';
-import useClickOutside from 'customHooks/useClickOutSide';
+import useClickOutside from '../../../customHooks/useClickOutSide';
 
 type Props = {
   location: Object,

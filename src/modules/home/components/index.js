@@ -12,7 +12,7 @@ import SwiperCore, {
 } from 'swiper';
 import ReactPlayer from 'react-player';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../../commons/components/Button';
 import MainLayout from '../../../commons/components/MainLayout';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
@@ -31,6 +31,7 @@ import {
   listSlideMain,
   listAutocompleteSearch,
 } from '../../../mockData/dataSlide';
+import { getSearchProduct, getListAreas, getListSpaceType } from '../redux';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -43,9 +44,9 @@ type Props = {
 };
 
 const HomeMain = ({ history, isLoading }: Props) => {
+  const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
   const [isShowVideo, setIsShowVideo] = useState(false);
-
   const { type } = useSelector((state) => state?.home);
 
   const paramsOptionSlideMain = {
@@ -111,11 +112,15 @@ const HomeMain = ({ history, isLoading }: Props) => {
     label: 'Sản phẩm',
   });
 
+  useEffect(() => {
+    dispatch(getListAreas());
+    dispatch(getListSpaceType());
+    // eslint-disable-next-line
+  }, []);
+
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
   };
-  // handle search
-  const typingTimeOut = useRef(null);
 
   useEffect(() => {
     switch (type) {
@@ -132,8 +137,10 @@ const HomeMain = ({ history, isLoading }: Props) => {
     // eslint-disable-next-line
   }, [type]);
 
-  // onsubmit call api
+  // handle search
+  const typingTimeOut = useRef(null);
 
+  // onsubmit call api
   const handleChangeInput = (value) => {
     setValueSearch(value);
     if (typingTimeOut.current) {
@@ -141,6 +148,13 @@ const HomeMain = ({ history, isLoading }: Props) => {
     }
     typingTimeOut.current = setTimeout(() => {
       // code sau 0.3s thi goi api
+
+      dispatch(
+        getSearchProduct({
+          type: optionSearchDefault?.value,
+          keywords: '',
+        })
+      );
     }, 300);
   };
   // close modal Tu van khach hang

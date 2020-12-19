@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import ROUTERS from 'constants/router';
+import { signInRequest, resetSingIn, logout } from 'modules/accounts/redux';
+import { API } from 'apis';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Input from '../../../commons/components/Input';
 import Button from '../../../commons/components/Button';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import IMAGES from '../../../themes/images';
-import ROUTERS from 'constants/router';
-import { signInRequest, resetSingIn, logout } from 'modules/accounts/redux';
-import { API } from 'apis';
 
 type Props = {
   handleGetIsShowModal?: Function,
@@ -21,6 +22,9 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
   const dispatch = useDispatch();
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
+  const [isIconName, setIsIconName] = useState(false);
+
+  const [isShowType, setIsShowType] = useState(false);
   const [errorMess, setErrorMess] = useState('');
   const { type, userInfo, errorMsg, token, isProcessingLogin } = useSelector(
     (state) => state.account
@@ -88,15 +92,19 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
     }
   };
 
+  // click icon look password
+
+  const handleClickLookPassword = () => {
+    setIsIconName(!isIconName);
+    setIsShowType(!isShowType);
+  };
   // handle logout
   const handleLogout = () => {
-    console.log('Logout');
     dispatch(logout());
   };
 
   const nickName = userInfo?.name;
   const { name, password } = formik.values;
-
   return (
     <div className="from-login">
       <div className="user-info">
@@ -145,11 +153,19 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
             placeholder="Mật khẩu"
             label="Mật khẩu"
             name="password"
-            type="password"
+            type={isShowType ? 'text' : 'password'}
             onKeyPress={(e) => handleKeyDown(e)}
             value={password}
             onChange={formik.handleChange}
             errorMsg={formik?.errors?.password}
+            classIcon="faEyeSlash"
+            icoIcon={
+              password &&
+              password.trim().length > 3 &&
+              (isIconName ? faEye : faEyeSlash)
+            }
+            handleClickIcon={handleClickLookPassword}
+            isShowIcon
           />
         </div>
         {errorMess && (
@@ -165,7 +181,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
       </div>
       {/* Show modal link info */}
       <div
-        className={`modal-info-user ${
+        className={`modal-info-user ${nickName ? 'nickName' : ''} ${
           isShowModalInfo && nickName ? 'd-block' : 'd-none'
         }`}
       >
@@ -189,6 +205,10 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
       </div>
     </div>
   );
+};
+
+LoginForm.defaultProps = {
+  handleGetIsShowModal: () => {},
 };
 
 export default memo<Props>(LoginForm);

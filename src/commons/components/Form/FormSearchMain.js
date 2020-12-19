@@ -1,5 +1,5 @@
 // @flow
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import Input from '../Input';
 import SelectDropdown from '../Select';
@@ -31,6 +31,20 @@ const FormSearchMain = ({
   listAutocompleteSearch,
   isLoading,
 }: Props) => {
+  const [isShowAutoCompte, setIsShowAutoCompte] = useState(false);
+
+  const handleOnFocusInput = () => {
+    setIsShowAutoCompte(true);
+  };
+
+  const handleOnBlurInput = () => {
+    setTimeout(() => {
+      setIsShowAutoCompte(false);
+      handleChangeInput('');
+      clearTimeout();
+    }, 400);
+  };
+
   const renderListAutocompleteSearch =
     listAutocompleteSearch && listAutocompleteSearch.length > 0 ? (
       listAutocompleteSearch.map((item) => (
@@ -46,6 +60,7 @@ const FormSearchMain = ({
     ) : (
       <div className="no-data">KHÔNG CÓ KẾT QUẢ TÌM KIẾM.</div>
     );
+
   return (
     <div className="form-search">
       <div className="form-group mb-0">
@@ -60,10 +75,12 @@ const FormSearchMain = ({
           value={valueSearch}
           onChange={(e) => handleChangeInput(e.target.value)}
           customClass="input-search"
+          onFocus={() => handleOnFocusInput()}
+          onBlur={() => handleOnBlurInput()}
         />
       </div>
       <div className="list-autocomplete-search">
-        {valueSearch && (
+        {valueSearch && isShowAutoCompte && (
           <ul>
             {isLoading ? <Loading /> : <>{renderListAutocompleteSearch}</>}
           </ul>

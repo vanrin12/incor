@@ -4,6 +4,7 @@
 import React, { memo } from 'react';
 import { Modal } from 'react-bootstrap';
 import Button from 'commons/components/Button';
+import Loading from 'commons/components/Loading/LoadingSmall';
 import images from 'themes/images';
 
 type Props = {
@@ -26,6 +27,7 @@ type Props = {
   textBtnRight?: string,
   handleSubmit?: Function,
   isDisabledButton?: boolean,
+  isProcessing?: boolean,
 };
 
 export const ModalPopup = ({
@@ -48,6 +50,7 @@ export const ModalPopup = ({
   handleSubmit = () => {},
   isDisabledButton,
   handleCloseIcon = () => {},
+  isProcessing = false,
 }: Props) => (
   <Modal
     animation={animation}
@@ -86,6 +89,8 @@ export const ModalPopup = ({
             onClick={handleClose}
           >
             {textBtnRight}
+
+            {isProcessing && <Loading />}
           </Button>
         ) : (
           <>
@@ -128,5 +133,6 @@ ModalPopup.defaultProps = {
   handleSubmit: () => {},
   isDisabledButton: false,
   handleCloseIcon: () => {},
+  isProcessing: false,
 };
 export default memo<Props>(ModalPopup);

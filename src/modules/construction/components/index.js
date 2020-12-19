@@ -1,6 +1,8 @@
 /* eslint-disable no-nested-ternary */
 // @flow
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ERROR_MESSAGE from 'constants/errorMsg';
 import MainLayout from '../../../commons/components/MainLayout';
 import TableConstructionManager from './TableConstruction';
 import ModalRating from './ModalRating';
@@ -10,19 +12,52 @@ import {
   listCategory,
   listPartner,
 } from '../../../mockData/listData';
+import { ratingProject, resetTypeRatingProject } from '../redux';
 
 const ConstructionManager = () => {
+  const dispatch = useDispatch();
   const { dataInfo, dataTotal, dataList } = listConstruction;
   const [openModalNumberRating, setOpenModalNumberRating] = useState(true);
   const [isShowModalRating, setIsShowModalRating] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [itemRating, setItemRating] = useState({});
+  const { isProcessing, type } = useSelector((state) => state?.project);
+  const [modalShowMess, setModalShowMess] = useState({
+    isShow: false,
+    content: '',
+  });
+
+  useEffect(() => {
+    switch (type) {
+      case 'project/ratingProjectSuccess':
+        setIsShowModalRating(false);
+        setModalShowMess({
+          ...modalShowMess,
+          isShow: true,
+          content: ERROR_MESSAGE.TEXT_RATING_SUCCUSS,
+        });
+        break;
+      case 'project/ratingProjectFailed':
+        setIsShowModalRating(false);
+        setModalShowMess({
+          ...modalShowMess,
+          isShow: true,
+          content: ERROR_MESSAGE.TEXT_RATING_FAILED,
+        });
+        break;
+      default:
+        break;
+    }
+    // eslint-disable-next-line
+  }, [type]);
 
   const quantityRating =
     dataList && dataList.filter((item) => item.progress > 75);
 
-  const handleShowModalRating = (boolean) => {
+  const handleShowModalRating = (boolean, itemObj) => {
     setIsShowModalRating(boolean);
     setIsShowModal(false);
+    setItemRating(itemObj);
   };
 
   const handleCloseIcon = () => {
@@ -39,9 +74,14 @@ const ConstructionManager = () => {
     setIsShowModal(false);
   };
 
-  const handleSubmitRating = (rating) => {
-    console.log(rating, 'rating');
-    setIsShowModalRating(false);
+  const handleSubmitRating = (item) => {
+    dispatch(
+      ratingProject({
+        company_id: itemRating.id, // TODO UPDATE API
+        rate: parseFloat(item.rating),
+        content: item.note || '',
+      })
+    );
   };
 
   return (
@@ -89,11 +129,11 @@ const ConstructionManager = () => {
         handleSubmitRating={handleSubmitRating}
         isShowModalRating={isShowModalRating}
         handleCloseIcon={handleCloseIcon}
+        isProcessing={isProcessing}
       />
 
-      {/* Modal success */}
+      {/* Modal thông báo số lượng cần đáng giá */}
       <ModalPopup
-        // isOpen
         isOpen={openModalNumberRating}
         isShowFooter
         textBtnRight="ĐÓNG"
@@ -109,6 +149,23 @@ const ConstructionManager = () => {
           } `}</span>
           hạng mục cần đánh giá
         </div>
+      </ModalPopup>
+
+      {/* Modal  hiển thị trạng thái sau khi đáng giá */}
+      <ModalPopup
+        isOpen={modalShowMess.isShow}
+        isShowFooter
+        textBtnRight="ĐÓNG"
+        handleClose={() => {
+          dispatch(resetTypeRatingProject());
+          setModalShowMess({
+            ...modalShowMess,
+            isShow: false,
+          });
+        }}
+      >
+        <h2 className="modal-title">THÔNG BÁO</h2>
+        <div className="text-modal-content">{modalShowMess.content}</div>
       </ModalPopup>
     </MainLayout>
   );

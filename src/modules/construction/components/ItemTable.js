@@ -49,7 +49,7 @@ const ItemTable = ({ itemObj, handleShowModalRating }: Props) => {
           ) : (
             <Button
               isDisabled={itemObj?.progress < 75}
-              onClick={() => handleShowModalRating(true)}
+              onClick={() => handleShowModalRating(true, itemObj)}
             >
               ĐÁNH GIÁ
             </Button>

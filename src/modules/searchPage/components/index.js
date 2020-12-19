@@ -1,13 +1,16 @@
 /* eslint-disable no-nested-ternary */
 // @flow
-import React, { useState, useRef, memo } from 'react';
+import React, { useState, useRef, memo, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
+import { getListAreas } from 'modules/home/redux';
 import MainLayout from '../../../commons/components/MainLayout';
 import FormSearchMulti from '../../../commons/components/Form/FormSearchMulti';
 import FormSearchPage from '../../../commons/components/Form/FormSearchPage';
 import ItemSearch from './ItemSearch';
 import { listDataSearchPage } from '../../../mockData/listData';
 import IMAGES from '../../../themes/images';
+import { getListScales } from '../redux';
 
 type Props = {
   history: {
@@ -16,10 +19,10 @@ type Props = {
 };
 
 const PageSearch = ({ history }: Props) => {
+  const dispatch = useDispatch();
   const totalRows = 50;
   const [valueSearch, setValueSearch] = useState('');
   const [isAddClassSorting, setIsAddClassSorting] = useState(false);
-
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
     value: 'product',
@@ -34,6 +37,14 @@ const PageSearch = ({ history }: Props) => {
   const handleSelectPagination = (eventKey) => {
     setPaginationIndex(eventKey.selected);
   };
+
+  // call app get list scales
+
+  useEffect(() => {
+    dispatch(getListScales());
+    dispatch(getListAreas());
+    // eslint-disable-next-line
+  }, []);
 
   const handleSelectChange = (option, name) => {
     switch (name) {

@@ -14,8 +14,6 @@ import Button from '../Button';
 import Loading from '../Loading/LoadingSmall';
 import { listTime } from '../../../constants/list';
 import {
-  getListAreas,
-  getListSpaceType,
   getSpaceDivisionSelecting,
   formRequest,
 } from '../../../modules/home/redux';
@@ -44,12 +42,6 @@ const FormContactUsMobile = ({
   } = useSelector((state) => state?.home);
 
   useEffect(() => {
-    dispatch(getListAreas());
-    dispatch(getListSpaceType());
-    // eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
     setListSelectSubType(dataListSpaceDivision);
   }, [dataListSpaceDivision, dataListSpaceDivision.length]);
 
@@ -74,29 +66,55 @@ const FormContactUsMobile = ({
         .matches(REGEX.EMAIL, { message: ERROR_MESSAGE.EMAIL_FORMAT }),
       nameClient: Yup.string().required(ERROR_MESSAGE.MANE_CLIENT),
       selectCity: Yup.string().required(ERROR_MESSAGE.REQUIRED_CITY),
-      selectType: Yup.string().required(ERROR_MESSAGE.REQUIRED_TYPE),
-      selectSubType: Yup.string().required(ERROR_MESSAGE.REQUIRED_SUB_TYPE),
       phone: Yup.string()
         .required(ERROR_MESSAGE.PHONE)
         .matches(REGEX.PHONE, { message: ERROR_MESSAGE.PHONE_FORMAT }),
     }),
-    onSubmit: (values) => {
-      const formData = new window.FormData();
-      formData.append('name', values?.nameClient);
-      formData.append('email', values?.email);
-      formData.append('phone', values?.phone);
-      formData.append('area_id', values?.selectCity?.id);
-      formData.append('space_type_id', values?.selectType?.id);
-      formData.append('space_division_id', values?.selectSubType?.id);
-      formData.append('file', values?.file || null);
-      formData.append('time', values?.selectTime?.label);
-      formData.append('date', values?.date || new Date());
-      formData.append('description', values?.note);
-      dispatch(formRequest(formData));
+
+    onSubmit: () => {
+      setPageStep(2);
     },
     validateOnChange: false,
   });
+  const {
+    nameClient,
+    phone,
+    email,
+    fileName,
+    note,
+    selectCity,
+    selectTime,
+    selectType,
+    selectSubType,
+  } = formik.values;
 
+  const handelChecksValidStep2 = () => {
+    if (!selectType) {
+      formik.setFieldError('selectType', ERROR_MESSAGE.REQUIRED_TYPE);
+      return;
+    }
+    if (!selectSubType) {
+      formik.setFieldError('selectSubType', ERROR_MESSAGE.REQUIRED_SUB_TYPE);
+      return;
+    }
+    setPageStep(3);
+  };
+
+  // submit call api request success
+  const handelChecksValidStep3 = () => {
+    const formData = new window.FormData();
+    formData.append('name', nameClient);
+    formData.append('email', email);
+    formData.append('phone', phone);
+    formData.append('area_id', selectCity?.id);
+    formData.append('space_type_id', selectType?.id);
+    formData.append('space_division_id', selectSubType?.id);
+    formData.append('file', formik?.values?.file || null);
+    formData.append('time', selectTime?.label);
+    formData.append('date', dateTime || new Date());
+    formData.append('description', note);
+    dispatch(formRequest(formData));
+  };
   // set value default
 
   useEffect(() => {
@@ -118,7 +136,6 @@ const FormContactUsMobile = ({
       formik.setFieldError('selectType', '');
       formik.setFieldError('selectSubType', '');
       formik.setFieldError('selectTime', '');
-      formik.setFieldError('selectCity', '');
       formik.setFieldError('nameClient', '');
       formik.setFieldError('phone', '');
       formik.setFieldError('email', '');
@@ -186,18 +203,6 @@ const FormContactUsMobile = ({
       formik.setFieldValue('fileName', e.target.files[0].name);
     }
   };
-
-  const {
-    nameClient,
-    phone,
-    email,
-    fileName,
-    note,
-    selectCity,
-    selectTime,
-    selectType,
-    selectSubType,
-  } = formik.values;
 
   return (
     <ModalPopup
@@ -267,7 +272,7 @@ const FormContactUsMobile = ({
           <div className="form-group mb-0 btn-group">
             <Button
               onClick={() => {
-                setPageStep(2);
+                formik.handleSubmit();
               }}
             >
               TIẾP THEO
@@ -359,13 +364,7 @@ const FormContactUsMobile = ({
             </div>
           </div>
           <div className="form-group mb-0 btn-group">
-            <Button
-              onClick={() => {
-                setPageStep(3);
-              }}
-            >
-              TIẾP THEO
-            </Button>
+            <Button onClick={() => handelChecksValidStep2()}>TIẾP THEO</Button>
           </div>
         </div>
         <div className={`group-3 ${pageStep === 3 ? 'd-block' : 'd-none'}`}>
@@ -381,7 +380,7 @@ const FormContactUsMobile = ({
             />
           </div>
           <div className="form-group mb-0 btn-group">
-            <Button onClick={() => formik.handleSubmit()}>
+            <Button onClick={() => handelChecksValidStep3()}>
               YÊU CẦU TƯ VẤN
               {isProcessing && <Loading />}
             </Button>

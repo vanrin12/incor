@@ -6,6 +6,8 @@ const initialState = {
   dataListAreas: [],
   dataListSpaceType: [],
   dataListSpaceDivision: [],
+  listDataProductCompany: [],
+  totalPage: 0,
 };
 
 const homeSlice = createSlice({
@@ -73,6 +75,22 @@ const homeSlice = createSlice({
       state.type = action.type;
       state.isProcessing = false;
     },
+    getSearchProduct: (state, action) => {
+      state.type = action.type;
+      state.isProcessingSearch = true;
+    },
+    getSearchProductSuccess: (state, action) => {
+      const { product } = action.data;
+      console.log('ssssssssssssss', product);
+      state.type = action.type;
+      state.isProcessingSearch = false;
+      state.listDataProductCompany = [];
+      state.totalPage = 0;
+    },
+    getSearchProductFailed: (state, action) => {
+      state.type = action.type;
+      state.isProcessingSearch = false;
+    },
   },
 });
 
@@ -89,6 +107,9 @@ export const {
   formRequest,
   formRequestSuccess,
   formRequestFailed,
+  getSearchProduct,
+  getSearchProductSuccess,
+  getSearchProductFailed,
 } = actions;
 
 export default reducer;

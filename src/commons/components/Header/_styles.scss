@@ -208,7 +208,7 @@
   }
 
   .modal-info-user {
-    display: block !important;
+    display: block;
     position: relative;
     top: auto;
     height: auto;
@@ -247,6 +247,10 @@
 }
 
 @include breakpoint(sm992) {
+  .modal-info-user.nickName {
+    display: block !important;
+  }
+
   .login-open {
     display: block;
     overflow: visible;
