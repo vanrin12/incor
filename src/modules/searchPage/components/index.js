@@ -124,7 +124,7 @@ const PageSearch = ({ history }: Props) => {
               return item.label;
             })) ||
           [];
-        setValueSearch([...valueSearch, names.toString()]);
+        setValueSearch([names.toString()]);
         break;
       case 'selectMain':
         setOptionSearchDefault(option);
