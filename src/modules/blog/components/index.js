@@ -23,7 +23,7 @@ type Props = {
 
 const ClientManager = ({ history, match }: Props) => {
   const { slug } = match?.params;
-  const { label } = history?.location?.state;
+  const label = history?.location?.state?.label || '';
   const dispatch = useDispatch();
   const {
     listBlogOffCategory,

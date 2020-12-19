@@ -14,7 +14,8 @@
     ul {
       padding: pxToRem(30) 0;
       margin-top: pxToRem(-2);
-      height: pxToRem(400);
+      min-height: pxToRem(100);
+      max-height: pxToRem(400);
       background-color: $white;
       margin: 0;
       border-radius: pxToRem(15);
@@ -222,7 +223,7 @@
       .basic-multi-select {
         .select__menu {
           margin-top: pxToRem(-2);
-          height: pxToRem(400);
+          height: pxToRem(420);
           margin: 0;
           border-radius: pxToRem(15);
           border: solid pxToRem(2) $bg-main;

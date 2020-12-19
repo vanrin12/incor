@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { ROUTES, API } from 'apis';
 
 // worker Saga: will be fired on GET_EVENT_DETAIL actions
-function* getSearchProduct(action) {
+function* getSearchProductFormSearch(action) {
   try {
     const response = yield call(() =>
       API.get(ROUTES.API_SEARCH, action?.payload)
@@ -11,9 +11,9 @@ function* getSearchProduct(action) {
     if (response.ok) {
       const { data } = response?.data;
 
-      // In case: getSearchProduct request success
+      // In case: getSearchProductFormSearch request success
       yield put({
-        type: 'homes/getSearchProductSuccess',
+        type: 'homes/getSearchProductFormSearchSuccess',
         data: {
           listProject: data,
           params: action?.payload,
@@ -21,23 +21,26 @@ function* getSearchProduct(action) {
       });
     } else {
       const { msg } = response?.data;
-      // In case: getSearchProduct request failed
+      // In case: getSearchProductFormSearch request failed
       yield put({
-        type: 'homes/getSearchProductFailed',
+        type: 'homes/getSearchProductFormSearchFailed',
         errorMsg: msg.message,
       });
     }
   } catch (error) {
     // in case: server error
-    yield put({ type: 'homes/getSearchProductFailed' });
+    yield put({ type: 'homes/getSearchProductFormSearchFailed' });
   }
 }
 
 /*
-  Starts signup Account on each dispatched `getSearchProduct` action.
+  Starts signup Account on each dispatched `getSearchProductFormSearch` action.
 */
-function* getSearchProductSaga() {
-  yield takeLatest('homes/getSearchProduct', getSearchProduct);
+function* getSearchProductFormSearchSaga() {
+  yield takeLatest(
+    'homes/getSearchProductFormSearch',
+    getSearchProductFormSearch
+  );
 }
 
-export default getSearchProductSaga;
+export default getSearchProductFormSearchSaga;

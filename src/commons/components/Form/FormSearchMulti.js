@@ -1,21 +1,31 @@
 // @flow
 import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import SelectDropdown from '../Select';
 import Button from '../Button';
-import { listSelectSearch, listSelectCity } from '../../../constants/list';
+import { listSelectSearch } from '../../../constants/list';
 
 type Props = {
   handleSelectChange: Function,
   optionSelect: Object,
   handelSubmitSearch: Function,
+  valueSearch: any,
 };
 
 const FormSearch = ({
   handleSelectChange,
   optionSelect,
   handelSubmitSearch,
+  valueSearch,
 }: Props) => {
+  const defaultOption = {
+    id: 0,
+    value: valueSearch,
+    label: valueSearch,
+  };
+  const { listDataProductFormSearch } = useSelector((state) => state?.home);
+
   return (
     <div className="form-search d-flex form2 align-items-center">
       <div className="form-group mb-0">
@@ -28,11 +38,13 @@ const FormSearch = ({
         <Select
           isMulti
           // menuIsOpen
+          defaultValue={[defaultOption]}
           name="colors"
           placeholder="Nhập nội dung cần tìm"
-          options={listSelectCity}
+          options={listDataProductFormSearch || []}
           className="basic-multi-select"
           classNamePrefix="select"
+          onChange={(option) => handleSelectChange(option, 'multiSelect')}
         />
         <div>
           <Button onClick={() => handelSubmitSearch()}>TÌM KIẾM</Button>

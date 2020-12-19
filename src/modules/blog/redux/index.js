@@ -20,12 +20,13 @@ const blogSlice = createSlice({
     getListBlog: (state, action) => {
       state.type = action.type;
       state.isProcessing = true;
+      state.totalRow = 0;
     },
     getListBlogSuccess: (state, action) => {
       const { posts } = action?.data;
       state.type = action.type;
       state.isProcessing = false;
-      state.totalRow = posts?.to;
+      state.totalRow = posts?.total;
       state.listBlogs =
         posts &&
         posts?.data &&
@@ -42,7 +43,6 @@ const blogSlice = createSlice({
     getListBlogFailed: (state, action) => {
       state.type = action.type;
       state.isProcessing = false;
-      state.totalRow = 0;
     },
     getDetailBlog: (state, action) => {
       state.type = action.type;
@@ -76,12 +76,14 @@ const blogSlice = createSlice({
     getListCategory: (state, action) => {
       state.type = action.type;
       state.isProcessingCategory = true;
+      state.totalRow = 0;
     },
     getListCategorySuccess: (state, action) => {
       const { data } = action?.data?.categories;
       state.type = action.type;
       state.isProcessingCategory = false;
       state.listBlogCategories = data || [];
+      state.totalRow = data?.total;
     },
     getListCategoryFailed: (state, action) => {
       state.type = action.type;
@@ -90,6 +92,7 @@ const blogSlice = createSlice({
     getListBlogOffCategory: (state, action) => {
       state.type = action.type;
       state.isProcessing = true;
+      state.totalRow = 0;
     },
     getListBlogOffCategorySuccess: (state, action) => {
       state.type = action.type;
@@ -97,7 +100,7 @@ const blogSlice = createSlice({
       const { category } = action?.data;
       state.type = action.type;
       state.isProcessing = false;
-      state.totalRow = category?.posts?.to;
+      state.totalRow = category?.posts?.total;
       state.nameCategory = category?.name || '';
       state.listBlogOffCategory =
         category &&

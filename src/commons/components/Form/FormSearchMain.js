@@ -1,9 +1,8 @@
 // @flow
 import React, { memo, useState } from 'react';
-// import { Link } from 'react-router-dom';
 import Input from '../Input';
 import SelectDropdown from '../Select';
-import Loading from '../Loading';
+import Loading from '../Loading/LoadingSmall';
 import { listSelectSearch } from '../../../constants/list';
 import ROUTERS from '../../../constants/router';
 
@@ -15,6 +14,7 @@ type Props = {
   listAutocompleteSearch: Array<{
     id: number,
     name: string,
+    label: string,
   }>,
   history: {
     push: Function,
@@ -35,12 +35,12 @@ const FormSearchMain = ({
 
   const handleOnFocusInput = () => {
     setIsShowAutoCompte(true);
+    handleChangeInput(valueSearch);
   };
 
   const handleOnBlurInput = () => {
     setTimeout(() => {
       setIsShowAutoCompte(false);
-      handleChangeInput('');
       clearTimeout();
     }, 400);
   };
@@ -50,11 +50,21 @@ const FormSearchMain = ({
       listAutocompleteSearch.map((item) => (
         <li
           key={item.id}
-          onClick={() => history.push(`${ROUTERS.PAGE_SEARCH}/${item.name}`)}
-          onKeyDown={() => history.push(`${ROUTERS.PAGE_SEARCH}/${item.name}`)}
+          onClick={() =>
+            history.push({
+              pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
+              state: { keySearch: valueSearch },
+            })
+          }
+          onKeyDown={() =>
+            history.push({
+              pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
+              state: { keySearch: valueSearch },
+            })
+          }
           role="presentation"
         >
-          {item.name}
+          {item.label}
         </li>
       ))
     ) : (
@@ -80,7 +90,7 @@ const FormSearchMain = ({
         />
       </div>
       <div className="list-autocomplete-search">
-        {valueSearch && isShowAutoCompte && (
+        {isShowAutoCompte && (
           <ul>
             {isLoading ? <Loading /> : <>{renderListAutocompleteSearch}</>}
           </ul>

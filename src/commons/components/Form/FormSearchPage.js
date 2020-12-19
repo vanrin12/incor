@@ -9,7 +9,8 @@ type Props = {
   handleSelectChange: Function,
   selectCity: Object,
   selectScale: Object,
-  rating: number,
+  rating: any,
+  handleSortingProduct: Function,
 };
 
 const FormSearchPage = ({
@@ -17,6 +18,7 @@ const FormSearchPage = ({
   selectCity,
   selectScale,
   rating,
+  handleSortingProduct,
 }: Props) => {
   const { dataListScales } = useSelector((state) => state?.search);
   const { dataListAreas } = useSelector((state) => state?.home);
@@ -90,7 +92,7 @@ const FormSearchPage = ({
         >
           <Rating numberStar={1} />
         </div>
-        <Button onClick={() => {}}>LỌC KẾT QUẢ</Button>
+        <Button onClick={() => handleSortingProduct()}>LỌC KẾT QUẢ</Button>
       </div>
     </div>
   );

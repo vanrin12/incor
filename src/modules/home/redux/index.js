@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import IMAGES from 'themes/images';
 
 const initialState = {
   isProcessing: false,
@@ -7,7 +8,8 @@ const initialState = {
   dataListSpaceType: [],
   dataListSpaceDivision: [],
   listDataProductCompany: [],
-  totalPage: 0,
+  listDataProductFormSearch: [],
+  totalRows: 0,
 };
 
 const homeSlice = createSlice({
@@ -78,18 +80,52 @@ const homeSlice = createSlice({
     getSearchProduct: (state, action) => {
       state.type = action.type;
       state.isProcessingSearch = true;
+      state.totalRows = 0;
     },
     getSearchProductSuccess: (state, action) => {
-      const { product } = action.data;
-      console.log('ssssssssssssss', product);
+      const { listProject, params } = action?.data;
+      const { product } = listProject;
+      const { type } = params;
       state.type = action.type;
       state.isProcessingSearch = false;
-      state.listDataProductCompany = [];
-      state.totalPage = 0;
+      state.listDataProductCompany = product?.data?.map((item) => {
+        return {
+          areaName: item.area_name,
+          rating: item.avg,
+          companyId: item.company_id,
+          companyImage: item.company_image || IMAGES.imgNotFound,
+          companyName: item.company_name,
+          image: item.image,
+          name: item.name || IMAGES.imgNotFound,
+          id: item.id,
+          label: type === 'product' ? item.name : item.company_name,
+        };
+      });
+      state.totalRows = product?.total || 0;
     },
     getSearchProductFailed: (state, action) => {
       state.type = action.type;
       state.isProcessingSearch = false;
+    },
+
+    getSearchProductFormSearch: (state, action) => {
+      state.type = action.type;
+    },
+    getSearchProductFormSearchSuccess: (state, action) => {
+      const { listProject, params } = action?.data;
+      const { product } = listProject;
+      const { type } = params;
+      state.type = action.type;
+      state.listDataProductFormSearch = product?.data?.map((item) => {
+        return {
+          value: type === 'product' ? item.name : item.company_name,
+          id: item.id,
+          label: type === 'product' ? item.name : item.company_name,
+        };
+      });
+    },
+    getSearchProductFormSearchFailed: (state, action) => {
+      state.type = action.type;
     },
   },
 });
@@ -110,6 +146,9 @@ export const {
   getSearchProduct,
   getSearchProductSuccess,
   getSearchProductFailed,
+  getSearchProductFormSearch,
+  getSearchProductFormSearchSuccess,
+  getSearchProductFormSearchFailed,
 } = actions;
 
 export default reducer;

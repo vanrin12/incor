@@ -5,17 +5,9 @@ import { ROUTES, API } from 'apis';
 function* ratingProject(action) {
   try {
     const response = yield call(() =>
-      API.post(ROUTES.API_RATING_PROJECT, action?.payload, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
+      API.post(ROUTES.API_RATING_PROJECT, JSON.stringify(action?.payload))
     );
 
-    // Reset response
-    if (response) {
-      API.addRequestTransform((request) => {
-        request.headers['Content-Type'] = 'application/json';
-      });
-    }
     if (response.ok) {
       const { data } = response.data;
 

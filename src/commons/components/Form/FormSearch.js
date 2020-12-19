@@ -37,7 +37,7 @@ const FormSearch = ({
         />
       </div>
       <div>
-        <Button onClick={() => handelSubmitSearch()}>TÌM KIẾM</Button>
+        <Button onClick={() => handelSubmitSearch()}>TÌM KIẾM ABC</Button>
       </div>
     </div>
   );

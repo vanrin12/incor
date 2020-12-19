@@ -15,6 +15,7 @@ import getListAreasSaga from 'modules/home/sagas/getListAreasSaga';
 import getListSpaceTypeSaga from 'modules/home/sagas/getListSpaceTypeSaga';
 import formRequestSaga from 'modules/home/sagas/formRequestSaga';
 import getSearchProductSaga from 'modules/home/sagas/getSearchProductSaga';
+import getSearchProductFormSearch from 'modules/home/sagas/getListProductSearchFormSaga';
 
 // Page Search
 import getListScalesSaga from 'modules/searchPage/sagas/getListScalesSaga';
@@ -36,5 +37,6 @@ export default function* RootSagas() {
     getSearchProductSaga(),
     getListScalesSaga(),
     ratingProjectSaga(),
+    getSearchProductFormSearch(),
   ]);
 }

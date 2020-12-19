@@ -29,7 +29,6 @@ import {
   listClientHome,
   listSlideConsultancy,
   listSlideMain,
-  listAutocompleteSearch,
 } from '../../../mockData/dataSlide';
 import { getSearchProduct, getListAreas, getListSpaceType } from '../redux';
 
@@ -40,14 +39,15 @@ type Props = {
   history: {
     push: Function,
   },
-  isLoading: boolean,
 };
 
-const HomeMain = ({ history, isLoading }: Props) => {
+const HomeMain = ({ history }: Props) => {
   const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
   const [isShowVideo, setIsShowVideo] = useState(false);
-  const { type } = useSelector((state) => state?.home);
+  const { type, listDataProductCompany, isProcessingSearch } = useSelector(
+    (state) => state?.home
+  );
 
   const paramsOptionSlideMain = {
     loop: true,
@@ -148,11 +148,12 @@ const HomeMain = ({ history, isLoading }: Props) => {
     }
     typingTimeOut.current = setTimeout(() => {
       // code sau 0.3s thi goi api
-
       dispatch(
         getSearchProduct({
           type: optionSearchDefault?.value,
-          keywords: '',
+          keywords: value || '',
+          page: 1,
+          paged: 1000,
         })
       );
     }, 300);
@@ -215,8 +216,8 @@ const HomeMain = ({ history, isLoading }: Props) => {
               valueSearch={valueSearch}
               optionSelect={optionSearchDefault}
               history={history}
-              listAutocompleteSearch={listAutocompleteSearch}
-              isLoading={isLoading}
+              listAutocompleteSearch={listDataProductCompany}
+              isLoading={isProcessingSearch}
             />
           </div>
           <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>
