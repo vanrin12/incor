@@ -127,6 +127,11 @@ const homeSlice = createSlice({
     getSearchProductFormSearchFailed: (state, action) => {
       state.type = action.type;
     },
+    resetGetSearchProduct: (state) => {
+      state.type = '';
+      state.listDataProductFormSearch = [];
+      state.listDataProductCompany = [];
+    },
   },
 });
 
@@ -149,6 +154,7 @@ export const {
   getSearchProductFormSearch,
   getSearchProductFormSearchSuccess,
   getSearchProductFormSearchFailed,
+  resetGetSearchProduct,
 } = actions;
 
 export default reducer;

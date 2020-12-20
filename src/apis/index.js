@@ -18,6 +18,10 @@ export const ROUTES = {
   API_SEARCH: `/site/search`,
   API_SCALES: `/site/scales`,
   API_RATING_PROJECT: `/site/evaluates`,
+  API_LIST_PROJECT_DETAIL: (id) => `/site/projects/${id}`,
+  API_LIST_PROJECT: `/site/projects`,
+  API_QUOTES: `/site/quotes`,
+  API_GET_PARTNER: (partner_id) => `/site/partners/${partner_id}`,
 };
 
 export const API = create({

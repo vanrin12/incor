@@ -38,7 +38,9 @@ const FormSearch = ({
         <Select
           isMulti
           // menuIsOpen
-          defaultValue={[defaultOption]}
+          defaultValue={
+            valueSearch && valueSearch.length > 0 ? [defaultOption] : null
+          }
           name="colors"
           placeholder="Nhập nội dung cần tìm"
           options={listDataProductFormSearch || []}

@@ -31,7 +31,7 @@ const PageSearch = ({ history }: Props) => {
   const { listDataProductCompany, isProcessingSearch, totalRows } = useSelector(
     (state) => state?.home
   );
-  const [valueSearch, setValueSearch] = useState([keySearch]);
+  const [valueSearch, setValueSearch] = useState(keySearch ? [keySearch] : []);
   const [isAddClassSorting, setIsAddClassSorting] = useState(false);
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
@@ -54,13 +54,13 @@ const PageSearch = ({ history }: Props) => {
     dispatch(
       getSearchProductFormSearch({
         type: optionSearchDefault?.value,
-        keywords: (valueSearch && valueSearch.toString()) || '',
+        keywords: '',
         page: 1,
         paged: 99999,
       })
     );
     // eslint-disable-next-line
-  }, []);
+  }, [optionSearchDefault?.value]);
 
   const handleGetListSearchProduct = useCallback(
     (params) => {
@@ -143,7 +143,6 @@ const PageSearch = ({ history }: Props) => {
         break;
     }
   };
-  console.log(valueSearch, 'valueSearch');
   // handelClickShowSorting click show modal filter trên mobile
   const handelClickShowSorting = (boolean) => {
     setIsAddClassSorting(boolean);

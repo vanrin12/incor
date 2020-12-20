@@ -11,9 +11,12 @@ import useClickOutside from '../../../customHooks/useClickOutSide';
 
 type Props = {
   location: Object,
+  history: {
+    push: Function,
+  },
 };
 
-const Header = ({ location }: Props) => {
+const Header = ({ location, history }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const refMenu = useRef(null);
   const iconRef = useRef(null);
@@ -44,7 +47,7 @@ const Header = ({ location }: Props) => {
         </div>
         <div className="menu-main d-flex align-items-center w-100 ">
           <Menu location={location} />
-          <LoginForm />
+          <LoginForm history={history} />
         </div>
         <div
           className={`icon-menu btn-menu  ${isOpen ? 'show' : ''}`}
@@ -76,7 +79,10 @@ const Header = ({ location }: Props) => {
           <img src={IMAGES.logo_blue} alt="Logo" />
         </Link>
         <Menu location={location} />
-        <LoginForm handleGetIsShowModal={handleGetIsShowModal} />
+        <LoginForm
+          handleGetIsShowModal={handleGetIsShowModal}
+          history={history}
+        />
       </div>
     </div>
   );

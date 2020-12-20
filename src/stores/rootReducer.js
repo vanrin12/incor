@@ -4,6 +4,7 @@ import blogSlice from 'modules/blog/redux';
 import homeSlice from 'modules/home/redux';
 import searchScales from 'modules/searchPage/redux';
 import projectScales from 'modules/construction/redux';
+import partnerSlice from 'modules/partner/redux';
 
 const appReducer = combineReducers({
   account: accountReducer,
@@ -11,6 +12,7 @@ const appReducer = combineReducers({
   home: homeSlice,
   search: searchScales,
   project: projectScales,
+  partner: partnerSlice,
 });
 
 export default appReducer;

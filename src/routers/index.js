@@ -8,6 +8,8 @@ import ROUTERS from 'constants/router';
 
 import { API } from '../apis';
 
+import PrivateRoute from './PrivateRoute';
+
 const HomeMain = lazy(() => import('modules/home/components'));
 
 const ConstructionManager = lazy(() =>
@@ -31,8 +33,9 @@ const PageSearch = lazy(() => import('modules/searchPage/components'));
 const PagePartner = lazy(() => import('modules/partner/components'));
 
 const Router = () => {
-  const token = useSelector((state) => state.account.token);
-  // const isAuthenticated = token !== '';
+  const token = useSelector((state) => state?.account?.token);
+
+  const isAuthenticated = token !== '';
   if (token) {
     API.setHeader('Authorization', `Bearer ${token}`);
   }
@@ -42,10 +45,11 @@ const Router = () => {
       <Suspense>
         <Switch>
           <Route exact path={ROUTERS.MAIN_PAGE} component={HomeMain} />
-          <Route
+          <PrivateRoute
             exact
             path={ROUTERS.PAGE_CONSTRUCTION}
             component={ConstructionManager}
+            isAuthenticated={isAuthenticated}
           />
           <Route
             exact
@@ -66,12 +70,18 @@ const Router = () => {
             path={ROUTERS.PAGE_COOPERATION}
             component={CooperationPage}
           />
-          <Route
+          <PrivateRoute
             exact
             path={ROUTERS.PAGE_SEARCH_DETAIL}
             component={PageSearch}
+            isAuthenticated={isAuthenticated}
           />
-          <Route exact path={ROUTERS.PARTNER_DETAIL} component={PagePartner} />
+          <PrivateRoute
+            exact
+            path={ROUTERS.PARTNER_DETAIL}
+            component={PagePartner}
+            isAuthenticated={isAuthenticated}
+          />
         </Switch>
       </Suspense>
     </BrowserRouter>

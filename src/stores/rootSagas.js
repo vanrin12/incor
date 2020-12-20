@@ -23,6 +23,10 @@ import getListScalesSaga from 'modules/searchPage/sagas/getListScalesSaga';
 //
 import ratingProjectSaga from 'modules/construction/sagas/ratingProjectSaga';
 
+import getListProjectSaga from 'modules/partner/sagas/getListProjectSaga';
+import quotesProjectsSaga from 'modules/partner/sagas/quotesProjectSaga';
+import getListPartnerProjectsSaga from 'modules/partner/sagas/getListPartnerSaga';
+
 export default function* RootSagas() {
   yield all([
     signInSaga(),
@@ -38,5 +42,8 @@ export default function* RootSagas() {
     getListScalesSaga(),
     ratingProjectSaga(),
     getSearchProductFormSearch(),
+    getListProjectSaga(),
+    quotesProjectsSaga(),
+    getListPartnerProjectsSaga(),
   ]);
 }

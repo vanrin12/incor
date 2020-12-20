@@ -1,5 +1,7 @@
 // @flow
 import React, { memo, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { resetGetSearchProduct } from 'modules/home/redux';
 import Input from '../Input';
 import SelectDropdown from '../Select';
 import Loading from '../Loading/LoadingSmall';
@@ -31,6 +33,7 @@ const FormSearchMain = ({
   listAutocompleteSearch,
   isLoading,
 }: Props) => {
+  const dispatch = useDispatch();
   const [isShowAutoCompte, setIsShowAutoCompte] = useState(false);
 
   const handleOnFocusInput = () => {
@@ -42,6 +45,7 @@ const FormSearchMain = ({
     setTimeout(() => {
       setIsShowAutoCompte(false);
       clearTimeout();
+      dispatch(resetGetSearchProduct());
     }, 400);
   };
 

@@ -30,7 +30,12 @@ import {
   listSlideConsultancy,
   listSlideMain,
 } from '../../../mockData/dataSlide';
-import { getSearchProduct, getListAreas, getListSpaceType } from '../redux';
+import {
+  getSearchProduct,
+  getListAreas,
+  getListSpaceType,
+  resetGetSearchProduct,
+} from '../redux';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -48,6 +53,7 @@ const HomeMain = ({ history }: Props) => {
   const { type, listDataProductCompany, isProcessingSearch } = useSelector(
     (state) => state?.home
   );
+  const { token } = useSelector((state) => state?.account);
 
   const paramsOptionSlideMain = {
     loop: true,
@@ -115,6 +121,7 @@ const HomeMain = ({ history }: Props) => {
   useEffect(() => {
     dispatch(getListAreas());
     dispatch(getListSpaceType());
+    dispatch(resetGetSearchProduct());
     // eslint-disable-next-line
   }, []);
 
@@ -210,15 +217,17 @@ const HomeMain = ({ history }: Props) => {
             Giải pháp xây dựng cho ngôi nhà của bạn
           </div>
           <div className="search-main">
-            <FormSearchMain
-              handleChangeInput={handleChangeInput}
-              handleSelectChange={handleSelectChange}
-              valueSearch={valueSearch}
-              optionSelect={optionSearchDefault}
-              history={history}
-              listAutocompleteSearch={listDataProductCompany}
-              isLoading={isProcessingSearch}
-            />
+            {token && (
+              <FormSearchMain
+                handleChangeInput={handleChangeInput}
+                handleSelectChange={handleSelectChange}
+                valueSearch={valueSearch}
+                optionSelect={optionSearchDefault}
+                history={history}
+                listAutocompleteSearch={listDataProductCompany}
+                isLoading={isProcessingSearch}
+              />
+            )}
           </div>
           <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>
             YÊU CẦU TƯ VẤN

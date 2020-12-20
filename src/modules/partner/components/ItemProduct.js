@@ -1,6 +1,7 @@
 // @flow
 
 import React, { memo } from 'react';
+import IMAGES from 'themes/images';
 
 type Props = {
   itemObj: Object,
@@ -19,11 +20,11 @@ const ItemProduct = ({ itemObj, handleModalGallery }: Props) => {
       <div
         className="bg-image"
         style={{
-          backgroundImage: `url(${itemObj?.image})`,
+          backgroundImage: `url(${itemObj?.image || IMAGES.imgNotFound})`,
         }}
       />
       <div className="title">
-        <h3>{itemObj?.title}</h3>
+        <h3>{itemObj?.name}</h3>
       </div>
     </div>
   );

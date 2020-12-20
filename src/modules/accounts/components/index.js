@@ -16,9 +16,13 @@ import IMAGES from '../../../themes/images';
 
 type Props = {
   handleGetIsShowModal?: Function,
+  history: {
+    push: Function,
+  },
 };
 
-const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
+const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
+  console.log(history);
   const dispatch = useDispatch();
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
@@ -27,7 +31,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
   const [isShowType, setIsShowType] = useState(false);
   const [errorMess, setErrorMess] = useState('');
   const { type, userInfo, errorMsg, token, isProcessingLogin } = useSelector(
-    (state) => state.account
+    (state) => state?.account
   );
 
   useEffect(() => {
@@ -57,12 +61,20 @@ const LoginForm = ({ handleGetIsShowModal = () => {} }: Props) => {
   useEffect(() => {
     switch (type) {
       case 'accounts/signInRequestSuccess':
-        API.setHeader('Authorization', `${token}`);
+        API.setHeader('Authorization', `Bearer ${token}`);
         setIsShowModal(false);
         setErrorMess('');
         break;
       case 'accounts/signInRequestFailed':
         setErrorMess(errorMsg);
+        break;
+      case 'accounts/logoutSuccess':
+        dispatch(resetSingIn());
+        // history && history.push && history.push('/');
+        break;
+      case 'accounts/logoutFailed':
+        dispatch(resetSingIn());
+        // history && history.push && history.push('/');
         break;
       default:
         break;

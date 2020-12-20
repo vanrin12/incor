@@ -23,13 +23,20 @@ const ItemSearch = ({ history, itemObj }: Props) => {
           style={{
             backgroundImage: `url(${itemObj?.companyImage})`,
           }}
-          onClick={() => history.push(`${ROUTERS.PARTNER}/${itemObj.id}`)}
-          onKeyDown={() => history.push(`${ROUTERS.PARTNER}/${itemObj.id}`)}
+          onClick={() =>
+            history.push(`${ROUTERS.PARTNER}/${itemObj.companyId}`)
+          }
+          onKeyDown={() =>
+            history.push(`${ROUTERS.PARTNER}/${itemObj.companyId}`)
+          }
           role="button"
           tabIndex={0}
         />
         <div className="gr-footer">
-          <Link to={`${ROUTERS.PARTNER}/${itemObj.id}`} title={itemObj?.name}>
+          <Link
+            to={`${ROUTERS.PARTNER}/${itemObj.companyId}`}
+            title={itemObj?.name}
+          >
             <h3>{itemObj?.name}</h3>
           </Link>
           <div className="d-flex justify-content-between align-items-center">

@@ -11,9 +11,9 @@ type Props = {
 const ItemComment = ({ itemObj }: Props) => {
   const [isShowAllWord, setIsShowAllWord] = useState(false);
 
-  const splitWord = itemObj && itemObj.comment && itemObj.comment.split(' ');
+  const splitWord = itemObj && itemObj.content && itemObj.content.split(' ');
   const checksLengthWord =
-    splitWord && splitWord.slice(0, 15) && splitWord.slice(0, 15).length >= 15;
+    splitWord && splitWord.slice(0, 25) && splitWord.slice(0, 25).length >= 24;
 
   return (
     <div className="comment-item d-flex">
@@ -21,13 +21,13 @@ const ItemComment = ({ itemObj }: Props) => {
         <img src={itemObj?.logo} alt="" />
       </div>
       <div className="comment-content">
-        <div className="name">{itemObj?.nameClient}</div>
+        <div className="name">{itemObj?.user}</div>
         <div className="rating">
-          <Rating numberStar={itemObj?.rating} />
+          <Rating numberStar={itemObj?.rate} />
         </div>
-        <div className="date">{itemObj?.time}</div>
+        <div className="date">{itemObj?.createdAt}</div>
         <div className="desc">
-          {truncateString(itemObj?.comment || '', isShowAllWord ? 0 : 25)}
+          {truncateString(itemObj?.content || '', isShowAllWord ? 0 : 25)}
           {checksLengthWord && (
             <p
               className="more-btn"

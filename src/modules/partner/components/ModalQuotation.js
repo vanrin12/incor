@@ -1,8 +1,8 @@
 // @flow
 
 import React, { memo } from 'react';
+import Loading from 'commons/components/Loading/LoadingSmall';
 import ModalPopup from '../../../commons/components/Modal';
-
 import ItemQuotation from './ItemQuotation';
 
 type Props = {
@@ -14,6 +14,9 @@ type Props = {
   }>,
   itemQuote: number,
   handleCheckBox: Function,
+  isProcessingProject: boolean,
+  isProcessingQuotes: boolean,
+  errorMsg: string,
 };
 
 const ModalQuotation = ({
@@ -23,6 +26,9 @@ const ModalQuotation = ({
   listQuotation,
   handleCheckBox,
   itemQuote,
+  isProcessingProject,
+  isProcessingQuotes,
+  errorMsg,
 }: Props) => {
   const renderListQuotation =
     listQuotation && listQuotation.length > 0 ? (
@@ -43,13 +49,21 @@ const ModalQuotation = ({
       isOpen={openModalQuotation}
       isShowFooter
       isShowIconClose
+      isProcessing={isProcessingQuotes}
       handleCloseIcon={() => handleCloseModalQuotation()}
       textBtnRight="BÁO GIÁ"
       handleClose={() => handleSubmitModalQuotation()}
     >
       <h2 className="modal-title">CHỌN DỰ ÁN ĐỂ BÁO GIÁ</h2>
       <div className="text-modal-content content-quotation ">
-        <ul className="quotation-chose">{renderListQuotation}</ul>
+        {isProcessingProject ? (
+          <Loading size="md" />
+        ) : (
+          <>
+            <ul className="quotation-chose">{renderListQuotation}</ul>
+            {errorMsg && <p className="error-msg">{errorMsg}</p>}
+          </>
+        )}
       </div>
     </ModalPopup>
   );
