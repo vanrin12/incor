@@ -22,7 +22,6 @@ type Props = {
 };
 
 const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
-  console.log(history);
   const dispatch = useDispatch();
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
@@ -70,11 +69,11 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
         break;
       case 'accounts/logoutSuccess':
         dispatch(resetSingIn());
-        // history && history.push && history.push('/');
+        history.push('/');
         break;
       case 'accounts/logoutFailed':
         dispatch(resetSingIn());
-        // history && history.push && history.push('/');
+        history.push('/');
         break;
       default:
         break;
