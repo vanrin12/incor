@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 // @flow
-import React, { useState, useRef, memo, useEffect, useCallback } from 'react';
+import React, { useState, memo, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 
@@ -20,11 +20,12 @@ import Rating from 'commons/components/Rating';
 import Loading from 'commons//components/Loading';
 import Gallery from 'commons/components/Gallery';
 import ERROR_MESSAGE from 'constants/errorMsg';
+import { getListHashTag } from 'modules/home/redux';
 import PartnerInfo from './PartnerInfo';
 import ItemProduct from './ItemProduct';
 import ItemComment from './ItemComment';
 import ModalQuotation from './ModalQuotation';
-
+import ROUTERS from '../../../constants/router';
 import {
   getListProject,
   quotesProjects,
@@ -111,6 +112,7 @@ const PagePartner = ({ history, match }: Props) => {
   };
 
   const [valueSearch, setValueSearch] = useState('');
+  // const [idPartner, setIdPartner] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
@@ -125,8 +127,21 @@ const PagePartner = ({ history, match }: Props) => {
     isShow: false,
     content: '',
   });
-  // const [listId, setListId] = useState([]);
+
   const [itemQuote, setItemQuote] = useState(0);
+
+  const handleGetListHashTag = useCallback(
+    () => {
+      dispatch(getListHashTag('hashtag'));
+    },
+    // eslint-disable-next-line
+    [getListHashTag]
+  );
+
+  useEffect(() => {
+    handleGetListHashTag();
+    // eslint-disable-next-line
+  }, [handleGetListHashTag, optionSearchDefault?.value]);
 
   const handleGetListPartnerProject = useCallback(
     (paramsRequest) => {
@@ -151,7 +166,18 @@ const PagePartner = ({ history, match }: Props) => {
   };
 
   const handleSelectChange = (option, name) => {
+    let names = [];
     switch (name) {
+      case 'multiSelect':
+        names =
+          (option &&
+            option.length &&
+            option.map((item) => {
+              return item.label;
+            })) ||
+          [];
+        setValueSearch([names.toString()]);
+        break;
       case 'selectMain':
         setOptionSearchDefault(option);
         break;
@@ -184,22 +210,19 @@ const PagePartner = ({ history, match }: Props) => {
     // eslint-disable-next-line
   }, [type]);
 
-  // handle search
-  const typingTimeOut = useRef(null);
-  // onsubmit call api
-
-  const handleChangeInput = (value) => {
-    setValueSearch(value);
-    if (typingTimeOut.current) {
-      clearTimeout(typingTimeOut.current);
-    }
-    typingTimeOut.current = setTimeout(() => {
-      // code sau 0.3s thi goi api
-    }, 300);
+  const handelSubmitSearch = () => {
+    history.push({
+      pathname: `${ROUTERS.PAGE_SEARCH}/${
+        (valueSearch && valueSearch[0]) || ''
+      }`,
+      state: { keySearch: valueSearch && valueSearch[0] },
+    });
   };
 
-  const handelSubmitSearch = () => {
-    console.log(valueSearch, 'valueSearch');
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handelSubmitSearch();
+    }
   };
 
   const handleCloseModalQuotation = () => {
@@ -278,11 +301,12 @@ const PagePartner = ({ history, match }: Props) => {
               style={{ backgroundImage: `url(${dataPartnerInfo?.image})` }}
             >
               <FormSearchMulti
-                handleChangeInput={handleChangeInput}
                 handleSelectChange={handleSelectChange}
                 valueSearch={valueSearch}
                 optionSelect={optionSearchDefault}
                 handelSubmitSearch={handelSubmitSearch}
+                handleKeyDown={handleKeyDown}
+                isMulti
               />
               <div className="info-partner">
                 <div className="logo-partner">

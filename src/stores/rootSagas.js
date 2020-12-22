@@ -17,6 +17,8 @@ import formRequestSaga from 'modules/home/sagas/formRequestSaga';
 import getSearchProductSaga from 'modules/home/sagas/getSearchProductSaga';
 import getSearchProductFormSearch from 'modules/home/sagas/getListProductSearchFormSaga';
 
+import getListHashTagSaga from 'modules/home/sagas/getHashTagSaga';
+
 // Page Search
 import getListScalesSaga from 'modules/searchPage/sagas/getListScalesSaga';
 
@@ -45,5 +47,6 @@ export default function* RootSagas() {
     getListProjectSaga(),
     quotesProjectsSaga(),
     getListPartnerProjectsSaga(),
+    getListHashTagSaga(),
   ]);
 }

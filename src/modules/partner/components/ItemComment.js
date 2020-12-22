@@ -18,7 +18,7 @@ const ItemComment = ({ itemObj }: Props) => {
   return (
     <div className="comment-item d-flex">
       <div className="logo">
-        <img src={itemObj?.logo} alt="" />
+        <img src={itemObj?.userAvatar} alt="" />
       </div>
       <div className="comment-content">
         <div className="name">{itemObj?.user}</div>

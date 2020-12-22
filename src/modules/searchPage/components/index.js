@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 import {
   getListAreas,
   getSearchProduct,
-  getSearchProductFormSearch,
+  getListHashTag,
 } from 'modules/home/redux';
 import MainLayout from 'commons/components/MainLayout';
 import FormSearchMulti from 'commons/components/Form/FormSearchMulti';
@@ -26,12 +26,19 @@ type Props = {
 };
 
 const PageSearch = ({ history }: Props) => {
-  const keySearch = history?.location?.state?.keySearch || '';
+  const keySearch =
+    (history &&
+      history.location &&
+      history.location.state &&
+      history.location.state.keySearch &&
+      history.location.state.keySearch.split(',')) ||
+    [];
+
   const dispatch = useDispatch();
   const { listDataProductCompany, isProcessingSearch, totalRows } = useSelector(
     (state) => state?.home
   );
-  const [valueSearch, setValueSearch] = useState(keySearch ? [keySearch] : []);
+  const [valueSearch, setValueSearch] = useState(keySearch || []);
   const [isAddClassSorting, setIsAddClassSorting] = useState(false);
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
@@ -51,14 +58,7 @@ const PageSearch = ({ history }: Props) => {
   // get list auto complete input search
 
   useEffect(() => {
-    dispatch(
-      getSearchProductFormSearch({
-        type: optionSearchDefault?.value,
-        keywords: '',
-        page: 1,
-        paged: 99999,
-      })
-    );
+    dispatch(dispatch(getListHashTag('hashtag')));
     // eslint-disable-next-line
   }, [optionSearchDefault?.value]);
 
@@ -90,7 +90,7 @@ const PageSearch = ({ history }: Props) => {
       window.scrollTo(0, 0);
     }, 300);
     // eslint-disable-next-line
-  }, [handleGetListSearchProduct, paginationIndex]);
+  }, [handleGetListSearchProduct, paginationIndex, optionSearchDefault?.value]);
 
   // click vào lọc kết quả
   const handleSortingProduct = () => {
@@ -106,7 +106,6 @@ const PageSearch = ({ history }: Props) => {
       })
     );
   };
-
   // call app get list scales
   useEffect(() => {
     dispatch(getListScales());
@@ -120,6 +119,7 @@ const PageSearch = ({ history }: Props) => {
       case 'multiSelect':
         names =
           (option &&
+            option.length &&
             option.map((item) => {
               return item.label;
             })) ||
@@ -148,14 +148,15 @@ const PageSearch = ({ history }: Props) => {
     setIsAddClassSorting(boolean);
   };
 
-  // onsubmit call api
-  const handleChangeInput = (value) => {
-    setValueSearch(value);
-  };
-
   // click vào button tìm kiếm
   const handelSubmitSearch = () => {
     handleSortingProduct();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handelSubmitSearch();
+    }
   };
 
   const renderListSearch =
@@ -181,11 +182,12 @@ const PageSearch = ({ history }: Props) => {
             <img src={IMAGES.img_Search} alt="" />
           </div>
           <FormSearchMulti
-            handleChangeInput={handleChangeInput}
             handleSelectChange={handleSelectChange}
             optionSelect={optionSearchDefault}
             handelSubmitSearch={handelSubmitSearch}
             valueSearch={valueSearch}
+            handleKeyDown={handleKeyDown}
+            isMulti
           />
         </div>
 

@@ -9,6 +9,7 @@ const initialState = {
   dataListSpaceDivision: [],
   listDataProductCompany: [],
   listDataProductFormSearch: [],
+  dataListHashTags: [],
   totalRows: 0,
 };
 
@@ -98,6 +99,7 @@ const homeSlice = createSlice({
           image: item.image,
           name: item.name || IMAGES.imgNotFound,
           id: item.id,
+          partnerId: item.partner_id,
           label: type === 'product' ? item.name : item.company_name,
         };
       });
@@ -118,8 +120,8 @@ const homeSlice = createSlice({
       state.type = action.type;
       state.listDataProductFormSearch = product?.data?.map((item) => {
         return {
-          value: type === 'product' ? item.name : item.company_name,
-          id: item.id,
+          value: item.id,
+          id: item.partner_id,
           label: type === 'product' ? item.name : item.company_name,
         };
       });
@@ -131,6 +133,27 @@ const homeSlice = createSlice({
       state.type = '';
       state.listDataProductFormSearch = [];
       state.listDataProductCompany = [];
+    },
+    getListHashTag: (state, action) => {
+      state.type = action.type;
+      state.isProcessingSearch = true;
+    },
+    getListHashTagSuccess: (state, action) => {
+      const { data } = action;
+      state.type = action.type;
+      state.isProcessingSearch = false;
+      state.dataListHashTags =
+        data?.hashtag?.split(',').map((item, index) => {
+          return {
+            id: index + 1,
+            value: item && item.trim(),
+            label: item && item.trim(),
+          };
+        }) || [];
+    },
+    getListHashTagFailed: (state, action) => {
+      state.type = action.type;
+      state.isProcessingSearch = false;
     },
   },
 });
@@ -155,6 +178,9 @@ export const {
   getSearchProductFormSearchSuccess,
   getSearchProductFormSearchFailed,
   resetGetSearchProduct,
+  getListHashTag,
+  getListHashTagSuccess,
+  getListHashTagFailed,
 } = actions;
 
 export default reducer;

@@ -22,6 +22,7 @@ export const ROUTES = {
   API_LIST_PROJECT: `/site/projects`,
   API_QUOTES: `/site/quotes`,
   API_GET_PARTNER: (partner_id) => `/site/partners/${partner_id}`,
+  API_CONSTANTS: (name) => `/site/constants/${name}`,
 };
 
 export const API = create({

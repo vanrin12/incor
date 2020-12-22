@@ -221,6 +221,16 @@
       }
 
       .basic-multi-select {
+        .select__single-value {
+          font-size: pxToRem(20);
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.35;
+          color: $color-black;
+          font-weight: 500;
+        }
+
         .select__menu {
           margin-top: pxToRem(-2);
           height: pxToRem(420);
@@ -715,6 +725,14 @@
         }
 
         .basic-multi-select {
+          .select__single-value {
+            font-size: pxToVW(20);
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.35;
+          }
+
           .select__menu {
             margin-top: pxToVW(0);
             height: pxToVW(300);
@@ -880,4 +898,13 @@
       }
     }
   }
+}
+
+.select__option--is-selected {
+  background-color: $bg-main !important;
+  color: $white !important;
+}
+
+.select__single-value {
+  overflow: initial !important;
 }

@@ -28,7 +28,7 @@ const ERROR_MESSAGE = {
   TEXT_RATING_SUCCUSS:
     'Incor đã nhận được yêu cầu đáng giá của bạn. \n Cảm ơn bạn.',
   TEXT_RATING_FAILED:
-    ' Đánh giá của bạn đã bị lỗi \n xin vui lòng đánh giá lại. cảm ơn bạn',
+    ' Đánh giá của bạn đã bị lỗi \n xin vui lòng đánh giá lại. Cảm ơn bạn',
   TEXT_QUOTES_SUCCUSS: 'Bạn đã gửi ưu cầu báo giá thành công.',
   TEXT_QUOTES_FAILED: 'Báo giá của bạn đang bị lỗi. Vùi lòng thử lại',
   ERROR_QUOTES: 'Vui lòng chọn dự án cần đánh giá.',

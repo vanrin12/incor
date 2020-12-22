@@ -1,7 +1,5 @@
 // @flow
 import React, { memo, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { resetGetSearchProduct } from 'modules/home/redux';
 import Input from '../Input';
 import SelectDropdown from '../Select';
 import Loading from '../Loading/LoadingSmall';
@@ -33,7 +31,6 @@ const FormSearchMain = ({
   listAutocompleteSearch,
   isLoading,
 }: Props) => {
-  const dispatch = useDispatch();
   const [isShowAutoCompte, setIsShowAutoCompte] = useState(false);
 
   const handleOnFocusInput = () => {
@@ -45,8 +42,16 @@ const FormSearchMain = ({
     setTimeout(() => {
       setIsShowAutoCompte(false);
       clearTimeout();
-      dispatch(resetGetSearchProduct());
     }, 400);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      history.push({
+        pathname: `${ROUTERS.PAGE_SEARCH}/${e.target.value || 'all'}`,
+        state: { keySearch: e.target.value },
+      });
+    }
   };
 
   const renderListAutocompleteSearch =
@@ -57,13 +62,13 @@ const FormSearchMain = ({
           onClick={() =>
             history.push({
               pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
-              state: { keySearch: valueSearch },
+              state: { keySearch: item.label },
             })
           }
           onKeyDown={() =>
             history.push({
               pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
-              state: { keySearch: valueSearch },
+              state: { keySearch: item.label },
             })
           }
           role="presentation"
@@ -87,6 +92,7 @@ const FormSearchMain = ({
         <Input
           placeholder="Nhập nội dung cần tìm"
           value={valueSearch}
+          onKeyPress={(e) => handleKeyDown(e)}
           onChange={(e) => handleChangeInput(e.target.value)}
           customClass="input-search"
           onFocus={() => handleOnFocusInput()}

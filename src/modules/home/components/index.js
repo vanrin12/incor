@@ -1,6 +1,6 @@
 // @flow
 
-import React, { memo, useState, useRef, useEffect } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 
 import IMAGES from 'themes/images';
 import SwiperCore, {
@@ -31,10 +31,10 @@ import {
   listSlideMain,
 } from '../../../mockData/dataSlide';
 import {
-  getSearchProduct,
   getListAreas,
   getListSpaceType,
   resetGetSearchProduct,
+  getListHashTag,
 } from '../redux';
 
 // install Swiper components
@@ -49,8 +49,9 @@ type Props = {
 const HomeMain = ({ history }: Props) => {
   const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
+  const [updateListHashTags, setUpdateListHashTags] = useState([]);
   const [isShowVideo, setIsShowVideo] = useState(false);
-  const { type, listDataProductCompany, isProcessingSearch } = useSelector(
+  const { type, dataListHashTags, isProcessingSearch } = useSelector(
     (state) => state?.home
   );
   const { token } = useSelector((state) => state?.account);
@@ -122,8 +123,14 @@ const HomeMain = ({ history }: Props) => {
     dispatch(getListAreas());
     dispatch(getListSpaceType());
     dispatch(resetGetSearchProduct());
+    dispatch(getListHashTag('hashtag'));
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    setUpdateListHashTags(dataListHashTags);
+    // eslint-disable-next-line
+  }, [dataListHashTags && dataListHashTags.length]);
 
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
@@ -145,25 +152,17 @@ const HomeMain = ({ history }: Props) => {
   }, [type]);
 
   // handle search
-  const typingTimeOut = useRef(null);
+  const inputSearch = valueSearch && valueSearch.toLowerCase().trim();
 
   // onsubmit call api
   const handleChangeInput = (value) => {
     setValueSearch(value);
-    if (typingTimeOut.current) {
-      clearTimeout(typingTimeOut.current);
-    }
-    typingTimeOut.current = setTimeout(() => {
-      // code sau 0.3s thi goi api
-      dispatch(
-        getSearchProduct({
-          type: optionSearchDefault?.value,
-          keywords: value || '',
-          page: 1,
-          paged: 1000,
-        })
-      );
-    }, 300);
+    // code sau 0.3s thi goi api
+    const listFilter = dataListHashTags.filter(
+      (item) => item.value && item.value.toLowerCase().includes(inputSearch)
+    );
+
+    setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
   };
   // close modal Tu van khach hang
   const handleCloseModal = () => {
@@ -224,7 +223,7 @@ const HomeMain = ({ history }: Props) => {
                 valueSearch={valueSearch}
                 optionSelect={optionSearchDefault}
                 history={history}
-                listAutocompleteSearch={listDataProductCompany}
+                listAutocompleteSearch={updateListHashTags}
                 isLoading={isProcessingSearch}
               />
             )}

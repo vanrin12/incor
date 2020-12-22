@@ -63,7 +63,6 @@ const partnerSlice = createSlice({
       // company_career: ""// TODO
       state.type = action.type;
       const { partner } = action?.data;
-      console.log(partner, 'ssssssssssss');
       state.dataPartnerInfo = {
         partnerId: partner?.id,
         logoPartner: partner?.partner_image || IMAGES.imgNotFound,
@@ -76,7 +75,12 @@ const partnerSlice = createSlice({
         taxCode: partner?.company_tax_code || '',
         image: partner?.company_image || IMAGES.imgNotFound,
         companyId: partner?.company_id,
-        career: [
+        career: partner?.company_career?.split(',').map((item, index) => {
+          return {
+            id: index + 1,
+            name: item,
+          };
+        }) || [
           {
             id: 1,
             name: 'Sofa',
@@ -100,6 +104,7 @@ const partnerSlice = createSlice({
             moment(item.created_at).format('HH:mm - DD.MM.YYYY'),
           rate: item.rate,
           user: item.user,
+          userAvatar: item.user_avatar || IMAGES.imgNotFound,
         };
       });
 

@@ -24,17 +24,17 @@ const ItemSearch = ({ history, itemObj }: Props) => {
             backgroundImage: `url(${itemObj?.companyImage})`,
           }}
           onClick={() =>
-            history.push(`${ROUTERS.PARTNER}/${itemObj.companyId}`)
+            history.push(`${ROUTERS.PARTNER}/${itemObj.partnerId}`)
           }
           onKeyDown={() =>
-            history.push(`${ROUTERS.PARTNER}/${itemObj.companyId}`)
+            history.push(`${ROUTERS.PARTNER}/${itemObj.partnerId}`)
           }
           role="button"
           tabIndex={0}
         />
         <div className="gr-footer">
           <Link
-            to={`${ROUTERS.PARTNER}/${itemObj.companyId}`}
+            to={`${ROUTERS.PARTNER}/${itemObj.partnerId}`}
             title={itemObj?.name}
           >
             <h3>{itemObj?.name}</h3>

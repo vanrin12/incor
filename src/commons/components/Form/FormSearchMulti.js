@@ -11,6 +11,8 @@ type Props = {
   optionSelect: Object,
   handelSubmitSearch: Function,
   valueSearch: any,
+  isMulti?: boolean,
+  handleKeyDown: Function,
 };
 
 const FormSearch = ({
@@ -18,14 +20,20 @@ const FormSearch = ({
   optionSelect,
   handelSubmitSearch,
   valueSearch,
+  isMulti = false,
+  handleKeyDown,
 }: Props) => {
-  const defaultOption = {
-    id: 0,
-    value: valueSearch,
-    label: valueSearch,
-  };
-  const { listDataProductFormSearch } = useSelector((state) => state?.home);
-
+  const defaultOption =
+    valueSearch &&
+    valueSearch.length > 0 &&
+    valueSearch.map((item, index) => {
+      return {
+        id: index + 1,
+        value: item,
+        label: item,
+      };
+    });
+  const { dataListHashTags } = useSelector((state) => state?.home);
   return (
     <div className="form-search d-flex form2 align-items-center">
       <div className="form-group mb-0">
@@ -36,17 +44,17 @@ const FormSearch = ({
           option={optionSelect}
         />
         <Select
-          isMulti
-          // menuIsOpen
+          isMulti={isMulti}
           defaultValue={
-            valueSearch && valueSearch.length > 0 ? [defaultOption] : null
+            valueSearch && valueSearch.length > 0 ? defaultOption : null
           }
           name="colors"
           placeholder="Nhập nội dung cần tìm"
-          options={listDataProductFormSearch || []}
+          options={dataListHashTags || []}
           className="basic-multi-select"
           classNamePrefix="select"
           onChange={(option) => handleSelectChange(option, 'multiSelect')}
+          onKeyDown={(e) => handleKeyDown(e)}
         />
         <div>
           <Button onClick={() => handelSubmitSearch()}>TÌM KIẾM</Button>
@@ -54,6 +62,10 @@ const FormSearch = ({
       </div>
     </div>
   );
+};
+
+FormSearch.defaultProps = {
+  isMulti: false,
 };
 
 export default memo<Props>(FormSearch);
