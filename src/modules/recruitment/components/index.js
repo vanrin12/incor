@@ -6,7 +6,7 @@ import IMAGES from '../../../themes/images';
 
 const RecruitmentPage = () => {
   return (
-    <MainLayout>
+    <MainLayout headTitle="Tuyển dụng">
       <div className="page-client page-recruitment">
         <div
           className="bg-page-title"

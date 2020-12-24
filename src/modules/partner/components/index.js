@@ -290,7 +290,7 @@ const PagePartner = ({ history, match }: Props) => {
     listEvaluate.map((item) => <ItemComment key={item.id} itemObj={item} />);
 
   return (
-    <MainLayout>
+    <MainLayout headTitle={`Đối tác - ${dataPartnerInfo?.partnerName}`}>
       <div className="page-partner wrap-slide">
         {isProcessing ? (
           <Loading />

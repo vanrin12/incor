@@ -404,7 +404,9 @@
     }
 
     .no-data {
-      font-size: pxToVW(3020);
+      font-size: pxToVW(20);
+      width: 100%;
+      text-align: center;
     }
   }
 
@@ -421,7 +423,7 @@
     .item-client {
       display: block;
       width: 47%;
-      height: pxToVW(270);
+      max-height: pxToVW(270);
       border-radius: pxToVW(10);
       box-shadow: 0 pxToVW(3) pxToVW(10) 0 rgba(0, 0, 0, 0.16);
       border: pxToVW(2) solid transparent;
@@ -450,7 +452,7 @@
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
-          height: pxToVW(23);
+          max-height: pxToVW(23);
           cursor: pointer;
         }
 
@@ -467,7 +469,7 @@
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
-          height: pxToVW(30);
+          max-height: pxToVW(30);
         }
 
         label {

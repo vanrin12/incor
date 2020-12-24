@@ -11,6 +11,7 @@ const initialState = {
   listDataProductFormSearch: [],
   dataListHashTags: [],
   totalRows: 0,
+  keywordHashTag: '',
 };
 
 const homeSlice = createSlice({
@@ -142,6 +143,7 @@ const homeSlice = createSlice({
       const { data } = action;
       state.type = action.type;
       state.isProcessingSearch = false;
+      state.keywordHashTag = data?.hashtag || '';
       state.dataListHashTags =
         data?.hashtag?.split(',').map((item, index) => {
           return {

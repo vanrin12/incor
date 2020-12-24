@@ -6,7 +6,7 @@ import IMAGES from '../../../themes/images';
 
 const CooperationPage = () => {
   return (
-    <MainLayout>
+    <MainLayout headTitle="Hợp tác">
       <div className="page-client">
         <div
           className="bg-page-title"
