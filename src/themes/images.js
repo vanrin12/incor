@@ -22,6 +22,9 @@ const images = {
   icon_close2: require('../assets/imgs/icon-close.png'),
   iconLoading: require('../assets/imgs/loading.gif'),
   imgNotFound: require('../assets/imgs/image-not-found.jpg'),
+  imgBackToTop: require('../assets/imgs/back-to-top.png'),
+  imgContact: require('../assets/imgs/form.png'),
+  imgPhone: require('../assets/imgs/phone.png'),
 };
 
 export default images;

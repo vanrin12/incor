@@ -32,6 +32,7 @@ const ERROR_MESSAGE = {
   TEXT_QUOTES_SUCCUSS: 'Bạn đã gửi ưu cầu báo giá thành công.',
   TEXT_QUOTES_FAILED: 'Báo giá của bạn đang bị lỗi. Vùi lòng thử lại',
   ERROR_QUOTES: 'Vui lòng chọn dự án cần đánh giá.',
+  DESC_SEO: 'Incor Giải pháp xây dựng cho ngôi nhà của bạn',
 };
 
 export default ERROR_MESSAGE;

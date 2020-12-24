@@ -137,7 +137,11 @@ const PageSearch = ({ history }: Props) => {
         setSelectScale(option);
         break;
       case 'rating':
-        setRating(option);
+        if (rating === option) {
+          setRating(0);
+        } else {
+          setRating(option);
+        }
         break;
       default:
         break;
@@ -169,7 +173,14 @@ const PageSearch = ({ history }: Props) => {
     );
 
   return (
-    <MainLayout>
+    <MainLayout
+      headTitle={`Tìm kiếm - ${
+        history.location &&
+        history.location.state &&
+        history.location.state.keySearch &&
+        history.location.state.keySearch
+      } `}
+    >
       <div className="page-search">
         <div className="sort-mobile">
           <div

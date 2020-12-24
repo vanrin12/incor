@@ -6,7 +6,7 @@ import IMAGES from '../../../themes/images';
 
 const ContactUs = () => {
   return (
-    <MainLayout>
+    <MainLayout headTitle="Liên hệ">
       <div className="page-client contact-us">
         <div
           className="bg-page-title"

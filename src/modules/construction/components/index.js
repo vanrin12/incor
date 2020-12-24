@@ -85,7 +85,7 @@ const ConstructionManager = () => {
   };
 
   return (
-    <MainLayout>
+    <MainLayout headTitle="Quản lý tiến độ công trình">
       <div className="page-construction pt-page">
         <h2 className="page-title">QUẢN LÝ TIẾN ĐỘ CÔNG TRÌNH</h2>
         <div className="project-info">

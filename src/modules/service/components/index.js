@@ -6,7 +6,7 @@ import IMAGES from '../../../themes/images';
 
 const ServicePage = () => {
   return (
-    <MainLayout>
+    <MainLayout headTitle="Dịch vụ">
       <div className="page-client">
         <div
           className="bg-page-title"

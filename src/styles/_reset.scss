@@ -152,12 +152,6 @@ a {
   transition: ease 0.4s all;
 }
 
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: pxToRem(1185);
-  }
-}
-
 .noto-font {
   font-family: 'Noto Sans KR', sans-serif;
 }

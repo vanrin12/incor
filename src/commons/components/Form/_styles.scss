@@ -550,9 +550,23 @@
   }
 
   .group-rating {
-    .active {
+
+
+    .group-btn-rating {
+      margin-left: pxToRem(-5);
+    }
+
+    .item {
+      padding: pxToRem(5);
+
       svg {
-        color: $red;
+        color: $color-yellow;
+      }
+
+      &.active {
+        svg {
+          color: $red;
+        }
       }
     }
   }

@@ -13,29 +13,22 @@ import SwiperCore, {
 import ReactPlayer from 'react-player';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '../../../commons/components/Button';
-import MainLayout from '../../../commons/components/MainLayout';
-import ERROR_MESSAGE from '../../../constants/errorMsg';
-import ModalPopup from '../../../commons/components/Modal';
+import Button from 'commons/components/Button';
+import MainLayout from 'commons/components/MainLayout';
+import FormSearchMain from 'commons/components/Form/FormSearchMain';
+import { removeVietnameseTones } from 'helpers/validate';
 import ItemSlideSale from './ItemSlideSale';
 import ItemSlideMain from './itemSlideMain';
 import ItemClient from './ItemClient';
 import ItemConsultancy from './ItemConsultancy';
-import FormSearchMain from '../../../commons/components/Form/FormSearchMain';
-import FormContactUs from '../../../commons/components/Form/FormContactUs';
-import FormContactUsMobile from '../../../commons/components/Form/FormContacUsMobile';
+
 import {
   listSlideHome,
   listClientHome,
   listSlideConsultancy,
   listSlideMain,
 } from '../../../mockData/dataSlide';
-import {
-  getListAreas,
-  getListSpaceType,
-  resetGetSearchProduct,
-  getListHashTag,
-} from '../redux';
+import { resetGetSearchProduct, getListHashTag } from '../redux';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -47,11 +40,12 @@ type Props = {
 };
 
 const HomeMain = ({ history }: Props) => {
+  const [isShowModalContact, setIsShowModalContact] = useState(null);
   const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
   const [updateListHashTags, setUpdateListHashTags] = useState([]);
   const [isShowVideo, setIsShowVideo] = useState(false);
-  const { type, dataListHashTags, isProcessingSearch } = useSelector(
+  const { dataListHashTags, isProcessingSearch } = useSelector(
     (state) => state?.home
   );
   const { token } = useSelector((state) => state?.account);
@@ -104,69 +98,42 @@ const HomeMain = ({ history }: Props) => {
     },
   };
 
-  // Modal client
-  const [openSuccessClient, setOpenSuccessClient] = useState({
-    isShow: false,
-    content: ERROR_MESSAGE.TEXT_SUCCUSS,
-  });
-
-  // Modal client
-  const [isOpenModalClient, setIsOpenModalClient] = useState(false);
-
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
     value: 'product',
     label: 'Sản phẩm',
   });
 
+  // handle search
+  const inputSearch = removeVietnameseTones(valueSearch.trim()).toLowerCase();
+
   useEffect(() => {
-    dispatch(getListAreas());
-    dispatch(getListSpaceType());
     dispatch(resetGetSearchProduct());
     dispatch(getListHashTag('hashtag'));
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    setUpdateListHashTags(dataListHashTags);
+    const listFilter = dataListHashTags.filter(
+      (item) =>
+        removeVietnameseTones(item.value || '')
+          .toLowerCase()
+          .indexOf(inputSearch) > -1
+    );
+    setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
     // eslint-disable-next-line
-  }, [dataListHashTags && dataListHashTags.length]);
-
+  }, [dataListHashTags && dataListHashTags.length, valueSearch]);
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
   };
 
-  useEffect(() => {
-    switch (type) {
-      case 'homes/formRequestSuccess':
-        setIsOpenModalClient(false);
-        setOpenSuccessClient({
-          ...openSuccessClient,
-          isShow: true,
-        });
-        break;
-      default:
-        break;
-    }
-    // eslint-disable-next-line
-  }, [type]);
-
-  // handle search
-  const inputSearch = valueSearch && valueSearch.toLowerCase().trim();
-
   // onsubmit call api
   const handleChangeInput = (value) => {
     setValueSearch(value);
-    // code sau 0.3s thi goi api
-    const listFilter = dataListHashTags.filter(
-      (item) => item.value && item.value.toLowerCase().includes(inputSearch)
-    );
-
-    setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
   };
-  // close modal Tu van khach hang
-  const handleCloseModal = () => {
-    setIsOpenModalClient(false);
+
+  const handleIsOpenModalClient = () => {
+    setIsShowModalContact(!isShowModalContact);
   };
 
   // render list slide Main top
@@ -205,7 +172,12 @@ const HomeMain = ({ history }: Props) => {
     ));
 
   return (
-    <MainLayout>
+    <MainLayout
+      handleIsOpenModalClient={handleIsOpenModalClient}
+      isShowModalContact={isShowModalContact}
+      customClass="home-main"
+      headTitle="Trang chủ"
+    >
       <div className="session-slide">
         <div className="slider-home">
           <Swiper {...paramsOptionSlideMain}>{renderListSlideMain}</Swiper>
@@ -228,7 +200,7 @@ const HomeMain = ({ history }: Props) => {
               />
             )}
           </div>
-          <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>
+          <Button customClass="big" onClick={() => handleIsOpenModalClient()}>
             YÊU CẦU TƯ VẤN
           </Button>
         </div>
@@ -307,35 +279,6 @@ const HomeMain = ({ history }: Props) => {
           </div>
         )}
       </div>
-      {/* Modal form contact Us */}
-      <div className="FormContactUs">
-        <FormContactUs
-          isOpenModalClient={isOpenModalClient}
-          handleCloseModal={handleCloseModal}
-        />
-      </div>
-      {/* Modal form contact Us on Mobile */}
-      <div className="FormContactUsMobile">
-        <FormContactUsMobile
-          isOpenModalClient={isOpenModalClient}
-          handleCloseModal={handleCloseModal}
-        />
-      </div>
-      {/* Modal success */}
-      <ModalPopup
-        isOpen={openSuccessClient.isShow}
-        isShowFooter
-        textBtnRight="ĐÓNG"
-        handleClose={() => {
-          setOpenSuccessClient({
-            ...openSuccessClient,
-            isShow: false,
-          });
-        }}
-      >
-        <h2 className="modal-title">CẢM ƠN BẠN !</h2>
-        <div className="text-modal-content">{openSuccessClient.content}</div>
-      </ModalPopup>
     </MainLayout>
   );
 };

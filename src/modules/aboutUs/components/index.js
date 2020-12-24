@@ -6,7 +6,7 @@ import IMAGES from '../../../themes/images';
 
 const AboutUs = () => {
   return (
-    <MainLayout>
+    <MainLayout headTitle="Giới thiệu">
       <div className="page-client">
         <div
           className="bg-page-title"

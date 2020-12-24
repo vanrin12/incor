@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 // @flow
-import React, { useState, memo, useEffect } from 'react';
+import React, { useState, memo, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -13,6 +13,7 @@ import Input from '../../../commons/components/Input';
 import Button from '../../../commons/components/Button';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import IMAGES from '../../../themes/images';
+import useOnClickOutside from '../../../customHooks/useClickOutSide';
 
 type Props = {
   handleGetIsShowModal?: Function,
@@ -22,9 +23,20 @@ type Props = {
 };
 
 const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
-  const dispatch = useDispatch();
+  const wrapperRef = useRef();
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
+  const wrapperInfoRef = useRef();
+  useOnClickOutside(wrapperRef, () => {
+    setIsShowModal(false);
+  });
+
+  useOnClickOutside(wrapperInfoRef, () => {
+    setIsShowModalInfo(false);
+  });
+
+  const dispatch = useDispatch();
+
   const [isIconName, setIsIconName] = useState(false);
 
   const [isShowType, setIsShowType] = useState(false);
@@ -131,7 +143,10 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
       </div>
       {/* Show modal form login */}
 
-      <div className={`form-content ${isShowModal ? 'd-block' : 'd-none'}`}>
+      <div
+        className={`form-content ${isShowModal ? 'd-block' : 'd-none'}`}
+        ref={wrapperRef}
+      >
         <div
           className="icon-close"
           onClick={() => {
@@ -195,6 +210,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
         className={`modal-info-user ${nickName ? 'nickName' : ''} ${
           isShowModalInfo && nickName ? 'd-block' : 'd-none'
         }`}
+        ref={wrapperInfoRef}
       >
         <ul>
           <li>

@@ -70,7 +70,7 @@ const ClientManager = ({ history, match }: Props) => {
     );
 
   return (
-    <MainLayout>
+    <MainLayout headTitle={`Blogs - ${nameCategory || label}`}>
       <div className="page-client wrap-slide">
         <div
           className="bg-page-title"
