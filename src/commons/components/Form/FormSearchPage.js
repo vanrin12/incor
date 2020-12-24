@@ -1,15 +1,16 @@
 // @flow
 import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
 import SelectDropdown from '../Select';
 import Button from '../Button';
 import Rating from '../Rating';
-import { listSelectCity, listSelectScale } from '../../../constants/list';
 
 type Props = {
   handleSelectChange: Function,
   selectCity: Object,
   selectScale: Object,
-  rating: number,
+  rating: any,
+  handleSortingProduct: Function,
 };
 
 const FormSearchPage = ({
@@ -17,7 +18,10 @@ const FormSearchPage = ({
   selectCity,
   selectScale,
   rating,
+  handleSortingProduct,
 }: Props) => {
+  const { dataListScales } = useSelector((state) => state?.search);
+  const { dataListAreas } = useSelector((state) => state?.home);
   return (
     <div className="form-search-page">
       <h3>BỘ LỌC TÌM KIẾM</h3>
@@ -25,7 +29,7 @@ const FormSearchPage = ({
         <p className="input__label">Địa điểm</p>
         <SelectDropdown
           name="selectCity"
-          listItem={listSelectCity || []}
+          listItem={dataListAreas || []}
           placeholder="Chọn tỉnh/thành phố"
           onChange={(option) => handleSelectChange(option, 'selectCity')}
           option={selectCity}
@@ -35,7 +39,7 @@ const FormSearchPage = ({
         <p className="input__label">Quy mô</p>
         <SelectDropdown
           name="selectScale"
-          listItem={listSelectScale || []}
+          listItem={dataListScales || []}
           placeholder="Quy mô"
           onChange={(option) => handleSelectChange(option, 'selectScale')}
           option={selectScale}
@@ -88,7 +92,7 @@ const FormSearchPage = ({
         >
           <Rating numberStar={1} />
         </div>
-        <Button onClick={() => {}}>LỌC KẾT QUẢ</Button>
+        <Button onClick={() => handleSortingProduct()}>LỌC KẾT QUẢ</Button>
       </div>
     </div>
   );

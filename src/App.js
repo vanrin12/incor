@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import './assets/css/slick.min.css';
 // import './assets/css/slick-theme.min.css';
 import 'react-datepicker/dist/react-datepicker.css';
-// Import Swiper styles
+// Import Swiper tyles
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 // import 'swiper/components/pagination/pagination.scss';

@@ -21,26 +21,40 @@ const ItemSearch = ({ history, itemObj }: Props) => {
         <div
           className="bg-image"
           style={{
-            backgroundImage: `url(${itemObj?.image})`,
+            backgroundImage: `url(${itemObj?.companyImage})`,
           }}
-          onClick={() => history.push(`${ROUTERS.PARTNER}/${itemObj.id}`)}
-          onKeyDown={() => history.push(`${ROUTERS.PARTNER}/${itemObj.id}`)}
+          onClick={() =>
+            history.push(`${ROUTERS.PARTNER}/${itemObj.partnerId}`)
+          }
+          onKeyDown={() =>
+            history.push(`${ROUTERS.PARTNER}/${itemObj.partnerId}`)
+          }
           role="button"
           tabIndex={0}
         />
         <div className="gr-footer">
-          <Link to={`${ROUTERS.PARTNER}/${itemObj.id}`} title={itemObj?.title}>
-            <h3>{itemObj?.title}</h3>
+          <Link
+            to={`${ROUTERS.PARTNER}/${itemObj.partnerId}`}
+            title={itemObj?.name}
+          >
+            <h3>{itemObj?.name}</h3>
           </Link>
           <div className="d-flex justify-content-between align-items-center">
-            <div className="hashtag">{itemObj?.hashtag}</div>
+            <div className="hashtag">
+              <div
+                style={{
+                  backgroundImage: `url(${itemObj?.companyImage})`,
+                }}
+              />
+              {itemObj?.companyName}
+            </div>
             <div className="rating">
               <Rating numberStar={itemObj?.rating} />
             </div>
           </div>
           <div className="location">
             <FontAwesomeIcon icon={faMapMarkerAlt} />
-            {itemObj?.location}
+            {itemObj?.areaName}
           </div>
         </div>
       </div>

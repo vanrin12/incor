@@ -1,9 +1,8 @@
 // @flow
-import React, { memo } from 'react';
-// import { Link } from 'react-router-dom';
+import React, { memo, useState } from 'react';
 import Input from '../Input';
 import SelectDropdown from '../Select';
-import Loading from '../Loading';
+import Loading from '../Loading/LoadingSmall';
 import { listSelectSearch } from '../../../constants/list';
 import ROUTERS from '../../../constants/router';
 
@@ -15,6 +14,7 @@ type Props = {
   listAutocompleteSearch: Array<{
     id: number,
     name: string,
+    label: string,
   }>,
   history: {
     push: Function,
@@ -31,21 +31,55 @@ const FormSearchMain = ({
   listAutocompleteSearch,
   isLoading,
 }: Props) => {
+  const [isShowAutoCompte, setIsShowAutoCompte] = useState(false);
+
+  const handleOnFocusInput = () => {
+    setIsShowAutoCompte(true);
+    handleChangeInput(valueSearch);
+  };
+
+  const handleOnBlurInput = () => {
+    setTimeout(() => {
+      setIsShowAutoCompte(false);
+      clearTimeout();
+    }, 400);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      history.push({
+        pathname: `${ROUTERS.PAGE_SEARCH}/${e.target.value || 'all'}`,
+        state: { keySearch: e.target.value },
+      });
+    }
+  };
+
   const renderListAutocompleteSearch =
     listAutocompleteSearch && listAutocompleteSearch.length > 0 ? (
       listAutocompleteSearch.map((item) => (
         <li
           key={item.id}
-          onClick={() => history.push(`${ROUTERS.PAGE_SEARCH}/${item.name}`)}
-          onKeyDown={() => history.push(`${ROUTERS.PAGE_SEARCH}/${item.name}`)}
+          onClick={() =>
+            history.push({
+              pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
+              state: { keySearch: item.label },
+            })
+          }
+          onKeyDown={() =>
+            history.push({
+              pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
+              state: { keySearch: item.label },
+            })
+          }
           role="presentation"
         >
-          {item.name}
+          {item.label}
         </li>
       ))
     ) : (
       <div className="no-data">KHÔNG CÓ KẾT QUẢ TÌM KIẾM.</div>
     );
+
   return (
     <div className="form-search">
       <div className="form-group mb-0">
@@ -58,12 +92,15 @@ const FormSearchMain = ({
         <Input
           placeholder="Nhập nội dung cần tìm"
           value={valueSearch}
+          onKeyPress={(e) => handleKeyDown(e)}
           onChange={(e) => handleChangeInput(e.target.value)}
           customClass="input-search"
+          onFocus={() => handleOnFocusInput()}
+          onBlur={() => handleOnBlurInput()}
         />
       </div>
       <div className="list-autocomplete-search">
-        {valueSearch && (
+        {isShowAutoCompte && (
           <ul>
             {isLoading ? <Loading /> : <>{renderListAutocompleteSearch}</>}
           </ul>

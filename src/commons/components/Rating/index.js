@@ -10,12 +10,12 @@ type Props = {
 };
 
 export const Rating = ({ numberStar = 0 }: Props) => {
-  let stars = [];
+  const stars = [];
   let i = 1;
   for (i = 1; i < 6; i += 1) {
     let faIcon = faStar;
     let classIcon = 'line';
-    if (numberStar >= i && numberStar !== null) {
+    if (parseInt(numberStar, 10) >= i && numberStar !== null) {
       faIcon = faStartBold;
       classIcon = 'bold';
     }

@@ -1,6 +1,7 @@
 // @flow
 
-import React, { memo, useState, useRef } from 'react';
+import React, { memo, useState, useEffect } from 'react';
+
 import IMAGES from 'themes/images';
 import SwiperCore, {
   Navigation,
@@ -11,6 +12,7 @@ import SwiperCore, {
 } from 'swiper';
 import ReactPlayer from 'react-player';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../../commons/components/Button';
 import MainLayout from '../../../commons/components/MainLayout';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
@@ -27,8 +29,13 @@ import {
   listClientHome,
   listSlideConsultancy,
   listSlideMain,
-  listAutocompleteSearch,
 } from '../../../mockData/dataSlide';
+import {
+  getListAreas,
+  getListSpaceType,
+  resetGetSearchProduct,
+  getListHashTag,
+} from '../redux';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -37,12 +44,18 @@ type Props = {
   history: {
     push: Function,
   },
-  isLoading: boolean,
 };
 
-const HomeMain = ({ history, isLoading }: Props) => {
+const HomeMain = ({ history }: Props) => {
+  const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
+  const [updateListHashTags, setUpdateListHashTags] = useState([]);
   const [isShowVideo, setIsShowVideo] = useState(false);
+  const { type, dataListHashTags, isProcessingSearch } = useSelector(
+    (state) => state?.home
+  );
+  const { token } = useSelector((state) => state?.account);
+
   const paramsOptionSlideMain = {
     loop: true,
     slidesPerView: 1,
@@ -106,36 +119,56 @@ const HomeMain = ({ history, isLoading }: Props) => {
     label: 'Sản phẩm',
   });
 
+  useEffect(() => {
+    dispatch(getListAreas());
+    dispatch(getListSpaceType());
+    dispatch(resetGetSearchProduct());
+    dispatch(getListHashTag('hashtag'));
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    setUpdateListHashTags(dataListHashTags);
+    // eslint-disable-next-line
+  }, [dataListHashTags && dataListHashTags.length]);
+
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
   };
-  // handle search
-  const typingTimeOut = useRef(null);
-  // onsubmit call api
 
+  useEffect(() => {
+    switch (type) {
+      case 'homes/formRequestSuccess':
+        setIsOpenModalClient(false);
+        setOpenSuccessClient({
+          ...openSuccessClient,
+          isShow: true,
+        });
+        break;
+      default:
+        break;
+    }
+    // eslint-disable-next-line
+  }, [type]);
+
+  // handle search
+  const inputSearch = valueSearch && valueSearch.toLowerCase().trim();
+
+  // onsubmit call api
   const handleChangeInput = (value) => {
     setValueSearch(value);
-    if (typingTimeOut.current) {
-      clearTimeout(typingTimeOut.current);
-    }
-    typingTimeOut.current = setTimeout(() => {
-      // code sau 0.3s thi goi api
-    }, 300);
+    // code sau 0.3s thi goi api
+    const listFilter = dataListHashTags.filter(
+      (item) => item.value && item.value.toLowerCase().includes(inputSearch)
+    );
+
+    setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
   };
   // close modal Tu van khach hang
   const handleCloseModal = () => {
     setIsOpenModalClient(false);
   };
 
-  // handleSubmitForm Tu van khach hang
-  const handleSubmitForm = (object) => {
-    console.log(object);
-    setIsOpenModalClient(false);
-    setOpenSuccessClient({
-      ...openSuccessClient,
-      isShow: true,
-    });
-  };
   // render list slide Main top
   const renderListSlideMain =
     listSlideMain.length > 0 &&
@@ -183,15 +216,17 @@ const HomeMain = ({ history, isLoading }: Props) => {
             Giải pháp xây dựng cho ngôi nhà của bạn
           </div>
           <div className="search-main">
-            <FormSearchMain
-              handleChangeInput={handleChangeInput}
-              handleSelectChange={handleSelectChange}
-              valueSearch={valueSearch}
-              optionSelect={optionSearchDefault}
-              history={history}
-              listAutocompleteSearch={listAutocompleteSearch}
-              isLoading={isLoading}
-            />
+            {token && (
+              <FormSearchMain
+                handleChangeInput={handleChangeInput}
+                handleSelectChange={handleSelectChange}
+                valueSearch={valueSearch}
+                optionSelect={optionSearchDefault}
+                history={history}
+                listAutocompleteSearch={updateListHashTags}
+                isLoading={isProcessingSearch}
+              />
+            )}
           </div>
           <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>
             YÊU CẦU TƯ VẤN
@@ -275,15 +310,13 @@ const HomeMain = ({ history, isLoading }: Props) => {
       {/* Modal form contact Us */}
       <div className="FormContactUs">
         <FormContactUs
-          handleSubmitForm={handleSubmitForm}
           isOpenModalClient={isOpenModalClient}
           handleCloseModal={handleCloseModal}
         />
       </div>
-      {/* Modal form contact Us on Mobile*/}
+      {/* Modal form contact Us on Mobile */}
       <div className="FormContactUsMobile">
         <FormContactUsMobile
-          handleSubmitForm={handleSubmitForm}
           isOpenModalClient={isOpenModalClient}
           handleCloseModal={handleCloseModal}
         />

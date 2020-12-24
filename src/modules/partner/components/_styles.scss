@@ -1,4 +1,6 @@
 .page-partner {
+  min-height: 80vh;
+
   .bg-title-partner {
     height: pxToRem(800);
     padding: pxToRem(200) pxToRem(90) pxToRem(60) pxToRem(90);
@@ -167,6 +169,7 @@
 .product-list-rating {
   background-color: $white;
   padding: pxToRem(10) pxToRem(40);
+  padding-bottom: pxToRem(30);
 
   img {
     width: 100%;
@@ -263,6 +266,7 @@
 
 .content-quotation {
   max-height: pxToRem(600);
+  min-height: pxToRem(200);
   overflow: hidden;
 }
 
