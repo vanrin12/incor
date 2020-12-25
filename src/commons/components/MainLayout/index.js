@@ -119,7 +119,7 @@ const MainLayout = ({
         {!token && (
           <div className="app-fixed-footer">
             <a
-              href="tel:0164944617"
+              href="tel:0766 620 620"
               className="button btn btn-primary big btn-fix phone"
               title=""
             >
