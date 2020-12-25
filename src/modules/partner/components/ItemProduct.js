@@ -12,8 +12,8 @@ const ItemProduct = ({ itemObj, handleModalGallery }: Props) => {
   return (
     <div
       className="company-item"
-      onClick={() => handleModalGallery(itemObj?.gallery)}
-      onKeyDown={() => handleModalGallery(itemObj?.gallery)}
+      onClick={() => handleModalGallery(itemObj?.id)}
+      onKeyDown={() => handleModalGallery(itemObj?.id)}
       role="button"
       tabIndex={0}
     >

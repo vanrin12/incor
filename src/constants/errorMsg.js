@@ -33,6 +33,7 @@ const ERROR_MESSAGE = {
   TEXT_QUOTES_FAILED: 'Báo giá của bạn đang bị lỗi. Vùi lòng thử lại',
   ERROR_QUOTES: 'Vui lòng chọn dự án cần đánh giá.',
   DESC_SEO: 'Incor Giải pháp xây dựng cho ngôi nhà của bạn',
+  MESS_NO_GALLERY: 'Không có hình ảnh nào.',
 };
 
 export default ERROR_MESSAGE;

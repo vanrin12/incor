@@ -64,10 +64,10 @@ export const removeVietnameseTones = (str) => {
   string = str.trim();
   // Remove punctuations
   // Bỏ dấu câu, kí tự đặc biệt
-  // str = str.replace(
-  //   /!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]||~|\$||_|`|-|{|}|\||\\/g,
-  //   ' '
-  // );
+  string = str.replace(
+    /!|@|%|\^|\*|\(|\)|\+|\?|\/|,|\[|\]||~|\$||_|`|-|{|}|\||\\/g,
+    ''
+  );
   return string;
 };
 

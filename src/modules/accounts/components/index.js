@@ -27,9 +27,9 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
   const wrapperInfoRef = useRef();
-  useOnClickOutside(wrapperRef, () => {
-    setIsShowModal(false);
-  });
+  // useOnClickOutside(wrapperRef, () => {
+  //   setIsShowModal(false);
+  // });
 
   useOnClickOutside(wrapperInfoRef, () => {
     setIsShowModalInfo(false);

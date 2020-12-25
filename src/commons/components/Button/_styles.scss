@@ -34,7 +34,7 @@
     outline: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    z-index: 9999;
+    z-index: 99;
     width: pxToRem(250);
     font-size: pxToRem(20);
     text-transform: uppercase;
@@ -118,7 +118,7 @@
 }
 
 .home-main {
-  .btn-fix.button.btn-primary {
+  .app-fixed-footer {
     display: none;
   }
 }

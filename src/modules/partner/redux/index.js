@@ -13,6 +13,8 @@ const initialState = {
   listProductPartner: [],
   listConstructions: [],
   totalRows: 0,
+  listGalleryProduct: [],
+  isProcessingGallery: false,
 };
 
 const partnerSlice = createSlice({
@@ -117,6 +119,33 @@ const partnerSlice = createSlice({
       state.type = action.type;
       state.isProcessing = false;
     },
+
+    getListGallery: (state, action) => {
+      state.type = action.type;
+      state.isProcessingGallery = true;
+    },
+    getListGallerySuccess: (state, action) => {
+      const { popups } = action?.data;
+      state.type = action.type;
+      state.isProcessingGallery = false;
+      state.listGalleryProduct =
+        popups &&
+        popups.map((item, index) => {
+          return {
+            id: index + 1,
+            original: item.image,
+            thumbnail: item.image,
+          };
+        });
+    },
+    getListGalleryFailed: (state, action) => {
+      state.type = action.type;
+      state.isProcessingGallery = false;
+    },
+    resetTypeGalleryProduct: (state) => {
+      state.type = '';
+      state.isProcessingGallery = false;
+    },
   },
 });
 
@@ -133,6 +162,10 @@ export const {
   getListPartnerProjects,
   getListPartnerProjectsSuccess,
   getListPartnerProjectsFailed,
+  getListGallery,
+  getListGallerySuccess,
+  getListGalleryFailed,
+  resetTypeGalleryProduct,
 } = actions;
 
 export default reducer;

@@ -28,7 +28,7 @@ import {
   listSlideConsultancy,
   listSlideMain,
 } from '../../../mockData/dataSlide';
-import { resetGetSearchProduct, getListHashTag } from '../redux';
+import { resetGetSearchProduct } from '../redux';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -109,7 +109,6 @@ const HomeMain = ({ history }: Props) => {
 
   useEffect(() => {
     dispatch(resetGetSearchProduct());
-    dispatch(getListHashTag('hashtag'));
     // eslint-disable-next-line
   }, []);
 

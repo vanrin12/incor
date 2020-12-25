@@ -9,7 +9,11 @@ import FormContactUsMobile from 'commons/components/Form/FormContacUsMobile';
 import ERROR_MESSAGE from 'constants/errorMsg';
 import IMAGES from 'themes/images';
 import { useSelector, useDispatch } from 'react-redux';
-import { getListAreas, getListSpaceType } from 'modules/home/redux';
+import {
+  getListAreas,
+  getListSpaceType,
+  getListHashTag,
+} from 'modules/home/redux';
 import Footer from '../Footer';
 import Header from '../Header';
 
@@ -29,19 +33,48 @@ const MainLayout = ({
   headTitle = '',
 }: Props) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
+
   // Modal client
   const [isOpenModalClient, setIsOpenModalClient] = useState(false);
   const { token } = useSelector((state) => state?.account);
   const { keywordHashTag } = useSelector((state) => state?.home);
   const { type } = useSelector((state) => state?.home);
+
+  // custom header sticky
+  useEffect(() => {
+    const elementHeader = document.getElementById('root');
+    const sticky = elementHeader?.offsetTop;
+    const scrollCallBack = window.addEventListener('scroll', () => {
+      if (window && window.pageYOffset > sticky + 300) {
+        elementHeader.classList.add('go-to-top');
+      } else {
+        elementHeader.classList.remove('go-to-top');
+      }
+    });
+    return () => {
+      window.removeEventListener('scroll', scrollCallBack);
+    };
+  }, []);
+
   // Modal client
   const [openSuccessClient, setOpenSuccessClient] = useState({
     isShow: false,
     content: ERROR_MESSAGE.TEXT_SUCCUSS,
   });
+
+  // get list auto complete input search
+
+  useEffect(() => {
+    dispatch(getListHashTag('hashtag'));
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (isShowModalContact !== null) {
@@ -72,6 +105,13 @@ const MainLayout = ({
   // close modal Tu van khach hang
   const handleCloseModal = () => {
     setIsOpenModalClient(false);
+  };
+
+  const handleGoToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -135,6 +175,10 @@ const MainLayout = ({
             </Button>
           </div>
         )}
+
+        <div className="btn-go-to-top" onClick={() => handleGoToTop()}>
+          <img src={IMAGES.imgBackToTop} alt="" />
+        </div>
       </div>
     </>
   );

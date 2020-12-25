@@ -75,7 +75,7 @@ const ClientDetailManager = ({ match }: Props) => {
     );
 
   return (
-    <MainLayout headTitle={`Blog - ${dataDetailBlog?.name}`}>
+    <MainLayout headTitle={`Blog - ${dataDetailBlog?.name || ''}`}>
       <div className="page-client detail">
         {isProcessing ? (
           <Loading />

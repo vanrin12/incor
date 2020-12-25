@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import IMAGES from 'themes/images';
 
+
 const initialState = {
   isProcessing: false,
   type: '',

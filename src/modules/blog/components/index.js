@@ -36,6 +36,10 @@ const ClientManager = ({ history, match }: Props) => {
 
   const handleSelectPagination = (eventKey) => {
     setPaginationIndex(eventKey.selected);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   const handleGetListBlogOffCategory = useCallback(
@@ -52,10 +56,10 @@ const ClientManager = ({ history, match }: Props) => {
       page: paginationIndex + 1,
       paged: 6,
     });
-  }, [handleGetListBlogOffCategory, paginationIndex, slug, nameCategory]);
+  }, [handleGetListBlogOffCategory, paginationIndex, slug]);
 
   // Render list item
-  const renderListClient =
+  const renderListBlogCategory =
     listBlogOffCategory && listBlogOffCategory.length > 0 ? (
       listBlogOffCategory.map((item) => (
         <ItemClientManager
@@ -84,7 +88,7 @@ const ClientManager = ({ history, match }: Props) => {
             <Loading />
           ) : (
             <>
-              <div className="list-client">{renderListClient}</div>
+              <div className="list-client">{renderListBlogCategory}</div>
               {totalRow > 6 && (
                 <div className="wrapper-pagination">
                   <ReactPaginate
