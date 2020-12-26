@@ -432,12 +432,17 @@
   }
 
   .session-video {
+    min-height: pxToVW(350);
+    height: auto;
+
     iframe {
       max-height: pxToVW(250) !important;
+      height: pxToVW(250);
     }
 
     .bg-session-video {
       max-height: pxToVW(250);
+      height: pxToVW(250);
 
       .icon-play {
         width: pxToVW(20);

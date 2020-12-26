@@ -7,9 +7,10 @@ import ItemMenu from './Item';
 
 type Props = {
   location: Object,
+  handelClickMenu?: Function,
 };
 
-const Menu = ({ location }: Props) => {
+const Menu = ({ location, handelClickMenu = () => {} }: Props) => {
   const renderListItem = () => {
     let result = [];
     if (LIST_MENU.length > 0) {
@@ -21,6 +22,7 @@ const Menu = ({ location }: Props) => {
             label={item.label}
             location={location}
             name={item.name}
+            handelClickMenu={handelClickMenu}
           />
         );
       });
@@ -30,4 +32,7 @@ const Menu = ({ location }: Props) => {
   return <ul className="menu-nav">{renderListItem()}</ul>;
 };
 
+Menu.defaultProps = {
+  handelClickMenu: () => {},
+};
 export default withRouter(memo<Props>(Menu));
