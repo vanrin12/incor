@@ -20,7 +20,6 @@ import Rating from 'commons/components/Rating';
 import Loading from 'commons//components/Loading';
 import Gallery from 'commons/components/Gallery';
 import ERROR_MESSAGE from 'constants/errorMsg';
-import { getListHashTag } from 'modules/home/redux';
 import PartnerInfo from './PartnerInfo';
 import ItemProduct from './ItemProduct';
 import ItemComment from './ItemComment';
@@ -31,6 +30,8 @@ import {
   quotesProjects,
   resetTypeQuotesProject,
   getListPartnerProjects,
+  getListGallery,
+  resetTypeGalleryProduct,
 } from '../redux';
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -60,24 +61,30 @@ const PagePartner = ({ history, match }: Props) => {
     listProductPartner,
     isProcessing,
     listConstructions,
+    listGalleryProduct,
+    isProcessingGallery,
   } = useSelector((state) => state?.partner);
   // Options in Swiper
   const params = {
     loop: true,
     slidesPerView: 4,
     spaceBetween: 30,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       '1024': {
         slidesPerView: 4,
         spaceBetween: 30,
       },
       '768': {
-        slidesPerView: 2,
-        spaceBetween: 30,
+        slidesPerView: 1,
+        spaceBetween: 0,
       },
       '320': {
-        slidesPerView: 2,
-        spaceBetween: 15,
+        slidesPerView: 1,
+        spaceBetween: 0,
       },
     },
     autoplay: {
@@ -91,6 +98,10 @@ const PagePartner = ({ history, match }: Props) => {
     loop: true,
     slidesPerView: 4,
     spaceBetween: 30,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       '1024': {
         slidesPerView: 4,
@@ -122,27 +133,17 @@ const PagePartner = ({ history, match }: Props) => {
   const [isOpenModalGallery, setIsOpenModalGallery] = useState(false);
   const [openModalQuotation, setOpenModalQuotation] = useState(false);
   const [paginationIndex, setPaginationIndex] = useState(0);
-  const [listGallery, setListGallery] = useState([]);
   const [modalShowMess, setModalShowMess] = useState({
     isShow: false,
     content: '',
   });
 
+  const [modalShowGalleryMess, setModalShowGalleryMess] = useState({
+    isShow: false,
+    content: '',
+  });
+
   const [itemQuote, setItemQuote] = useState(0);
-
-  const handleGetListHashTag = useCallback(
-    () => {
-      dispatch(getListHashTag('hashtag'));
-    },
-    // eslint-disable-next-line
-    [getListHashTag]
-  );
-
-  useEffect(() => {
-    handleGetListHashTag();
-    // eslint-disable-next-line
-  }, [handleGetListHashTag, optionSearchDefault?.value]);
-
   const handleGetListPartnerProject = useCallback(
     (paramsRequest) => {
       dispatch(getListPartnerProjects(paramsRequest));
@@ -157,7 +158,10 @@ const PagePartner = ({ history, match }: Props) => {
       page: paginationIndex + 1,
       paged: 3,
     });
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     // eslint-disable-next-line
   }, [handleGetListPartnerProject, paginationIndex, id]);
 
@@ -204,6 +208,19 @@ const PagePartner = ({ history, match }: Props) => {
           content: ERROR_MESSAGE.TEXT_QUOTES_FAILED,
         });
         break;
+      case 'partner/getListGallerySuccess':
+        setIsOpenModalGallery(true);
+        if (listGalleryProduct && listGalleryProduct.length <= 0) {
+          setModalShowGalleryMess({
+            ...modalShowGalleryMess,
+            isShow: true,
+            content: ERROR_MESSAGE.MESS_NO_GALLERY,
+          });
+        }
+        break;
+      case 'partner/getListGalleryFailed':
+        setIsOpenModalGallery(false);
+        break;
       default:
         break;
     }
@@ -237,14 +254,29 @@ const PagePartner = ({ history, match }: Props) => {
       setErrorMsg(ERROR_MESSAGE.ERROR_QUOTES);
     }
   };
+  //  click call api get list gallery product
+  const handleModalGallery = (idProduct) => {
+    dispatch(
+      getListGallery({
+        id: idProduct,
+        type: 'product',
+      })
+    );
+  };
 
-  const handleModalGallery = (gallery) => {
-    setListGallery(gallery);
-    setIsOpenModalGallery(true);
+  //  click call api get list gallery product
+  const handleModalGalleryConstruction = (idProduct) => {
+    dispatch(
+      getListGallery({
+        id: idProduct,
+        type: 'project',
+      })
+    );
   };
 
   const handleCloseModalGallery = (boolean) => {
     setIsOpenModalGallery(boolean);
+    dispatch(resetTypeGalleryProduct());
   };
 
   const handleCheckBox = (qnaId) => {
@@ -278,7 +310,7 @@ const PagePartner = ({ history, match }: Props) => {
             key={item.id}
             itemObj={item}
             history={history}
-            handleModalGallery={handleModalGallery}
+            handleModalGallery={handleModalGalleryConstruction}
           />
         </SwiperSlide>
       ))
@@ -326,10 +358,18 @@ const PagePartner = ({ history, match }: Props) => {
               {listProductPartner?.length > 0 && (
                 <div className="product-company">
                   <h3 className="title-page">SẢN PHẨM</h3>
-                  <div className="product-list-company">
-                    <Swiper {...params} navigation>
+                  <div className="product-list-company mobile">
+                    <Swiper
+                      {...params}
+                      // navigation
+                      loopAdditionalSlides={1}
+                      centeredSlidesBounds
+                    >
                       {renderItemProduct}
                     </Swiper>
+                    {/* <!-- Add Arrows --> */}
+                    <div className="swiper-button-next" />
+                    <div className="swiper-button-prev" />
                   </div>
                 </div>
               )}
@@ -337,9 +377,17 @@ const PagePartner = ({ history, match }: Props) => {
                 <div className="product-company">
                   <h3 className="title-page">CÔNG TRÌNH THỰC TẾ</h3>
                   <div className="product-list-company">
-                    <Swiper {...params2} navigation>
+                    <Swiper
+                      {...params2}
+                      // navigation
+                      loopAdditionalSlides={1}
+                      centeredSlidesBounds
+                    >
                       {renderItemProductReality}
                     </Swiper>
+                    {/* <!-- Add Arrows --> */}
+                    <div className="swiper-button-next" />
+                    <div className="swiper-button-prev" />
                   </div>
                 </div>
               )}
@@ -381,15 +429,20 @@ const PagePartner = ({ history, match }: Props) => {
           </>
         )}
       </div>
-      {isOpenModalGallery &&
-        listGallery &&
-        listGallery.length &&
-        listGallery.length > 0 && (
-          <Gallery
-            listGallery={listGallery}
-            handleCloseModalGallery={handleCloseModalGallery}
-          />
-        )}
+      {isProcessingGallery ? (
+        <Loading />
+      ) : (
+        <>
+          {listGalleryProduct &&
+            listGalleryProduct.length > 0 &&
+            isOpenModalGallery && (
+              <Gallery
+                listGallery={listGalleryProduct}
+                handleCloseModalGallery={handleCloseModalGallery}
+              />
+            )}
+        </>
+      )}
       <div
         className="quotation"
         onKeyDown={() => {
@@ -434,6 +487,22 @@ const PagePartner = ({ history, match }: Props) => {
       >
         <h2 className="modal-title">THÔNG BÁO</h2>
         <div className="text-modal-content">{modalShowMess.content}</div>
+      </ModalPopup>
+
+      <ModalPopup
+        isOpen={modalShowGalleryMess.isShow}
+        isShowFooter
+        textBtnRight="ĐÓNG"
+        handleClose={() => {
+          dispatch(resetTypeGalleryProduct());
+          setModalShowGalleryMess({
+            ...modalShowGalleryMess,
+            isShow: false,
+          });
+        }}
+      >
+        <h2 className="modal-title">THÔNG BÁO</h2>
+        <div className="text-modal-content">{modalShowGalleryMess.content}</div>
       </ModalPopup>
     </MainLayout>
   );

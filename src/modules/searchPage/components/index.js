@@ -3,11 +3,7 @@
 import React, { useState, useRef, memo, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
-import {
-  getListAreas,
-  getSearchProduct,
-  getListHashTag,
-} from 'modules/home/redux';
+import { getListAreas, getSearchProduct } from 'modules/home/redux';
 import MainLayout from 'commons/components/MainLayout';
 import FormSearchMulti from 'commons/components/Form/FormSearchMulti';
 import FormSearchPage from 'commons/components/Form/FormSearchPage';
@@ -55,13 +51,6 @@ const PageSearch = ({ history }: Props) => {
     setPaginationIndex(eventKey.selected);
   };
 
-  // get list auto complete input search
-
-  useEffect(() => {
-    dispatch(dispatch(getListHashTag('hashtag')));
-    // eslint-disable-next-line
-  }, [optionSearchDefault?.value]);
-
   const handleGetListSearchProduct = useCallback(
     (params) => {
       dispatch(getSearchProduct(params));
@@ -87,7 +76,10 @@ const PageSearch = ({ history }: Props) => {
           rate: rating || '',
         })
       );
-      window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }, 300);
     // eslint-disable-next-line
   }, [handleGetListSearchProduct, paginationIndex, optionSearchDefault?.value]);

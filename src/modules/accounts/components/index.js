@@ -27,9 +27,9 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowModalInfo, setIsShowModalInfo] = useState(false);
   const wrapperInfoRef = useRef();
-  useOnClickOutside(wrapperRef, () => {
-    setIsShowModal(false);
-  });
+  // useOnClickOutside(wrapperRef, () => {
+  //   setIsShowModal(false);
+  // });
 
   useOnClickOutside(wrapperInfoRef, () => {
     setIsShowModalInfo(false);
@@ -219,7 +219,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
             </Link>
           </li>
           <li>
-            <Link to="/" title="Phản hồi dịch vụ">
+            <Link to={`${ROUTERS.PAGE_BLOG}/lien-he`} title="Phản hồi dịch vụ">
               Phản hồi dịch vụ
             </Link>
           </li>

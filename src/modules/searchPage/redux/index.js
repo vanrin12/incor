@@ -22,7 +22,7 @@ const searchScales = createSlice({
           return {
             id: item.id,
             value: item.id,
-            label: item.name,
+            label: `${item.name} Người`,
           };
         }) || [];
     },

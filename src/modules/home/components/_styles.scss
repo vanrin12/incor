@@ -326,7 +326,95 @@
   z-index: 1;
 }
 
+.link-more {
+  margin-top: pxToVW(20);
+  text-align: center;
+  display: none;
+
+  a {
+    font-size: pxToVW(16);
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+    color: $bg-main;
+    text-decoration: underline !important;
+  }
+}
+
 @include breakpoint(sm992) {
+  .link-more {
+    display: block;
+  }
+
+  .mobile.slide-promotions,
+  .product-list-company.mobile {
+    overflow: hidden;
+    position: relative;
+
+    .swiper-container {
+      overflow: visible;
+      max-width: pxToVW(140);
+      @include transition(0.3s all);
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+
+      .swiper-wrapper {
+        padding-top: pxToVW(30);
+        padding-bottom: pxToVW(40);
+
+        .swiper-slide {
+          padding-left: 0;
+          padding-right: 0;
+
+          &.swiper-slide-next {
+            margin-left: pxToVW(-30);
+            position: relative;
+            opacity: 0.5;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: transparent;
+              z-index: 99;
+              height: 100%;
+              border-radius: pxToVW(15);
+            }
+          }
+
+          &.swiper-slide-prev {
+            left: pxToVW(14);
+            opacity: 0.5;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: transparent;
+              z-index: 99;
+              height: 100%;
+              border-radius: pxToVW(15);
+            }
+          }
+
+          &.swiper-slide-active {
+            width: pxToVW(177) !important;
+            margin-left: pxToVW(-20);
+            -webkit-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            transform: scale(1.2);
+            z-index: 99;
+            background: $white;
+          }
+        }
+      }
+    }
+  }
 
   .session-slide,
   .session-video,

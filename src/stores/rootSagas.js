@@ -28,6 +28,7 @@ import ratingProjectSaga from 'modules/construction/sagas/ratingProjectSaga';
 import getListProjectSaga from 'modules/partner/sagas/getListProjectSaga';
 import quotesProjectsSaga from 'modules/partner/sagas/quotesProjectSaga';
 import getListPartnerProjectsSaga from 'modules/partner/sagas/getListPartnerSaga';
+import getListGallery from 'modules/partner/sagas/getPopupImageSaga';
 
 export default function* RootSagas() {
   yield all([
@@ -48,5 +49,6 @@ export default function* RootSagas() {
     quotesProjectsSaga(),
     getListPartnerProjectsSaga(),
     getListHashTagSaga(),
+    getListGallery(),
   ]);
 }

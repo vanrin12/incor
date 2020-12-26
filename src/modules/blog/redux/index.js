@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import moment from 'moment';
+import { truncateString } from 'helpers/validate';
 import IMAGES from 'themes/images';
 
 const initialState = {
@@ -34,7 +36,9 @@ const blogSlice = createSlice({
           return {
             id: item.id,
             title: item.name || '',
-            date: '13:00 - 11/11/2020', // TODO UPDATE
+            date:
+              item.created_at &&
+              moment(item.created_at).format('HH:mm - DD/MM/YYYY'),
             image: item.image || IMAGES.imgNotFound,
             desc: item.description || '',
           };
@@ -109,9 +113,12 @@ const blogSlice = createSlice({
           return {
             id: item.id,
             title: item.name || '',
-            date: '13:00 - 11/11/2020', // TODO UPDATE
+            date:
+              item.created_at &&
+              moment(item.created_at).format('HH:mm - DD/MM/YYYY'),
             image: item.image || IMAGES.imgNotFound,
-            desc: item.description || '',
+            desc:
+              (item.description && truncateString(item.description, 55)) || '',
           };
         });
     },

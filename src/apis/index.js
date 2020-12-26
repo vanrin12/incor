@@ -23,6 +23,7 @@ export const ROUTES = {
   API_QUOTES: `/site/quotes`,
   API_GET_PARTNER: (partner_id) => `/site/partners/${partner_id}`,
   API_CONSTANTS: (name) => `/site/constants/${name}`,
+  API_POPUP_GALLERY: `/site/popups`,
 };
 
 export const API = create({

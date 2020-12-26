@@ -384,13 +384,22 @@
   }
 
   .product-list-company {
+    position: relative;
+    overflow: hidden;
+
+    &.mobile {
+      width: calc(100% + #{pxToVW(28)});
+      left: pxToVW(-14);
+      position: relative;
+    }
+
     .swiper-container {
       padding: 0 0 pxToVW(20) 0;
     }
 
     .company-item {
       min-height: pxToVW(210);
-      border-radius: pxToVW(5);
+      border-radius: pxToVW(10);
       box-shadow: 0 pxToVW(3) pxToVW(6) 0 rgba(0, 0, 0, 0.16);
       padding-bottom: pxToVW(20);
       border: pxToVW(2) solid transparent;
@@ -402,13 +411,13 @@
       }
 
       .bg-image {
-        border-radius: pxToVW(5);
+        border-radius: pxToVW(10);
       }
 
       .title {
         padding: pxToVW(10) pxToVW(5);
-        border-bottom-left-radius: pxToVW(5);
-        border-bottom-right-radius: pxToVW(5);
+        border-bottom-left-radius: pxToVW(10);
+        border-bottom-right-radius: pxToVW(10);
       }
 
       h3 {
