@@ -108,9 +108,23 @@
 
 .product-company {
   margin-bottom: pxToRem(80);
+
 }
 
 .product-list-company {
+  position: relative;
+
+  @media (min-width: 992px) {
+    .swiper-button-next {
+      right: pxToRem(-60);
+    }
+
+    .swiper-button-prev {
+      left: pxToRem(-60);
+    }
+  }
+
+
   .swiper-container {
     padding: 0 0 pxToRem(30) 0;
   }
@@ -384,7 +398,7 @@
   }
 
   .product-list-company {
-    position: relative;
+
     overflow: hidden;
 
     &.mobile {
