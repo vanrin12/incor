@@ -73,6 +73,8 @@ body p {
 .btn-go-to-top {
   position: fixed;
   display: none;
+  border: 0;
+  outline: none;
   z-index: 99;
   right: 15px;
   bottom: 80px;
