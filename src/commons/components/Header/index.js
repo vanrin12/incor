@@ -1,8 +1,9 @@
 /* eslint-disable no-nested-ternary */
 // @flow
 
-import React, { memo, useState, useRef } from 'react';
+import React, { memo, useState, useRef, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import IMAGES from 'themes/images';
 import ROUTERS from 'constants/router';
 import LoginForm from '../../../modules/accounts/components';
@@ -21,6 +22,7 @@ const Header = ({ location, history }: Props) => {
   const refMenu = useRef(null);
   const iconRef = useRef(null);
   const [isOpenModalMobile, setIsOpenModalMobile] = useState(false);
+  const { type } = useSelector((state) => state?.account);
 
   useClickOutside(
     refMenu,
@@ -32,8 +34,27 @@ const Header = ({ location, history }: Props) => {
     { iconRef }
   );
 
+  /** Show popup sign in success */
+  useEffect(() => {
+    switch (type) {
+      case 'accounts/signInRequestSuccess':
+      case 'accounts/logoutSuccess':
+        setIsOpenModalMobile(false);
+        setIsOpen(false);
+        break;
+      default:
+        break;
+    }
+    // eslint-disable-next-line
+  }, [type]);
+
   const handleGetIsShowModal = (boolean) => {
     setIsOpenModalMobile(boolean);
+    setIsOpen(false);
+  };
+
+  const handelClickMenu = () => {
+    setIsOpenModalMobile(false);
     setIsOpen(false);
   };
 
@@ -78,7 +99,7 @@ const Header = ({ location, history }: Props) => {
         <Link to={ROUTERS.MAIN_PAGE} title="Logo" className="logo-blue">
           <img src={IMAGES.logo_blue} alt="Logo" />
         </Link>
-        <Menu location={location} />
+        <Menu location={location} handelClickMenu={handelClickMenu} />
         <LoginForm
           handleGetIsShowModal={handleGetIsShowModal}
           history={history}

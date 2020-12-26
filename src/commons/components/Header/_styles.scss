@@ -60,7 +60,7 @@
   height: pxToVW(18);
   position: absolute;
   right: pxToVW(20);
-  border-bottom: pxToVW(2.5) solid $white;
+  border-bottom: pxToVW(3.5) solid $white;
   cursor: pointer;
   outline: none;
 
@@ -156,9 +156,15 @@
       margin-bottom: pxToVW(15);
       border-radius: pxToVW(5);
 
-      &.active {
+      &.active,
+      &:hover,
+      &:active {
         background-color: $bg-main;
         color: $white;
+
+        a {
+          color: $white;
+        }
       }
     }
   }
