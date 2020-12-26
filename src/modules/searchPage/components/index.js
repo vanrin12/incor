@@ -97,6 +97,7 @@ const PageSearch = ({ history }: Props) => {
         rate: rating || '',
       })
     );
+    setIsAddClassSorting(false);
   };
   // call app get list scales
   useEffect(() => {
