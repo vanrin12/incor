@@ -219,7 +219,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
             </Link>
           </li>
           <li>
-            <Link to="/" title="Phản hồi dịch vụ">
+            <Link to={`${ROUTERS.PAGE_BLOG}/lien-he`} title="Phản hồi dịch vụ">
               Phản hồi dịch vụ
             </Link>
           </li>

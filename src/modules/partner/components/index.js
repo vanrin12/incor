@@ -69,18 +69,22 @@ const PagePartner = ({ history, match }: Props) => {
     loop: true,
     slidesPerView: 4,
     spaceBetween: 30,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       '1024': {
         slidesPerView: 4,
         spaceBetween: 30,
       },
       '768': {
-        slidesPerView: 2,
-        spaceBetween: 30,
+        slidesPerView: 1,
+        spaceBetween: 0,
       },
       '320': {
-        slidesPerView: 2,
-        spaceBetween: 15,
+        slidesPerView: 1,
+        spaceBetween: 0,
       },
     },
     autoplay: {
@@ -94,6 +98,10 @@ const PagePartner = ({ history, match }: Props) => {
     loop: true,
     slidesPerView: 4,
     spaceBetween: 30,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       '1024': {
         slidesPerView: 4,
@@ -268,6 +276,7 @@ const PagePartner = ({ history, match }: Props) => {
 
   const handleCloseModalGallery = (boolean) => {
     setIsOpenModalGallery(boolean);
+    dispatch(resetTypeGalleryProduct());
   };
 
   const handleCheckBox = (qnaId) => {
@@ -349,10 +358,18 @@ const PagePartner = ({ history, match }: Props) => {
               {listProductPartner?.length > 0 && (
                 <div className="product-company">
                   <h3 className="title-page">SẢN PHẨM</h3>
-                  <div className="product-list-company">
-                    <Swiper {...params} navigation>
+                  <div className="product-list-company mobile">
+                    <Swiper
+                      {...params}
+                      // navigation
+                      loopAdditionalSlides={1}
+                      centeredSlidesBounds
+                    >
                       {renderItemProduct}
                     </Swiper>
+                    {/* <!-- Add Arrows --> */}
+                    <div className="swiper-button-next" />
+                    <div className="swiper-button-prev" />
                   </div>
                 </div>
               )}
@@ -360,9 +377,17 @@ const PagePartner = ({ history, match }: Props) => {
                 <div className="product-company">
                   <h3 className="title-page">CÔNG TRÌNH THỰC TẾ</h3>
                   <div className="product-list-company">
-                    <Swiper {...params2} navigation>
+                    <Swiper
+                      {...params2}
+                      // navigation
+                      loopAdditionalSlides={1}
+                      centeredSlidesBounds
+                    >
                       {renderItemProductReality}
                     </Swiper>
+                    {/* <!-- Add Arrows --> */}
+                    <div className="swiper-button-next" />
+                    <div className="swiper-button-prev" />
                   </div>
                 </div>
               )}

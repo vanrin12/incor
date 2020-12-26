@@ -1,6 +1,8 @@
 // @flow
 
 import React, { memo, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ROUTERS from 'constants/router';
 
 import IMAGES from 'themes/images';
 import SwiperCore, {
@@ -67,6 +69,37 @@ const HomeMain = ({ history }: Props) => {
     loop: true,
     slidesPerView: 3,
     spaceBetween: 35,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      '1024': {
+        slidesPerView: 3,
+        spaceBetween: 35,
+      },
+      '768': {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      '320': {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  };
+  const params2 = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 35,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       '1024': {
         slidesPerView: 3,
@@ -86,7 +119,6 @@ const HomeMain = ({ history }: Props) => {
       disableOnInteraction: false,
     },
   };
-
   const paramsOptionSlide = {
     loop: true,
     slidesPerView: 2,
@@ -106,7 +138,6 @@ const HomeMain = ({ history }: Props) => {
 
   // handle search
   const inputSearch = removeVietnameseTones(valueSearch.trim()).toLowerCase();
-
   useEffect(() => {
     dispatch(resetGetSearchProduct());
     // eslint-disable-next-line
@@ -115,13 +146,14 @@ const HomeMain = ({ history }: Props) => {
   useEffect(() => {
     const listFilter = dataListHashTags.filter(
       (item) =>
-        removeVietnameseTones(item.value || '')
-          .toLowerCase()
-          .indexOf(inputSearch) > -1
+        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
+        -1
     );
+
     setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
     // eslint-disable-next-line
   }, [dataListHashTags && dataListHashTags.length, valueSearch]);
+
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
   };
@@ -210,10 +242,18 @@ const HomeMain = ({ history }: Props) => {
           <div className="heading-title text-uppercase text-center">
             CHƯƠNG TRÌNH KHUYẾN MÃI
           </div>
-          <div className="slide-promotions">
-            <Swiper {...params} navigation>
+          <div className="slide-promotions mobile">
+            <Swiper
+              {...params}
+              // navigation
+              loopAdditionalSlides={1}
+              centeredSlidesBounds
+            >
               {renderListSlideSale}
             </Swiper>
+            {/* <!-- Add Arrows --> */}
+            <div className="swiper-button-next" />
+            <div className="swiper-button-prev" />
           </div>
         </div>
       </div>
@@ -225,7 +265,13 @@ const HomeMain = ({ history }: Props) => {
           </div>
           <div className="client">
             <div className="row">
-              <Swiper {...paramsOptionSlide}>{renderListClientMain}</Swiper>
+              <Swiper
+                {...paramsOptionSlide}
+                loopAdditionalSlides={1}
+                centeredSlidesBounds
+              >
+                {renderListClientMain}
+              </Swiper>
             </div>
           </div>
         </div>
@@ -237,9 +283,25 @@ const HomeMain = ({ history }: Props) => {
             TƯ VẤN XÂY DỰNG
           </div>
           <div className="slide-promotions">
-            <Swiper {...params} navigation>
+            <Swiper
+              {...params2}
+              // navigation
+              loopAdditionalSlides={1}
+              centeredSlidesBounds
+            >
               {renderListSlideConsultancy}
             </Swiper>
+            {/* <!-- Add Arrows --> */}
+            <div className="swiper-button-next" />
+            <div className="swiper-button-prev" />
+            <div className="link-more">
+              <Link
+                to={`${ROUTERS.PAGE_BLOG}/tu-van-xay-dung`}
+                title="Quản lý tiến độ"
+              >
+                Xem tất cả
+              </Link>
+            </div>
           </div>
         </div>
       </div>

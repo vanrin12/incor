@@ -61,6 +61,7 @@ const MainLayout = ({
     return () => {
       window.removeEventListener('scroll', scrollCallBack);
     };
+    // eslint-disable-next-line
   }, []);
 
   // Modal client
@@ -176,7 +177,13 @@ const MainLayout = ({
           </div>
         )}
 
-        <div className="btn-go-to-top" onClick={() => handleGoToTop()}>
+        <div
+          className="btn-go-to-top"
+          onClick={() => handleGoToTop()}
+          tabIndex={0}
+          role="menuitem"
+          onKeyPress={() => {}}
+        >
           <img src={IMAGES.imgBackToTop} alt="" />
         </div>
       </div>

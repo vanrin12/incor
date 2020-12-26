@@ -4,14 +4,14 @@ const LIST_MENU = [
   {
     id: 1,
     label: 'GIỚI THIỆU',
-    to: ROUTERS.PAGE_ABOUT_US,
-    name: 'about',
+    to: `${ROUTERS.PAGE_BLOG}/gioi-thieu`,
+    name: 'gioi-thieu',
   },
   {
     id: 2,
     label: 'DỊCH VỤ',
-    to: ROUTERS.PAGE_SERVICE,
-    name: 'service',
+    to: `${ROUTERS.PAGE_BLOG}/dich-vu`,
+    name: 'dich-vu',
   },
   {
     id: 3,
@@ -22,8 +22,8 @@ const LIST_MENU = [
   {
     id: 5,
     label: 'HỢP TÁC',
-    to: ROUTERS.PAGE_COOPERATION,
-    name: 'cooperation',
+    to: `${ROUTERS.PAGE_BLOG}/hop-tac`,
+    name: 'hop-tac',
   },
   {
     id: 6,
@@ -34,8 +34,8 @@ const LIST_MENU = [
   {
     id: 7,
     label: 'LIÊN HỆ',
-    to: ROUTERS.CONTACT_US,
-    name: 'contact-us',
+    to: `${ROUTERS.PAGE_BLOG}/lien-he`,
+    name: 'lien-he',
   },
 ];
 export default LIST_MENU;

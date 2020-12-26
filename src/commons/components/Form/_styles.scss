@@ -657,6 +657,7 @@
         height: pxToVW(200);
         border-radius: pxToVW(6);
         border: solid pxToVW(2) $bg-main;
+        max-height: pxToVW(400);
 
         li {
           height: pxToVW(40);
