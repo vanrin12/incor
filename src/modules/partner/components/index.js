@@ -99,8 +99,8 @@ const PagePartner = ({ history, match }: Props) => {
     slidesPerView: 4,
     spaceBetween: 30,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next2',
+      prevEl: '.swiper-button-prev2',
     },
     breakpoints: {
       '1024': {
@@ -117,7 +117,7 @@ const PagePartner = ({ history, match }: Props) => {
       },
     },
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       disableOnInteraction: false,
     },
   };
@@ -364,6 +364,7 @@ const PagePartner = ({ history, match }: Props) => {
                       // navigation
                       loopAdditionalSlides={1}
                       centeredSlidesBounds
+                      id="product"
                     >
                       {renderItemProduct}
                     </Swiper>
@@ -382,12 +383,13 @@ const PagePartner = ({ history, match }: Props) => {
                       // navigation
                       loopAdditionalSlides={1}
                       centeredSlidesBounds
+                      id="construction"
                     >
                       {renderItemProductReality}
                     </Swiper>
                     {/* <!-- Add Arrows --> */}
-                    <div className="swiper-button-next" />
-                    <div className="swiper-button-prev" />
+                    <div className="swiper-button-next2" />
+                    <div className="swiper-button-prev2" />
                   </div>
                 </div>
               )}

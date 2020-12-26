@@ -122,7 +122,7 @@
         border-bottom-left-radius: pxToVW(5);
         border-bottom-right-radius: pxToVW(5);
         box-shadow: 0 pxToVW(3) pxToVW(30) 0 rgba(0, 0, 0, 0.16);
-        bottom: pxToVW(-100);
+        bottom: auto;
 
         .image-gallery-thumbnail {
           width: pxToVW(70);

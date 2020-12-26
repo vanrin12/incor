@@ -115,11 +115,14 @@
   position: relative;
 
   @media (min-width: 992px) {
-    .swiper-button-next {
+
+    .swiper-button-next,
+    .swiper-button-next2 {
       right: pxToRem(-60);
     }
 
-    .swiper-button-prev {
+    .swiper-button-prev,
+    .swiper-button-prev2 {
       left: pxToRem(-60);
     }
   }
@@ -515,7 +518,9 @@
   }
 
   .swiper-button-prev,
-  .swiper-button-next {
+  .swiper-button-next,
+  .swiper-button-prev2,
+  .swiper-button-next2 {
     &::after {
       font-size: pxToVW(30);
       color: $bg-main;

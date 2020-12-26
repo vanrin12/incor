@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-datepicker/dist/react-datepicker.css';
 // Import Swiper tyles
 import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
 // import 'swiper/components/pagination/pagination.scss';
 
 import 'react-image-gallery/styles/scss/image-gallery.scss';
