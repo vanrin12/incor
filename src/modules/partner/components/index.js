@@ -123,7 +123,6 @@ const PagePartner = ({ history, match }: Props) => {
   };
 
   const [valueSearch, setValueSearch] = useState('');
-  // const [idPartner, setIdPartner] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
@@ -230,7 +229,7 @@ const PagePartner = ({ history, match }: Props) => {
   const handelSubmitSearch = () => {
     history.push({
       pathname: `${ROUTERS.PAGE_SEARCH}/${
-        (valueSearch && valueSearch[0]) || ''
+        (valueSearch && valueSearch[0]) || 'all'
       }`,
       state: { keySearch: valueSearch && valueSearch[0] },
     });

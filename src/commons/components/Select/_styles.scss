@@ -22,6 +22,10 @@
   max-height: pxToRem(35);
 }
 
+.select__indicators {
+  display: none !important;
+}
+
 .css-4ljt47-MenuList {
   padding: 0 !important;
   font-size: pxToRem(16) !important;

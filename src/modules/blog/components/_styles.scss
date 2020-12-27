@@ -251,6 +251,7 @@
         text-align: left;
         color: $white;
         @include transition(0.3s all);
+        white-space: nowrap;
 
         &.link {
           &:hover {
@@ -575,7 +576,7 @@
           font-size: pxToVW(15);
 
           &.sub-title {
-            max-width: pxToVW(150);
+            max-width: 100%;
           }
         }
 
