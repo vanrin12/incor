@@ -32,7 +32,7 @@ const ClientManager = ({ history, match }: Props) => {
     nameCategory,
   } = useSelector((state) => state?.blog);
 
-  const [paginationIndex, setPaginationIndex] = useState(0);
+  const [paginationIndex, setPaginationIndex] = useState(null);
 
   const handleSelectPagination = (eventKey) => {
     setPaginationIndex(eventKey.selected);
@@ -51,16 +51,31 @@ const ClientManager = ({ history, match }: Props) => {
   );
 
   useEffect(() => {
-    handleGetListBlogOffCategory({
-      slug_or_id: slug,
-      page: paginationIndex + 1,
-      paged: 6,
-    });
+    if (slug) {
+      setPaginationIndex(0);
+      handleGetListBlogOffCategory({
+        slug_or_id: slug,
+        page: 1,
+        paged: 6,
+      });
+    }
+    // eslint-disable-next-line
+  }, [slug]);
+
+  useEffect(() => {
+    if (paginationIndex !== null) {
+      handleGetListBlogOffCategory({
+        slug_or_id: slug,
+        page: paginationIndex + 1,
+        paged: 6,
+      });
+    }
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  }, [handleGetListBlogOffCategory, paginationIndex, slug]);
+    // eslint-disable-next-line
+  }, [handleGetListBlogOffCategory, paginationIndex]);
 
   // Render list item
   const renderListBlogCategory =
@@ -103,7 +118,7 @@ const ClientManager = ({ history, match }: Props) => {
                     onPageChange={(eventKey) =>
                       handleSelectPagination(eventKey)
                     }
-                    forcePage={paginationIndex}
+                    forcePage={paginationIndex || 0}
                     containerClassName="pagination"
                     disabledClassName="disabled"
                     activeClassName="active"
