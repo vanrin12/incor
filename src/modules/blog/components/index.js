@@ -56,6 +56,10 @@ const ClientManager = ({ history, match }: Props) => {
       page: paginationIndex + 1,
       paged: 6,
     });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [handleGetListBlogOffCategory, paginationIndex, slug]);
 
   // Render list item
@@ -74,7 +78,7 @@ const ClientManager = ({ history, match }: Props) => {
     );
 
   return (
-    <MainLayout headTitle={`Blogs - ${nameCategory || label}`}>
+    <MainLayout headTitle={`Blog - ${nameCategory || label}`}>
       <div className="page-client wrap-slide">
         <div
           className="bg-page-title"
