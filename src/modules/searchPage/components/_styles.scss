@@ -40,9 +40,14 @@
 
 .content-search {
   min-height: 60vh;
+
+  .item {
+    margin-bottom: pxToRem(40);
+  }
 }
 
 .item-search {
+  height: 100%;
   border-radius: pxToRem(20);
   box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
   padding-bottom: pxToRem(10);
@@ -50,7 +55,6 @@
   @include transition(0.3s all);
   border: pxToRem(4) solid transparent;
   position: relative;
-  margin-bottom: pxToRem(40);
 
   &:hover,
   &:active,
@@ -237,12 +241,18 @@
     }
   }
 
+  .content-search {
+
+    .item {
+      margin-bottom: pxToVW(15);
+    }
+  }
+
   .item-search {
     border-radius: pxToVW(10);
     box-shadow: 0 pxToVW(3) pxToVW(6) 0 rgba(0, 0, 0, 0.16);
     padding-bottom: 0;
     border: pxToVW(2) solid transparent;
-    margin-bottom: pxToVW(25);
 
     &:hover,
     &:active,
