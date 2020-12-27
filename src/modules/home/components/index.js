@@ -97,8 +97,8 @@ const HomeMain = ({ history }: Props) => {
     slidesPerView: 3,
     spaceBetween: 35,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next2',
+      prevEl: '.swiper-button-prev2',
     },
     breakpoints: {
       '1024': {
@@ -292,8 +292,8 @@ const HomeMain = ({ history }: Props) => {
               {renderListSlideConsultancy}
             </Swiper>
             {/* <!-- Add Arrows --> */}
-            <div className="swiper-button-next" />
-            <div className="swiper-button-prev" />
+            <div className="swiper-button-next2" />
+            <div className="swiper-button-prev2" />
             <div className="link-more">
               <Link
                 to={`${ROUTERS.PAGE_BLOG}/tu-van-xay-dung`}
