@@ -118,6 +118,10 @@
 }
 
 .home-main {
+  .main-wrap {
+    min-height: 80vh;
+  }
+
   .app-fixed-footer {
     display: none;
   }

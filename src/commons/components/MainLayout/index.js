@@ -13,6 +13,7 @@ import {
   getListAreas,
   getListSpaceType,
   getListHashTag,
+  getDataPageHome,
 } from 'modules/home/redux';
 import Footer from '../Footer';
 import Header from '../Header';
@@ -44,7 +45,7 @@ const MainLayout = ({
   // Modal client
   const [isOpenModalClient, setIsOpenModalClient] = useState(false);
   const { token } = useSelector((state) => state?.account);
-  const { keywordHashTag } = useSelector((state) => state?.home);
+  const { keywordHashTag, dataConstant } = useSelector((state) => state?.home);
   const { type } = useSelector((state) => state?.home);
 
   // custom header sticky
@@ -73,7 +74,8 @@ const MainLayout = ({
   // get list auto complete input search
 
   useEffect(() => {
-    dispatch(getListHashTag('hashtag'));
+    dispatch(getListHashTag(''));
+    dispatch(getDataPageHome());
     // eslint-disable-next-line
   }, []);
 
@@ -124,9 +126,9 @@ const MainLayout = ({
         <meta name="keywords" cpntent={keywordHashTag} />
       </Helmet>
       <div className={`main-layout ${customClass} ${token ? '' : 'no-token'}`}>
-        <Header />
+        <Header dataConstant={dataConstant} />
         {children}
-        <Footer />
+        <Footer dataConstant={dataConstant} />
 
         {/* Modal form contact Us */}
         <div className="FormContactUs">
@@ -160,7 +162,7 @@ const MainLayout = ({
         {!token && (
           <div className="app-fixed-footer">
             <a
-              href="tel:0766 620 620"
+              href={`tel:${dataConstant?.phone}`}
               className="button btn btn-primary big btn-fix phone"
               title=""
             >

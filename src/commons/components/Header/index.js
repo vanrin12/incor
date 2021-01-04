@@ -15,9 +15,10 @@ type Props = {
   history: {
     push: Function,
   },
+  dataConstant: Object,
 };
 
-const Header = ({ location, history }: Props) => {
+const Header = ({ location, history, dataConstant }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const refMenu = useRef(null);
   const iconRef = useRef(null);
@@ -63,7 +64,7 @@ const Header = ({ location, history }: Props) => {
       <header className="header d-flex align-items-center">
         <div className="main_logo">
           <Link to={ROUTERS.MAIN_PAGE} title="Logo">
-            <img src={IMAGES.logo} alt="Logo" />
+            <img src={dataConstant?.logo || IMAGES.logo} alt="Logo" />
           </Link>
         </div>
         <div className="menu-main d-flex align-items-center w-100 ">
