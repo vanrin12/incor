@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import IMAGES from 'themes/images';
 
-
 const initialState = {
   isProcessing: false,
   type: '',
@@ -13,6 +12,12 @@ const initialState = {
   dataListHashTags: [],
   totalRows: 0,
   keywordHashTag: '',
+  sliderMain: {},
+  aboutUsMain: {},
+  advisoryMain: {},
+  customerExperience: [],
+  promotionMain: {},
+  dataConstant: {},
 };
 
 const homeSlice = createSlice({
@@ -144,9 +149,22 @@ const homeSlice = createSlice({
       const { data } = action;
       state.type = action.type;
       state.isProcessingSearch = false;
-      state.keywordHashTag = data?.hashtag || '';
+      state.keywordHashTag = data?.constant?.hashtag || '';
+      state.dataConstant = {
+        address: data?.constant?.address,
+        companyName: data?.constant?.companyName,
+        copyRight: data?.constant?.copyRight,
+        descCompany: data?.constant?.descCompany,
+        email: data?.constant?.email,
+        linkFacebook: data?.constant?.linkFacebook,
+        linkYoutube: data?.constant?.linkYoutube,
+        logo: data?.constant?.logo,
+        logoCongThuong: data?.constant?.logoCongThuong,
+        logoFooter: data?.constant?.logoFooter,
+        phone: data?.constant?.phone,
+      };
       state.dataListHashTags =
-        data?.hashtag?.split(',').map((item, index) => {
+        data?.constant?.hashtag?.split(',').map((item, index) => {
           return {
             id: index + 1,
             value: item && item.trim(),
@@ -158,12 +176,39 @@ const homeSlice = createSlice({
       state.type = action.type;
       state.isProcessingSearch = false;
     },
+    getDataPageHome: (state, action) => {
+      state.type = action.type;
+      state.isProcessing = true;
+    },
+    getDataPageHomeSuccess: (state, action) => {
+      const {
+        about_us,
+        advisory,
+        customer_experience,
+        promotion,
+        slider,
+      } = action.data;
+      state.type = action.type;
+      state.isProcessing = false;
+      state.sliderMain = slider;
+      state.aboutUsMain = about_us;
+      state.advisoryMain = advisory;
+      state.customerExperience = customer_experience;
+      state.promotionMain = promotion;
+    },
+    getDataPageHomeFailed: (state, action) => {
+      state.type = action.type;
+      state.isProcessing = false;
+    },
   },
 });
 
 const { actions, reducer } = homeSlice;
 
 export const {
+  getDataPageHome,
+  getDataPageHomeSuccess,
+  getDataPageHomeFailed,
   getListAreas,
   getListAreasSuccess,
   getListAreasFailed,

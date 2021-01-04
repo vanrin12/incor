@@ -2,11 +2,9 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { ROUTES, API } from 'apis';
 
 // worker Saga: will be fired on GET_EVENT_DETAIL actions
-function* getListHashTag(action) {
+function* getListHashTag() {
   try {
-    const response = yield call(() =>
-      API.get(ROUTES.API_CONSTANTS(action.payload))
-    );
+    const response = yield call(() => API.get(ROUTES.API_CONSTANTS));
 
     if (response.ok) {
       const { data } = response.data;

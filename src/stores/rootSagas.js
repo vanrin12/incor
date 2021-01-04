@@ -10,7 +10,7 @@ import getListBlogOffCategory from 'modules/blog/sagas/getListBlogOffCategorySag
 /**
  * Home
  */
-
+import getDataPageHomeSaga from 'modules/home/sagas/getDataPageHomeSaga';
 import getListAreasSaga from 'modules/home/sagas/getListAreasSaga';
 import getListSpaceTypeSaga from 'modules/home/sagas/getListSpaceTypeSaga';
 import formRequestSaga from 'modules/home/sagas/formRequestSaga';
@@ -50,5 +50,6 @@ export default function* RootSagas() {
     getListPartnerProjectsSaga(),
     getListHashTagSaga(),
     getListGallery(),
+    getDataPageHomeSaga(),
   ]);
 }

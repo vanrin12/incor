@@ -393,39 +393,40 @@ const PagePartner = ({ history, match }: Props) => {
                 </div>
               )}
 
-              <div className="product-company">
-                <h3 className="title-page">ĐÁNH GIÁ KHÁCH HÀNG</h3>
-                <div className="product-list-rating">
-                  {renderItemComment}
-
-                  {totalRows > 3 && (
-                    <div className="wrapper-pagination pb-5">
-                      <ReactPaginate
-                        previousLabel="Previous"
-                        nextLabel="Next"
-                        breakLabel={<span className="gap">...</span>}
-                        pageCount={Math.ceil(totalRows / 3)}
-                        onPageChange={(eventKey) =>
-                          handleSelectPagination(eventKey)
-                        }
-                        forcePage={paginationIndex}
-                        containerClassName="pagination"
-                        disabledClassName="disabled"
-                        activeClassName="active"
-                        breakClassName="page-item"
-                        breakLinkClassName="page-link"
-                        pageClassName="page-item"
-                        pageLinkClassName="page-link"
-                        previousClassName="page-item"
-                        previousLinkClassName="page-link"
-                        nextClassName="page-item"
-                        nextLinkClassName="page-link"
-                        marginPagesDisplayed={1}
-                      />
-                    </div>
-                  )}
+              {listEvaluate && listEvaluate.length > 0 && (
+                <div className="product-company">
+                  <h3 className="title-page">ĐÁNH GIÁ KHÁCH HÀNG</h3>
+                  <div className="product-list-rating">
+                    {renderItemComment}
+                    {totalRows > 3 && (
+                      <div className="wrapper-pagination pb-5">
+                        <ReactPaginate
+                          previousLabel="Previous"
+                          nextLabel="Next"
+                          breakLabel={<span className="gap">...</span>}
+                          pageCount={Math.ceil(totalRows / 3)}
+                          onPageChange={(eventKey) =>
+                            handleSelectPagination(eventKey)
+                          }
+                          forcePage={paginationIndex}
+                          containerClassName="pagination"
+                          disabledClassName="disabled"
+                          activeClassName="active"
+                          breakClassName="page-item"
+                          breakLinkClassName="page-link"
+                          pageClassName="page-item"
+                          pageLinkClassName="page-link"
+                          previousClassName="page-item"
+                          previousLinkClassName="page-link"
+                          nextClassName="page-item"
+                          nextLinkClassName="page-link"
+                          marginPagesDisplayed={1}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </>
         )}

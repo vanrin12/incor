@@ -3,16 +3,17 @@
 import React, { memo } from 'react';
 import Button from '../../../commons/components/Button';
 import { Link } from 'react-router-dom';
-// import ROUTERS from 'constants/router';
+import ROUTERS from 'constants/router';
 
 type Props = {
   itemObj: Object,
   history: {
     push: Function,
   },
+  slug: string,
 };
 
-const SlideMainSale = ({ history, itemObj }: Props) => {
+const SlideMainSale = ({ history, itemObj, slug }: Props) => {
   return (
     <>
       <div className="slide-content">
@@ -21,16 +22,26 @@ const SlideMainSale = ({ history, itemObj }: Props) => {
           style={{
             backgroundImage: `url(${itemObj?.image})`,
           }}
-          onClick={() => history.push('#')}
-          onKeyDown={() => history.push('#')}
+          onClick={() =>
+            history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
+          }
+          onKeyDown={() =>
+            history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
+          }
           role="button"
           tabIndex={0}
         />
-        <Link to="#">
+        <Link to={`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`}>
           <h3>{itemObj?.name}</h3>
         </Link>
 
-        <Button onClick={() => history.push('#')}>XEM</Button>
+        <Button
+          onClick={() =>
+            history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
+          }
+        >
+          XEM
+        </Button>
       </div>
     </>
   );

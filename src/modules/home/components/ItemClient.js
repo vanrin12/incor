@@ -12,7 +12,7 @@ const ItemClient = ({ itemObj }: Props) => {
       <div className="item-client">
         <div className="item-client-content d-flex align-items-center">
           <div>
-            <div className="item-client-desc">{itemObj?.desc}</div>
+            <div className="item-client-desc">{itemObj?.description}</div>
             <div className="item-client-name">{itemObj?.name}</div>
             <div className="item-client-address">{itemObj?.address}</div>
           </div>

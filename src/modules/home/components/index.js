@@ -23,13 +23,7 @@ import ItemSlideSale from './ItemSlideSale';
 import ItemSlideMain from './itemSlideMain';
 import ItemClient from './ItemClient';
 import ItemConsultancy from './ItemConsultancy';
-
-import {
-  listSlideHome,
-  listClientHome,
-  listSlideConsultancy,
-  listSlideMain,
-} from '../../../mockData/dataSlide';
+import Loading from '../../../commons/components/Loading';
 import { resetGetSearchProduct } from '../redux';
 
 // install Swiper components
@@ -47,9 +41,16 @@ const HomeMain = ({ history }: Props) => {
   const [valueSearch, setValueSearch] = useState('');
   const [updateListHashTags, setUpdateListHashTags] = useState([]);
   const [isShowVideo, setIsShowVideo] = useState(false);
-  const { dataListHashTags, isProcessingSearch } = useSelector(
-    (state) => state?.home
-  );
+  const {
+    dataListHashTags,
+    isProcessingSearch,
+    sliderMain,
+    aboutUsMain,
+    advisoryMain,
+    customerExperience,
+    promotionMain,
+    isProcessing,
+  } = useSelector((state) => state?.home);
   const { token } = useSelector((state) => state?.account);
 
   const paramsOptionSlideMain = {
@@ -169,25 +170,34 @@ const HomeMain = ({ history }: Props) => {
 
   // render list slide Main top
   const renderListSlideMain =
-    listSlideMain.length > 0 &&
-    listSlideMain.map((item) => (
+    sliderMain &&
+    sliderMain.uploads &&
+    sliderMain.uploads.length > 0 &&
+    sliderMain.uploads.map((item) => (
       <SwiperSlide key={item.id}>
         <ItemSlideMain itemObj={item} />
       </SwiperSlide>
     ));
 
   // render list slide
-  const renderListSlideSale =
-    listSlideHome.length > 0 &&
-    listSlideHome.map((item) => (
+  const renderListPromotionMain =
+    promotionMain &&
+    promotionMain.posts &&
+    promotionMain.posts.length > 0 &&
+    promotionMain.posts.map((item) => (
       <SwiperSlide key={item.id}>
-        <ItemSlideSale itemObj={item} history={history} />
+        <ItemSlideSale
+          itemObj={item}
+          history={history}
+          slug={promotionMain?.slug}
+        />
       </SwiperSlide>
     ));
   // Render list client
   const renderListClientMain =
-    listClientHome.length > 0 &&
-    listClientHome.map((item) => (
+    customerExperience &&
+    customerExperience.length > 0 &&
+    customerExperience.map((item) => (
       <SwiperSlide key={item.id}>
         <ItemClient itemObj={item} key={item.id} />
       </SwiperSlide>
@@ -195,10 +205,16 @@ const HomeMain = ({ history }: Props) => {
 
   // render list slide Consultancy
   const renderListSlideConsultancy =
-    listSlideConsultancy.length > 0 &&
-    listSlideConsultancy.map((item) => (
+    advisoryMain &&
+    advisoryMain.posts &&
+    advisoryMain.posts.length > 0 &&
+    advisoryMain.posts.map((item) => (
       <SwiperSlide key={item.id}>
-        <ItemConsultancy itemObj={item} history={history} />
+        <ItemConsultancy
+          itemObj={item}
+          history={history}
+          slug={advisoryMain?.slug}
+        />
       </SwiperSlide>
     ));
 
@@ -209,135 +225,142 @@ const HomeMain = ({ history }: Props) => {
       customClass="home-main"
       headTitle="Trang chủ"
     >
-      <div className="session-slide">
-        <div className="slider-home">
-          <Swiper {...paramsOptionSlideMain}>{renderListSlideMain}</Swiper>
-        </div>
-        {/* Session panner */}
-        <div className="slide-info">
-          <div className="title-slide">
-            Giải pháp xây dựng cho ngôi nhà của bạn
-          </div>
-          <div className="search-main">
-            {token && (
-              <FormSearchMain
-                handleChangeInput={handleChangeInput}
-                handleSelectChange={handleSelectChange}
-                valueSearch={valueSearch}
-                optionSelect={optionSearchDefault}
-                history={history}
-                listAutocompleteSearch={updateListHashTags}
-                isLoading={isProcessingSearch}
-              />
-            )}
-          </div>
-          <Button customClass="big" onClick={() => handleIsOpenModalClient()}>
-            YÊU CẦU TƯ VẤN
-          </Button>
-        </div>
-      </div>
-
-      <div className="session-promotions">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            CHƯƠNG TRÌNH KHUYẾN MÃI
-          </div>
-          <div className="slide-promotions mobile">
-            <Swiper
-              {...params}
-              // navigation
-              loopAdditionalSlides={1}
-              centeredSlidesBounds
-            >
-              {renderListSlideSale}
-            </Swiper>
-            {/* <!-- Add Arrows --> */}
-            <div className="swiper-button-next" />
-            <div className="swiper-button-prev" />
-          </div>
-        </div>
-      </div>
-
-      <div className="session-client">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            CẢM NHẬN KHÁCH HÀNG
-          </div>
-          <div className="client">
-            <div className="row">
-              <Swiper
-                {...paramsOptionSlide}
-                loopAdditionalSlides={1}
-                centeredSlidesBounds
-              >
-                {renderListClientMain}
-              </Swiper>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-promotions consultancy">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            TƯ VẤN XÂY DỰNG
-          </div>
-          <div className="slide-promotions">
-            <Swiper
-              {...params2}
-              // navigation
-              loopAdditionalSlides={1}
-              centeredSlidesBounds
-            >
-              {renderListSlideConsultancy}
-            </Swiper>
-            {/* <!-- Add Arrows --> */}
-            <div className="swiper-button-next2" />
-            <div className="swiper-button-prev2" />
-            <div className="link-more">
-              <Link
-                to={`${ROUTERS.PAGE_BLOG}/tu-van-xay-dung`}
-                title="Quản lý tiến độ"
-              >
-                Xem tất cả
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-video">
-        <div className="video-info">
-          <h3>Về chúng tôi</h3>
-          <div className="desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            ultrices accumsan ornare. Phasellus tristique ullamcorper luctus.
-            Nunc varius ullamcorper felis. Nulla nibh ipsum, rutrum.
-          </div>
-        </div>
-        {isShowVideo ? (
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=CTcoCHKnkT8"
-            width="100%"
-            className="video-play"
-            height="100%"
-            playing
-            onPause={() => setIsShowVideo(false)}
-          />
+      <div className="main-wrap">
+        {isProcessing ? (
+          <Loading />
         ) : (
-          <div
-            className="bg-session-video"
-            style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
-          >
-            <div
-              onClick={() => setIsShowVideo(true)}
-              onKeyDown={() => setIsShowVideo(true)}
-              role="button"
-              tabIndex={0}
-            >
-              <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+          <>
+            <div className="session-slide">
+              <div className="slider-home">
+                <Swiper {...paramsOptionSlideMain}>
+                  {renderListSlideMain}
+                </Swiper>
+              </div>
+              {/* Session panner */}
+              <div className="slide-info">
+                <div className="title-slide">{sliderMain?.title}</div>
+                <div className="search-main">
+                  {token && (
+                    <FormSearchMain
+                      handleChangeInput={handleChangeInput}
+                      handleSelectChange={handleSelectChange}
+                      valueSearch={valueSearch}
+                      optionSelect={optionSearchDefault}
+                      history={history}
+                      listAutocompleteSearch={updateListHashTags}
+                      isLoading={isProcessingSearch}
+                    />
+                  )}
+                </div>
+                <Button
+                  customClass="big"
+                  onClick={() => handleIsOpenModalClient()}
+                >
+                  YÊU CẦU TƯ VẤN
+                </Button>
+              </div>
             </div>
-          </div>
+
+            <div className="session-promotions">
+              <div className="container-fluid">
+                <div className="heading-title text-uppercase text-center">
+                  {promotionMain?.name}
+                </div>
+                <div className="slide-promotions mobile">
+                  <Swiper
+                    {...params}
+                    // navigation
+                    loopAdditionalSlides={1}
+                    centeredSlidesBounds
+                  >
+                    {renderListPromotionMain}
+                  </Swiper>
+                  {/* <!-- Add Arrows --> */}
+                  <div className="swiper-button-next" />
+                  <div className="swiper-button-prev" />
+                </div>
+              </div>
+            </div>
+
+            <div className="session-client">
+              <div className="container-fluid">
+                <div className="heading-title text-uppercase text-center">
+                  {customerExperience?.name}
+                </div>
+                <div className="client">
+                  <div className="row">
+                    <Swiper
+                      {...paramsOptionSlide}
+                      loopAdditionalSlides={1}
+                      centeredSlidesBounds
+                    >
+                      {renderListClientMain}
+                    </Swiper>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="session-promotions consultancy">
+              <div className="container-fluid">
+                <div className="heading-title text-uppercase text-center">
+                  {advisoryMain?.name}
+                </div>
+                <div className="slide-promotions">
+                  <Swiper
+                    {...params2}
+                    // navigation
+                    loopAdditionalSlides={1}
+                    centeredSlidesBounds
+                  >
+                    {renderListSlideConsultancy}
+                  </Swiper>
+                  {/* <!-- Add Arrows --> */}
+                  <div className="swiper-button-next2" />
+                  <div className="swiper-button-prev2" />
+                  <div className="link-more">
+                    <Link
+                      to={`${ROUTERS.PAGE_BLOG}/tu-van-xay-dung`}
+                      title="Quản lý tiến độ"
+                    >
+                      Xem tất cả
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="session-video">
+              <div className="video-info">
+                <h3>{aboutUsMain?.name}</h3>
+                <div className="desc">{aboutUsMain?.tagline}</div>
+              </div>
+              {isShowVideo ? (
+                <ReactPlayer
+                  url={aboutUsMain?.video}
+                  width="100%"
+                  className="video-play"
+                  height="100%"
+                  playing
+                  onPause={() => setIsShowVideo(false)}
+                />
+              ) : (
+                <div
+                  className="bg-session-video"
+                  style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
+                >
+                  <div
+                    onClick={() => setIsShowVideo(true)}
+                    onKeyDown={() => setIsShowVideo(true)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+                  </div>
+                </div>
+              )}
+            </div>
+          </>
         )}
       </div>
     </MainLayout>
