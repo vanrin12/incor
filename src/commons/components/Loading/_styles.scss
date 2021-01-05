@@ -82,5 +82,10 @@
     transform: translate(-50%, -50%);
     width: 80px !important;
     height: 80px !important;
+
+    @include breakpoint(sm992) {
+      width: 60px !important;
+      height: 60px !important;
+    }
   }
 }

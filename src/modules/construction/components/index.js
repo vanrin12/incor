@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 // @flow
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ERROR_MESSAGE from 'constants/errorMsg';
 import MainLayout from '../../../commons/components/MainLayout';
@@ -13,9 +13,11 @@ import {
   listPartner,
 } from '../../../mockData/listData';
 import { ratingProject, resetTypeRatingProject } from '../redux';
+import useOnClickOutside from '../../../customHooks/useClickOutSide';
 
 const ConstructionManager = () => {
   const dispatch = useDispatch();
+  const wrapperInfoRef = useRef();
   const { dataInfo, dataTotal, dataList } = listConstruction;
   const [openModalNumberRating, setOpenModalNumberRating] = useState(true);
   const [isShowModalRating, setIsShowModalRating] = useState(false);
@@ -25,6 +27,10 @@ const ConstructionManager = () => {
   const [modalShowMess, setModalShowMess] = useState({
     isShow: false,
     content: '',
+  });
+
+  useOnClickOutside(wrapperInfoRef, () => {
+    setIsShowModal(false);
   });
 
   useEffect(() => {
@@ -107,6 +113,7 @@ const ConstructionManager = () => {
           isShowModal={isShowModal}
           handleShowModal={handleShowModal}
           handleShowModalRating={handleShowModalRating}
+          useRef={wrapperInfoRef}
         />
         <div className="project-total">
           <ul>
