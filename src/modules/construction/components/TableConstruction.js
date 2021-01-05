@@ -33,6 +33,7 @@ type Props = {
   handleSubmitForm: Function,
   handleShowModal: Function,
   handleShowModalRating: Function,
+  useRef: any,
 };
 
 const TableConstructionManager = ({
@@ -43,6 +44,7 @@ const TableConstructionManager = ({
   isShowModal,
   handleShowModal,
   handleShowModalRating,
+  useRef,
 }: Props) => {
   const renderListConstruction =
     dataList.length > 0 ? (
@@ -71,13 +73,15 @@ const TableConstructionManager = ({
             HẠNG MỤC / ĐƠN VỊ
             <img src={IMAGES.iconUp} alt="" className="ico-up style1" />
           </div>
-          {isShowModal && (
-            <ModalSort
-              listPartner={listPartner}
-              listCategory={listCategory}
-              handleSubmitForm={handleSubmitForm}
-            />
-          )}
+          <div ref={useRef}>
+            {isShowModal && (
+              <ModalSort
+                listPartner={listPartner}
+                listCategory={listCategory}
+                handleSubmitForm={handleSubmitForm}
+              />
+            )}
+          </div>
         </div>
         <div className="t-item t-item2">MÔ TẢ KỸ THUẬT</div>
         <div className="t-item t-item3">

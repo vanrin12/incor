@@ -121,7 +121,7 @@ const HomeMain = ({ history }: Props) => {
     },
   };
   const paramsOptionSlide = {
-    loop: true,
+    // loop: true,
     slidesPerView: 2,
     spaceBetween: 0,
     slidesPerGroup: 2,
@@ -291,7 +291,7 @@ const HomeMain = ({ history }: Props) => {
                   <div className="row">
                     <Swiper
                       {...paramsOptionSlide}
-                      loopAdditionalSlides={1}
+                      loopAdditionalSlides={2}
                       centeredSlidesBounds
                     >
                       {renderListClientMain}

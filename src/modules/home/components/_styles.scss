@@ -147,7 +147,7 @@
           background-color: $bg-light;
           border-top-right-radius: pxToRem(20);
           border-top-left-radius: pxToRem(20);
-          height: pxToRem(360);
+          height: pxToRem(400);
           background-position: center center;
           background-size: cover;
         }
@@ -208,9 +208,7 @@
             line-height: 1.2;
             letter-spacing: normal;
             color: $color-black;
-
             overflow: hidden;
-            font-weight: 700;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-box-orient: vertical;
@@ -410,6 +408,7 @@
             transform: scale(1.2);
             z-index: 99;
             background: $white;
+            margin-top: 3px;
           }
         }
       }
