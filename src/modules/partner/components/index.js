@@ -17,7 +17,7 @@ import MainLayout from 'commons/components/MainLayout';
 import ModalPopup from 'commons/components/Modal';
 import FormSearchMulti from 'commons/components/Form/FormSearchMulti';
 import Rating from 'commons/components/Rating';
-import Loading from 'commons//components/Loading';
+import Loading from 'commons/components/Loading';
 import Gallery from 'commons/components/Gallery';
 import ERROR_MESSAGE from 'constants/errorMsg';
 import PartnerInfo from './PartnerInfo';

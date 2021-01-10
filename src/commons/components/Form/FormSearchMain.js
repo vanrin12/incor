@@ -49,7 +49,7 @@ const FormSearchMain = ({
     if (e.key === 'Enter') {
       history.push({
         pathname: `${ROUTERS.PAGE_SEARCH}/${e.target.value || 'all'}`,
-        state: { keySearch: e.target.value },
+        state: { keySearch: e.target.value, optionSelect },
       });
     }
   };
@@ -62,13 +62,13 @@ const FormSearchMain = ({
           onClick={() =>
             history.push({
               pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
-              state: { keySearch: item.label },
+              state: { keySearch: item.label, optionSelect },
             })
           }
           onKeyDown={() =>
             history.push({
               pathname: `${ROUTERS.PAGE_SEARCH}/${item.label}`,
-              state: { keySearch: item.label },
+              state: { keySearch: item.label, optionSelect },
             })
           }
           role="presentation"

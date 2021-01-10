@@ -117,34 +117,6 @@ const listConstruction = {
   },
 };
 
-const listPartner = [
-  {
-    id: 1,
-    value: 'GIA PHÁT THỊNH',
-    label: 'GIA PHÁT THỊNH',
-  },
-  {
-    id: 2,
-    value: 'GIA PHÁT THỊNH A',
-    label: 'GIA PHÁT THỊNH A',
-  },
-  {
-    id: 3,
-    value: 'GIA PHÁT THỊNH B',
-    label: 'GIA PHÁT THỊNH B',
-  },
-  {
-    id: 4,
-    value: 'GIA PHÁT THỊNH C',
-    label: 'GIA PHÁT THỊNH C',
-  },
-  {
-    id: 5,
-    value: 'GIA PHÁT THỊNH D',
-    label: 'GIA PHÁT THỊNH D',
-  },
-];
-
 const listCategory = [
   {
     id: 1,
@@ -611,7 +583,6 @@ const listQuotation = [
 export {
   listConstruction,
   listCategory,
-  listPartner,
   listDataClient,
   listDataSearchPage,
   listProductCompany,

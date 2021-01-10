@@ -33,6 +33,7 @@ const partnerSlice = createSlice({
         return {
           id: item.id,
           name: item.name,
+          address: item.address,
         };
       });
     },

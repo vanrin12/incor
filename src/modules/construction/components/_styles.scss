@@ -188,6 +188,7 @@
 
         &.b-item1 {
           .b-item-title {
+            text-transform: uppercase;
             color: $bg-main;
           }
         }
@@ -564,4 +565,44 @@
     padding: pxToVW(20);
     border-bottom-left-radius: pxToVW(10);
   }
+}
+
+table {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 40px 0px;
+  border-spacing: 0px;
+
+  thead {
+    th {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.4;
+      text-align: left;
+      padding: 40px 30px 20px;
+      background: rgb(250, 250, 250);
+      text-transform: uppercase;
+    }
+  }
+
+  tbody {
+    tr {
+      cursor: pointer;
+
+      &:hover td {
+        background: rgb(242, 243, 245);
+      }
+
+      td {
+        padding: 15px 30px;
+        font-size: 16px;
+        border-bottom: 2px solid rgb(250, 250, 250);
+        background-color: white;
+
+      }
+    }
+  }
+}
+
+.h-50vh {
+  min-height: 50vh;
 }

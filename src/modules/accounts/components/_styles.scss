@@ -17,6 +17,12 @@
   }
 }
 
+.ico-down {
+  @include transform-rotate(90deg);
+  left: 7px;
+  position: relative;
+}
+
 button.btn-outline {
   outline: none;
   border: 0;

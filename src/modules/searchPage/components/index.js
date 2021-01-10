@@ -30,17 +30,26 @@ const PageSearch = ({ history }: Props) => {
       history.location.state.keySearch.split(',')) ||
     [];
 
+  const optionSelect =
+    history &&
+    history.location &&
+    history.location.state &&
+    history.location.state.optionSelect;
+
   const dispatch = useDispatch();
   const { listDataProductCompany, isProcessingSearch, totalRows } = useSelector(
     (state) => state?.home
   );
+
   const [valueSearch, setValueSearch] = useState(keySearch || []);
   const [isAddClassSorting, setIsAddClassSorting] = useState(false);
   // Select Search
-  const [optionSearchDefault, setOptionSearchDefault] = useState({
-    value: 'product',
-    label: 'Sản phẩm',
-  });
+  const [optionSearchDefault, setOptionSearchDefault] = useState(
+    optionSelect || {
+      value: 'product',
+      label: 'Sản phẩm',
+    }
+  );
   const typingTimeOut = useRef(null);
   const [selectCity, setSelectCity] = useState(null);
   const [selectScale, setSelectScale] = useState(null);
@@ -168,10 +177,11 @@ const PageSearch = ({ history }: Props) => {
   return (
     <MainLayout
       headTitle={`Tìm kiếm - ${
-        history.location &&
-        history.location.state &&
-        history.location.state.keySearch &&
-        history.location.state.keySearch
+        (history.location &&
+          history.location.state &&
+          history.location.state.keySearch &&
+          history.location.state.keySearch) ||
+        ''
       } `}
     >
       <div className="page-search">
