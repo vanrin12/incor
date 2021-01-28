@@ -12,7 +12,11 @@ function* ratingProject(action) {
       const { data } = response.data;
 
       // In case: ratingProject request success
-      yield put({ type: 'project/ratingProjectSuccess', data });
+      yield put({
+        type: 'project/ratingProjectSuccess',
+        data,
+        rating: action?.payload,
+      });
     } else {
       const { msg } = response?.data;
       // In case: ratingProject request failed

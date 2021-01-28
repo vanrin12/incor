@@ -3,16 +3,16 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ERROR_MESSAGE from 'constants/errorMsg';
+import Loading from 'commons/components/Loading';
 import MainLayout from '../../../commons/components/MainLayout';
 import TableConstructionManager from './TableConstruction';
 import ModalRating from './ModalRating';
 import ModalPopup from '../../../commons/components/Modal';
-import Loading from 'commons/components/Loading';
-import { listConstruction, listCategory } from '../../../mockData/listData';
 import {
   ratingProject,
   resetTypeRatingProject,
   getProjectDetail,
+  filterSearchDetail,
 } from '../redux';
 import useOnClickOutside from '../../../customHooks/useClickOutSide';
 
@@ -28,7 +28,6 @@ const ConstructionManager = ({ match }: Props) => {
   const idProject = match && match.params && match.params.id;
   const dispatch = useDispatch();
   const wrapperInfoRef = useRef();
-  const { dataTotal } = listConstruction;
   const [openModalNumberRating, setOpenModalNumberRating] = useState(true);
   const [sortPrice, setSortPrice] = useState(false);
   const [isShowModalRating, setIsShowModalRating] = useState(false);
@@ -41,6 +40,10 @@ const ConstructionManager = ({ match }: Props) => {
     isProcessingProject,
     listPartner,
     dataListConstruction,
+    totalAmountPrice,
+    totalAmountPaid,
+    totalAmountMoney,
+    listSubPartner,
   } = useSelector((state) => state?.project);
 
   const [listConstructionItem, setListConstructionItem] = useState(
@@ -119,14 +122,20 @@ const ConstructionManager = ({ match }: Props) => {
   };
   // sort partner and category
   const handleSubmitForm = (valueSearch) => {
-    console.log(valueSearch);
     setIsShowModal(false);
+    const { partner, category } = valueSearch;
+    dispatch(
+      filterSearchDetail({
+        partner: partner.label,
+        category: category.label,
+      })
+    );
   };
 
   const handleSubmitRating = (item) => {
     dispatch(
       ratingProject({
-        company_id: itemRating.id,
+        construction_item_id: itemRating.id,
         rate: parseFloat(item.rating),
         content: item.note || '',
       })
@@ -140,11 +149,11 @@ const ConstructionManager = ({ match }: Props) => {
   return (
     <MainLayout headTitle="Quản lý tiến độ công trình">
       <div className="page-construction pt-page">
-        <h2 className="page-title">CHI TIẾT TIẾN ĐỘ CÔNG TRÌNH</h2>
         {isProcessingProject ? (
           <Loading />
         ) : (
           <>
+            <h2 className="page-title">CHI TIẾT TIẾN ĐỘ CÔNG TRÌNH</h2>
             <div className="project-info">
               <div className="project-title">
                 {dataProjectDetail?.name || ''}
@@ -161,7 +170,7 @@ const ConstructionManager = ({ match }: Props) => {
             <TableConstructionManager
               dataList={listConstructionItem}
               listPartner={listPartner}
-              listCategory={listCategory}
+              listCategory={listSubPartner}
               handleSubmitForm={handleSubmitForm}
               isShowModal={isShowModal}
               handleShowModal={handleShowModal}
@@ -174,15 +183,15 @@ const ConstructionManager = ({ match }: Props) => {
               <ul>
                 <li>
                   <label>Tổng dự toán:</label>
-                  <div>{dataTotal?.totalCost}</div>
+                  <div>{totalAmountPrice}</div>
                 </li>
                 <li>
                   <label>Tổng tiền đã thanh toán:</label>
-                  <div>{dataTotal?.totalAmountPaid}</div>
+                  <div>{totalAmountPaid}</div>
                 </li>
                 <li className="total">
                   <label>Tổng tiền còn lại:</label>
-                  <div>{dataTotal?.totalMoney}</div>
+                  <div>{totalAmountMoney}</div>
                 </li>
               </ul>
             </div>

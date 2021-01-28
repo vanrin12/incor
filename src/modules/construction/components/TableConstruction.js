@@ -18,6 +18,7 @@ type Props = {
     totalMoney: string,
     remark: string,
     rating: any,
+    amount: number,
   }>,
   listPartner: Array<{
     id: number,

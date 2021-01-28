@@ -71,10 +71,28 @@ export const removeVietnameseTones = (str) => {
   return string;
 };
 
+export const getTotalAmountPrice = (arrayPrice: Array<{}>) => {
+  let total = 0;
+  for (let i = 0; i < (arrayPrice && arrayPrice.length); i += 1) {
+    total += arrayPrice[i].amount;
+  }
+  return total.toLocaleString('en');
+};
+
+export const getTotalAmountPaid = (arrayPrice: Array<{}>) => {
+  let total = 0;
+  for (let i = 0; i < (arrayPrice && arrayPrice.length); i += 1) {
+    total += arrayPrice[i].paid;
+  }
+  return total.toLocaleString('en');
+};
+
 export default {
   isNumberKey,
   isOnPasteNumber,
   getFormatBlock,
   truncateString,
   removeVietnameseTones,
+  getTotalAmountPrice,
+  getTotalAmountPaid,
 };
