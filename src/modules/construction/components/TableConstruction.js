@@ -18,6 +18,7 @@ type Props = {
     totalMoney: string,
     remark: string,
     rating: any,
+    amount: number,
   }>,
   listPartner: Array<{
     id: number,
@@ -34,6 +35,8 @@ type Props = {
   handleShowModal: Function,
   handleShowModalRating: Function,
   useRef: any,
+  handleSortPrice: Function,
+  sortPrice: boolean,
 };
 
 const TableConstructionManager = ({
@@ -45,6 +48,8 @@ const TableConstructionManager = ({
   handleShowModal,
   handleShowModalRating,
   useRef,
+  handleSortPrice,
+  sortPrice,
 }: Props) => {
   const renderListConstruction =
     dataList.length > 0 ? (
@@ -84,9 +89,19 @@ const TableConstructionManager = ({
           </div>
         </div>
         <div className="t-item t-item2">MÔ TẢ KỸ THUẬT</div>
-        <div className="t-item t-item3">
+        <div
+          className="t-item t-item3"
+          onClick={() => handleSortPrice()}
+          onKeyDown={() => {}}
+          role="button"
+          tabIndex={0}
+        >
           DỰ TOÁN
-          <img src={IMAGES.iconUp} alt="" className="ico-up style1" />
+          <img
+            src={IMAGES.iconUp}
+            alt=""
+            className={`style1 ${sortPrice ? 'ico-down' : 'ico-up'}`}
+          />
         </div>
         <div className="t-item t-item4">
           THỜI GIAN

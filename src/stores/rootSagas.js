@@ -24,6 +24,7 @@ import getListScalesSaga from 'modules/searchPage/sagas/getListScalesSaga';
 
 //
 import ratingProjectSaga from 'modules/construction/sagas/ratingProjectSaga';
+import getProjectDetailSaga from 'modules/construction/sagas/getProjectSetailSaga';
 
 import getListProjectSaga from 'modules/partner/sagas/getListProjectSaga';
 import quotesProjectsSaga from 'modules/partner/sagas/quotesProjectSaga';
@@ -44,6 +45,7 @@ export default function* RootSagas() {
     getSearchProductSaga(),
     getListScalesSaga(),
     ratingProjectSaga(),
+    getProjectDetailSaga(),
     getSearchProductFormSearch(),
     getListProjectSaga(),
     quotesProjectsSaga(),

@@ -45,7 +45,7 @@ const ItemTable = ({ itemObj, handleShowModalRating }: Props) => {
         <div className="b-item-title">
           {/* Nếu tiến độ nhỏ hơn 75% thì ko đánh giá */}
           {itemObj?.rating ? (
-            <Rating numberStar={4} />
+            <Rating numberStar={itemObj?.rating} />
           ) : (
             <Button
               isDisabled={itemObj?.progress < 75}

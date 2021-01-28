@@ -12,8 +12,9 @@ import PrivateRoute from './PrivateRoute';
 
 const HomeMain = lazy(() => import('modules/home/components'));
 
-const ConstructionManager = lazy(() =>
-  import('modules/construction/components')
+const Construction = lazy(() => import('modules/construction/components'));
+const ConstructionDetail = lazy(() =>
+  import('modules/construction/components/detail')
 );
 
 const blogManager = lazy(() => import('modules/blog/components'));
@@ -48,7 +49,13 @@ const Router = () => {
           <PrivateRoute
             exact
             path={ROUTERS.PAGE_CONSTRUCTION}
-            component={ConstructionManager}
+            component={Construction}
+            isAuthenticated={isAuthenticated}
+          />
+          <PrivateRoute
+            exact
+            path={ROUTERS.PAGE_CONSTRUCTION_DETAIL}
+            component={ConstructionDetail}
             isAuthenticated={isAuthenticated}
           />
           <Route
