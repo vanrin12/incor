@@ -49,50 +49,54 @@ const ConstructionManager = ({ history }: Props) => {
 
   return (
     <MainLayout headTitle="Quản lý tiến độ công trình">
-      <div className="page-construction pt-page m-auto h-50vh">
+      <div className="page-construction pt-page m-auto h-80vh">
         {isProcessingProject ? (
           <Loading />
         ) : (
           <>
             <h2 className="page-title mb-5">QUẢN LÝ TIẾN ĐỘ CÔNG TRÌNH</h2>
-            <table>
-              <thead>
-                <tr>
-                  {COLUMNS.map((column) => (
-                    <th key={column.id} style={{ width: `${column.width}%` }}>
-                      {column.label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {dataListProject &&
-                  dataListProject.map((data, index) => (
-                    <tr
-                      key={data.id}
-                      onClick={() =>
-                        history.push(`${ROUTERS.PAGE_CONSTRUCTION}/${data.id}`)
-                      }
-                    >
-                      <td>{index + 1}</td>
-                      <td>{data.name}</td>
-                      <td>{data.address}</td>
-                      <td>
-                        <Button
-                          customClass="border-radius0"
-                          onClick={() =>
-                            history.push(
-                              `${ROUTERS.PAGE_CONSTRUCTION}/${data.id}`
-                            )
-                          }
-                        >
-                          Xem tiến độ
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+            <div className="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    {COLUMNS.map((column) => (
+                      <th key={column.id} style={{ width: `${column.width}%` }}>
+                        {column.label}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {dataListProject &&
+                    dataListProject.map((data, index) => (
+                      <tr
+                        key={data.id}
+                        onClick={() =>
+                          history.push(
+                            `${ROUTERS.PAGE_CONSTRUCTION}/${data.id}`
+                          )
+                        }
+                      >
+                        <td>{index + 1}</td>
+                        <td>{data.name}</td>
+                        <td>{data.address}</td>
+                        <td>
+                          <Button
+                            customClass="border-radius0"
+                            onClick={() =>
+                              history.push(
+                                `${ROUTERS.PAGE_CONSTRUCTION}/${data.id}`
+                              )
+                            }
+                          >
+                            Xem tiến độ
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           </>
         )}
       </div>

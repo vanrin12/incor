@@ -128,6 +128,7 @@ const ConstructionManager = ({ match }: Props) => {
       filterSearchDetail({
         partner: partner.label,
         category: category.label,
+        dataListConstruction,
       })
     );
   };
