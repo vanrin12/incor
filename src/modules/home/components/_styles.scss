@@ -55,6 +55,21 @@
 .session-video {
   position: relative;
 
+  &:hover .btn-video {
+
+    display: block !important;
+
+  }
+
+  .icon-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform-translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 99;
+  }
+
   .bg-session-video {
     position: relative;
     height: 100%;
@@ -74,15 +89,6 @@
       right: 0;
       z-index: 0;
     }
-
-    .icon-play {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      @include transform-translate(-50%, -50%);
-      cursor: pointer;
-      z-index: 9;
-    }
   }
 
   .video-info {
@@ -92,11 +98,31 @@
     width: 100%;
     left: 0;
     right: 0;
-    height: 100%;
+    height: 60%;
     color: $white;
     text-align: center;
-    max-width: pxToRem(1100);
     margin: 0 auto;
+    z-index: 99;
+
+    &::before {
+      content: "";
+      top: 0;
+      left: 0;
+      z-index: 991;
+      width: 100%;
+      height: 70%;
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      box-shadow: 0 50px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .wrap-gallery-video {
+      max-width: pxToRem(1100);
+      text-align: center;
+      margin: 0 auto;
+      position: relative;
+      z-index: 999;
+    }
 
     h3 {
       font-size: pxToRem(40);
@@ -439,14 +465,12 @@
       height: pxToVW(250);
     }
 
-    .bg-session-video {
-      max-height: pxToVW(250);
-      height: pxToVW(250);
 
-      .icon-play {
-        width: pxToVW(20);
-        height: pxToVW(25);
-      }
+    .icon-play {
+      width: pxToVW(50);
+      height: pxToVW(60);
+      top: 65%;
+
     }
 
     .video-info {
@@ -456,6 +480,13 @@
       position: relative;
       height: auto;
       box-shadow: 0 pxToVW(-5) pxToVW(10) 0 rgba(0, 0, 0, 0.36);
+      z-index: 99;
+      height: 100%;
+      display: block !important;
+
+      &::before {
+        display: none;
+      }
 
       h3 {
         font-size: pxToVW(20);
