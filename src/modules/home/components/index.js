@@ -331,34 +331,31 @@ const HomeMain = ({ history }: Props) => {
             </div>
 
             <div className="session-video">
-              <div className="video-info">
-                <h3>{aboutUsMain?.name}</h3>
-                <div className="desc">{aboutUsMain?.tagline}</div>
-              </div>
-              {isShowVideo ? (
-                <ReactPlayer
-                  url={aboutUsMain?.video}
-                  width="100%"
-                  className="video-play"
-                  height="100%"
-                  playing
-                  onPause={() => setIsShowVideo(false)}
-                />
-              ) : (
-                <div
-                  className="bg-session-video"
-                  style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
-                >
-                  <div
-                    onClick={() => setIsShowVideo(true)}
-                    onKeyDown={() => setIsShowVideo(true)}
-                    role="button"
-                    tabIndex={0}
-                  >
-                    <img src={IMAGES.iconPlay} alt="" className="icon-play" />
-                  </div>
+              <div
+                className={`video-info ${!isShowVideo ? 'd-block' : 'd-none'}`}
+              >
+                <div className="wrap-gallery-video">
+                  <h3>{aboutUsMain?.name}</h3>
+                  <div className="desc">{aboutUsMain?.tagline}</div>
                 </div>
-              )}
+              </div>
+              <ReactPlayer
+                url={aboutUsMain?.video}
+                width="100%"
+                className="video-play"
+                height="100%"
+                controls={isShowVideo}
+                playing={isShowVideo}
+              />
+              <div
+                onClick={() => setIsShowVideo(!isShowVideo)}
+                onKeyDown={() => setIsShowVideo(!isShowVideo)}
+                role="button"
+                tabIndex={0}
+                className={`btn-video ${!isShowVideo ? 'd-block' : 'd-none'}`}
+              >
+                <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+              </div>
             </div>
           </>
         )}
