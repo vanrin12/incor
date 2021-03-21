@@ -83,11 +83,7 @@ const ConstructionManager = ({ history }: Props) => {
                         <td>
                           <Button
                             customClass="border-radius0"
-                            onClick={() =>
-                              history.push(
-                                `${ROUTERS.PAGE_CONSTRUCTION}/${data.id}`
-                              )
-                            }
+                            onClick={() => {}}
                           >
                             Xem tiến độ
                           </Button>
