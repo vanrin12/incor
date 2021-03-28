@@ -18,6 +18,7 @@ const initialState = {
   customerExperience: [],
   promotionMain: {},
   dataConstant: {},
+  customerExperienceName: '',
 };
 
 const homeSlice = createSlice({
@@ -145,6 +146,7 @@ const homeSlice = createSlice({
       state.type = action.type;
       state.isProcessingSearch = true;
     },
+
     getListHashTagSuccess: (state, action) => {
       const { data } = action;
       state.type = action.type;
@@ -162,6 +164,9 @@ const homeSlice = createSlice({
         logoCongThuong: data?.constant?.logoCongThuong,
         logoFooter: data?.constant?.logoFooter,
         phone: data?.constant?.phone,
+        tagline: data?.constant?.tagline,
+        nameWebsite: data?.constant?.nameWebsite,
+        favicon: data?.constant?.favicon,
       };
       state.dataListHashTags =
         data?.constant?.hashtag?.split(',').map((item, index) => {
@@ -187,6 +192,7 @@ const homeSlice = createSlice({
         customer_experience,
         promotion,
         slider,
+        customer_experience_name,
       } = action.data;
       state.type = action.type;
       state.isProcessing = false;
@@ -194,6 +200,7 @@ const homeSlice = createSlice({
       state.aboutUsMain = about_us;
       state.advisoryMain = advisory;
       state.customerExperience = customer_experience;
+      state.customerExperienceName = customer_experience_name;
       state.promotionMain = promotion;
     },
     getDataPageHomeFailed: (state, action) => {

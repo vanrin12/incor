@@ -50,6 +50,7 @@ const HomeMain = ({ history }: Props) => {
     customerExperience,
     promotionMain,
     isProcessing,
+    customerExperienceName,
   } = useSelector((state) => state?.home);
   const { token } = useSelector((state) => state?.account);
 
@@ -285,7 +286,7 @@ const HomeMain = ({ history }: Props) => {
             <div className="session-client">
               <div className="container-fluid">
                 <div className="heading-title text-uppercase text-center">
-                  {customerExperience?.name}
+                  {customerExperienceName}
                 </div>
                 <div className="client">
                   <div className="row">

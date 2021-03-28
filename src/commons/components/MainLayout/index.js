@@ -3,6 +3,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import ModalPopup from 'commons/components/Modal';
+import Favicon from 'react-favicon';
 import Button from 'commons/components/Button';
 import FormContactUs from 'commons/components/Form/FormContactUs';
 import FormContactUsMobile from 'commons/components/Form/FormContacUsMobile';
@@ -47,7 +48,6 @@ const MainLayout = ({
   const { token } = useSelector((state) => state?.account);
   const { keywordHashTag, dataConstant } = useSelector((state) => state?.home);
   const { type } = useSelector((state) => state?.home);
-
   // custom header sticky
   useEffect(() => {
     const elementHeader = document.getElementById('root');
@@ -116,15 +116,24 @@ const MainLayout = ({
       behavior: 'smooth',
     });
   };
-
+  console.log(dataConstant, 'dataConstant');
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{`INCOR - ${headTitle}`}</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" cpntent={keywordHashTag} />
+        <title>{`${
+          dataConstant?.nameWebsite || 'INCOR'
+        } - ${headTitle}`}</title>
+        <meta
+          name="description"
+          content={dataConstant?.tagline || description}
+        />
+        <meta
+          name="keywords"
+          cpntent={dataConstant?.tagline || keywordHashTag}
+        />
       </Helmet>
+      {dataConstant?.favicon && <Favicon url={dataConstant?.favicon || ''} />}
       <div className={`main-layout ${customClass} ${token ? '' : 'no-token'}`}>
         <Header dataConstant={dataConstant} />
         {children}
