@@ -116,7 +116,7 @@ const MainLayout = ({
       behavior: 'smooth',
     });
   };
-  console.log(dataConstant, 'dataConstant');
+
   return (
     <>
       <Helmet>
