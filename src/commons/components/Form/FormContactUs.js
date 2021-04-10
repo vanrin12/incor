@@ -31,8 +31,8 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
     dataListSpaceType,
     dataListSpaceDivision,
     isProcessing,
+    dataConstant,
   } = useSelector((state) => state?.home);
-
   useEffect(() => {
     setListSelectSubType(dataListSpaceDivision);
   }, [dataListSpaceDivision, dataListSpaceDivision.length]);
@@ -193,7 +193,7 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
       handleCloseIcon={handleCloseModal}
     >
       <div className="form-contact-us">
-        <h2>FORM YÊU CẦU TƯ VẤN</h2>
+        <h2>{dataConstant?.titleForm || 'FORM YÊU CẦU TƯ VẤN'}</h2>
         <div className="form-group row">
           <div className="col-12 col-md-6">
             <Input

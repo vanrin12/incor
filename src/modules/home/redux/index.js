@@ -167,6 +167,7 @@ const homeSlice = createSlice({
         tagline: data?.constant?.tagline,
         nameWebsite: data?.constant?.nameWebsite,
         favicon: data?.constant?.favicon,
+        titleForm: data?.constant?.titleForm,
       };
       state.dataListHashTags =
         data?.constant?.hashtag?.split(',').map((item, index) => {
