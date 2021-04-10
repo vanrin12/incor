@@ -25,6 +25,7 @@ export const ROUTES = {
   API_CONSTANTS: `/site/constants`,
   API_POPUP_GALLERY: `/site/popups`,
   API_HOME: `/site/home`,
+  API_CHANGE_PASSWORD: '/auth/change-password',
 };
 
 export const API = create({

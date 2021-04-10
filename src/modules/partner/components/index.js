@@ -343,7 +343,7 @@ const PagePartner = ({ history, match }: Props) => {
                 <div className="logo-partner">
                   <img src={dataPartnerInfo?.logoPartner} alt="" />
                 </div>
-                <h3>{dataPartnerInfo?.partnerName}</h3>
+                <h3>{dataPartnerInfo?.companyName}</h3>
                 <div className="rating">
                   <Rating numberStar={dataPartnerInfo?.rating} />
                 </div>

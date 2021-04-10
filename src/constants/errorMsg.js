@@ -6,6 +6,7 @@ const ERROR_MESSAGE = {
   PHONE_FORMAT: 'Số điện thoại không đúng',
   NICK_NAME_REQUIRED: 'Vui lòng nhập tên đăng nhập.',
   PASSWORD_REQUIRED: 'Vui lòng nhập password.',
+  CONFIRM_PASSWORD_REQUIRED: 'Vui lòng nhập xác nhận password.',
   REQUIRED_CITY: 'Chọn tỉnh/thành phố',
   REQUIRED_TYPE: 'Chọn loại hình không gian',
   REQUIRED_SUB_TYPE: 'Chọn Phân chia không gian',
@@ -29,7 +30,7 @@ const ERROR_MESSAGE = {
     'Incor đã nhận được yêu cầu đáng giá của bạn. \n Cảm ơn bạn.',
   TEXT_RATING_FAILED:
     ' Đánh giá của bạn đã bị lỗi \n xin vui lòng đánh giá lại. Cảm ơn bạn',
-  TEXT_QUOTES_SUCCUSS: 'Bạn đã gửi ưu cầu báo giá thành công.',
+  TEXT_QUOTES_SUCCUSS: 'Bạn đã gửi yêu cầu tư vấn thành công.',
   TEXT_QUOTES_FAILED: 'Báo giá của bạn đang bị lỗi. Vùi lòng thử lại',
   ERROR_QUOTES: 'Vui lòng chọn dự án cần đánh giá.',
   DESC_SEO: 'Incor Giải pháp xây dựng cho ngôi nhà của bạn',

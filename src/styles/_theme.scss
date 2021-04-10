@@ -47,7 +47,7 @@ body p {
 }
 
 .heading-title {
-  font-size: pxToRem(40);
+  font-size: pxToRem(35);
   font-weight: bold;
   line-height: 1.2;
   color: $color_primary;
@@ -108,5 +108,12 @@ body p {
 }
 
 .h-80vh {
-  min-height: 80vh i !important;
+  min-height: 80vh !important;
+}
+
+.table-responsive {
+  box-shadow: 0 0.3125vw 0.3125vw 0 $btn-color;
+  border-radius: .52083vw;
+  border: .05208vw solid $color-border;
+  overflow: auto;
 }

@@ -303,8 +303,8 @@ const FormContactUsMobile = ({
             />
           </div>
           <div className="group-btn-file style-line form-group">
-            <p className="input__label">
-              Bản vẽ 3D <span>(tùy chọn)</span>
+            <p className="input__label d-flex align-items-center">
+              Bản vẽ 2D <span>(tùy chọn)</span>
             </p>
             <div className="d-flex align-items-end">
               <div className="d-group">
@@ -313,7 +313,7 @@ const FormContactUsMobile = ({
                   className="custom-file-input"
                   value=""
                   onChange={(e) => handleChangeFile(e)}
-                  accept="image/jpg, image/jpeg, image/png"
+                  accept="*, capture=camera"
                 />
                 <Input
                   placeholder="Chưa có file nào được chọn"

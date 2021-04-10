@@ -100,3 +100,19 @@ button.btn-outline {
     }
   }
 }
+
+.change-pass {
+  min-height: 90vh;
+
+  .form-change-pass {
+    max-width: 480px;
+    margin: auto;
+    padding-top: 250px;
+    padding-bottom: 50px;
+  }
+}
+
+small {
+  font-size: 14px;
+  font-style: italic;
+}

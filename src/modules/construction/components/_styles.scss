@@ -74,6 +74,10 @@
   border: solid pxToRem(1) $color-border;
   overflow: auto;
 
+  &.isShowModal .table-no-data {
+    height: 180px;
+  }
+
   .table-header {
     position: relative;
     height: pxToRem(68);
@@ -229,8 +233,8 @@
 .modal-sort {
   position: absolute;
   top: calc(100% - 10px);
-  right: 0;
-  width: pxToRem(200);
+  right: -30px;
+  width: pxToRem(240);
   min-height: pxToRem(160);
   padding: pxToRem(15);
   background-color: $bg-light4;
@@ -244,7 +248,7 @@
   .input__label,
   .error-msg,
   .css-1uccc91-singleValue {
-    font-size: pxToRem(10);
+    font-size: pxToRem(15);
     font-weight: 500;
     line-height: 1.3;
     letter-spacing: pxToRem(0.15);
@@ -262,27 +266,27 @@
     .css-26l3qy-menu {
 
       >div>div {
-        font-size: pxToRem(12);
+        font-size: pxToRem(15);
       }
     }
 
     .css-1wa3eu0-placeholder {
       font-weight: normal;
-      font-size: pxToRem(10);
+      font-size: pxToRem(15);
     }
 
     .css-yk16xz-control {
-      min-height: pxToRem(23);
+      min-height: pxToRem(35);
     }
 
     .input__box,
     .css-2b097c-container {
-      height: pxToRem(23);
+      height: pxToRem(35);
     }
 
     .css-yk16xz-control>div,
     .css-1pahdxg-control>div {
-      height: pxToRem(23);
+      height: pxToRem(35);
       border-radius: pxToRem(5);
       font-size: pxToRem(10);
       font-weight: normal;
@@ -298,9 +302,9 @@
     button {
       margin-bottom: 0;
       width: pxToRem(78);
-      height: pxToRem(24);
+      height: pxToRem(35);
       border-radius: pxToRem(5);
-      font-size: pxToRem(10);
+      font-size: pxToRem(15);
       font-weight: normal;
       line-height: 1.3;
       letter-spacing: pxToRem(0.25);
@@ -317,6 +321,81 @@
   text-transform: uppercase;
   color: $color-light1;
   border-bottom-left-radius: pxToRem(10);
+}
+
+
+@include breakpoint(lg1280) {
+  .table-construction {
+
+    .table-header {
+      min-width: 1130px;
+    }
+
+    .b-item1,
+    .t-item1 {
+      width: 12%;
+      min-width: 80px;
+    }
+
+    .b-item2,
+    .t-item2 {
+      width: 15%;
+      min-width: 250px;
+    }
+
+    .b-item3,
+    .t-item3 {
+      width: 8%;
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .b-item4,
+    .t-item4 {
+      width: 6%;
+      min-width: 100px;
+      text-align: center
+    }
+
+    .b-item5,
+    .t-item5 {
+      width: 8%;
+      min-width: 100px;
+      text-align: center
+    }
+
+    .b-item6,
+    .t-item6 {
+      width: 10%;
+      min-width: 120px;
+      text-align: center
+    }
+
+    .b-item7,
+    .t-item7 {
+      width: 8%;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .b-item8,
+    .t-item8 {
+      width: 8%;
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .b-item9,
+    .t-item9 {
+      text-align: center;
+      width: 8%;
+      min-width: 100px;
+    }
+
+    .table-body {
+      min-width: 1130px;
+    }
+  }
 }
 
 @include breakpoint(sm992) {
@@ -498,7 +577,7 @@
     .input__label,
     .error-msg,
     .css-1uccc91-singleValue {
-      font-size: pxToVW(10);
+      font-size: pxToVW(13);
       letter-spacing: pxToVW(0.15);
     }
 
@@ -573,15 +652,18 @@ table {
   border-spacing: 0px;
 
   thead {
+    @include bgMain();
+
     th {
       font-weight: 700;
       font-size: 16px;
       line-height: 1.4;
       text-align: left;
-      padding: 40px 30px 20px;
-      background: rgb(250, 250, 250);
+      padding: 20px;
+
       text-transform: uppercase;
       white-space: nowrap;
+      color: $white;
 
       &:nth-child(1) {
         min-width: 60px;
@@ -610,7 +692,7 @@ table {
       }
 
       td {
-        padding: 15px 30px;
+        padding: 10px 30px;
         font-size: 16px;
         border-bottom: 2px solid rgb(250, 250, 250);
         background-color: white;
@@ -624,6 +706,7 @@ table {
     thead {
       th {
         padding: pxToVW(20) pxToVW(30) pxToVW(20);
+        min-width: auto !important;
 
         &:nth-child(4) {
           min-width: pxToVW(155);

@@ -276,7 +276,7 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
 
         <div className="group-btn-file d-flex style-line form-group">
           <p className="input__label">
-            Bản vẽ 3D <span>(tùy chọn)</span>
+            Bản vẽ 2D <span>(tùy chọn)</span>
           </p>
           <div className="d-group">
             <input
@@ -284,7 +284,7 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
               className="custom-file-input"
               value=""
               onChange={(e) => handleChangeFile(e)}
-              accept="image/jpg, image/jpeg, image/png"
+              accept="*, capture=camera"
             />
             <Input
               placeholder="Chưa có file nào được chọn"

@@ -47,6 +47,13 @@ const ConstructionManager = ({ history }: Props) => {
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    if (dataListProject && dataListProject.length === 1) {
+      history.push(`${ROUTERS.PAGE_CONSTRUCTION}/${dataListProject[0].id}`);
+    }
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <MainLayout headTitle="Quản lý tiến độ công trình">
       <div className="page-construction pt-page m-auto h-80vh">
@@ -81,10 +88,7 @@ const ConstructionManager = ({ history }: Props) => {
                         <td>{data.name}</td>
                         <td>{data.address}</td>
                         <td>
-                          <Button
-                            customClass="border-radius0"
-                            onClick={() => {}}
-                          >
+                          <Button customClass="" onClick={() => {}}>
                             Xem tiến độ
                           </Button>
                         </td>

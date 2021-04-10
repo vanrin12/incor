@@ -22,6 +22,21 @@
   max-height: pxToRem(35);
 }
 
+.css-b8ldur-Input {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    font-size: 1.04167vw !important;
+    text-align: left !important;
+    display: block !important;
+  }
+}
+
 .select__indicators {
   display: none !important;
 }
@@ -242,12 +257,25 @@
 
 
 @include breakpoint(sm992) {
+  .css-b8ldur-Input {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+
+    * {
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 100% !important;
+      font-size: 14px !important;
+    }
+  }
+
   .css-tlfecz-indicatorContainer {
     max-height: pxToVW(35);
   }
 
   .css-4ljt47-MenuList {
-    font-size: pxToVW(16) !important;
+    font-size: pxToVW(20) !important;
   }
 
   .css-9gakcf-option {

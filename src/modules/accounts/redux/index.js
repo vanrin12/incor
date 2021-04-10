@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   userInfo: {},
   isProcessingLogin: false,
+  isProcessingPass: true,
   type: '',
   token: '',
   errorLogin: '',
@@ -49,6 +50,19 @@ const accountSlice = createSlice({
       state.token = '';
       state.userInfo = {};
     },
+    changePassword: (state, action) => {
+      state.type = action.type;
+      state.isProcessingPass = true;
+    },
+    changePasswordSuccess: (state, action) => {
+      state.type = action.type;
+      state.isProcessingPass = false;
+    },
+    changePasswordFailed: (state, action) => {
+      state.type = action.type;
+      state.isProcessingPass = false;
+      state.errorMsg = action?.errorMsg;
+    },
   },
 });
 
@@ -62,6 +76,9 @@ export const {
   logout,
   logoutSuccess,
   logoutFailed,
+  changePassword,
+  changePasswordSuccess,
+  changePasswordFailed,
 } = actions;
 
 export default reducer;

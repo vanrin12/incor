@@ -31,11 +31,14 @@ import quotesProjectsSaga from 'modules/partner/sagas/quotesProjectSaga';
 import getListPartnerProjectsSaga from 'modules/partner/sagas/getListPartnerSaga';
 import getListGallery from 'modules/partner/sagas/getPopupImageSaga';
 
+import changePasswordSaga from 'modules/accounts/sagas/changePasswordSaga';
+
 export default function* RootSagas() {
   yield all([
     signInSaga(),
     logOutSaga(),
     getListBlog(),
+    changePasswordSaga(),
     getDetailBlog(),
     getListCategory(),
     getListBlogOffCategory(),

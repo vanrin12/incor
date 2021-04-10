@@ -560,12 +560,12 @@
       padding: pxToRem(5);
 
       svg {
-        color: $color-yellow;
+        color: $bg-light11;
       }
 
       &.active {
         svg {
-          color: $red;
+          color: $color-yellow;
         }
       }
     }
