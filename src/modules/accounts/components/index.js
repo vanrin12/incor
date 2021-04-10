@@ -128,6 +128,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
 
   const nickName = userInfo?.name;
   const { name, password } = formik.values;
+
   return (
     <div className="from-login">
       <div className="user-info">
@@ -221,6 +222,11 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
           <li>
             <Link to={`${ROUTERS.PAGE_BLOG}/lien-he`} title="Phản hồi dịch vụ">
               Phản hồi dịch vụ
+            </Link>
+          </li>
+          <li>
+            <Link to={`${ROUTERS.CHANGE_PASSWORD}`} title="Thay đổi mật khẩu">
+              Đổi mật khẩu
             </Link>
           </li>
           <li>

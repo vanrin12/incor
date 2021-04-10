@@ -16,6 +16,7 @@ const ROUTERS = {
   SIGN_UP: '/sign-up',
   PARTNER: '/partner',
   PARTNER_DETAIL: '/partner/:id',
+  CHANGE_PASSWORD: '/user/change-password',
 };
 
 export default ROUTERS;

@@ -6,6 +6,7 @@ const ERROR_MESSAGE = {
   PHONE_FORMAT: 'Số điện thoại không đúng',
   NICK_NAME_REQUIRED: 'Vui lòng nhập tên đăng nhập.',
   PASSWORD_REQUIRED: 'Vui lòng nhập password.',
+  CONFIRM_PASSWORD_REQUIRED: 'Vui lòng nhập xác nhận password.',
   REQUIRED_CITY: 'Chọn tỉnh/thành phố',
   REQUIRED_TYPE: 'Chọn loại hình không gian',
   REQUIRED_SUB_TYPE: 'Chọn Phân chia không gian',

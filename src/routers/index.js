@@ -32,7 +32,9 @@ const CooperationPage = lazy(() => import('modules/cooperation/components'));
 const PageSearch = lazy(() => import('modules/searchPage/components'));
 
 const PagePartner = lazy(() => import('modules/partner/components'));
-
+const changePassword = lazy(() =>
+  import('modules/accounts/components/changePass')
+);
 const Router = () => {
   const token = useSelector((state) => state?.account?.token);
 
@@ -87,6 +89,12 @@ const Router = () => {
             exact
             path={ROUTERS.PARTNER_DETAIL}
             component={PagePartner}
+            isAuthenticated={isAuthenticated}
+          />
+          <PrivateRoute
+            exact
+            path={ROUTERS.CHANGE_PASSWORD}
+            component={changePassword}
             isAuthenticated={isAuthenticated}
           />
         </Switch>
