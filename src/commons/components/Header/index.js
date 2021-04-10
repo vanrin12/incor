@@ -58,12 +58,21 @@ const Header = ({ location, history, dataConstant }: Props) => {
     setIsOpenModalMobile(false);
     setIsOpen(false);
   };
-
+  const handleGoToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <div className="header-main">
       <header className="header d-flex align-items-center">
         <div className="main_logo">
-          <Link to={ROUTERS.MAIN_PAGE} title="Logo">
+          <Link
+            to={ROUTERS.MAIN_PAGE}
+            title="Logo"
+            onClick={() => handleGoToTop()}
+          >
             <img src={dataConstant?.logo || IMAGES.logo} alt="Logo" />
           </Link>
         </div>
@@ -97,7 +106,12 @@ const Header = ({ location, history, dataConstant }: Props) => {
           isOpen ? 'open' : ''
         }`}
       >
-        <Link to={ROUTERS.MAIN_PAGE} title="Logo" className="logo-blue">
+        <Link
+          to={ROUTERS.MAIN_PAGE}
+          title="Logo"
+          className="logo-blue"
+          onClick={() => handleGoToTop()}
+        >
           <img src={IMAGES.logo_blue} alt="Logo" />
         </Link>
         <Menu location={location} handelClickMenu={handelClickMenu} />

@@ -2,7 +2,7 @@
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.16);
   @include bgMain2();
   padding: 0 pxToRem(58);
-  height: pxToRem(144);
+  height: pxToRem(120);
   position: fixed;
   width: 100%;
   top: 0;
@@ -11,7 +11,7 @@
   .header {
     .main_logo {
       img {
-        width: pxToRem(226);
+        width: pxToRem(165);
         height: auto;
       }
     }

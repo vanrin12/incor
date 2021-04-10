@@ -65,7 +65,7 @@ const TableConstructionManager = ({
     );
 
   return (
-    <div className="table-construction">
+    <div className={`table-construction ${isShowModal ? 'isShowModal' : ''}`}>
       <div className="table-header d-flex">
         <div className="t-item t-item1">
           <div

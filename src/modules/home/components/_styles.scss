@@ -189,7 +189,7 @@
 
         h3 {
           margin: pxToRem(20) pxToRem(25);
-          font-size: pxToRem(25);
+          font-size: pxToRem(22);
           line-height: 1.2;
           letter-spacing: pxToRem(0.63);
           opacity: 0.8;
@@ -257,14 +257,27 @@
   }
 }
 
+span[role="button"] {
+  cursor: pointer;
+}
+
 .session-client {
   .client {
-    margin-top: pxToRem(30);
+    margin-top: pxToRem(50);
+
+    .swiper-container {
+      width: 100%;
+    }
 
     .row .swiper-slide {
       &:nth-child(2n+2) .item-client {
         display: flex;
         flex-direction: column-reverse;
+
+        .item-client-content {
+          padding-left: pxToRem(30);
+          padding-right: pxToRem(168);
+        }
 
         .item-client-desc {
           text-align: right;
@@ -296,15 +309,16 @@
 
   .item-client-content {
     padding: pxToRem(30) pxToRem(168);
+    padding-right: pxToRem(30);
     @include bgMain();
     color: $white;
     height: pxToRem(480);
 
     .item-client-desc {
       font-family: $Lato-Font;
-      font-size: pxToRem(50);
+      font-size: pxToRem(40);
       font-weight: 300;
-      line-height: pxToRem(70);
+      line-height: pxToRem(60);
       text-align: left;
       margin-bottom: pxToRem(20);
       position: relative;
@@ -315,7 +329,7 @@
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 4;
-      max-height: pxToRem(290);
+      max-height: pxToRem(205);
 
       &::after {
         content: "";
@@ -591,7 +605,7 @@
     }
 
     .item-client-content {
-      padding: pxToVW(15);
+      padding: pxToVW(15) !important;
       height: pxToVW(110);
 
       .item-client-desc {
