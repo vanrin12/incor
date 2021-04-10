@@ -11,6 +11,7 @@ import ERROR_MESSAGE from '../../../constants/errorMsg';
 import MainLayout from '../../../commons/components/MainLayout';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ModalPopup } from 'commons/components/Modal';
+import { logout } from 'modules/accounts/redux';
 
 const ChangePass = () => {
   const dispatch = useDispatch();
@@ -22,12 +23,19 @@ const ChangePass = () => {
   const [isIconName, setIsIconName] = useState({
     password: false,
     confirmPassword: false,
+    passwordOld: false,
   });
 
   const [isShowType, setIsShowType] = useState({
     password: false,
     confirmPassword: false,
+    passwordOld: false,
   });
+
+  // handle logout
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   useEffect(() => {
     dispatch(resetSingIn());
@@ -42,10 +50,11 @@ const ChangePass = () => {
         setErrorMess('');
         setIsShowModal(true);
         formik.setFieldValue('password', '');
-        formik.setFieldError('confirmPassword', '');
+        formik.setFieldValue('confirmPassword', '');
+        formik.setFieldValue('confirmOld', '');
         break;
       case 'accounts/changePasswordFailed':
-        setErrorMess(errorMsg);
+        setErrorMess(errorMsg || 'Mật khẩu củ không trùng khớp');
         setIsShowModal(false);
         break;
       default:
@@ -58,9 +67,11 @@ const ChangePass = () => {
     initialValues: {
       confirmPassword: '',
       password: '',
+      passwordOld: '',
     },
     validationSchema: Yup.object().shape({
       password: Yup.string().required(ERROR_MESSAGE.PASSWORD_REQUIRED),
+      passwordOld: Yup.string().required(ERROR_MESSAGE.PASSWORD_REQUIRED),
       confirmPassword: Yup.string().required(
         ERROR_MESSAGE.CONFIRM_PASSWORD_REQUIRED
       ),
@@ -71,7 +82,7 @@ const ChangePass = () => {
       if (values && values.confirmPassword !== values.password) {
         setErrorMess('Xác nhận mật khẩu không đúng.');
       } else {
-        formData.append('password_old', values.confirmPassword);
+        formData.append('password_old', values.passwordOld);
         formData.append('password', values.password);
         dispatch(changePassword(formData));
       }
@@ -99,7 +110,7 @@ const ChangePass = () => {
     });
   };
 
-  const { confirmPassword, password } = formik.values;
+  const { confirmPassword, password, passwordOld } = formik.values;
 
   const onBlur = () => {
     if (confirmPassword && password && confirmPassword !== password) {
@@ -118,6 +129,34 @@ const ChangePass = () => {
       <div className="change-pass">
         <div className="container">
           <div className="form-change-pass">
+            <div className="form-group">
+              <Input
+                placeholder="Mật khẩu cũ của bạn"
+                label="Mật khẩu cũ của bạn"
+                name="passwordOld"
+                onKeyPress={(e) => handleKeyDown(e)}
+                value={passwordOld}
+                onChange={formik.handleChange}
+                errorMsg={formik?.errors?.passwordOld}
+                type={isShowType?.passwordOld ? 'text' : 'password'}
+                classIcon="faEyeSlash"
+                icoIcon={
+                  passwordOld &&
+                  passwordOld.trim().length > 3 &&
+                  (isIconName?.passwordOld ? faEye : faEyeSlash)
+                }
+                handleClickIcon={() =>
+                  handleClickLookPassword(
+                    'passwordOld',
+                    !isIconName?.passwordOld
+                  )
+                }
+                onBlur={() => onBlur()}
+                onFocus={() => onFocus()}
+                isShowIcon
+              />
+            </div>
+
             <div className="form-group">
               <Input
                 placeholder="Mật khẩu mới"
@@ -189,11 +228,13 @@ const ChangePass = () => {
         textBtnRight="ĐÓNG"
         handleClose={() => {
           setIsShowModal(false);
+          handleLogout();
         }}
       >
         <h2 className="modal-title">CẢM ƠN BẠN !</h2>
         <div className="text-modal-content">
           Mật khẩu đã được thay đổi thành công.
+          <small>(Vùi lòng đăng xuất và đăng nhập lại)</small>
         </div>
       </ModalPopup>
     </MainLayout>
