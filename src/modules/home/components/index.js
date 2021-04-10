@@ -270,17 +270,21 @@ const HomeMain = ({ history }: Props) => {
                   </Link>
                 </div>
                 <div className="slide-promotions mobile">
-                  <Swiper
-                    {...params}
-                    // navigation
-                    loopAdditionalSlides={1}
-                    centeredSlidesBounds
-                  >
-                    {renderListPromotionMain}
-                  </Swiper>
-                  {/* <!-- Add Arrows --> */}
-                  <div className="swiper-button-next" />
-                  <div className="swiper-button-prev" />
+                  {promotionMain?.posts?.length > 0 && (
+                    <>
+                      <Swiper
+                        {...params}
+                        // navigation
+                        loopAdditionalSlides={1}
+                        centeredSlidesBounds
+                      >
+                        {renderListPromotionMain}
+                      </Swiper>
+                      {/* <!-- Add Arrows --> */}
+                      <div className="swiper-button-next" />
+                      <div className="swiper-button-prev" />
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -291,15 +295,17 @@ const HomeMain = ({ history }: Props) => {
                   {customerExperienceName}
                 </div>
                 <div className="client">
-                  <div className="row">
-                    <Swiper
-                      {...paramsOptionSlide}
-                      loopAdditionalSlides={2}
-                      centeredSlidesBounds
-                    >
-                      {renderListClientMain}
-                    </Swiper>
-                  </div>
+                  {customerExperience?.length > 0 && (
+                    <div className="row">
+                      <Swiper
+                        {...paramsOptionSlide}
+                        loopAdditionalSlides={2}
+                        centeredSlidesBounds
+                      >
+                        {renderListClientMain}
+                      </Swiper>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -311,17 +317,22 @@ const HomeMain = ({ history }: Props) => {
                   </Link>
                 </div>
                 <div className="slide-promotions">
-                  <Swiper
-                    {...params2}
-                    // navigation
-                    loopAdditionalSlides={1}
-                    centeredSlidesBounds
-                  >
-                    {renderListSlideConsultancy}
-                  </Swiper>
-                  {/* <!-- Add Arrows --> */}
-                  <div className="swiper-button-next2" />
-                  <div className="swiper-button-prev2" />
+                  {advisoryMain?.posts?.length > 0 && (
+                    <>
+                      <Swiper
+                        {...params2}
+                        // navigation
+                        loopAdditionalSlides={1}
+                        centeredSlidesBounds
+                      >
+                        {renderListSlideConsultancy}
+                      </Swiper>
+                      {/* <!-- Add Arrows --> */}
+                      <div className="swiper-button-next2" />
+                      <div className="swiper-button-prev2" />
+                    </>
+                  )}
+
                   <div className="link-more">
                     <Link
                       to={`${ROUTERS.PAGE_BLOG}/${advisoryMain.slug}`}

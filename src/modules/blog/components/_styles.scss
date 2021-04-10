@@ -17,7 +17,7 @@
     border-radius: pxToRem(10);
     margin-bottom: pxToRem(90);
     padding: pxToRem(10);
-    font-size: pxToRem(40);
+    font-size: pxToRem(35);
     font-weight: bold;
     line-height: 1.4;
     color: $white;
@@ -342,11 +342,11 @@
     margin-left: pxToRem(50);
 
     h3 {
-      padding: pxToRem(18) pxToRem(44);
+      padding: pxToRem(15) pxToRem(44);
       @include bgMain();
       color: $white;
       text-transform: uppercase;
-      font-size: pxToRem(30);
+      font-size: pxToRem(25);
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -356,11 +356,11 @@
     }
 
     ul {
-      padding: pxToRem(30) pxToRem(43);
+      padding: pxToRem(15) pxToRem(43);
 
       li {
         padding: pxToRem(15) 0;
-        font-size: pxToRem(25);
+        font-size: pxToRem(20);
         font-weight: 500;
         text-transform: uppercase;
         line-height: 1.2;
