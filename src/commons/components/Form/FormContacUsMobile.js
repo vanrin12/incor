@@ -39,6 +39,7 @@ const FormContactUsMobile = ({
     dataListSpaceType,
     dataListSpaceDivision,
     isProcessing,
+    dataConstant,
   } = useSelector((state) => state?.home);
 
   useEffect(() => {
@@ -214,7 +215,7 @@ const FormContactUsMobile = ({
       handleCloseIcon={handleCloseModal}
     >
       <div className="form-contact-us">
-        <h2>FORM YÊU CẦU TƯ VẤN</h2>
+        <h2>{dataConstant?.titleForm || 'FORM YÊU CẦU TƯ VẤN'}</h2>
         <div className={`group-1 ${pageStep === 1 ? 'd-block' : 'd-none'}`}>
           <div className="form-group">
             <Input

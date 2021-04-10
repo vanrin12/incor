@@ -14,10 +14,9 @@ import { ModalPopup } from 'commons/components/Modal';
 
 const ChangePass = () => {
   const dispatch = useDispatch();
-  const { type, userInfo, isProcessingPass, errorMsg } = useSelector(
+  const { type, isProcessingPass, errorMsg } = useSelector(
     (state) => state?.account
   );
-  console.log(userInfo, 'userInfo');
   const [errorMess, setErrorMess] = useState('');
   const [isShowModal, setIsShowModal] = useState(false);
   const [isIconName, setIsIconName] = useState({
@@ -47,13 +46,13 @@ const ChangePass = () => {
         break;
       case 'accounts/changePasswordFailed':
         setErrorMess(errorMsg);
-        setIsShowModal(true);
+        setIsShowModal(false);
         break;
       default:
         break;
     }
     // eslint-disable-next-line
-  }, [type, errorMsg, userInfo]);
+  }, [type, errorMsg]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formik = useFormik({
     initialValues: {
@@ -72,7 +71,7 @@ const ChangePass = () => {
       if (values && values.confirmPassword !== values.password) {
         setErrorMess('Xác nhận mật khẩu không đúng.');
       } else {
-        formData.append('email', 'phanhoquan@gmail.com'); // TODO
+        formData.append('password_old', values.confirmPassword);
         formData.append('password', values.password);
         dispatch(changePassword(formData));
       }
@@ -194,9 +193,7 @@ const ChangePass = () => {
       >
         <h2 className="modal-title">CẢM ƠN BẠN !</h2>
         <div className="text-modal-content">
-          Mật khẩu đã được thay đổi thành công. <br />
-          Vui lòng kiểm tra Email của bạn. <br />
-          <small>(Email mà bạn đã đăng kí cho tài khoản này)</small>
+          Mật khẩu đã được thay đổi thành công.
         </div>
       </ModalPopup>
     </MainLayout>
