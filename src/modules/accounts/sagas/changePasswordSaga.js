@@ -5,7 +5,7 @@ import { ROUTES, API } from 'apis';
 function* changePassword(action) {
   try {
     const response = yield call(() =>
-      API.put(ROUTES.API_CHANGE_PASSWORD, action.payload)
+      API.post(ROUTES.API_CHANGE_PASSWORD, action.payload)
     );
     if (response.ok) {
       const { data } = response.data;
