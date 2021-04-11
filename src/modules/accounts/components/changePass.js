@@ -233,7 +233,7 @@ const ChangePass = () => {
       >
         <h2 className="modal-title">CẢM ƠN BẠN !</h2>
         <div className="text-modal-content">
-          Mật khẩu đã được thay đổi thành công.
+          <p>Mật khẩu đã được thay đổi thành công.</p>
           <small>(Vùi lòng đăng xuất và đăng nhập lại)</small>
         </div>
       </ModalPopup>
