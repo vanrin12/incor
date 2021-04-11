@@ -70,6 +70,32 @@
       }
     }
   }
+
+  .company-info {
+    .item-client {
+      max-width: pxToRem(1170);
+      margin-left: auto;
+      margin-right: auto;
+
+      .item-content {
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .group-left {
+        width: 50%;
+      }
+
+      .information {
+        width: 50%;
+
+        .hashtag-size {
+          margin-top: 1.5625vw;
+        }
+      }
+    }
+  }
 }
 
 .content-company {
@@ -373,6 +399,35 @@
               font-size: pxToVW(9);
               border-radius: pxToVW(15);
             }
+          }
+        }
+      }
+    }
+
+    .company-info {
+      .item-client {
+        max-width: pxToVW(1170);
+
+        .item-content {
+          width: 100%;
+          display: block;
+        }
+
+        .group-left {
+          width: 100%;
+        }
+
+        .information {
+          width: 100%;
+
+          .justify-content-between {
+            display: block !important;
+          }
+
+          .hashtag-size,
+          .personnel-size,
+          .tax-code {
+            margin-top: pxToVW(20);
           }
         }
       }

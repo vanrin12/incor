@@ -64,6 +64,7 @@ const PagePartner = ({ history, match }: Props) => {
     listGalleryProduct,
     isProcessingGallery,
   } = useSelector((state) => state?.partner);
+  const { dataConstant } = useSelector((state) => state?.home);
   // Options in Swiper
   const params = {
     loop: true,
@@ -329,7 +330,7 @@ const PagePartner = ({ history, match }: Props) => {
           <>
             <div
               className="bg-title-partner"
-              style={{ backgroundImage: `url(${dataPartnerInfo?.image})` }}
+              style={{ backgroundImage: `url(${dataConstant?.imagePartner})` }}
             >
               <FormSearchMulti
                 handleSelectChange={handleSelectChange}
@@ -341,7 +342,7 @@ const PagePartner = ({ history, match }: Props) => {
               />
               <div className="info-partner">
                 <div className="logo-partner">
-                  <img src={dataPartnerInfo?.logoPartner} alt="" />
+                  <img src={dataPartnerInfo?.image} alt="" />
                 </div>
                 <h3>{dataPartnerInfo?.companyName}</h3>
                 <div className="rating">
