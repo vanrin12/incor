@@ -55,6 +55,17 @@
 .session-video {
   position: relative;
 
+  .session-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+
   &:hover .btn-video {
 
     display: block !important;

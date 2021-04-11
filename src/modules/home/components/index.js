@@ -265,8 +265,8 @@ const HomeMain = ({ history }: Props) => {
             <div className="session-promotions">
               <div className="container-fluid">
                 <div className="heading-title text-uppercase text-center">
-                  <Link to={`${ROUTERS.PAGE_BLOG}/${promotionMain.slug}`}>
-                    {promotionMain?.name}
+                  <Link to={`${ROUTERS.PAGE_BLOG}/${promotionMain?.slug}`}>
+                    {promotionMain?.sub_name}
                   </Link>
                 </div>
                 <div className="slide-promotions mobile">
@@ -312,8 +312,8 @@ const HomeMain = ({ history }: Props) => {
             <div className="session-promotions consultancy">
               <div className="container-fluid">
                 <div className="heading-title text-uppercase text-center">
-                  <Link to={`${ROUTERS.PAGE_BLOG}/${advisoryMain.slug}`}>
-                    {advisoryMain?.name}
+                  <Link to={`${ROUTERS.PAGE_BLOG}/${advisoryMain?.slug}`}>
+                    {advisoryMain?.sub_name}
                   </Link>
                 </div>
                 <div className="slide-promotions">
@@ -335,7 +335,7 @@ const HomeMain = ({ history }: Props) => {
 
                   <div className="link-more">
                     <Link
-                      to={`${ROUTERS.PAGE_BLOG}/${advisoryMain.slug}`}
+                      to={`${ROUTERS.PAGE_BLOG}/${advisoryMain?.slug}`}
                       title="Quản lý tiến độ"
                     >
                       Xem tất cả
@@ -344,8 +344,12 @@ const HomeMain = ({ history }: Props) => {
                 </div>
               </div>
             </div>
-
-            <div className="session-video">
+            <div
+              className="session-video"
+              style={{
+                backgroundImage: `url(${aboutUsMain?.image})`,
+              }}
+            >
               <div
                 className={`video-info ${!isShowVideo ? 'd-block' : 'd-none'}`}
               >
@@ -354,6 +358,14 @@ const HomeMain = ({ history }: Props) => {
                   <div className="desc">{aboutUsMain?.tagline}</div>
                 </div>
               </div>
+              <div
+                className={`session-bg-video ${
+                  !isShowVideo ? 'd-block' : 'd-none'
+                }`}
+                style={{
+                  backgroundImage: `url(${aboutUsMain?.image})`,
+                }}
+              />
               <ReactPlayer
                 url={aboutUsMain?.video}
                 width="100%"
