@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   userInfo: {},
   isProcessingLogin: false,
-  isProcessingPass: true,
+  isProcessingPass: false,
   type: '',
   token: '',
   errorLogin: '',
