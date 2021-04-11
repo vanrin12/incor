@@ -411,6 +411,8 @@
         .item-content {
           width: 100%;
           display: block;
+          padding: pxToVW(25);
+          padding-bottom: 0;
         }
 
         .group-left {
@@ -421,7 +423,9 @@
           width: 100%;
 
           .justify-content-between {
-            display: block !important;
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
           }
 
           .hashtag-size,
