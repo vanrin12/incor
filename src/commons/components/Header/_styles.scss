@@ -135,6 +135,8 @@
     display: block;
     text-align: right;
     margin-right: pxToVW(20);
+    max-width: 70%;
+    margin-left: auto;
   }
 
   img {

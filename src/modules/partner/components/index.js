@@ -341,9 +341,12 @@ const PagePartner = ({ history, match }: Props) => {
                 isMulti
               />
               <div className="info-partner">
-                <div className="logo-partner">
-                  <img src={dataPartnerInfo?.image} alt="" />
-                </div>
+                <div
+                  className="logo-partner"
+                  style={{
+                    backgroundImage: `url(${dataPartnerInfo?.image})`,
+                  }}
+                />
                 <h3>{dataPartnerInfo?.companyName}</h3>
                 <div className="rating">
                   <Rating numberStar={dataPartnerInfo?.rating} />

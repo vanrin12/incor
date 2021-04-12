@@ -33,10 +33,13 @@
       margin: auto;
       max-width: pxToRem(660);
 
-      img {
+      .logo-partner {
         width: pxToRem(270);
         height: pxToRem(270);
         border-radius: 50%;
+        background-size: cover;
+        background-position: center center;
+        margin: auto;
       }
     }
 
@@ -333,7 +336,7 @@
       .info-partner {
         max-width: pxToVW(460);
 
-        img {
+        .logo-partner {
           width: pxToVW(82);
           height: pxToVW(82);
         }

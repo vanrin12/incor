@@ -110,6 +110,23 @@ button.btn-outline {
     padding-top: 250px;
     padding-bottom: 50px;
   }
+
+  @include breakpoint(sm992) {
+    min-height: 50vh;
+
+    .form-change-pass {
+      margin: auto;
+      padding-top: 100px;
+      padding-bottom: 50px;
+
+      .btn-wrap {
+        .button {
+          height: pxToVW(35);
+          padding: pxToVW(10);
+        }
+      }
+    }
+  }
 }
 
 small {

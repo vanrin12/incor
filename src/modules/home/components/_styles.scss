@@ -513,6 +513,10 @@ span[role="button"] {
         display: none;
       }
 
+      .wrap-gallery-video {
+        max-width: 95%;
+      }
+
       h3 {
         font-size: pxToVW(20);
         margin-bottom: pxToVW(5);
