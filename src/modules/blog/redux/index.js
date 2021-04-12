@@ -13,6 +13,7 @@ const initialState = {
   listBlogCategories: [],
   listBlogOffCategory: [],
   nameCategory: '',
+  imageCategory: '',
 };
 
 const blogSlice = createSlice({
@@ -26,6 +27,7 @@ const blogSlice = createSlice({
     },
     getListBlogSuccess: (state, action) => {
       const { posts } = action?.data;
+
       state.type = action.type;
       state.isProcessing = false;
       state.totalRow = posts?.total;
@@ -106,6 +108,7 @@ const blogSlice = createSlice({
       state.isProcessing = false;
       state.totalRow = category?.posts?.total;
       state.nameCategory = category?.name || '';
+      state.imageCategory = category?.image;
       state.listBlogOffCategory =
         category &&
         category?.posts &&

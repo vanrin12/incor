@@ -36,6 +36,8 @@ const accountSlice = createSlice({
     resetSingIn: (state) => {
       state.errorMsg = '';
       state.type = 'accounts/signInRequest';
+      state.isProcessingLogin = false;
+      state.isProcessingPass = false;
     },
     logout: (state, action) => {
       state.type = action.type;

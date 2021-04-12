@@ -30,6 +30,7 @@ const ClientManager = ({ history, match }: Props) => {
     isProcessing,
     totalRow,
     nameCategory,
+    imageCategory,
   } = useSelector((state) => state?.blog);
 
   const [paginationIndex, setPaginationIndex] = useState(null);
@@ -98,7 +99,7 @@ const ClientManager = ({ history, match }: Props) => {
         <div
           className="bg-page-title"
           style={{
-            backgroundImage: `url(${IMAGES.bg_title_client})`,
+            backgroundImage: `url(${imageCategory || IMAGES.bg_title_client})`,
           }}
         />
         <div className="container">
