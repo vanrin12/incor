@@ -15,7 +15,13 @@ const ItemTable = ({ itemObj, handleShowModalRating }: Props) => {
     <div className="item-table d-flex">
       <div className="b-item b-item1">
         <div className="b-item-title">{itemObj?.category}</div>
-        <div className="b-item-sub-title">{itemObj?.subCategory}</div>
+        <div className="b-item-sub-title">
+          {itemObj?.hashtag &&
+            itemObj?.hashtag?.split(',')?.length > 0 &&
+            itemObj?.hashtag?.split(',').map((item) => {
+              return <span className="hashtag">#{item}</span>;
+            })}
+        </div>
       </div>
       <div className="b-item b-item2">
         <div className="b-item-title">
