@@ -398,7 +398,30 @@
   }
 }
 
+span.hashtag {
+  font-size: pxToRem(15);
+  line-height: pxToRem(24);
+  color: $white;
+  padding: pxToRem(5) pxToRem(6);
+  background-color: $color-tag;
+  border-radius: pxToRem(15);
+  display: inline-block !important;
+  margin: pxToRem(3);
+  width: auto !important;
+}
+
 @include breakpoint(sm992) {
+  span.hashtag {
+    font-size: pxToVW(13);
+    line-height: pxToVW(20);
+    color: $white;
+    padding: pxToVW(3) pxToVW(6);
+    background-color: $color-tag;
+    border-radius: pxToVW(10);
+    display: inline-block !important;
+    margin: pxToVW(3);
+    width: auto !important;
+  }
 
   .page-construction {
     padding: pxToVW(40) pxToVW(20);
@@ -701,8 +724,8 @@ table {
     }
   }
 
-
   @include breakpoint(sm992) {
+
     thead {
       th {
         padding: pxToVW(20) pxToVW(30) pxToVW(20);

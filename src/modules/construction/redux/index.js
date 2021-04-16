@@ -66,7 +66,7 @@ const projectScales = createSlice({
         return {
           id: item.id,
           category: item.name,
-          subCategory: item?.user_name,
+          hashtag: item?.category,
           technicalDesc: {
             name: item?.user_name,
             desc: item.description,
@@ -95,7 +95,7 @@ const projectScales = createSlice({
         return {
           id: item.id,
           category: item.name,
-          subCategory: item?.user_name,
+          hashtag: item?.category,
           technicalDesc: {
             name: item?.user_name,
             desc: item.description,
@@ -157,7 +157,7 @@ const projectScales = createSlice({
           return {
             id: item.id,
             value: item.id,
-            label: item.user_name,
+            label: item.category,
           };
         })
       );
@@ -187,11 +187,11 @@ const projectScales = createSlice({
 
     filterSearchDetail: (state, action) => {
       const { category, partner } = action.payload;
+
       const finItemListConstruction =
-        category !== 'Chọn'
+        category !== 0
           ? state?.dataListConstruction?.filter(
-              (item) =>
-                item.category === partner && item.subCategory === category
+              (item) => item.id === partner || item.id === category
             )
           : state?.dataListConstructionTem;
       state.dataListConstruction = finItemListConstruction;

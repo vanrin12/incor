@@ -126,8 +126,8 @@ const ConstructionManager = ({ match }: Props) => {
     const { partner, category } = valueSearch;
     dispatch(
       filterSearchDetail({
-        partner: partner.label,
-        category: category.label,
+        partner: partner.id,
+        category: category.id,
         dataListConstruction,
       })
     );

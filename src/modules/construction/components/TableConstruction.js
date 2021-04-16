@@ -9,7 +9,7 @@ type Props = {
   dataList: Array<{
     id: number,
     category: string,
-    subCategory: string,
+    hashtag: string,
     technicalDesc: Object,
     totalCost: string,
     date: string,
