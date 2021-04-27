@@ -126,7 +126,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
     dispatch(logout());
   };
 
-  const nickName = userInfo?.name;
+  const nickName = userInfo?.full_name || userInfo?.name;
   const { name, password } = formik.values;
 
   return (
