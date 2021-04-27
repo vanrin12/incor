@@ -397,11 +397,17 @@
             flex: 0 0 100%;
             max-width: 100%;
 
+            ul {
+              display: block !important;
+            }
+
             li {
               height: pxToVW(22);
               padding: pxToVW(5) pxToVW(8);
               font-size: pxToVW(9);
               border-radius: pxToVW(15);
+              margin-bottom: pxToRem(10);
+              display: inline-block;
             }
           }
         }
