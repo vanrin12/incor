@@ -44,7 +44,7 @@ const PartnerInfo = ({ itemObj }: Props) => {
 
           <div className="hashtag-size">
             <label>Ngành nghề</label>
-            <ul className="d-flex align-items-center">{renderHashtag}</ul>
+            <ul>{renderHashtag}</ul>
           </div>
         </div>
       </div>
