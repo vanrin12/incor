@@ -21,7 +21,7 @@ const ItemSearch = ({ history, itemObj }: Props) => {
         <div
           className="bg-image"
           style={{
-            backgroundImage: `url(${itemObj?.companyImage})`,
+            backgroundImage: `url(${itemObj?.image})`,
           }}
           onClick={() =>
             history.push(`${ROUTERS.PARTNER}/${itemObj.partnerId}`)
