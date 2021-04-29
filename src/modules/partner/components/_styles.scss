@@ -372,6 +372,8 @@
           .title {
             font-size: pxToVW(24);
             height: auto;
+            max-height: 100%;
+            overflow: unset;
           }
         }
 

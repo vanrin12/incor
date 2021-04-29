@@ -11,7 +11,7 @@ const PartnerInfo = ({ itemObj }: Props) => {
     itemObj &&
     itemObj.career &&
     itemObj.career.map((item) => <li key={item.id}>{`#${item.name}`}</li>);
-  console.log(itemObj);
+
   return (
     <div className="item-client">
       <div className="item-content">
