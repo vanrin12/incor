@@ -107,7 +107,7 @@ const partnerSlice = createSlice({
             item.created_at &&
             moment(item.created_at).format('HH:mm - DD.MM.YYYY'),
           rate: item.rate,
-          user: item.user,
+          user: item.user_name,
           userAvatar: item.user_avatar || IMAGES.imgNotFound,
         };
       });
