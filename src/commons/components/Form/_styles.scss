@@ -317,6 +317,7 @@
             padding: pxToRem(8) pxToRem(5);
             color: $color-black;
             font-weight: 700;
+            text-transform: lowercase;
           }
         }
       }
@@ -783,6 +784,7 @@
             .select__multi-value__label {
               font-size: pxToVW(10);
               padding: pxToVW(4) pxToVW(5);
+              text-transform: lowercase;
             }
           }
         }

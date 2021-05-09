@@ -26,6 +26,8 @@ export const ROUTES = {
   API_POPUP_GALLERY: `/site/popups`,
   API_HOME: `/site/home`,
   API_CHANGE_PASSWORD: '/auth/change-password',
+  API_GET_LIST_LAYOUT: `/admin/constants/data-maps/layout?layout=header`,
+  API_GET_PARTNER_MANAGEMENT: `/admin/partners`,
 };
 
 export const API = create({

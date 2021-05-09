@@ -40,7 +40,7 @@ const ItemSearch = ({ history, itemObj }: Props) => {
             <h3>{itemObj?.name}</h3>
           </Link>
           <div className="d-flex justify-content-between align-items-center">
-            <div className="hashtag">
+            <div className="hashtag" title={itemObj?.companyName}>
               <div
                 style={{
                   backgroundImage: `url(${itemObj?.companyImage})`,

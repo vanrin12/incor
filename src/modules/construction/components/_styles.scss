@@ -728,8 +728,15 @@ table {
 
     thead {
       th {
-        padding: pxToVW(20) pxToVW(30) pxToVW(20);
+        padding: pxToVW(10) pxToVW(10) pxToVW(10);
         min-width: auto !important;
+
+        &:nth-child(1) {
+          display: none !important;
+        }
+
+        font-size: pxToVW(14);
+        text-align: center;
 
         &:nth-child(4) {
           min-width: pxToVW(155);
@@ -741,8 +748,12 @@ table {
       tr {
 
         td {
-          padding: pxToVW(20) pxToVW(30) pxToVW(20);
-          font-size: 16px;
+          padding: pxToVW(10) pxToVW(10) pxToVW(10);
+          font-size: pxToVW(14);
+
+          &:nth-child(1) {
+            display: none !important;
+          }
         }
       }
     }

@@ -25,7 +25,6 @@ const ItemTable = ({ itemObj, handleShowModalRating }: Props) => {
       </div>
       <div className="b-item b-item2">
         <div className="b-item-title">
-          {itemObj?.technicalDesc?.name}
           <div className="b-item-desc">{itemObj?.technicalDesc?.desc}</div>
         </div>
       </div>

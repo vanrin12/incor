@@ -60,7 +60,7 @@ const projectScales = createSlice({
       state.dataProjectDetail = {
         address: data.address || '',
         name: data.name || '',
-        partnerName: data?.partner?.name || '',
+        partnerName: data?.partner?.full_name || '',
       };
       state.dataListConstruction = data?.construction_items?.map((item) => {
         return {

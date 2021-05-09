@@ -52,7 +52,7 @@ const ConstructionManager = ({ history }: Props) => {
       history.push(`${ROUTERS.PAGE_CONSTRUCTION}/${dataListProject[0].id}`);
     }
     // eslint-disable-next-line
-  }, []);
+  }, [dataListProject && dataListProject.length]);
 
   return (
     <MainLayout headTitle="Quản lý tiến độ công trình">

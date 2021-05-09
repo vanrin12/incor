@@ -25,6 +25,7 @@ const images = {
   imgBackToTop: require('../assets/imgs/back-to-top.png'),
   imgContact: require('../assets/imgs/form.png'),
   imgPhone: require('../assets/imgs/phone.png'),
+  avatar: require('../assets/imgs/customer.jpg'),
 };
 
 export default images;

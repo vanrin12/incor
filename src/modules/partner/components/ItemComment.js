@@ -3,6 +3,7 @@
 import React, { memo, useState } from 'react';
 import { truncateString } from 'helpers/validate';
 import Rating from '../../../commons/components/Rating';
+import images from 'themes/images';
 
 type Props = {
   itemObj: Object,
@@ -18,7 +19,7 @@ const ItemComment = ({ itemObj }: Props) => {
   return (
     <div className="comment-item d-flex">
       <div className="logo">
-        <img src={itemObj?.userAvatar} alt="" />
+        <img src={images?.avatar} alt="Avatar" />
       </div>
       <div className="comment-content">
         <div className="name">{itemObj?.user}</div>
