@@ -254,7 +254,7 @@ const PagePartner = ({ history, match }: Props) => {
   // click báo giá
   const handleSubmitModalQuotation = () => {
     if (itemQuote) {
-      dispatch(quotesProjects({ project_id: itemQuote }));
+      dispatch(quotesProjects({ project_id: itemQuote, company_id: id }));
     } else {
       setErrorMsg(ERROR_MESSAGE.ERROR_QUOTES);
     }
