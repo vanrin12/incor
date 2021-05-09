@@ -222,13 +222,15 @@
   background-color: $white;
   padding: pxToRem(10) pxToRem(40);
   padding-bottom: pxToRem(30);
+  border-radius: pxToRem(25);
+  box-shadow: pxToRem(5) pxToRem(4) pxToRem(8) #8c8d8d;
 
   img {
     width: 100%;
   }
 
   .comment-item {
-    border-bottom: solid pxToRem(0.5) rgba($bg-black3, 0.4);
+    border-bottom: solid pxToRem(0.5) rgba(#1a1818, 0.3);
     padding: pxToRem(30) pxToRem(20) pxToRem(30) pxToRem(0);
 
     .name,
@@ -429,6 +431,18 @@
 
         .group-left {
           width: 100%;
+
+          .location {
+            display: block;
+            float: right;
+            width: 27%;
+
+            &.mb-0 {
+              width: 73%;
+              display: block;
+              float: left;
+            }
+          }
         }
 
         .information {
@@ -516,19 +530,23 @@
 
       h3 {
         font-size: pxToVW(12);
-        text-align: left;
+        text-align: center;
         max-height: pxToVW(33);
       }
     }
   }
 
   .product-list-rating {
-    padding: 0;
+    padding: 0 pxToVW(15) 0 PxToVW(15);
     background-color: transparent;
+    box-shadow: pxToVW(5) pxToVW(4) pxToVW(8) #8c8d8d;
+    margin-bottom: pxToVW(20);
 
     .comment-item {
       border-bottom: solid pxToVW(1) rgba($bg-black3, 0.4);
       padding: pxToVW(15) 0 pxToVW(15) pxToVW(0);
+
+
 
       .name,
       .date,

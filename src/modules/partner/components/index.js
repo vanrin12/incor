@@ -30,7 +30,6 @@ import {
   quotesProjects,
   resetTypeQuotesProject,
   getListPartnerProjects,
-  getListGallery,
   resetTypeGalleryProduct,
 } from '../redux';
 // install Swiper components
@@ -61,9 +60,8 @@ const PagePartner = ({ history, match }: Props) => {
     listProductPartner,
     isProcessing,
     listConstructions,
-    listGalleryProduct,
-    isProcessingGallery,
   } = useSelector((state) => state?.partner);
+
   const { dataConstant } = useSelector((state) => state?.home);
   // Options in Swiper
   const params = {
@@ -122,8 +120,13 @@ const PagePartner = ({ history, match }: Props) => {
       disableOnInteraction: false,
     },
   };
-
+  const { dataListHashTags } = useSelector((state) => state?.home);
+  const { dataPartner } = useSelector((state) => state?.commonSlice);
+  const [updateListHashTags, setUpdateListHashTags] = useState(
+    dataListHashTags || dataPartner || []
+  );
   const [valueSearch, setValueSearch] = useState('');
+  const [listGalleryProduct, setListGalleryProduct] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
@@ -181,9 +184,19 @@ const PagePartner = ({ history, match }: Props) => {
             })) ||
           [];
         setValueSearch([names.toString()]);
+        if (optionSearchDefault.value === 'company') {
+          setUpdateListHashTags(dataPartner);
+        } else {
+          setUpdateListHashTags(dataListHashTags);
+        }
         break;
       case 'selectMain':
         setOptionSearchDefault(option);
+        if (option.value === 'company') {
+          setUpdateListHashTags(dataPartner);
+        } else {
+          setUpdateListHashTags(dataListHashTags);
+        }
         break;
       default:
         break;
@@ -208,24 +221,16 @@ const PagePartner = ({ history, match }: Props) => {
           content: ERROR_MESSAGE.TEXT_QUOTES_FAILED,
         });
         break;
-      case 'partner/getListGallerySuccess':
-        setIsOpenModalGallery(true);
-        if (listGalleryProduct && listGalleryProduct.length <= 0) {
-          setModalShowGalleryMess({
-            ...modalShowGalleryMess,
-            isShow: true,
-            content: ERROR_MESSAGE.MESS_NO_GALLERY,
-          });
-        }
-        break;
-      case 'partner/getListGalleryFailed':
-        setIsOpenModalGallery(false);
-        break;
       default:
         break;
     }
     // eslint-disable-next-line
   }, [type]);
+
+  useEffect(() => {
+    setUpdateListHashTags(dataListHashTags);
+    // eslint-disable-next-line
+  }, [dataListHashTags]);
 
   const handelSubmitSearch = () => {
     history.push({
@@ -254,24 +259,19 @@ const PagePartner = ({ history, match }: Props) => {
       setErrorMsg(ERROR_MESSAGE.ERROR_QUOTES);
     }
   };
-  //  click call api get list gallery product
-  const handleModalGallery = (idProduct) => {
-    dispatch(
-      getListGallery({
-        id: idProduct,
-        type: 'product',
-      })
-    );
-  };
 
   //  click call api get list gallery product
-  const handleModalGalleryConstruction = (idProduct) => {
-    dispatch(
-      getListGallery({
-        id: idProduct,
-        type: 'project',
-      })
-    );
+  const handleModalGalleryConstruction = (gallery) => {
+    if (gallery && gallery.length <= 0) {
+      setModalShowGalleryMess({
+        ...modalShowGalleryMess,
+        isShow: true,
+        content: ERROR_MESSAGE.MESS_NO_GALLERY,
+      });
+    } else {
+      setListGalleryProduct(gallery);
+      setIsOpenModalGallery(true);
+    }
   };
 
   const handleCloseModalGallery = (boolean) => {
@@ -294,7 +294,8 @@ const PagePartner = ({ history, match }: Props) => {
             key={item.id}
             itemObj={item}
             history={history}
-            handleModalGallery={handleModalGallery}
+            type="product"
+            handleModalGallery={() => {}}
           />
         </SwiperSlide>
       ))
@@ -310,6 +311,7 @@ const PagePartner = ({ history, match }: Props) => {
             key={item.id}
             itemObj={item}
             history={history}
+            type="constructions"
             handleModalGallery={handleModalGalleryConstruction}
           />
         </SwiperSlide>
@@ -339,6 +341,7 @@ const PagePartner = ({ history, match }: Props) => {
                 handelSubmitSearch={handelSubmitSearch}
                 handleKeyDown={handleKeyDown}
                 isMulti
+                listHashTags={updateListHashTags}
               />
               <div className="info-partner">
                 <div
@@ -435,20 +438,15 @@ const PagePartner = ({ history, match }: Props) => {
           </>
         )}
       </div>
-      {isProcessingGallery ? (
-        <Loading />
-      ) : (
-        <>
-          {listGalleryProduct &&
-            listGalleryProduct.length > 0 &&
-            isOpenModalGallery && (
-              <Gallery
-                listGallery={listGalleryProduct}
-                handleCloseModalGallery={handleCloseModalGallery}
-              />
-            )}
-        </>
-      )}
+
+      {listGalleryProduct &&
+        listGalleryProduct.length > 0 &&
+        isOpenModalGallery && (
+          <Gallery
+            listGallery={listGalleryProduct}
+            handleCloseModalGallery={handleCloseModalGallery}
+          />
+        )}
       <div
         className="quotation"
         onKeyDown={() => {

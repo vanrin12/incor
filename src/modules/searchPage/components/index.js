@@ -35,7 +35,8 @@ const PageSearch = ({ history }: Props) => {
     history.location &&
     history.location.state &&
     history.location.state.optionSelect;
-
+  const { dataListHashTags } = useSelector((state) => state?.home);
+  const { dataPartner } = useSelector((state) => state?.commonSlice);
   const dispatch = useDispatch();
   const { listDataProductCompany, isProcessingSearch, totalRows } = useSelector(
     (state) => state?.home
@@ -43,6 +44,9 @@ const PageSearch = ({ history }: Props) => {
 
   const [valueSearch, setValueSearch] = useState(keySearch || []);
   const [isAddClassSorting, setIsAddClassSorting] = useState(false);
+  const [updateListHashTags, setUpdateListHashTags] = useState(
+    dataListHashTags || []
+  );
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState(
     optionSelect || {
@@ -69,6 +73,11 @@ const PageSearch = ({ history }: Props) => {
   );
 
   useEffect(() => {
+    setUpdateListHashTags(dataListHashTags);
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     // code sau 0.3s thi goi api
     if (typingTimeOut.current) {
       clearTimeout(typingTimeOut.current);
@@ -80,7 +89,7 @@ const PageSearch = ({ history }: Props) => {
           keywords: (valueSearch && valueSearch.toString()) || '',
           page: paginationIndex + 1,
           paged: 9,
-          area_id: selectCity?.id,
+          address: selectCity?.value,
           scale_id: selectScale?.id,
           rate: rating || '',
         })
@@ -90,6 +99,11 @@ const PageSearch = ({ history }: Props) => {
         behavior: 'smooth',
       });
     }, 300);
+    if (optionSearchDefault.value === 'company') {
+      setUpdateListHashTags(dataPartner);
+    } else {
+      setUpdateListHashTags(dataListHashTags);
+    }
     // eslint-disable-next-line
   }, [handleGetListSearchProduct, paginationIndex, optionSearchDefault?.value]);
 
@@ -127,6 +141,11 @@ const PageSearch = ({ history }: Props) => {
             })) ||
           [];
         setValueSearch([names.toString()]);
+        if (optionSearchDefault.value === 'company') {
+          setUpdateListHashTags(dataPartner);
+        } else {
+          setUpdateListHashTags(dataListHashTags);
+        }
         break;
       case 'selectMain':
         setOptionSearchDefault(option);
@@ -202,6 +221,7 @@ const PageSearch = ({ history }: Props) => {
             valueSearch={valueSearch}
             handleKeyDown={handleKeyDown}
             isMulti
+            listHashTags={updateListHashTags}
           />
         </div>
 

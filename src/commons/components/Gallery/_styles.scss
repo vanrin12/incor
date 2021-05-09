@@ -73,6 +73,7 @@
 
         * {
           border-radius: pxToRem(8);
+          height: pxToRem(70);
         }
       }
     }
@@ -136,6 +137,7 @@
 
           * {
             border-radius: pxToVW(5);
+            height: pxToVW(50);
           }
         }
       }

@@ -1,6 +1,5 @@
 // @flow
 import React, { memo } from 'react';
-import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import SelectDropdown from '../Select';
 import Button from '../Button';
@@ -13,6 +12,7 @@ type Props = {
   valueSearch: any,
   isMulti?: boolean,
   handleKeyDown: Function,
+  listHashTags: any,
 };
 
 const FormSearch = ({
@@ -22,6 +22,7 @@ const FormSearch = ({
   valueSearch,
   isMulti = false,
   handleKeyDown,
+  listHashTags,
 }: Props) => {
   const defaultOption =
     valueSearch &&
@@ -33,7 +34,7 @@ const FormSearch = ({
         label: item,
       };
     });
-  const { dataListHashTags } = useSelector((state) => state?.home);
+
   return (
     <div className="form-search d-flex form2 align-items-center">
       <div className="form-group mb-0">
@@ -50,7 +51,7 @@ const FormSearch = ({
           }
           name="colors"
           placeholder="Nhập nội dung cần tìm"
-          options={dataListHashTags || []}
+          options={listHashTags || []}
           className="basic-multi-select"
           classNamePrefix="select"
           onChange={(option) => handleSelectChange(option, 'multiSelect')}

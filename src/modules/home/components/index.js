@@ -52,6 +52,7 @@ const HomeMain = ({ history }: Props) => {
     isProcessing,
     customerExperienceName,
   } = useSelector((state) => state?.home);
+  const { dataPartner } = useSelector((state) => state?.commonSlice);
   const { token } = useSelector((state) => state?.account);
 
   const paramsOptionSlideMain = {
@@ -65,7 +66,6 @@ const HomeMain = ({ history }: Props) => {
       disableOnInteraction: false,
     },
   };
-
   // Options in Swiper
   const params = {
     loop: true,
@@ -137,7 +137,6 @@ const HomeMain = ({ history }: Props) => {
     value: 'product',
     label: 'Sản phẩm',
   });
-
   // handle search
   const inputSearch = removeVietnameseTones(valueSearch.trim()).toLowerCase();
   useEffect(() => {
@@ -151,15 +150,28 @@ const HomeMain = ({ history }: Props) => {
         removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
         -1
     );
+    const listFilterCompany = dataPartner.filter(
+      (item) =>
+        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
+        -1
+    );
 
-    setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
+    if (optionSearchDefault?.value === 'company') {
+      setUpdateListHashTags(inputSearch ? listFilterCompany : dataPartner);
+    } else {
+      setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
+    }
     // eslint-disable-next-line
-  }, [dataListHashTags && dataListHashTags.length, valueSearch]);
+  }, [
+    optionSearchDefault.value,
+    // eslint-disable-next-line
+    dataListHashTags && dataListHashTags.length,
+    valueSearch,
+  ]);
 
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
   };
-
   // onsubmit call api
   const handleChangeInput = (value) => {
     setValueSearch(value);
@@ -238,7 +250,7 @@ const HomeMain = ({ history }: Props) => {
                 </Swiper>
               </div>
               {/* Session panner */}
-              <div className="slide-info">
+              <div className={`slide-info ${token ? 'mt-3' : ''}`}>
                 <div className="title-slide">{sliderMain?.title}</div>
                 <div className="search-main">
                   {token && (

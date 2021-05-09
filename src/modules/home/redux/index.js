@@ -99,7 +99,7 @@ const homeSlice = createSlice({
       state.isProcessingSearch = false;
       state.listDataProductCompany = product?.data?.map((item) => {
         return {
-          areaName: item.area_name,
+          areaName: item.address,
           rating: item.avg,
           companyId: item.company_id,
           companyImage: item.company_image || IMAGES.imgNotFound,
@@ -158,8 +158,8 @@ const homeSlice = createSlice({
         copyRight: data?.constant?.copyRight,
         descCompany: data?.constant?.descCompany,
         email: data?.constant?.email,
-        linkFacebook: data?.constant?.linkFacebook,
-        linkYoutube: data?.constant?.linkYoutube,
+        linkFacebook: data?.constant?.facebook,
+        linkYoutube: data?.constant?.youTube,
         logo: data?.constant?.logo,
         logoCongThuong: data?.constant?.logoCongThuong,
         logoFooter: data?.constant?.logoFooter,

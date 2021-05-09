@@ -16,6 +16,8 @@ import {
   getListHashTag,
   getDataPageHome,
 } from 'modules/home/redux';
+
+import { getDetailLayout, getListPartner } from 'commons/redux';
 import Footer from '../Footer';
 import Header from '../Header';
 
@@ -48,6 +50,7 @@ const MainLayout = ({
   const { token } = useSelector((state) => state?.account);
   const { keywordHashTag, dataConstant } = useSelector((state) => state?.home);
   const { type } = useSelector((state) => state?.home);
+
   // custom header sticky
   useEffect(() => {
     const elementHeader = document.getElementById('root');
@@ -76,6 +79,8 @@ const MainLayout = ({
   useEffect(() => {
     dispatch(getListHashTag(''));
     dispatch(getDataPageHome());
+    dispatch(getDetailLayout());
+    dispatch(getListPartner());
     // eslint-disable-next-line
   }, []);
 
@@ -116,14 +121,14 @@ const MainLayout = ({
       behavior: 'smooth',
     });
   };
-
+  console.log(dataConstant, 'dataConstant');
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{`${
-          dataConstant?.nameWebsite || 'INCOR'
-        } - ${headTitle}`}</title>
+        <title>{`${dataConstant?.nameWebsite || 'INCOR'} - ${
+          dataConstant.tagline
+        }`}</title>
         <meta
           name="description"
           content={dataConstant?.tagline || description}

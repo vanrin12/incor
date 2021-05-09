@@ -33,8 +33,12 @@ import getListGallery from 'modules/partner/sagas/getPopupImageSaga';
 
 import changePasswordSaga from 'modules/accounts/sagas/changePasswordSaga';
 
+import getListLayoutSaga from 'commons/sagas/getListLayoutSaga';
+import getListPartnerSaga from 'commons/sagas/getListPartnerSaga';
+
 export default function* RootSagas() {
   yield all([
+    getListLayoutSaga(),
     signInSaga(),
     logOutSaga(),
     getListBlog(),
@@ -56,5 +60,6 @@ export default function* RootSagas() {
     getListHashTagSaga(),
     getListGallery(),
     getDataPageHomeSaga(),
+    getListPartnerSaga(),
   ]);
 }
