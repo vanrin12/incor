@@ -34,7 +34,6 @@ const MainLayout = ({
   customClass = '',
   isShowModalContact = null,
   description = ERROR_MESSAGE.DESC_SEO || '',
-  headTitle = '',
 }: Props) => {
   const dispatch = useDispatch();
 
@@ -79,10 +78,16 @@ const MainLayout = ({
   useEffect(() => {
     dispatch(getListHashTag(''));
     dispatch(getDataPageHome());
-    dispatch(getDetailLayout());
-    dispatch(getListPartner());
+    dispatch(getDetailLayout('menu'));
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getListPartner());
+    }
+    // eslint-disable-next-line
+  }, [token]);
 
   useEffect(() => {
     if (isShowModalContact !== null) {
@@ -121,7 +126,6 @@ const MainLayout = ({
       behavior: 'smooth',
     });
   };
-  console.log(dataConstant, 'dataConstant');
   return (
     <>
       <Helmet>

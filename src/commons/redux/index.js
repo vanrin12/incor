@@ -18,7 +18,7 @@ const commonSlice = createSlice({
       const { data } = action;
       state.type = action.type;
       state.isProcessing = false;
-      state.layoutHeader = data && data.map;
+      state.layoutHeader = data && data?.map;
     },
     getDetailLayoutFailed: (state, action) => {
       state.type = action.type;
