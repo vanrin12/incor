@@ -587,6 +587,8 @@ span[role="button"] {
       .slide-promotions {
         .swiper-wrapper {
           .slide-content {
+            height: pxToVW(250);
+
             h3 {
               font-size: pxToVW(10);
               margin-bottom: pxToVW(8);
@@ -597,6 +599,7 @@ span[role="button"] {
               font-size: pxToVW(10);
               max-height: pxToVW(33);
               margin: pxToVW(8) pxToVW(10);
+              height: auto;
             }
           }
 
