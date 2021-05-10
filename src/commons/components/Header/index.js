@@ -24,6 +24,7 @@ const Header = ({ location, history, dataConstant }: Props) => {
   const iconRef = useRef(null);
   const [isOpenModalMobile, setIsOpenModalMobile] = useState(false);
   const { type } = useSelector((state) => state?.account);
+  const { layoutHeader } = useSelector((state) => state?.commonSlice);
 
   useClickOutside(
     refMenu,
@@ -77,7 +78,7 @@ const Header = ({ location, history, dataConstant }: Props) => {
           </Link>
         </div>
         <div className="menu-main d-flex align-items-center w-100 ">
-          <Menu location={location} />
+          <Menu location={location} layoutHeader={layoutHeader} />
           <LoginForm history={history} />
         </div>
         <div
@@ -114,7 +115,11 @@ const Header = ({ location, history, dataConstant }: Props) => {
         >
           <img src={IMAGES.logo_blue} alt="Logo" />
         </Link>
-        <Menu location={location} handelClickMenu={handelClickMenu} />
+        <Menu
+          location={location}
+          handelClickMenu={handelClickMenu}
+          layoutHeader={layoutHeader}
+        />
         <LoginForm
           handleGetIsShowModal={handleGetIsShowModal}
           history={history}

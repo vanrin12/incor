@@ -2,7 +2,7 @@
 // libs
 import React, { memo } from 'react';
 import { withRouter } from 'react-router-dom';
-import LIST_MENU from '../../../../constants/listMenu';
+// import LIST_MENU from '../../../../constants/listMenu';
 import ItemMenu from './Item';
 
 type Props = {
@@ -10,22 +10,28 @@ type Props = {
   handelClickMenu?: Function,
 };
 
-const Menu = ({ location, handelClickMenu = () => {} }: Props) => {
+const Menu = ({
+  location,
+  handelClickMenu = () => {},
+  layoutHeader,
+}: Props) => {
   const renderListItem = () => {
     let result = [];
-    if (LIST_MENU.length > 0) {
-      result = LIST_MENU.map((item) => {
-        return (
-          <ItemMenu
-            key={item.id}
-            to={item.to}
-            label={item.label}
-            location={location}
-            name={item.name}
-            handelClickMenu={handelClickMenu}
-          />
-        );
-      });
+    if (layoutHeader && layoutHeader.length > 0) {
+      result =
+        layoutHeader &&
+        layoutHeader.map((item) => {
+          return (
+            <ItemMenu
+              key={item.id}
+              to={item.link}
+              label={item.name}
+              location={location}
+              name={item.link}
+              handelClickMenu={handelClickMenu}
+            />
+          );
+        });
     }
     return result;
   };

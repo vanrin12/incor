@@ -39,6 +39,7 @@
             line-height: pxToRem(24);
             letter-spacing: pxToRem(2);
             color: $white;
+            text-transform: uppercase;
           }
 
           &:hover,
@@ -148,7 +149,7 @@
     margin-left: auto;
 
     li {
-      padding: pxToVW(6) pxToVW(35);
+      padding: pxToVW(6) pxToVW(35) pxToVW(6) pxToVW(15);
       line-height: pxToVW(35);
       font-size: pxToVW(20);
       font-weight: 500;
@@ -177,7 +178,7 @@
 
     @media screen and(max-width:600px) {
       position: absolute;
-      bottom: pxToVW(80);
+      bottom: pxToVW(20);
     }
 
     .user-info {

@@ -206,7 +206,7 @@ const ConstructionManager = ({ match }: Props) => {
         isProcessing={isProcessing}
       />
 
-      {/* Modal thông báo số lượng cần đáng giá */}
+      {/* Modal thông báo số lượng cần đánh giá */}
       <ModalPopup
         isOpen={quantityRating?.length > 0 ? openModalNumberRating : false}
         isShowFooter
@@ -225,7 +225,7 @@ const ConstructionManager = ({ match }: Props) => {
         </div>
       </ModalPopup>
 
-      {/* Modal  hiển thị trạng thái sau khi đáng giá */}
+      {/* Modal  hiển thị trạng thái sau khi đánh giá */}
       <ModalPopup
         isOpen={modalShowMess.isShow}
         isShowFooter
