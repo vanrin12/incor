@@ -7,8 +7,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      AWS_S3_BUCKET_NAME: your-bucket-name
-      AWS_CF_DISTRIBUTION_ID: your-cloudfront-id
+      AWS_S3_BUCKET_NAME: incor.vn
+      AWS_CF_DISTRIBUTION_ID: E2ADVP5B9ABZD3
     strategy:
       matrix:
         node-version: [10.x]
@@ -30,7 +30,7 @@ jobs:
           AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET_NAME }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: "eu-central-1"
+          AWS_REGION: "US East (N. Virginia) us-east-1"
           SOURCE_DIR: "/build"
       - name: Create CloudFront Cache Invalidation
         uses: chetan/invalidate-cloudfront-action@master
