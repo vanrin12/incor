@@ -130,7 +130,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
   const { name, password } = formik.values;
 
   return (
-    <div className={`from-login ${nickName ? '' : 'position-relative mt-5'}`}>
+    <div className={`from-login ${nickName ? '' : 'position-relative mb-mt-5'}`}>
       <div className="user-info">
         {nickName ? (
           <button onClick={handleShowModalInfo} className="btn-outline btn-dk ">
