@@ -255,6 +255,10 @@
 }
 
 @include breakpoint(sm992) {
+  .mb-mt-5 {
+    margin-top: 50px !important;
+  }
+
   .modal-info-user.nickName {
     display: block !important;
   }
@@ -313,6 +317,7 @@
     }
 
     .from-login {
+
       .form-content {
         border-radius: pxToVW(20);
         position: fixed;
