@@ -584,7 +584,7 @@
   }
 
   .quotation-chose {
-    min-height: 400px;
+    min-height: pxToVW(250);
 
     &::-webkit-scrollbar {
       width: pxToVW(1);
