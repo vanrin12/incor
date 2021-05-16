@@ -96,12 +96,9 @@ const ClientManager = ({ history, match }: Props) => {
   return (
     <MainLayout headTitle={`Blog - ${nameCategory || label}`}>
       <div className="page-client wrap-slide">
-        <div
-          className="bg-page-title"
-          style={{
-            backgroundImage: `url(${imageCategory || IMAGES.bg_title_client})`,
-          }}
-        />
+        <div className="bg-page-title">
+          <img src={imageCategory || IMAGES.bg_title_client} alt="" />
+        </div>
         <div className="container">
           <div className="page-title">{nameCategory || label}</div>
           {isProcessing ? (
@@ -112,8 +109,8 @@ const ClientManager = ({ history, match }: Props) => {
               {totalRow > 6 && (
                 <div className="wrapper-pagination">
                   <ReactPaginate
-                    previousLabel="Previous"
-                    nextLabel="Next"
+                    previousLabel="Trang sau"
+                    nextLabel="Trang trước"
                     breakLabel={<span className="gap">...</span>}
                     pageCount={Math.ceil(totalRow / 6)}
                     onPageChange={(eventKey) =>

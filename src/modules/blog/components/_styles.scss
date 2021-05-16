@@ -1,8 +1,12 @@
 .page-client {
   .bg-page-title {
-    height: pxToRem(700);
+    min-height: pxToRem(700);
     background-position: center center;
     background-size: cover;
+
+    img {
+      width: 100%;
+    }
   }
 
   .container {
@@ -17,11 +21,14 @@
     border-radius: pxToRem(10);
     margin-bottom: pxToRem(90);
     padding: pxToRem(10);
-    font-size: pxToRem(35);
+    font-size: pxToRem(30);
     font-weight: bold;
     line-height: 1.4;
     color: $white;
     text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .no-data {
@@ -163,6 +170,7 @@
       color: $color-light1;
       border: solid pxToRem(1) $bg-light5;
       box-shadow: pxToRem(6) pxToRem(6) pxToRem(6) 0 rgba(0, 0, 0, 0.23);
+      white-space: nowrap;
 
       &:first-child {
         border-top-left-radius: pxToRem(6);
@@ -225,15 +233,12 @@
   }
 
   .detail-top {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    left: 0;
-    padding: pxToRem(43) pxToRem(128) pxToRem(25) pxToRem(128);
+    padding: pxToRem(25) pxToRem(128) pxToRem(25) pxToRem(128);
     @include bgMain2();
 
     .detail-title {
-      font-size: pxToRem(50);
+      font-size: pxToRem(35);
       font-weight: bold;
       line-height: 1.2;
       text-transform: uppercase;
@@ -389,11 +394,6 @@
   }
 
   .page-client {
-    .bg-page-title {
-      height: pxToVW(300);
-      min-height: 220px;
-    }
-
     .container {
       padding-top: pxToVW(40);
       padding-bottom: pxToVW(40);
@@ -648,4 +648,59 @@
 
 .page-client {
   min-height: 80vh;
+}
+
+.detail {
+  .list-category {
+
+    .dich-vu,
+    .hop-tac,
+    .gioi-thieu,
+    .lien-he,
+    .cau-hoi-thuong-gap,
+    .chinh-sach-bao-mat,
+    .dieu-khoang-su-dung {
+      display: none !important;
+    }
+  }
+
+  &.chinh-sach-bao-mat,
+  &.lien-he,
+  &.dich-vu,
+  &.hop-tac,
+  &.gioi-thieu,
+  &.dieu-khoang-su-dung,
+  &.cau-hoi-thuong-gap {
+
+    .bg-page-title,
+    .detail-top,
+    .recent-post {
+      display: none !important;
+    }
+
+
+
+    .custom-container {
+      padding-left: pxToRem(70);
+      padding-right: pxToRem(70);
+      margin: auto;
+
+      .content-detail {
+        .row-left {
+          width: 100%;
+          max-width: 100%;
+          flex: 0 0 100%;
+        }
+
+        .row-right {
+          display: none !important;
+        }
+      }
+
+      @include breakpoint(sm992) {
+        padding-left: pxToVW(23);
+        padding-right: pxToVW(23);
+      }
+    }
+  }
 }

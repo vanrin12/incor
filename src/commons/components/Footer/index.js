@@ -93,9 +93,25 @@ const Footer = ({ dataConstant }: Props) => {
                   </li>
                 </ul>
               </div>
-              <div className="copyright">{dataConstant?.copyRight}</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="footer-copyright d-flex align-items-center justify-align-content-between">
+        <ul className="list-service">
+          <li>
+            <Link to="/dieu-khoang-su-dung/128">Điều khoản sử dụng</Link>
+          </li>
+          <li>
+            <Link to="/chinh-sach-bao-mat/129">Chính sách bảo mật</Link>
+          </li>
+          <li>
+            <Link to="/cau-hoi-thuong-gap/130">Câu hỏi thường gặp</Link>
+          </li>
+        </ul>
+        <div className="name-copyright">
+          <div className="copyright">{dataConstant?.copyRight}</div>
         </div>
       </div>
     </footer>

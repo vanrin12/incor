@@ -48,13 +48,15 @@ const ItemSearch = ({ history, itemObj }: Props) => {
               />
               {itemObj?.companyName}
             </div>
+          </div>
+          <div className="wrap-location">
+            <div className="location">
+              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              {itemObj?.areaName}
+            </div>
             <div className="rating">
               <Rating numberStar={itemObj?.rating} />
             </div>
-          </div>
-          <div className="location">
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
-            {itemObj?.areaName}
           </div>
         </div>
       </div>

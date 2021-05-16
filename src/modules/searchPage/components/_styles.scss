@@ -1,6 +1,6 @@
 .page-search {
   background-color: $bg-light6;
-  padding: pxToRem(200) 0 0 pxToRem(90);
+  padding: pxToRem(80) 0 0 pxToRem(90);
   position: relative;
 
   .icon-sort-mobile {
@@ -101,13 +101,9 @@
       line-height: pxToRem(30);
       text-align: left;
       color: $color-black;
-      max-width: 60%;
       margin-right: pxToRem(10);
       position: relative;
       padding-left: pxToRem(35);
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
 
       div {
         width: pxToRem(29);
@@ -120,6 +116,17 @@
         background-size: cover;
         background-position: center center;
       }
+    }
+
+    .wrap-location {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      >.rating {
+        margin-top: pxToRem(25);
+      }
+
     }
 
     .location {
@@ -283,7 +290,7 @@
 
       .hashtag {
         font-size: pxToVW(10);
-        line-height: pxToVW(20);
+        line-height: 1.4;
         margin-right: pxToVW(10);
         padding-left: pxToVW(25);
 
