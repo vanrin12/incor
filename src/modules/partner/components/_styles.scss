@@ -83,7 +83,7 @@
       .item-content {
         width: 100%;
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
       }
 
       .group-left {
@@ -327,7 +327,7 @@
 @include breakpoint(sm992) {
   .page-partner {
     .bg-title-partner {
-      height: pxToVW(300);
+      height: pxToVW(350);
       min-height: 300px;
       padding: pxToVW(90) pxToVW(20) pxToVW(30) pxToVW(20);
 

@@ -64,7 +64,7 @@ const ClientDetailManager = ({ match }: Props) => {
   const renderListBlogCategories =
     listBlogCategories && listBlogCategories.length > 0 ? (
       listBlogCategories.map((item) => (
-        <li key={item.id}>
+        <li key={item.id} className={item.slug}>
           <Link to={`${ROUTERS.PAGE_BLOG}/${item.slug}`} title={item.name}>
             {item.name}
           </Link>
@@ -76,38 +76,39 @@ const ClientDetailManager = ({ match }: Props) => {
 
   return (
     <MainLayout headTitle={`Blog - ${dataDetailBlog?.name || ''}`}>
-      <div className="page-client detail">
+      <div className={`page-client detail ${slug}`}>
         {isProcessing ? (
           <Loading />
         ) : (
           <>
-            <div
-              className="bg-page-title"
-              style={{
-                backgroundImage: `url(${dataDetailBlog?.image})`,
-              }}
-            >
-              <div className="detail-top">
-                <div className="detail-title">{dataDetailBlog?.name}</div>
-                <ul className="breadcrumbs">
-                  <li>
-                    <Link to={ROUTERS.MAIN_PAGE} title="Trang chủ">
-                      Trang chủ
-                    </Link>
-                  </li>
-                  <li className="line"> / </li>
-                  <li>
-                    <Link
-                      to={`${ROUTERS.PAGE_BLOG}/${slug}`}
-                      title={dataDetailBlog?.category?.name || ''}
-                    >
-                      {dataDetailBlog?.category?.name}
-                    </Link>
-                  </li>
-                  <li className="line"> / </li>
-                  <li className="sub-title">{dataDetailBlog?.name}</li>
-                </ul>
-              </div>
+            <div className="bg-page-title">
+              <img
+                src={dataDetailBlog?.category?.image || dataDetailBlog?.image}
+                alt=""
+                width="100%"
+                height="auto"
+              />
+            </div>
+            <div className="detail-top">
+              <div className="detail-title">{dataDetailBlog?.name}</div>
+              <ul className="breadcrumbs">
+                <li>
+                  <Link to={ROUTERS.MAIN_PAGE} title="Trang chủ">
+                    Trang chủ
+                  </Link>
+                </li>
+                <li className="line"> / </li>
+                <li>
+                  <Link
+                    to={`${ROUTERS.PAGE_BLOG}/${slug}`}
+                    title={dataDetailBlog?.category?.name || ''}
+                  >
+                    {dataDetailBlog?.category?.name}
+                  </Link>
+                </li>
+                <li className="line"> / </li>
+                <li className="sub-title">{dataDetailBlog?.name}</li>
+              </ul>
             </div>
             <div className="custom-container">
               <div className="content-detail">

@@ -257,8 +257,8 @@ const PageSearch = ({ history }: Props) => {
                   {!isProcessingSearch && (
                     <div className="wrapper-pagination">
                       <ReactPaginate
-                        previousLabel="Previous"
-                        nextLabel="Next"
+                        previousLabel="Trang sau"
+                        nextLabel="Trang trước"
                         breakLabel={<span className="gap">...</span>}
                         pageCount={Math.ceil(totalRows / 10)}
                         onPageChange={(eventKey) =>
