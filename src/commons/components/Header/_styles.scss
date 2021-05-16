@@ -1,3 +1,7 @@
+.main-layout {
+  padding-top: pxToRem(120);
+}
+
 .header-main {
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.16);
   @include bgMain2();
@@ -122,7 +126,7 @@
   width: 70%;
   height: 100vh;
   background-color: $white;
-  padding: pxToVW(28) 0 pxToVW(50) pxToVW(30);
+  padding: pxToVW(0) 0 pxToVW(50) pxToVW(30);
   overflow-y: auto;
   @include transition(0.4s all);
 
@@ -156,7 +160,7 @@
       line-height: 1.2;
       letter-spacing: pxToVW(0.4);
       text-align: right;
-      margin-bottom: pxToVW(15);
+      margin-bottom: pxToVW(10);
       border-radius: pxToVW(5);
 
       &.active,
@@ -362,6 +366,10 @@
 
   .icon-menu {
     display: block !important;
+  }
+
+  .main-layout {
+    padding-top: pxToVW(60);
   }
 
   .header-main {

@@ -408,8 +408,8 @@ const PagePartner = ({ history, match }: Props) => {
                     {totalRows > 3 && (
                       <div className="wrapper-pagination pb-5">
                         <ReactPaginate
-                          previousLabel="Previous"
-                          nextLabel="Next"
+                          previousLabel="Trang sau"
+                          nextLabel="Trang trước"
                           breakLabel={<span className="gap">...</span>}
                           pageCount={Math.ceil(totalRows / 3)}
                           onPageChange={(eventKey) =>

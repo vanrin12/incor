@@ -26,6 +26,7 @@ const images = {
   imgContact: require('../assets/imgs/form.png'),
   imgPhone: require('../assets/imgs/phone.png'),
   avatar: require('../assets/imgs/customer.jpg'),
+  imgPhone1: require('../assets/imgs/icon-1.png'),
 };
 
 export default images;

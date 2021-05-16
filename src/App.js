@@ -8,6 +8,7 @@ import 'swiper/swiper.scss';
 import 'react-image-gallery/styles/scss/image-gallery.scss';
 
 import './App.scss';
+
 import { Provider } from 'react-redux';
 import Router from 'routers';
 

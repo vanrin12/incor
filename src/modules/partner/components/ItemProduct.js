@@ -8,7 +8,6 @@ type Props = {
   handleModalGallery: Function,
   type: any,
 };
-
 const ItemProduct = ({ itemObj, handleModalGallery, type }: Props) => {
   return (
     <div
@@ -29,7 +28,7 @@ const ItemProduct = ({ itemObj, handleModalGallery, type }: Props) => {
         }}
       />
       <div className="title">
-        <h3>{itemObj?.name}</h3>
+        <h3>{type === 'product' ? itemObj?.hashtag : itemObj?.name}</h3>
       </div>
     </div>
   );

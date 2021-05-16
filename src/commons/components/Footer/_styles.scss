@@ -93,6 +93,37 @@
   display: none;
 }
 
+.footer-copyright {
+  margin-top: pxToRem(40);
+  padding: pxToRem(35) 0;
+  padding-bottom: 0;
+  border-top: pxToRem(1) solid $white;
+  justify-content: space-between;
+
+  .list-service {
+    display: flex;
+    align-items: center;
+
+    a {
+      color: $white;
+      font-size: pxToRem(20);
+      font-style: normal;
+      line-height: 1.2;
+      margin-right: pxToRem(20);
+      letter-spacing: normal;
+      text-align: left;
+    }
+  }
+
+  .copyright {
+    color: $white;
+    font-size: pxToRem(20);
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: left;
+  }
+}
+
 @include breakpoint(sm992) {
   .desktop {
     display: none;
@@ -185,11 +216,18 @@
           }
         }
       }
+    }
 
-      .copyright {
-        margin-top: pxToVW(10);
+
+    .list-service {
+      a {
         font-size: pxToVW(8);
       }
+    }
+
+    .copyright {
+      margin-top: pxToVW(10);
+      font-size: pxToVW(8);
     }
   }
 }
