@@ -201,7 +201,7 @@
 
         h3 {
           margin: pxToRem(20) pxToRem(25);
-          font-size: pxToRem(22);
+          font-size: pxToRem(20);
           line-height: 1.2;
           letter-spacing: pxToRem(0.63);
           opacity: 0.8;
@@ -215,6 +215,7 @@
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
+          letter-spacing: pxToRem(-0.4);
           max-height: pxToRem(60);
         }
 
@@ -234,9 +235,10 @@
           text-align: left;
 
           h3 {
-            font-size: pxToRem(25);
+            font-size: pxToRem(20);
             opacity: 1;
             text-align: left;
+            letter-spacing: pxToRem(-0.4);
           }
 
           .desc {
