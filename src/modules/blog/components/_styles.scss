@@ -1,6 +1,6 @@
 .page-client {
   .bg-page-title {
-    min-height: pxToRem(700);
+    // min-height: pxToRem(700);
     background-position: center center;
     background-size: cover;
 
@@ -230,6 +230,7 @@
 .detail {
   .bg-page-title {
     position: relative;
+
   }
 
   .detail-top {
@@ -565,6 +566,8 @@
   .detail {
     .detail-top {
       padding: pxToVW(13) pxToVW(23);
+      position: relative;
+      margin-top: -3px;
 
       .detail-title {
         font-size: pxToVW(15);
