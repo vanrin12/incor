@@ -37,10 +37,12 @@ body p {
 }
 
 @include breakpoint(xm480) {
-
-  .no-token,
-  .main-layout {
+  .no-token {
     margin-bottom: 50px;
+  }
+
+  .home-main {
+    margin-bottom: 0;
   }
 }
 
@@ -116,11 +118,24 @@ body p {
   overflow: auto;
 }
 
-.app-fixed-footer .btn-fix.button.btn-primary {
-  @media (min-width: 600px) {
-    bottom: 50px !important;
+@media (min-width: 600px) {
+  .home-main {
+
+    .hotline-phone-ring-wrap,
+    .app-fixed-footer {
+      display: none;
+    }
   }
 
+  .show-button-contact {
+    .home-main {
+
+      .hotline-phone-ring-wrap,
+      .app-fixed-footer {
+        display: block;
+      }
+    }
+  }
 }
 
 .hotline-phone-ring-wrap {
@@ -159,7 +174,7 @@ body p {
   position: absolute;
   background-color: transparent;
   border-radius: 100%;
-  border: 2px solid #e60808;
+  border: 2px solid #215cc4;
   -webkit-animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
   animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
   transition: all .5s;
@@ -170,12 +185,12 @@ body p {
 }
 
 .hotline-phone-ring-circle-fill {
-  width: 57px;
-  height: 57px;
+  width: 60px;
+  height: 60px;
   top: 25px;
   left: 25px;
   position: absolute;
-  background-color: rgba(230, 8, 8, .7);
+  background-color: #215cc4;
   border-radius: 100%;
   border: 2px solid transparent;
   -webkit-animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
@@ -187,11 +202,11 @@ body p {
 }
 
 .hotline-phone-ring-img-circle {
-  background-color: #e60808;
-  width: 33px;
-  height: 33px;
-  top: 37px;
-  left: 37px;
+  background-color: #215cc4;
+  width: 50px;
+  height: 50px;
+  top: 29px;
+  left: 29px;
   position: absolute;
   background-size: 20px;
   border-radius: 100%;
@@ -217,16 +232,16 @@ body p {
 }
 
 .hotline-phone-ring-img-circle .pps-btn-img img {
-  width: 20px;
-  height: 20px
+  width: 40px;
+  height: 40px
 }
 
 .hotline-bar {
   position: absolute;
-  background: rgba(230, 8, 8, .75);
-  height: 40px;
+  background: #ffffff;
+  height: 50px;
   width: 200px;
-  line-height: 40px;
+  line-height: 50px;
   border-radius: 3px;
   padding: 0 10px;
   background-size: 100%;
@@ -237,19 +252,20 @@ body p {
   box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .1);
   border-radius: 50px !important;
   left: 33px;
-  bottom: 37px
+  bottom: 31px;
+  border: solid 2px #d8e4ff;
 }
 
 .hotline-bar>a {
-  color: #fff;
+  color: #215cc4 !important;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   text-indent: 50px;
   display: block;
   letter-spacing: 1px;
-  line-height: 40px;
-  font-family: Arial
+  line-height: 50px;
+
 }
 
 .hotline-bar>a:hover,

@@ -61,6 +61,11 @@ const MainLayout = ({
       } else {
         elementHeader.classList.remove('go-to-top');
       }
+      if (window && window.pageYOffset > 760) {
+        elementHeader.classList.add('show-button-contact');
+      } else {
+        elementHeader.classList.remove('show-button-contact');
+      }
     });
     return () => {
       window.removeEventListener('scroll', scrollCallBack);
@@ -178,41 +183,51 @@ const MainLayout = ({
           <h2 className="modal-title">CẢM ƠN BẠN !</h2>
           <div className="text-modal-content">{openSuccessClient.content}</div>
         </ModalPopup>
-        <div className="hotline-phone-ring-wrap">
-          <div className="hotline-phone-ring">
-            <div className="hotline-phone-ring-circle" />
-            <div className="hotline-phone-ring-circle-fill" />
-            <div className="hotline-phone-ring-img-circle">
-              <a href={`tel:${dataConstant?.phone}`} className="pps-btn-img">
-                <img src={IMAGES.imgPhone1} alt="Số điện thoại" width={50} />
-              </a>
+        {!token && (
+          <>
+            <div className="hotline-phone-ring-wrap">
+              <div className="hotline-phone-ring">
+                <div className="hotline-phone-ring-circle" />
+                <div className="hotline-phone-ring-circle-fill" />
+                <div className="hotline-phone-ring-img-circle">
+                  <a
+                    href={`tel:${dataConstant?.phone}`}
+                    className="pps-btn-img"
+                  >
+                    <img
+                      src={IMAGES.imgPhone1}
+                      alt="Số điện thoại"
+                      width={50}
+                    />
+                  </a>
+                </div>
+              </div>
+              <div className="hotline-bar">
+                <a href={`tel:${dataConstant?.phone}`}>
+                  <span className="text-hotline">{dataConstant?.phone}</span>
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="hotline-bar">
-            <a href={`tel:${dataConstant?.phone}`}>
-              <span className="text-hotline">{dataConstant?.phone}</span>
-            </a>
-          </div>
-        </div>
 
-        <div className="app-fixed-footer">
-          <a
-            href={`tel:${dataConstant?.phone}`}
-            className="button btn btn-primary big btn-fix phone"
-            title=""
-          >
-            <img src={IMAGES.imgPhone} alt="" />
-            Điện thoại tư vấn
-          </a>
-          <Button
-            customClass="big btn-fix"
-            onClick={() => setIsOpenModalClient(true)}
-          >
-            <img src={IMAGES.imgContact} alt="" />
-            YÊU CẦU TƯ VẤN
-          </Button>
-        </div>
-
+            <div className="app-fixed-footer">
+              <a
+                href={`tel:${dataConstant?.phone}`}
+                className="button btn btn-primary big btn-fix phone"
+                title=""
+              >
+                <img src={IMAGES.imgPhone} alt="" />
+                Điện thoại tư vấn
+              </a>
+              <Button
+                customClass="big btn-fix"
+                onClick={() => setIsOpenModalClient(true)}
+              >
+                <img src={IMAGES.imgContact} alt="" />
+                YÊU CẦU TƯ VẤN
+              </Button>
+            </div>
+          </>
+        )}
         <div
           className="btn-go-to-top"
           onClick={() => handleGoToTop()}
