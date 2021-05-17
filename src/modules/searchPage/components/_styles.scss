@@ -173,7 +173,7 @@
 
 @include breakpoint(sm992) {
   .page-search {
-    padding: pxToVW(120) pxToVW(20) pxToVW(60) pxToVW(20);
+    padding: pxToVW(60) pxToVW(20) pxToVW(60) pxToVW(20);
 
     .sort-mobile {
       display: flex;

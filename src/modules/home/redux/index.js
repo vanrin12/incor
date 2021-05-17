@@ -105,7 +105,7 @@ const homeSlice = createSlice({
           companyImage: item.company_image || IMAGES.imgNotFound,
           companyName: item.company_name,
           image: item.image,
-          name: item.hashtag || item.name,
+          name: item.name,
           id: item.id,
           partnerId: item.partner_id,
           label: type === 'product' ? item.name : item.company_name,
