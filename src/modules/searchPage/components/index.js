@@ -89,7 +89,7 @@ const PageSearch = ({ history }: Props) => {
           keywords: (valueSearch && valueSearch.toString()) || '',
           page: paginationIndex + 1,
           paged: 9,
-          address: selectCity?.value,
+          address: selectCity?.label,
           scale_id: selectScale?.id,
           rate: rating || '',
         })
@@ -115,7 +115,7 @@ const PageSearch = ({ history }: Props) => {
         keywords: (valueSearch && valueSearch.toString()) || '',
         page: 1,
         paged: 9,
-        area_id: selectCity?.id,
+        address: selectCity?.label,
         scale_id: selectScale?.id,
         rate: rating || '',
       })
