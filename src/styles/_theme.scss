@@ -39,6 +39,10 @@ body p {
 @include breakpoint(xm480) {
   .no-token {
     margin-bottom: 50px;
+
+    &.home-main {
+      margin-bottom: 50px;
+    }
   }
 
   .home-main {
