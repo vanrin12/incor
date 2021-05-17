@@ -78,6 +78,7 @@ const partnerSlice = createSlice({
         taxCode: partner?.company_tax_code || '',
         image: partner?.company_image || IMAGES.imgNotFound,
         companyId: partner?.company_id,
+        promotion: partner?.promotion,
         email: partner?.company_email || '',
         career: partner?.company_career?.split(',').map((item, index) => {
           return {
