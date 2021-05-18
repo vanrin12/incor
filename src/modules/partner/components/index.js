@@ -254,7 +254,12 @@ const PagePartner = ({ history, match }: Props) => {
   // click báo giá
   const handleSubmitModalQuotation = () => {
     if (itemQuote) {
-      dispatch(quotesProjects({ project_id: itemQuote, company_id: id }));
+      dispatch(
+        quotesProjects({
+          project_id: itemQuote,
+          company_id: id,
+        })
+      );
     } else {
       setErrorMsg(ERROR_MESSAGE.ERROR_QUOTES);
     }
@@ -459,7 +464,7 @@ const PagePartner = ({ history, match }: Props) => {
         onClick={() => {
           setOpenModalQuotation(true);
           setItemQuote(0);
-          dispatch(getListProject());
+          dispatch(getListProject({ partner_id: id }));
           setErrorMsg('');
         }}
       >

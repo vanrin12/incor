@@ -252,7 +252,7 @@ const PageSearch = ({ history }: Props) => {
               ) : (
                 <div className="row">{renderListSearch}</div>
               )}
-              {totalRows > 10 && (
+              {totalRows > 9 && (
                 <>
                   {!isProcessingSearch && (
                     <div className="wrapper-pagination">
@@ -260,7 +260,7 @@ const PageSearch = ({ history }: Props) => {
                         previousLabel="Trang sau"
                         nextLabel="Trang trước"
                         breakLabel={<span className="gap">...</span>}
-                        pageCount={Math.ceil(totalRows / 10)}
+                        pageCount={Math.ceil(totalRows / 9)}
                         onPageChange={(eventKey) =>
                           handleSelectPagination(eventKey)
                         }
