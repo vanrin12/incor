@@ -75,7 +75,8 @@ const partnerSlice = createSlice({
         bgImage: partner?.company_image || IMAGES.imgNotFound,
         companyName: partner?.company_name || '',
         location: partner?.company_address || '',
-        personnelSize: `${partner?.scale_name} Người` || '',
+        personnelSize:
+          (partner?.scale_name && `${partner?.scale_name || ''} Người`) || '',
         taxCode: partner?.company_tax_code || '',
         image: partner?.company_image || IMAGES.imgNotFound,
         companyId: partner?.company_id,
