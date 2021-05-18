@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import moment from 'moment';
 import REGEX from 'constants/regexs';
 import { isNumberKey, isOnPasteNumber } from 'helpers/validate';
 import { getSpaceDivisionSelecting, formRequest } from 'modules/home/redux';
@@ -75,8 +76,14 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
       formData.append('space_division_id', values?.selectSubType?.id);
       formData.append('file', values?.file || null);
       formData.append('time', values?.selectTime?.label);
-      formData.append('date', dateTime || new Date());
+      formData.append(
+        'date',
+        dateTime
+          ? moment(dateTime).format('YYYY-MM-DD')
+          : moment(new Date()).format('YYYY-MM-DD')
+      );
       formData.append('description', values?.note);
+
       dispatch(formRequest(formData));
     },
 

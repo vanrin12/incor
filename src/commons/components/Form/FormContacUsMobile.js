@@ -11,6 +11,7 @@ import ERROR_MESSAGE from '../../../constants/errorMsg';
 import SelectDropdown from '../Select';
 import ModalPopup from '../Modal';
 import Button from '../Button';
+import moment from 'moment';
 import Loading from '../Loading/LoadingSmall';
 import { listTime } from '../../../constants/list';
 import {
@@ -112,7 +113,12 @@ const FormContactUsMobile = ({
     formData.append('space_division_id', selectSubType?.id);
     formData.append('file', formik?.values?.file || null);
     formData.append('time', selectTime?.label);
-    formData.append('date', dateTime || new Date());
+    formData.append(
+      'date',
+      dateTime
+        ? moment(dateTime).format('YYYY-MM-DD')
+        : moment(new Date()).format('YYYY-MM-DD')
+    );
     formData.append('description', note);
     dispatch(formRequest(formData));
   };
