@@ -101,7 +101,7 @@ const Footer = ({ dataConstant }: Props) => {
       <div className="footer-copyright d-flex align-items-center justify-align-content-between">
         <ul className="list-service">
           <li>
-            <Link to="/dieu-khoang-su-dung/128">Điều khoản sử dụng</Link>
+            <Link to="/dieu-khoang-su-dung/138">Điều khoản sử dụng</Link>
           </li>
           <li>
             <Link to="/chinh-sach-bao-mat/129">Chính sách bảo mật</Link>
