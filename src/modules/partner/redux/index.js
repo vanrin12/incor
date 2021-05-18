@@ -34,6 +34,7 @@ const partnerSlice = createSlice({
           id: item.id,
           name: item.name,
           address: item.address,
+          status: item.status,
         };
       });
     },

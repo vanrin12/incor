@@ -7,7 +7,6 @@ type Props = {
 };
 
 const PartnerInfo = ({ itemObj }: Props) => {
-  console.log(itemObj, 'itemObj');
   const renderHashtag =
     itemObj &&
     itemObj.career &&

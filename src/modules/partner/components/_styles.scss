@@ -332,6 +332,11 @@
     cursor: pointer;
     @include transition(0.3s all);
 
+    &.disable-row {
+      pointer-events: none !important;
+      opacity: 0.6;
+    }
+
     &:hover {
       border-color: $bg-main;
     }
