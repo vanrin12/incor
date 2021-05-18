@@ -109,8 +109,8 @@ const ClientManager = ({ history, match }: Props) => {
               {totalRow > 6 && (
                 <div className="wrapper-pagination">
                   <ReactPaginate
-                    previousLabel="Trang sau"
-                    nextLabel="Trang trước"
+                    previousLabel="Trang trước"
+                    nextLabel="Trang sau"
                     breakLabel={<span className="gap">...</span>}
                     pageCount={Math.ceil(totalRow / 6)}
                     onPageChange={(eventKey) =>
