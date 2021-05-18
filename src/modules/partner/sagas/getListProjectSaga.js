@@ -2,9 +2,11 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { ROUTES, API } from 'apis';
 
 // worker Saga: will be fired on GET_EVENT_DETAIL actions
-function* getListProject() {
+function* getListProject(action) {
   try {
-    const response = yield call(() => API.get(ROUTES.API_LIST_PROJECT));
+    const response = yield call(() =>
+      API.get(ROUTES.API_LIST_PROJECT, action?.payload)
+    );
 
     if (response.ok) {
       const { data } = response.data;

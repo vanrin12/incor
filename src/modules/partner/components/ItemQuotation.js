@@ -16,7 +16,9 @@ const ItemQuotation = ({ itemObj, handleCheckBox, itemQuote }: Props) => {
 
   return (
     <li
-      className="d-flex justify-content-between align-items-center"
+      className={`d-flex justify-content-between align-items-center ${
+        itemObj?.status !== null ? 'disable-row' : ''
+      }`}
       onClick={() => handleClickChange(itemObj?.id)}
       onKeyDown={() => handleClickChange(itemObj?.id)}
       role="presentation"
