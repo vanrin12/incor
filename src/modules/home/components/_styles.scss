@@ -5,7 +5,7 @@
 .session-slide,
 .session-video,
 .bg-image-main {
-  height: pxToRem(1080);
+  height: pxToRem(1000);
   background-position: center center;
   background-size: cover;
   position: relative;
@@ -25,7 +25,7 @@
 
   .slide-info {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     width: 100%;
     text-align: center;
