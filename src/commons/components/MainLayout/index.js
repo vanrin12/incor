@@ -139,7 +139,10 @@ const MainLayout = ({
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <link rel="canonical" href={`https://incor.vn${dataSeo?.urlSite}`} />
+        <link
+          rel="canonical"
+          href={`https://incor.vn${dataSeo?.urlSite || ''}`}
+        />
         <meta
           property="og:title"
           content={`${
@@ -153,13 +156,19 @@ const MainLayout = ({
         />
         <meta
           property="og:url"
-          content={`https://incor.vn${dataSeo?.urlSite}`}
+          content={`https://incor.vn${dataSeo?.urlSite || ''}`}
         />
-        <meta property="og:image" content={dataSeo?.urlImage} />
-        <meta property="og:image:secure_url" content={dataSeo?.urlImage} />
+        <meta
+          property="og:image"
+          content={dataSeo?.urlImage || IMAGES.logo_blue2}
+        />
+        <meta
+          property="og:image:secure_url"
+          content={dataSeo?.urlImage || IMAGES.logo_blue2}
+        />
         <meta
           property="og:image:alt"
-          content={`https://incor.vn${dataSeo?.urlSite}`}
+          content={`https://incor.vn${dataSeo?.urlSite || ''}`}
         />
         <meta
           name="twitter:title"
@@ -169,7 +178,10 @@ const MainLayout = ({
           }`}
         />
 
-        <meta name="twitter:image" content={dataSeo?.urlImage} />
+        <meta
+          name="twitter:image"
+          content={dataSeo?.urlImage || IMAGES.logo_blue2}
+        />
         <meta
           itemProp="name"
           name="name"
@@ -180,7 +192,11 @@ const MainLayout = ({
           name="description"
           content={dataSeo?.description || dataConstant?.tagline}
         />
-        <meta itemProp="image" name="image" content={dataSeo?.urlImage} />
+        <meta
+          itemProp="image"
+          name="image"
+          content={dataSeo?.urlImage || IMAGES.logo_blue2}
+        />
         <meta
           name="DC.Creator"
           content={dataSeo?.description || dataConstant?.tagline}
@@ -194,7 +210,10 @@ const MainLayout = ({
           content={dataSeo?.description || dataConstant?.tagline}
         />
 
-        <link rel="image_src" content={dataSeo?.urlImage} />
+        <link
+          rel="image_src"
+          content={dataSeo?.urlImage || IMAGES.logo_blue2}
+        />
 
         <title>{`${dataConstant?.nameWebsite || 'INCOR'} - ${
           dataConstant.tagline || ''

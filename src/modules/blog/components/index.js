@@ -95,7 +95,7 @@ const ClientManager = ({ history, match }: Props) => {
 
   const dataSeo = {
     title: nameCategory || label,
-    urlImage: imageCategory,
+    urlImage: imageCategory || IMAGES.bg_title_client,
     urlSite: history?.location?.pathname,
   };
 
