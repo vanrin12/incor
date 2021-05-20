@@ -93,8 +93,14 @@ const ClientManager = ({ history, match }: Props) => {
       <div className="no-data">KHÔNG CÓ BÀI VIẾT NÀO.</div>
     );
 
+  const dataSeo = {
+    title: nameCategory || label,
+    urlImage: imageCategory,
+    urlSite: history?.location?.pathname,
+  };
+
   return (
-    <MainLayout headTitle={`Blog - ${nameCategory || label}`}>
+    <MainLayout headTitle={`Blog - ${nameCategory || label}`} dataSeo={dataSeo}>
       <div className="page-client wrap-slide">
         <div className="bg-page-title">
           <img src={imageCategory || IMAGES.bg_title_client} alt="" />
