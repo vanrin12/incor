@@ -28,6 +28,7 @@ type Props = {
   isShowModalContact?: any,
   description?: string,
   headTitle?: string,
+  dataSeo?: Object,
 };
 
 const MainLayout = ({
@@ -35,6 +36,7 @@ const MainLayout = ({
   customClass = '',
   isShowModalContact = null,
   description = ERROR_MESSAGE.DESC_SEO || '',
+  dataSeo = {},
 }: Props) => {
   const dispatch = useDispatch();
 
@@ -132,12 +134,70 @@ const MainLayout = ({
       behavior: 'smooth',
     });
   };
+
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
+        <link rel="canonical" href={`https://incor.vn${dataSeo?.urlSite}`} />
+        <meta
+          property="og:title"
+          content={`${
+            dataSeo?.title ||
+            'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
+          }`}
+        />
+        <meta
+          name="geo.region"
+          content={dataSeo?.description || dataConstant?.tagline}
+        />
+        <meta
+          property="og:url"
+          content={`https://incor.vn${dataSeo?.urlSite}`}
+        />
+        <meta property="og:image" content={dataSeo?.urlImage} />
+        <meta property="og:image:secure_url" content={dataSeo?.urlImage} />
+        <meta
+          property="og:image:alt"
+          content={`https://incor.vn${dataSeo?.urlSite}`}
+        />
+        <meta
+          name="twitter:title"
+          content={`${
+            dataSeo?.title ||
+            'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
+          }`}
+        />
+
+        <meta name="twitter:image" content={dataSeo?.urlImage} />
+        <meta
+          itemProp="name"
+          name="name"
+          content={dataSeo?.description || dataConstant?.tagline}
+        />
+        <meta
+          itemProp="description"
+          name="description"
+          content={dataSeo?.description || dataConstant?.tagline}
+        />
+        <meta itemProp="image" name="image" content={dataSeo?.urlImage} />
+        <meta
+          name="DC.Creator"
+          content={dataSeo?.description || dataConstant?.tagline}
+        />
+        <meta
+          name="DC.Type"
+          content={dataSeo?.description || dataConstant?.tagline}
+        />
+        <meta
+          name="DC.Indentifier"
+          content={dataSeo?.description || dataConstant?.tagline}
+        />
+
+        <link rel="image_src" content={dataSeo?.urlImage} />
+
         <title>{`${dataConstant?.nameWebsite || 'INCOR'} - ${
-          dataConstant.tagline
+          dataConstant.tagline || ''
         }`}</title>
         <meta
           name="description"
@@ -247,5 +307,6 @@ MainLayout.defaultProps = {
   isShowModalContact: null,
   description: ERROR_MESSAGE.DESC_SEO || '',
   headTitle: '',
+  dataSeo: {},
 };
 export default memo<Props>(MainLayout);

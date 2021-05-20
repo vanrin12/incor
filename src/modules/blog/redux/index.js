@@ -65,6 +65,7 @@ const blogSlice = createSlice({
         content: post?.content,
         name: post?.name,
         image: post?.image || IMAGES.bg_title_client,
+        description: post?.description,
       };
       state.relateBlog = post?.relate?.map((item) => {
         return {
