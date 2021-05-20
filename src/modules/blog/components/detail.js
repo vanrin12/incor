@@ -10,6 +10,10 @@ import Loading from '../../../commons/components/Loading';
 import MainLayout from '../../../commons/components/MainLayout';
 
 type Props = {
+  history: {
+    push: Function,
+    location: Object,
+  },
   match: {
     params: {
       id: any,
@@ -18,7 +22,7 @@ type Props = {
   },
 };
 
-const ClientDetailManager = ({ match }: Props) => {
+const ClientDetailManager = ({ match, history }: Props) => {
   const { id, slug } = match?.params;
   const dispatch = useDispatch();
   const {
@@ -74,8 +78,18 @@ const ClientDetailManager = ({ match }: Props) => {
       <div className="no-data">KHÔNG CÓ DANH MỤC NÀO.</div>
     );
 
+  const dataSeo = {
+    title: dataDetailBlog?.name,
+    urlImage: dataDetailBlog?.category?.image || dataDetailBlog?.image,
+    urlSite: history?.location?.pathname,
+    description: dataDetailBlog?.description,
+  };
+
   return (
-    <MainLayout headTitle={`Blog - ${dataDetailBlog?.name || ''}`}>
+    <MainLayout
+      headTitle={`Blog - ${dataDetailBlog?.name || ''}`}
+      dataSeo={dataSeo}
+    >
       <div className={`page-client detail ${slug}`}>
         {isProcessing ? (
           <Loading />

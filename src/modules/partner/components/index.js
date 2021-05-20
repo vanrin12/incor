@@ -328,8 +328,18 @@ const PagePartner = ({ history, match }: Props) => {
     listEvaluate &&
     listEvaluate.map((item) => <ItemComment key={item.id} itemObj={item} />);
 
+  const dataSeo = {
+    title: `Đối tác - ${dataPartnerInfo?.companyName}`,
+    urlSite: history?.location?.pathname,
+    description: `${dataPartnerInfo?.companyName}-${dataPartnerInfo?.promotion}`,
+    urlImage: dataPartnerInfo?.image,
+  };
+
   return (
-    <MainLayout headTitle={`Đối tác - ${dataPartnerInfo?.partnerName}`}>
+    <MainLayout
+      dataSeo={dataSeo}
+      headTitle={`Đối tác - ${dataPartnerInfo?.partnerName}`}
+    >
       <div className="page-partner wrap-slide">
         {isProcessing ? (
           <Loading />

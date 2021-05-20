@@ -192,9 +192,24 @@ const PageSearch = ({ history }: Props) => {
     ) : (
       <div className="no-data">KHÔNG CÓ BÀI VIẾT NÀO.</div>
     );
+  const dataListHashTagsSeo =
+    dataListHashTags && dataListHashTags.map((item) => item.label);
+
+  const dataSeo = {
+    title: `Tìm kiếm sản phẩm - ${
+      (history.location &&
+        history.location.state &&
+        history.location.state.keySearch &&
+        history.location.state.keySearch) ||
+      ''
+    } `,
+    urlSite: history?.location?.pathname,
+    description: dataListHashTagsSeo && dataListHashTagsSeo.join(', '),
+  };
 
   return (
     <MainLayout
+      dataSeo={dataSeo}
       headTitle={`Tìm kiếm - ${
         (history.location &&
           history.location.state &&
