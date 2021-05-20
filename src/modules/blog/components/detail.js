@@ -80,7 +80,7 @@ const ClientDetailManager = ({ match, history }: Props) => {
 
   const dataSeo = {
     title: dataDetailBlog?.name,
-    urlImage: dataDetailBlog?.category?.image || dataDetailBlog?.image,
+    urlImage: dataDetailBlog?.image || dataDetailBlog?.category?.image,
     urlSite: history?.location?.pathname,
     description: dataDetailBlog?.description,
   };
