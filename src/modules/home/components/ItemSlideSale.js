@@ -19,9 +19,9 @@ const SlideMainSale = ({ history, itemObj, slug }: Props) => {
       <div className="slide-content">
         <div
           className="bg-image"
-          style={{
-            backgroundImage: `url(${itemObj?.image})`,
-          }}
+          // style={{
+          //   backgroundImage: `url(${itemObj?.image})`,
+          // }}
           onClick={() =>
             history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
           }
@@ -30,7 +30,14 @@ const SlideMainSale = ({ history, itemObj, slug }: Props) => {
           }
           role="button"
           tabIndex={0}
-        />
+          style={{ height: 'auto' }}
+        >
+          <img
+            src={itemObj?.image}
+            alt={itemObj?.name || ''}
+            style={{ width: '100%' }}
+          />
+        </div>
         <Link to={`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`}>
           <h3>{itemObj?.name}</h3>
         </Link>
