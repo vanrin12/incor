@@ -166,7 +166,6 @@
       }
 
       .slide-content {
-
         border-radius: pxToRem(20);
         box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
         padding-bottom: pxToRem(40);
@@ -188,6 +187,11 @@
           height: pxToRem(400);
           background-position: center center;
           background-size: cover;
+
+          img {
+            border-top-right-radius: pxToRem(20);
+            border-top-left-radius: pxToRem(20);
+          }
         }
 
         a {
@@ -331,9 +335,9 @@ span[role="button"] {
 
     .item-client-desc {
       // font-family: $Lato-Font;
-      font-size: pxToRem(40);
+      font-size: pxToRem(32);
       font-weight: 300;
-      line-height: pxToRem(60);
+      line-height: pxToRem(50);
       text-align: left;
       margin-bottom: pxToRem(20);
       position: relative;
@@ -343,8 +347,8 @@ span[role="button"] {
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      max-height: pxToRem(205);
+      -webkit-line-clamp: 5;
+      // max-height: pxToRem(205);
 
       &::after {
         content: "";
@@ -631,11 +635,11 @@ span[role="button"] {
       height: pxToVW(110);
 
       .item-client-desc {
-        font-size: pxToVW(12);
+        font-size: pxToVW(11);
         line-height: 1.4;
         margin-bottom: pxToVW(5);
         padding-bottom: pxToVW(5);
-        max-height: pxToVW(70);
+        max-height: pxToVW(60);
 
         &::after {
           width: pxToVW(60);
