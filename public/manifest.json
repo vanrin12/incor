@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "https://incor-toan.s3.us-east-2.amazonaws.com/category/23/1621780769_z2507037715793_e2d1ebc4cd6082e4f54cc438f3816dbf.jpg",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://incor-toan.s3.us-east-2.amazonaws.com/category/23/1621780769_z2507037715793_e2d1ebc4cd6082e4f54cc438f3816dbf.jpg",
+      "src": "logo152.png",
       "type": "image/png",
       "sizes": "512x512"
     }
