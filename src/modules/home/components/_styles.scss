@@ -627,19 +627,20 @@ span[role="button"] {
     }
 
     .item-client-image {
-      height: pxToVW(110);
+      height: pxToVW(140);
     }
 
     .item-client-content {
       padding: pxToVW(15) !important;
-      height: pxToVW(110);
+      height: pxToVW(140);
 
       .item-client-desc {
-        font-size: pxToVW(11);
+        font-size: pxToVW(10);
         line-height: 1.4;
         margin-bottom: pxToVW(5);
         padding-bottom: pxToVW(5);
-        max-height: pxToVW(60);
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
 
         &::after {
           width: pxToVW(60);
@@ -648,12 +649,12 @@ span[role="button"] {
       }
 
       .item-client-name {
-        font-size: pxToVW(13);
+        font-size: pxToVW(11);
         letter-spacing: pxToVW(0.3);
       }
 
       .item-client-address {
-        font-size: pxToVW(10);
+        font-size: pxToVW(9);
         letter-spacing: pxToVW(0.2);
       }
     }
