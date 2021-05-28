@@ -111,24 +111,50 @@
 @include breakpoint(xm480) {
   .app-fixed-footer {
     .btn-fix.button.btn-primary {
-      width: 55%;
-      font-size: 13px;
-      min-height: 54px;
+      width: 35%;
+      font-size: 12px;
+      min-height: 51px;
       bottom: 0;
       border-radius: 0;
       justify-content: center;
+      background: #41beff;
+      box-shadow: 0 -3px 6px 0 rgba(0, 0, 0, 0.16);
 
       img {
         width: 12px;
         margin-right: 5px;
       }
 
-      &.phone {
-        display: block;
-        width: 45%;
-        font-size: 13px;
+      &.messages {
+        display: inline-flex;
+        width: 33%;
+        font-size: 12px;
         right: auto;
         left: 0;
+
+        background: #1c3e71;
+
+        >svg {
+          width: 20px;
+          position: relative;
+          top: pxToVW(1);
+          margin-right: 6px;
+        }
+      }
+
+      &.phone {
+        display: block;
+        width: 33%;
+        font-size: 12px;
+        right: auto;
+        left: 33%;
+        background: #62b942;
+
+        img {
+          width: 16px;
+          position: relative;
+          top: 4px;
+        }
       }
     }
   }

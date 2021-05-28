@@ -126,7 +126,8 @@ body p {
   .home-main {
 
     .hotline-phone-ring-wrap,
-    .app-fixed-footer {
+    .app-fixed-footer,
+    .messages-fb {
       display: none;
     }
   }
@@ -135,7 +136,8 @@ body p {
     .home-main {
 
       .hotline-phone-ring-wrap,
-      .app-fixed-footer {
+      .app-fixed-footer,
+      .messages-fb {
         display: block;
       }
     }
@@ -339,5 +341,16 @@ body p {
 
   100% {
     -webkit-transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+.messages-fb {
+  position: fixed;
+  right: 90px;
+  bottom: 143px;
+  z-index: 99;
+
+  @media (max-width: 600px) {
+    display: none;
   }
 }
