@@ -291,7 +291,7 @@ const MainLayout = ({
             <div className="messages-fb">
               <a
                 href="https://www.facebook.com/messages/t/100211065222157"
-                title="Massager"
+                title="MESSENGER"
                 target="_blank"
                 rel="noopener noreferrer"
               >
