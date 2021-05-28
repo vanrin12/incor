@@ -296,12 +296,12 @@ const MainLayout = ({
                 rel="noopener noreferrer"
               >
                 <svg
-                  width="80px"
-                  height="80px"
+                  width="60px"
+                  height="60px"
                   viewBox="0 0 60 60"
                   cursor="pointer"
                 >
-                  <svg x="0" y="0" width="80px" height="80px">
+                  <svg x="0" y="0" width="60px" height="60px">
                     <g
                       stroke="none"
                       stroke-width="1"
