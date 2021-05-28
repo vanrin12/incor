@@ -290,7 +290,7 @@ const MainLayout = ({
 
             <div className="messages-fb">
               <a
-                href="https://www.facebook.com/messages/t/100211065222157"
+                href="http://m.me/incor.vn"
                 title="MESSENGER"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -332,7 +332,7 @@ const MainLayout = ({
 
             <div className="app-fixed-footer">
               <a
-                href="https://www.facebook.com/messages/t/100211065222157"
+                href="http://m.me/incor.vn"
                 className="button btn btn-primary big btn-fix messages"
                 title="Massager"
                 target="_blank"
