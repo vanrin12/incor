@@ -561,8 +561,8 @@
   }
 
   .custom-container {
-    padding-left: pxToVW(23);
-    padding-right: pxToVW(23);
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .detail {
@@ -572,7 +572,7 @@
       margin-top: -3px;
 
       .detail-title {
-        font-size: pxToVW(15);
+        font-size: 16px;
         max-width: pxToVW(350);
       }
 
@@ -580,7 +580,7 @@
         margin-top: pxToVW(10);
 
         li {
-          font-size: pxToVW(15);
+          font-size: 15px;
 
           &.sub-title {
             max-width: 100%;
@@ -597,12 +597,12 @@
       padding: pxToVW(20) 0;
 
       p {
-        font-size: pxToVW(15);
+        font-size: 16px;
         margin-bottom: pxToVW(10);
       }
 
       span {
-        font-size: pxToVW(12);
+        font-size: 16px;
         margin-bottom: pxToVW(10);
         line-height: 1.4;
       }
@@ -620,7 +620,7 @@
 
       ul {
         li {
-          font-size: pxToVW(14);
+          font-size: 14px;
           margin-bottom: pxToVW(8);
         }
       }
@@ -703,8 +703,8 @@
       }
 
       @include breakpoint(sm992) {
-        padding-left: pxToVW(23);
-        padding-right: pxToVW(23);
+        padding-left: 5px;
+        padding-right: 5px;
       }
     }
   }
