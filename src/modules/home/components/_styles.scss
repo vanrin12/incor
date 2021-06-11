@@ -299,7 +299,7 @@ span[role="button"] {
         }
 
         .item-client-desc {
-          text-align: right;
+          text-align: justify;
 
           &::after {
             left: auto;
@@ -338,7 +338,7 @@ span[role="button"] {
       font-size: pxToRem(32);
       font-weight: 300;
       line-height: pxToRem(50);
-      text-align: left;
+      text-align: justify;
       margin-bottom: pxToRem(20);
       position: relative;
       padding-bottom: pxToRem(40);
