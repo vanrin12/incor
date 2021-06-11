@@ -295,7 +295,7 @@ span[role="button"] {
 
         .item-client-content {
           padding-left: pxToRem(30);
-          padding-right: pxToRem(168);
+          padding-right: pxToRem(70);
         }
 
         .item-client-desc {
@@ -327,7 +327,7 @@ span[role="button"] {
   }
 
   .item-client-content {
-    padding: pxToRem(30) pxToRem(168);
+    padding: pxToRem(30) pxToRem(70);
     padding-right: pxToRem(30);
     @include bgMain();
     color: $white;
