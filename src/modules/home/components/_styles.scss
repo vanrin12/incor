@@ -626,13 +626,19 @@ span[role="button"] {
       margin-top: pxToVW(10);
     }
 
+    .item-client {
+      height: 100%;
+    }
+
     .item-client-image {
-      height: pxToVW(150);
+      min-height: pxToVW(150);
+      height: 50%;
     }
 
     .item-client-content {
       padding: pxToVW(15) !important;
-      height: pxToVW(150);
+      min-height: pxToVW(150);
+      height: 50%;
 
       .item-client-desc {
         font-size: pxToVW(10);
