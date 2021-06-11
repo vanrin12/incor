@@ -343,11 +343,11 @@ span[role="button"] {
       position: relative;
       padding-bottom: pxToRem(40);
 
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 5;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+      // display: -webkit-box;
+      // -webkit-box-orient: vertical;
+      // -webkit-line-clamp: 5;
       // max-height: pxToRem(205);
 
       &::after {
@@ -639,8 +639,8 @@ span[role="button"] {
         line-height: 1.4;
         margin-bottom: pxToVW(5);
         padding-bottom: pxToVW(5);
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 6;
+        // -webkit-box-orient: vertical;
+        // -webkit-line-clamp: 6;
 
         &::after {
           width: pxToVW(60);
@@ -649,7 +649,7 @@ span[role="button"] {
       }
 
       .item-client-name {
-        font-size: pxToVW(11);
+        font-size: pxToVW(10);
         letter-spacing: pxToVW(0.3);
       }
 
