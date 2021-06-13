@@ -3,10 +3,10 @@ const listSelectSearch = [
     value: 'product',
     label: 'Sản phẩm',
   },
-  {
-    value: 'company',
-    label: 'Công ty',
-  },
+  // {
+  //   value: 'company',
+  //   label: 'Công ty',
+  // },
 ];
 
 const listSelectCity = [

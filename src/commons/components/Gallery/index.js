@@ -19,7 +19,18 @@ const Gallery = ({ listGallery, handleCloseModalGallery }: Props) => {
         tabIndex={0}
       />
       <ImageGallery
-        items={listGallery}
+        items={
+          listGallery &&
+          listGallery.map((item, index) => {
+            return {
+              id: index + 1,
+              original: item.image,
+              thumbnail: item.image,
+            };
+          })
+        }
+        width={250}
+        height={150}
         showPlayButton={false}
         showFullscreenButton={false}
         lazyLoad

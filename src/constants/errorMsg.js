@@ -6,6 +6,7 @@ const ERROR_MESSAGE = {
   PHONE_FORMAT: 'Số điện thoại không đúng',
   NICK_NAME_REQUIRED: 'Vui lòng nhập tên đăng nhập.',
   PASSWORD_REQUIRED: 'Vui lòng nhập password.',
+  CONFIRM_PASSWORD_REQUIRED: 'Vui lòng nhập xác nhận password.',
   REQUIRED_CITY: 'Chọn tỉnh/thành phố',
   REQUIRED_TYPE: 'Chọn loại hình không gian',
   REQUIRED_SUB_TYPE: 'Chọn Phân chia không gian',
@@ -20,11 +21,20 @@ const ERROR_MESSAGE = {
   VERIFY_EMAIL:
     'Email authentication is not complete.<br /> Would you like me to resend you<br /> the authentication email?',
   UN_AUTHENTICATED: 'Unauthenticated.',
-  TEXT_SUCCUSS: 'Incor đã nhận được yêu cầu của bạn \n và sẽ liên hệ bạn',
-  PARTNER: 'Chọn đối tác',
-  CATEGORY: 'Chọn hạng mục',
-  RATING: 'Vui lòng chọn đánh giá',
-  TEXT_RATING: 'Vui lòng nhập nội dung đánh giá',
+  TEXT_SUCCUSS: 'Incor đã nhận được yêu cầu của bạn \n và sẽ liên hệ bạn.',
+  PARTNER: 'Chọn đối tác.',
+  CATEGORY: 'Chọn hạng mục.',
+  RATING: 'Vui lòng chọn đánh giá.',
+  TEXT_RATING: 'Vui lòng nhập nội dung đánh giá.',
+  TEXT_RATING_SUCCUSS:
+    'Incor đã nhận được yêu cầu đánh giá của bạn. \n Cảm ơn bạn.',
+  TEXT_RATING_FAILED:
+    ' Đánh giá của bạn đã bị lỗi \n xin vui lòng đánh giá lại. Cảm ơn bạn',
+  TEXT_QUOTES_SUCCUSS: 'Bạn đã gửi yêu cầu báo giá thành công.',
+  TEXT_QUOTES_FAILED: 'Báo giá của bạn đang bị lỗi. Vùi lòng thử lại',
+  ERROR_QUOTES: 'Vui lòng chọn dự án cần đánh giá.',
+  DESC_SEO: 'Incor Giải pháp xây dựng cho ngôi nhà của bạn',
+  MESS_NO_GALLERY: 'Không có hình ảnh nào.',
 };
 
 export default ERROR_MESSAGE;

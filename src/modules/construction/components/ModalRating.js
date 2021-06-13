@@ -11,6 +11,7 @@ import ModalPopup from '../../../commons/components/Modal';
 type Props = {
   handleSubmitRating: Function,
   isShowModalRating: boolean,
+  isProcessing?: boolean,
   handleCloseIcon: Function,
 };
 
@@ -18,6 +19,7 @@ const ModalRating = ({
   handleSubmitRating,
   isShowModalRating,
   handleCloseIcon,
+  isProcessing = false,
 }: Props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formik = useFormik({
@@ -59,6 +61,7 @@ const ModalRating = ({
       isOpen={isShowModalRating}
       isShowFooter
       isShowIconClose
+      isProcessing={isProcessing}
       textBtnRight="ĐÁNH GIÁ"
       handleCloseIcon={() => handleCloseIcon()}
       handleClose={() => {
@@ -102,4 +105,7 @@ const ModalRating = ({
   );
 };
 
+ModalRating.defaultProps = {
+  isProcessing: false,
+};
 export default memo<Props>(ModalRating);

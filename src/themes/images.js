@@ -18,6 +18,15 @@ const images = {
   img_product: require('../assets/imgs/product.jpg'),
   img_Search: require('../assets/imgs/icon-filter.png'),
   logo_blue: require('../assets/imgs/logo-blue.png'),
+  logo_blue2: require('../assets/imgs/logo-blue2.png'),
+  icon_close2: require('../assets/imgs/icon-close.png'),
+  iconLoading: require('../assets/imgs/loading.gif'),
+  imgNotFound: require('../assets/imgs/image-not-found.jpg'),
+  imgBackToTop: require('../assets/imgs/back-to-top.png'),
+  imgContact: require('../assets/imgs/form.png'),
+  imgPhone: require('../assets/imgs/phone.png'),
+  avatar: require('../assets/imgs/customer.jpg'),
+  imgPhone1: require('../assets/imgs/icon-1.png'),
 };
 
 export default images;

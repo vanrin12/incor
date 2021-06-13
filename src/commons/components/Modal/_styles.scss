@@ -38,8 +38,8 @@
 
   &__iconClose {
     position: absolute;
-    right: pxToRem(-20);
-    top: pxToRem(-20);
+    right: pxToRem(-10);
+    top: pxToRem(-10);
     width: pxToRem(35);
     height: pxToRem(35);
 
@@ -183,14 +183,14 @@
     box-shadow: 0 pxToVW(6) pxToVW(5) 0;
 
     &__iconClose {
-      right: pxToVW(-20);
-      top: pxToVW(-20);
+      right: pxToVW(-15);
+      top: pxToVW(-15);
       width: pxToVW(35);
       height: pxToVW(35);
 
       img {
-        width: pxToVW(25);
-        height: pxToVW(25);
+        width: pxToVW(35);
+        height: pxToVW(32);
       }
     }
 
@@ -265,6 +265,12 @@
         }
       }
     }
+  }
+}
+
+.FormContactUsMobile {
+  .modal-content__iconClose {
+    display: block !important;
   }
 }
 

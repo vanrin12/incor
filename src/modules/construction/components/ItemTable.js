@@ -15,11 +15,16 @@ const ItemTable = ({ itemObj, handleShowModalRating }: Props) => {
     <div className="item-table d-flex">
       <div className="b-item b-item1">
         <div className="b-item-title">{itemObj?.category}</div>
-        <div className="b-item-sub-title">{itemObj?.subCategory}</div>
+        <div className="b-item-sub-title">
+          {itemObj?.hashtag &&
+            itemObj?.hashtag?.split(',')?.length > 0 &&
+            itemObj?.hashtag?.split(',').map((item) => {
+              return <span className="hashtag">#{item}</span>;
+            })}
+        </div>
       </div>
       <div className="b-item b-item2">
         <div className="b-item-title">
-          {itemObj?.technicalDesc?.name}
           <div className="b-item-desc">{itemObj?.technicalDesc?.desc}</div>
         </div>
       </div>
@@ -45,11 +50,11 @@ const ItemTable = ({ itemObj, handleShowModalRating }: Props) => {
         <div className="b-item-title">
           {/* Nếu tiến độ nhỏ hơn 75% thì ko đánh giá */}
           {itemObj?.rating ? (
-            <Rating numberStar={4} />
+            <Rating numberStar={itemObj?.rating} />
           ) : (
             <Button
               isDisabled={itemObj?.progress < 75}
-              onClick={() => handleShowModalRating(true)}
+              onClick={() => handleShowModalRating(true, itemObj)}
             >
               ĐÁNH GIÁ
             </Button>

@@ -96,6 +96,7 @@ video {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  word-break: break-word;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -150,12 +151,6 @@ a {
   -webkit-transform: ease 0.4s all;
   -ms-transform: ease 0.4s all;
   transition: ease 0.4s all;
-}
-
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: pxToRem(1185);
-  }
 }
 
 .noto-font {

@@ -1,12 +1,20 @@
 // @flow
 // libs
-import React from 'react';
+import React, { memo } from 'react';
 import { Spinner } from 'react-bootstrap';
 
-export const LoadingSmall = () => (
+type Props = {
+  size?: string,
+};
+
+export const LoadingSmall = ({ size = 'sm' }: Props) => (
   <div className="spinner-wrap">
-    <Spinner animation="border" variant="warning" size="sm" />
+    <Spinner animation="border" variant="warning" size={size} />
   </div>
 );
 
-export default LoadingSmall;
+LoadingSmall.defaultProps = {
+  size: 'sm',
+};
+
+export default memo<Props>(LoadingSmall);

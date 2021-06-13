@@ -9,7 +9,7 @@ type Props = {
   dataList: Array<{
     id: number,
     category: string,
-    subCategory: string,
+    hashtag: string,
     technicalDesc: Object,
     totalCost: string,
     date: string,
@@ -18,6 +18,7 @@ type Props = {
     totalMoney: string,
     remark: string,
     rating: any,
+    amount: number,
   }>,
   listPartner: Array<{
     id: number,
@@ -33,6 +34,9 @@ type Props = {
   handleSubmitForm: Function,
   handleShowModal: Function,
   handleShowModalRating: Function,
+  useRef: any,
+  handleSortPrice: Function,
+  sortPrice: boolean,
 };
 
 const TableConstructionManager = ({
@@ -43,6 +47,9 @@ const TableConstructionManager = ({
   isShowModal,
   handleShowModal,
   handleShowModalRating,
+  useRef,
+  handleSortPrice,
+  sortPrice,
 }: Props) => {
   const renderListConstruction =
     dataList.length > 0 ? (
@@ -58,7 +65,7 @@ const TableConstructionManager = ({
     );
 
   return (
-    <div className="table-construction">
+    <div className={`table-construction ${isShowModal ? 'isShowModal' : ''}`}>
       <div className="table-header d-flex">
         <div className="t-item t-item1">
           <div
@@ -71,18 +78,30 @@ const TableConstructionManager = ({
             HẠNG MỤC / ĐƠN VỊ
             <img src={IMAGES.iconUp} alt="" className="ico-up style1" />
           </div>
-          {isShowModal && (
-            <ModalSort
-              listPartner={listPartner}
-              listCategory={listCategory}
-              handleSubmitForm={handleSubmitForm}
-            />
-          )}
+          <div ref={useRef}>
+            {isShowModal && (
+              <ModalSort
+                listPartner={listPartner}
+                listCategory={listCategory}
+                handleSubmitForm={handleSubmitForm}
+              />
+            )}
+          </div>
         </div>
         <div className="t-item t-item2">MÔ TẢ KỸ THUẬT</div>
-        <div className="t-item t-item3">
+        <div
+          className="t-item t-item3"
+          onClick={() => handleSortPrice()}
+          onKeyDown={() => {}}
+          role="button"
+          tabIndex={0}
+        >
           DỰ TOÁN
-          <img src={IMAGES.iconUp} alt="" className="ico-up style1" />
+          <img
+            src={IMAGES.iconUp}
+            alt=""
+            className={`style1 ${sortPrice ? 'ico-down' : 'ico-up'}`}
+          />
         </div>
         <div className="t-item t-item4">
           THỜI GIAN

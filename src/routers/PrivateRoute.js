@@ -14,7 +14,7 @@ const PrivateRoute = ({
   path,
   ...rest
 }: Props) => {
-  const loginPath = '/login';
+  const loginPath = '/';
 
   return (
     <Route
