@@ -1,30 +1,24 @@
 // @flow
 
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import Checkbox from '../../../commons/components/Checkbox';
 
 type Props = {
   itemObj: Object,
   handleCheckBox: Function,
-  listId: Array<number>,
+  itemQuote: number,
 };
 
-const ItemQuotation = ({ itemObj, handleCheckBox, listId }: Props) => {
-  const [checkedItems, setCheckedItems] = useState({});
-  const handleChange = (event) => {
-    setCheckedItems({
-      ...checkedItems,
-      [event.target.name]: event.target.checked,
-    });
-    handleCheckBox([itemObj?.id]);
-  };
+const ItemQuotation = ({ itemObj, handleCheckBox, itemQuote }: Props) => {
   const handleClickChange = (id) => {
-    handleCheckBox([id]);
+    handleCheckBox(id);
   };
 
   return (
     <li
-      className="d-flex justify-content-between align-items-center"
+      className={`d-flex justify-content-between align-items-center ${
+        itemObj?.status !== null ? 'disable-row' : ''
+      }`}
       onClick={() => handleClickChange(itemObj?.id)}
       onKeyDown={() => handleClickChange(itemObj?.id)}
       role="presentation"
@@ -33,8 +27,8 @@ const ItemQuotation = ({ itemObj, handleCheckBox, listId }: Props) => {
       <Checkbox
         label={itemObj?.label}
         id={itemObj?.id}
-        checked={!!listId.includes(itemObj?.id)}
-        onChange={(e) => handleChange(e)}
+        checked={itemQuote === itemObj?.id}
+        onChange={() => {}}
         name={itemObj?.id}
       />
     </li>

@@ -1,4 +1,4 @@
-button.button.btn {
+.button.btn {
   height: pxToRem(55);
   background: rgb(42, 82, 153);
   background: linear-gradient(-90deg, rgba(42, 82, 153, 1) 0%, rgba(21, 41, 77, 1) 100%);
@@ -21,6 +21,59 @@ button.button.btn {
   }
 }
 
+.app-fixed-footer {
+  height: 0;
+
+  .btn-fix.button.btn-primary {
+
+    @media (min-width: 600px) {
+      bottom: 50px !important;
+      width: pxToRem(300);
+      height: pxToRem(58);
+      right: 15px;
+      padding: 19px 38px 18px;
+      border-radius: 31px;
+      border: solid 5px #d8e4ff !important;
+      background-image: linear-gradient(87deg, #2466d9 29%, #12336d 91%);
+      justify-content: center;
+
+      img {
+        display: none;
+      }
+    }
+
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    bottom: pxToRem(20);
+    background: linear-gradient(-90deg, #d62a4e 0%, #d62a4e 100%);
+    outline: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 99;
+    width: pxToRem(250);
+    font-size: pxToRem(20);
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &:focus {
+      border: 0;
+      box-shadow: none;
+    }
+
+    img {
+      width: pxToRem(20);
+      margin-right: pxToRem(10);
+    }
+
+    &.phone {
+      display: none;
+      line-height: 42px;
+      background: linear-gradient(-90deg, #2b3747 0%, #2b3747 100%);
+    }
+  }
+}
 
 @include breakpoint(sm992) {
   button.button.btn {
@@ -40,4 +93,88 @@ button.button.btn {
       padding: pxToVW(5) pxToVW(10);
     }
   }
+
+  .app-fixed-footer {
+    .btn-fix.button.btn-primary {
+      width: pxToVW(100);
+      font-size: 16px;
+      min-height: 54px;
+
+      img {
+        width: pxToRem(20);
+        margin-right: pxToRem(10);
+      }
+    }
+  }
+}
+
+@include breakpoint(xm480) {
+  .app-fixed-footer {
+    .btn-fix.button.btn-primary {
+      width: 35%;
+      font-size: 12px;
+      min-height: 51px;
+      bottom: 0;
+      border-radius: 0;
+      justify-content: center;
+      background: #41beff;
+      box-shadow: 0 -3px 6px 0 rgba(0, 0, 0, 0.16);
+
+      img {
+        width: 12px;
+        margin-right: 5px;
+      }
+
+      &.messages {
+        display: inline-flex;
+        width: 33%;
+        font-size: 12px;
+        right: auto;
+        left: 0;
+
+        background: #1c3e71;
+
+        >svg {
+          width: 20px;
+          position: relative;
+          top: pxToVW(1);
+          margin-right: 6px;
+        }
+      }
+
+      &.phone {
+        display: block;
+        width: 33%;
+        font-size: 12px;
+        right: auto;
+        left: 33%;
+        background: #62b942;
+
+        img {
+          width: 16px;
+          position: relative;
+          top: 4px;
+        }
+      }
+    }
+  }
+}
+
+.home-main {
+  .main-wrap {
+    min-height: 80vh;
+  }
+
+  // .app-fixed-footer {
+  //   display: none;
+  // }
+}
+
+.selection_bubble_root,
+.selection_img_search {
+  display: none;
+}
+
+.border-radius0 {
+  border-radius: 4px !important;
 }

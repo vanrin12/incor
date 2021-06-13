@@ -17,6 +17,12 @@
   }
 }
 
+.ico-down {
+  @include transform-rotate(90deg);
+  left: 7px;
+  position: relative;
+}
+
 button.btn-outline {
   outline: none;
   border: 0;
@@ -27,6 +33,10 @@ button.btn-outline {
   color: $white;
   background-color: transparent;
   white-space: nowrap;
+
+  &.btn-dk {
+    text-transform: uppercase;
+  }
 }
 
 .from-login {
@@ -89,4 +99,37 @@ button.btn-outline {
       color: $red;
     }
   }
+}
+
+.change-pass {
+  min-height: 90vh;
+
+  .form-change-pass {
+    max-width: 480px;
+    margin: auto;
+    padding-top: 250px;
+    padding-bottom: 50px;
+  }
+
+  @include breakpoint(sm992) {
+    min-height: 50vh;
+
+    .form-change-pass {
+      margin: auto;
+      padding-top: 100px;
+      padding-bottom: 50px;
+
+      .btn-wrap {
+        .button {
+          height: pxToVW(35);
+          padding: pxToVW(10);
+        }
+      }
+    }
+  }
+}
+
+small {
+  font-size: 14px;
+  font-style: italic;
 }
