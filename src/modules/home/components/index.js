@@ -53,7 +53,7 @@ const HomeMain = ({ history }: Props) => {
     customerExperienceName,
   } = useSelector((state) => state?.home);
   const { dataPartner } = useSelector((state) => state?.commonSlice);
-  const { token } = useSelector((state) => state?.account);
+  // const { token } = useSelector((state) => state?.account);
 
   const paramsOptionSlideMain = {
     loop: true,
@@ -250,20 +250,18 @@ const HomeMain = ({ history }: Props) => {
                 </Swiper>
               </div>
               {/* Session panner */}
-              <div className={`slide-info ${token ? 'mt-3' : ''}`}>
+              <div className="slide-info mt-3">
                 <div className="title-slide">{sliderMain?.title}</div>
                 <div className="search-main">
-                  {token && (
-                    <FormSearchMain
-                      handleChangeInput={handleChangeInput}
-                      handleSelectChange={handleSelectChange}
-                      valueSearch={valueSearch}
-                      optionSelect={optionSearchDefault}
-                      history={history}
-                      listAutocompleteSearch={updateListHashTags}
-                      isLoading={isProcessingSearch}
-                    />
-                  )}
+                  <FormSearchMain
+                    handleChangeInput={handleChangeInput}
+                    handleSelectChange={handleSelectChange}
+                    valueSearch={valueSearch}
+                    optionSelect={optionSearchDefault}
+                    history={history}
+                    listAutocompleteSearch={updateListHashTags}
+                    isLoading={isProcessingSearch}
+                  />
                 </div>
                 <Button
                   customClass="big"
