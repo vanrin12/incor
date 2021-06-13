@@ -38,17 +38,17 @@ const Router = () => {
       <Suspense>
         <Switch>
           <Route exact path={ROUTERS.MAIN_PAGE} component={HomeMain} />
-          <PrivateRoute
+          <Route
             exact
             path={ROUTERS.PAGE_SEARCH_DETAIL}
             component={PageSearch}
-            isAuthenticated={isAuthenticated}
+            // isAuthenticated={isAuthenticated}
           />
-          <PrivateRoute
+          <Route
             exact
             path={ROUTERS.PARTNER_DETAIL}
             component={PagePartner}
-            isAuthenticated={isAuthenticated}
+            // isAuthenticated={isAuthenticated}
           />
           <PrivateRoute
             exact

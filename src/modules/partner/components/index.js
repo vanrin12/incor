@@ -49,6 +49,7 @@ type Props = {
 const PagePartner = ({ history, match }: Props) => {
   const dispatch = useDispatch();
   const { id } = match?.params;
+  const { token } = useSelector((state) => state?.account);
   const {
     dataListProject,
     isProcessingProject,
@@ -462,24 +463,26 @@ const PagePartner = ({ history, match }: Props) => {
             handleCloseModalGallery={handleCloseModalGallery}
           />
         )}
-      <div
-        className="quotation"
-        onKeyDown={() => {
-          setOpenModalQuotation(true);
-          setItemQuote(0);
-          setErrorMsg('');
-        }}
-        role="button"
-        tabIndex={0}
-        onClick={() => {
-          setOpenModalQuotation(true);
-          setItemQuote(0);
-          dispatch(getListProject({ partner_id: id }));
-          setErrorMsg('');
-        }}
-      >
-        BÁO GIÁ
-      </div>
+      {token && (
+        <div
+          className="quotation"
+          onKeyDown={() => {
+            setOpenModalQuotation(true);
+            setItemQuote(0);
+            setErrorMsg('');
+          }}
+          role="button"
+          tabIndex={0}
+          onClick={() => {
+            setOpenModalQuotation(true);
+            setItemQuote(0);
+            dispatch(getListProject({ partner_id: id }));
+            setErrorMsg('');
+          }}
+        >
+          BÁO GIÁ
+        </div>
+      )}
       <ModalQuotation
         openModalQuotation={openModalQuotation}
         handleCloseModalQuotation={handleCloseModalQuotation}
