@@ -54,7 +54,6 @@ const HomeMain = ({ history }: Props) => {
   } = useSelector((state) => state?.home);
   const { dataPartner } = useSelector((state) => state?.commonSlice);
   // const { token } = useSelector((state) => state?.account);
-
   const paramsOptionSlideMain = {
     loop: true,
     slidesPerView: 1,
