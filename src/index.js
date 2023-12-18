@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <Suspense fallback={<div className="d-none">Loading</div>}>
       <App />
     </Suspense>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
 serviceWorker.unregister();

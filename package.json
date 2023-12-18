@@ -55,10 +55,10 @@
     "storybook": "start-storybook -p 9009",
     "flow": "flow",
     "flow-stop": "flow stop",
-    "homepage": "https://vanrin12.github.io/incor/",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://vanrin12.github.io/incor/",
   "eslintConfig": {
     "extends": "react-app"
   },

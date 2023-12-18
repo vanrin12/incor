@@ -45,7 +45,7 @@ const Router = () => {
   // }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Suspense>
         <Switch>
           <Route exact path={ROUTERS.MAIN_PAGE} component={HomeMain} />
