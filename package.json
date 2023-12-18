@@ -97,7 +97,7 @@
     "husky": "^4.2.5",
     "imagemin-lint-staged": "^0.4.0",
     "lint-staged": "^10.2.11",
-    "node-sass": "^4.14.1",
+    "node-sass": "4.14.1",
     "prettier": "^2.0.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
@@ -114,8 +114,5 @@
       "imagemin-lint-staged",
       "git add"
     ]
-  },
-  "engines": {
-    "node": "14.15.0"
   }
 }
