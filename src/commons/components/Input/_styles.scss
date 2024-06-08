@@ -175,7 +175,7 @@ textarea {
   .react-datepicker-wrapper {
     &__error-msg {
       margin-top: pxToVW(10);
-      font-size: pxToRpxToVWem(15);
+      font-size: pxToVW(15);
     }
 
     &__label {
@@ -213,7 +213,7 @@ textarea {
       &.input-search {
         width: 70%;
         min-width: pxToVW(320);
-        height: pxToVW(32);
+        height: pxToVW(40);
         padding: pxToVW(5) pxToVW(15) pxToVW(5) pxToVW(80);
         border-radius: pxToVW(6);
         border: solid pxToVW(1) rgba($white, 0.85);
@@ -240,31 +240,31 @@ textarea {
     &__box {
       &.left {
         .input {
-          padding-left: pxToRem(30);
+          padding-left: pxToVW(30);
         }
       }
 
       &__icon {
-        width: pxToRem(19);
-        height: pxToRem(19);
+        width: pxToVW(19);
+        height: pxToVW(19);
 
         &__right {
-          right: pxToRem(15);
+          right: pxToVW(15);
 
           img {
-            width: pxToRem(19);
-            height: pxToRem(19);
+            width: pxToVW(19);
+            height: pxToVW(19);
           }
         }
 
         &.left {
-          left: pxToRem(15);
+          left: pxToVW(15);
         }
       }
 
       &__custom {
         input {
-          padding-right: pxToRem(35);
+          padding-right: pxToVW(35);
         }
       }
     }
@@ -283,5 +283,23 @@ textarea {
     &:focus {
       border: pxToVW(1) solid $bg-main;
     }
+  }
+}
+
+.input__box__custom {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 10px;
+    width: 30px;
+    height: 30px;
+    @include transform-translateY(-50%);
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    z-index: 1;
   }
 }

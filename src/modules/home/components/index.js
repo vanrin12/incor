@@ -1,6 +1,9 @@
 // @flow
 
-import React, { memo, useState, useRef } from 'react';
+import React, { memo, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ROUTERS from 'constants/router';
+
 import IMAGES from 'themes/images';
 import SwiperCore, {
   Navigation,
@@ -11,23 +14,17 @@ import SwiperCore, {
 } from 'swiper';
 import ReactPlayer from 'react-player';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Button from '../../../commons/components/Button';
-import MainLayout from '../../../commons/components/MainLayout';
-import ERROR_MESSAGE from '../../../constants/errorMsg';
-import ModalPopup from '../../../commons/components/Modal';
+import { useSelector, useDispatch } from 'react-redux';
+import Button from 'commons/components/Button';
+import MainLayout from 'commons/components/MainLayout';
+import FormSearchMain from 'commons/components/Form/FormSearchMain';
+import { removeVietnameseTones } from 'helpers/validate';
 import ItemSlideSale from './ItemSlideSale';
 import ItemSlideMain from './itemSlideMain';
 import ItemClient from './ItemClient';
 import ItemConsultancy from './ItemConsultancy';
-import FormSearchMain from '../../../commons/components/Form/FormSearchMain';
-import FormContactUs from '../../../commons/components/Form/FormContactUs';
-import {
-  listSlideHome,
-  listClientHome,
-  listSlideConsultancy,
-  listSlideMain,
-  listAutocompleteSearch,
-} from '../../../mockData/dataSlide';
+import Loading from '../../../commons/components/Loading';
+import { resetGetSearchProduct } from '../redux';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -36,12 +33,27 @@ type Props = {
   history: {
     push: Function,
   },
-  isLoading: boolean,
 };
 
-const HomeMain = ({ history, isLoading }: Props) => {
+const HomeMain = ({ history }: Props) => {
+  const [isShowModalContact, setIsShowModalContact] = useState(null);
+  const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
+  const [updateListHashTags, setUpdateListHashTags] = useState([]);
   const [isShowVideo, setIsShowVideo] = useState(false);
+  const {
+    dataListHashTags,
+    isProcessingSearch,
+    sliderMain,
+    aboutUsMain,
+    advisoryMain,
+    customerExperience,
+    promotionMain,
+    isProcessing,
+    customerExperienceName,
+  } = useSelector((state) => state?.home);
+  const { dataPartner } = useSelector((state) => state?.commonSlice);
+  // const { token } = useSelector((state) => state?.account);
   const paramsOptionSlideMain = {
     loop: true,
     slidesPerView: 1,
@@ -53,12 +65,42 @@ const HomeMain = ({ history, isLoading }: Props) => {
       disableOnInteraction: false,
     },
   };
-
   // Options in Swiper
   const params = {
     loop: true,
     slidesPerView: 3,
     spaceBetween: 35,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      '1024': {
+        slidesPerView: 3,
+        spaceBetween: 35,
+      },
+      '768': {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+      '320': {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      },
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  };
+  const params2 = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 35,
+    navigation: {
+      nextEl: '.swiper-button-next2',
+      prevEl: '.swiper-button-prev2',
+    },
     breakpoints: {
       '1024': {
         slidesPerView: 3,
@@ -78,9 +120,8 @@ const HomeMain = ({ history, isLoading }: Props) => {
       disableOnInteraction: false,
     },
   };
-
   const paramsOptionSlide = {
-    loop: true,
+    // loop: true,
     slidesPerView: 2,
     spaceBetween: 0,
     slidesPerGroup: 2,
@@ -90,72 +131,85 @@ const HomeMain = ({ history, isLoading }: Props) => {
     },
   };
 
-  // Modal client
-  const [openSuccessClient, setOpenSuccessClient] = useState({
-    isShow: false,
-    content: ERROR_MESSAGE.TEXT_SUCCUSS,
-  });
-
-  // Modal client
-  const [isOpenModalClient, setIsOpenModalClient] = useState(false);
-
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
     value: 'product',
     label: 'Sản phẩm',
   });
+  // handle search
+  const inputSearch = removeVietnameseTones(valueSearch.trim()).toLowerCase();
+  useEffect(() => {
+    dispatch(resetGetSearchProduct());
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    const listFilter = dataListHashTags.filter(
+      (item) =>
+        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
+        -1
+    );
+    const listFilterCompany = dataPartner.filter(
+      (item) =>
+        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
+        -1
+    );
+
+    if (optionSearchDefault?.value === 'company') {
+      setUpdateListHashTags(inputSearch ? listFilterCompany : dataPartner);
+    } else {
+      setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
+    }
+    // eslint-disable-next-line
+  }, [
+    optionSearchDefault.value,
+    // eslint-disable-next-line
+    dataListHashTags && dataListHashTags.length,
+    valueSearch,
+  ]);
 
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
   };
-  // handle search
-  const typingTimeOut = useRef(null);
   // onsubmit call api
-
   const handleChangeInput = (value) => {
     setValueSearch(value);
-    if (typingTimeOut.current) {
-      clearTimeout(typingTimeOut.current);
-    }
-    typingTimeOut.current = setTimeout(() => {
-      // code sau 0.3s thi goi api
-    }, 300);
-  };
-  // close modal Tu van khach hang
-  const handleCloseModal = () => {
-    setIsOpenModalClient(false);
   };
 
-  // handleSubmitForm Tu van khach hang
-  const handleSubmitForm = (object) => {
-    console.log(object);
-    setIsOpenModalClient(false);
-    setOpenSuccessClient({
-      ...openSuccessClient,
-      isShow: true,
-    });
+  const handleIsOpenModalClient = () => {
+    setIsShowModalContact(!isShowModalContact);
   };
+
   // render list slide Main top
   const renderListSlideMain =
-    listSlideMain.length > 0 &&
-    listSlideMain.map((item) => (
+    sliderMain &&
+    sliderMain.uploads &&
+    sliderMain.uploads.length > 0 &&
+    sliderMain.uploads.map((item) => (
       <SwiperSlide key={item.id}>
         <ItemSlideMain itemObj={item} />
       </SwiperSlide>
     ));
 
   // render list slide
-  const renderListSlideSale =
-    listSlideHome.length > 0 &&
-    listSlideHome.map((item) => (
+  const renderListPromotionMain =
+    promotionMain &&
+    promotionMain.posts &&
+    promotionMain.posts.length > 0 &&
+    promotionMain.posts.map((item) => (
       <SwiperSlide key={item.id}>
-        <ItemSlideSale itemObj={item} history={history} />
+        <ItemSlideSale
+          itemObj={item}
+          history={history}
+          slug={promotionMain?.slug}
+        />
       </SwiperSlide>
     ));
   // Render list client
   const renderListClientMain =
-    listClientHome.length > 0 &&
-    listClientHome.map((item) => (
+    customerExperience &&
+    customerExperience.length > 0 &&
+    customerExperience.map((item) => (
       <SwiperSlide key={item.id}>
         <ItemClient itemObj={item} key={item.id} />
       </SwiperSlide>
@@ -163,135 +217,185 @@ const HomeMain = ({ history, isLoading }: Props) => {
 
   // render list slide Consultancy
   const renderListSlideConsultancy =
-    listSlideConsultancy.length > 0 &&
-    listSlideConsultancy.map((item) => (
+    advisoryMain &&
+    advisoryMain.posts &&
+    advisoryMain.posts.length > 0 &&
+    advisoryMain.posts.map((item) => (
       <SwiperSlide key={item.id}>
-        <ItemConsultancy itemObj={item} history={history} />
+        <ItemConsultancy
+          itemObj={item}
+          history={history}
+          slug={advisoryMain?.slug}
+        />
       </SwiperSlide>
     ));
 
   return (
-    <MainLayout>
-      <div className="session-slide">
-        <div className="slider-home">
-          <Swiper {...paramsOptionSlideMain}>{renderListSlideMain}</Swiper>
-        </div>
-        {/* Session panner */}
-        <div className="slide-info">
-          <div className="title-slide">
-            Giải pháp xây dựng cho ngôi nhà của bạn
-          </div>
-          <div className="search-main">
-            <FormSearchMain
-              handleChangeInput={handleChangeInput}
-              handleSelectChange={handleSelectChange}
-              valueSearch={valueSearch}
-              optionSelect={optionSearchDefault}
-              history={history}
-              listAutocompleteSearch={listAutocompleteSearch}
-              isLoading={isLoading}
-            />
-          </div>
-          <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>
-            YÊU CẦU TƯ VẤN
-          </Button>
-        </div>
-      </div>
-
-      <div className="session-promotions">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            CHƯƠNG TRÌNH KHUYẾN MÃI
-          </div>
-          <div className="slide-promotions">
-            <Swiper {...params} navigation>
-              {renderListSlideSale}
-            </Swiper>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-client">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            CẢM NHẬN KHÁCH HÀNG
-          </div>
-          <div className="client">
-            <div className="row">
-              <Swiper {...paramsOptionSlide}>{renderListClientMain}</Swiper>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-promotions consultancy">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            TƯ VẤN XÂY DỰNG
-          </div>
-          <div className="slide-promotions">
-            <Swiper {...params} navigation>
-              {renderListSlideConsultancy}
-            </Swiper>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-video">
-        <div className="video-info">
-          <h3>Về chúng tôi</h3>
-          <div className="desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            ultrices accumsan ornare. Phasellus tristique ullamcorper luctus.
-            Nunc varius ullamcorper felis. Nulla nibh ipsum, rutrum.
-          </div>
-        </div>
-        {isShowVideo ? (
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=CTcoCHKnkT8"
-            width="100%"
-            className="video-play"
-            height="100%"
-            playing
-            onPause={() => setIsShowVideo(false)}
-          />
+    <MainLayout
+      handleIsOpenModalClient={handleIsOpenModalClient}
+      isShowModalContact={isShowModalContact}
+      customClass="home-main"
+      headTitle="Trang chủ"
+    >
+      <div className="main-wrap">
+        {isProcessing ? (
+          <Loading />
         ) : (
-          <div
-            className="bg-session-video"
-            style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
-          >
-            <div
-              onClick={() => setIsShowVideo(true)}
-              onKeyDown={() => setIsShowVideo(true)}
-              role="button"
-              tabIndex={0}
-            >
-              <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+          <>
+            <div className="session-slide">
+              <div className="slider-home">
+                <Swiper {...paramsOptionSlideMain}>
+                  {renderListSlideMain}
+                </Swiper>
+              </div>
+              {/* Session panner */}
+              <div className="slide-info mt-3">
+                <div className="title-slide">{sliderMain?.title}</div>
+                <div className="search-main">
+                  <FormSearchMain
+                    handleChangeInput={handleChangeInput}
+                    handleSelectChange={handleSelectChange}
+                    valueSearch={valueSearch}
+                    optionSelect={optionSearchDefault}
+                    history={history}
+                    listAutocompleteSearch={updateListHashTags}
+                    isLoading={isProcessingSearch}
+                  />
+                </div>
+                <Button
+                  customClass="big"
+                  onClick={() => handleIsOpenModalClient()}
+                >
+                  YÊU CẦU TƯ VẤN
+                </Button>
+              </div>
             </div>
-          </div>
+
+            <div className="session-promotions">
+              <div className="container-fluid">
+                <div className="heading-title text-uppercase text-center">
+                  <Link to={`${ROUTERS.PAGE_BLOG}/${promotionMain?.slug}`}>
+                    {promotionMain?.sub_name}
+                  </Link>
+                </div>
+                <div className="slide-promotions mobile">
+                  {promotionMain?.posts?.length > 0 && (
+                    <>
+                      <Swiper
+                        {...params}
+                        // navigation
+                        loopAdditionalSlides={1}
+                        centeredSlidesBounds
+                      >
+                        {renderListPromotionMain}
+                      </Swiper>
+                      {/* <!-- Add Arrows --> */}
+                      <div className="swiper-button-next" />
+                      <div className="swiper-button-prev" />
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="session-client">
+              <div className="container-fluid">
+                <div className="heading-title text-uppercase text-center">
+                  {customerExperienceName}
+                </div>
+                <div className="client">
+                  {customerExperience?.length > 0 && (
+                    <div className="row">
+                      <Swiper
+                        {...paramsOptionSlide}
+                        loopAdditionalSlides={2}
+                        centeredSlidesBounds
+                      >
+                        {renderListClientMain}
+                      </Swiper>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="session-promotions consultancy">
+              <div className="container-fluid">
+                <div className="heading-title text-uppercase text-center">
+                  <Link to={`${ROUTERS.PAGE_BLOG}/${advisoryMain?.slug}`}>
+                    {advisoryMain?.sub_name}
+                  </Link>
+                </div>
+                <div className="slide-promotions">
+                  {advisoryMain?.posts?.length > 0 && (
+                    <>
+                      <Swiper
+                        {...params2}
+                        // navigation
+                        loopAdditionalSlides={1}
+                        centeredSlidesBounds
+                      >
+                        {renderListSlideConsultancy}
+                      </Swiper>
+                      {/* <!-- Add Arrows --> */}
+                      <div className="swiper-button-next2" />
+                      <div className="swiper-button-prev2" />
+                    </>
+                  )}
+
+                  <div className="link-more">
+                    <Link
+                      to={`${ROUTERS.PAGE_BLOG}/${advisoryMain?.slug}`}
+                      title="Quản lý tiến độ"
+                    >
+                      Xem tất cả
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="session-video"
+              style={{
+                backgroundImage: `url(${aboutUsMain?.image})`,
+              }}
+            >
+              <div
+                className={`video-info ${!isShowVideo ? 'd-block' : 'd-none'}`}
+              >
+                <div className="wrap-gallery-video">
+                  <h3>{aboutUsMain?.name}</h3>
+                  <div className="desc">{aboutUsMain?.tagline}</div>
+                </div>
+              </div>
+              <div
+                className={`session-bg-video ${
+                  !isShowVideo ? 'd-block' : 'd-none'
+                }`}
+                style={{
+                  backgroundImage: `url(${aboutUsMain?.image})`,
+                }}
+              />
+              <ReactPlayer
+                url={aboutUsMain?.video}
+                width="100%"
+                className="video-play"
+                height="100%"
+                controls={isShowVideo}
+                playing={isShowVideo}
+              />
+              <div
+                onClick={() => setIsShowVideo(!isShowVideo)}
+                onKeyDown={() => setIsShowVideo(!isShowVideo)}
+                role="button"
+                tabIndex={0}
+                className={`btn-video ${!isShowVideo ? 'd-block' : 'd-none'}`}
+              >
+                <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+              </div>
+            </div>
+          </>
         )}
       </div>
-      {/* Modal form contact Us */}
-      <FormContactUs
-        handleSubmitForm={handleSubmitForm}
-        isOpenModalClient={isOpenModalClient}
-        handleCloseModal={handleCloseModal}
-      />
-      {/* Modal success */}
-      <ModalPopup
-        isOpen={openSuccessClient.isShow}
-        isShowFooter
-        textBtnRight="ĐÓNG"
-        handleClose={() => {
-          setOpenSuccessClient({
-            ...openSuccessClient,
-            isShow: false,
-          });
-        }}
-      >
-        <h2 className="modal-title">CẢM ƠN BẠN !</h2>
-        <div className="text-modal-content">{openSuccessClient.content}</div>
-      </ModalPopup>
     </MainLayout>
   );
 };
