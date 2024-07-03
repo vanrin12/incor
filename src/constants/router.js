@@ -15,6 +15,7 @@ const ROUTERS = {
   PARTNER: '/partner',
   PARTNER_DETAIL: '/partner/:id',
   CHANGE_PASSWORD: '/user/change-password',
+  PRODUCT_LIST: '/san-pham'
 };
 
 export default ROUTERS;

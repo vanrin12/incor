@@ -22,6 +22,7 @@ const BlogDetail = lazy(() => import('modules/blog/components/detail'));
 const PageSearch = lazy(() => import('modules/searchPage/components'));
 
 const PagePartner = lazy(() => import('modules/partner/components'));
+const ProductList = lazy(() => import('modules/products/components'));
 const changePassword = lazy(() =>
   import('modules/accounts/components/changePass')
 );
@@ -42,6 +43,12 @@ const Router = () => {
             exact
             path={ROUTERS.PAGE_SEARCH_DETAIL}
             component={PageSearch}
+            // isAuthenticated={isAuthenticated}
+          />
+          <Route
+            exact
+            path={ROUTERS.PRODUCT_LIST}
+            component={ProductList}
             // isAuthenticated={isAuthenticated}
           />
           <Route

@@ -1,21 +1,19 @@
-.main-layout {
-  padding-top: pxToRem(120);
-}
-
 .header-main {
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.16);
   @include bgMain2();
   padding: 0 pxToRem(58);
-  height: pxToRem(120);
+  height: pxToRem(75);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 999;
 
   .header {
+    height: 100%;
+
     .main_logo {
       img {
-        width: pxToRem(165);
+        width: pxToRem(150);
         height: auto;
       }
     }
@@ -42,15 +40,14 @@
             font-weight: 500;
             line-height: pxToRem(24);
             letter-spacing: pxToRem(2);
-            color: $white;
-            text-transform: uppercase;
+            color: $text-black;
           }
 
           &:hover,
           &:active,
           &.active {
             a {
-              border-bottom: pxToRem(2) solid $white;
+              border-bottom: pxToRem(2) solid $bg-red;
             }
           }
         }
@@ -65,7 +62,7 @@
   height: pxToVW(18);
   position: absolute;
   right: pxToVW(20);
-  border-bottom: pxToVW(3.5) solid $white;
+  border-bottom: pxToVW(3.5) solid $text-black;
   cursor: pointer;
   outline: none;
 
@@ -73,7 +70,7 @@
     content: '';
     position: absolute;
     top: 0;
-    background-color: $white;
+    background-color: $text-black;
     width: pxToVW(30);
     height: pxToVW(2.5);
   }
@@ -82,7 +79,7 @@
     content: '';
     position: absolute;
     top: pxToVW(8);
-    background-color: $white;
+    background-color: $text-black;
     width: pxToVW(30);
     height: pxToVW(2.5);
   }
@@ -199,7 +196,7 @@
         line-height: 1.2;
         letter-spacing: pxToVW(0.4);
         text-align: right;
-        color: $bg-main;
+        color: $text-black;
         padding: 0 0 pxToVW(12) 0;
         position: relative;
         display: block;
@@ -366,10 +363,6 @@
 
   .icon-menu {
     display: block !important;
-  }
-
-  .main-layout {
-    padding-top: pxToVW(60);
   }
 
   .header-main {
