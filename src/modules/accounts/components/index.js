@@ -161,7 +161,7 @@ const LoginForm = ({ handleGetIsShowModal = () => {}, history }: Props) => {
           <img src={IMAGES.icon_close2} alt="" />
         </div>
         <div className="logo-login">
-          <img src={IMAGES.logo_blue2} alt="" />
+          {/* <img src={IMAGES.logo_blue2} alt="" /> */}
           <h3 className="text-login-mobile">ĐĂNG NHẬP</h3>
         </div>
         <div className="form-group">

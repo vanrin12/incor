@@ -5,8 +5,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 // Import Swiper tyles
 import 'swiper/swiper.scss';
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import 'react-image-gallery/styles/scss/image-gallery.scss';
-
 import './App.scss';
 
 import { Provider } from 'react-redux';

@@ -4,22 +4,26 @@
     background-position: center center;
     background-size: cover;
 
+    @media (max-width: 600px) {
+      margin-top: pxToVW(60);
+    }
+
     img {
       width: 100%;
     }
   }
 
   .container {
-    padding-top: pxToRem(100);
-    padding-bottom: pxToRem(100);
+    padding-top: pxToRem(50);
+    padding-bottom: pxToRem(50);
   }
 
   .page-title {
-    height: pxToRem(74);
+    height: pxToRem(50);
     @include bgMain();
     text-align: center;
-    border-radius: pxToRem(10);
-    margin-bottom: pxToRem(90);
+    border-radius: 5px;
+    margin-bottom: pxToRem(50);
     padding: pxToRem(10);
     font-size: pxToRem(30);
     font-weight: bold;
@@ -43,7 +47,7 @@
   .item-client {
     display: flex;
     align-items: center;
-    border-radius: pxToRem(20);
+    border-radius: 5px;
     box-shadow: 0 pxToRem(3) pxToRem(10) 0 rgba(0, 0, 0, 0.16);
     @include transition(0.3s all);
     border: pxToRem(4) solid transparent;
@@ -54,21 +58,20 @@
     }
 
     .item-image {
-      width: pxToRem(375);
-      min-height: pxToRem(375);
+      width: pxToRem(250);
+      min-height: pxToRem(200);
       background-color: $btn-color;
       background-position: center center;
       background-size: cover;
-      border-top-left-radius: pxToRem(20);
-      border-bottom-left-radius: pxToRem(20);
+      border-radius: 5px;
     }
 
     .item-content {
-      padding: pxToRem(45);
+      margin-left: 10px;
       width: calc(100% - #{pxToRem(375)});
 
       .title {
-        font-size: pxToRem(30);
+        font-size: 15px;
         font-weight: bold;
         line-height: 1.23;
         margin-bottom: pxToRem(10);
@@ -78,7 +81,7 @@
       }
 
       .date {
-        font-size: pxToRem(18);
+        font-size: 13px;
         font-weight: normal;
         font-stretch: condensed;
         font-style: italic;
@@ -89,7 +92,8 @@
 
       .desc {
         margin-top: pxToRem(20);
-        font-size: pxToRem(20);
+        font-size: 15px;
+        font-family: 'Montserrat';
         font-weight: normal;
         font-style: italic;
         line-height: 1.5;
@@ -118,7 +122,7 @@
           font-weight: 500;
           font-style: normal;
           line-height: 1.24;
-          color: $bg-main;
+          color: #b40706;
         }
       }
 
@@ -146,7 +150,7 @@
       margin-top: pxToRem(30);
 
       img {
-        max-width: pxToRem(49);
+        max-width: pxToRem(30);
       }
     }
   }
@@ -157,7 +161,9 @@
   .pagination {
     padding: 0;
     justify-content: center;
-    margin-top: pxToRem(90);
+    margin-top: 24px;
+    margin-bottom: 35px;
+    cursor: pointer;
 
     .page-item {
       height: pxToRem(32);
@@ -236,10 +242,10 @@
   .detail-top {
     width: 100%;
     padding: pxToRem(25) pxToRem(128) pxToRem(25) pxToRem(128);
-    @include bgMain2();
+    @include bgMain();
 
     .detail-title {
-      font-size: pxToRem(35);
+      font-size: pxToRem(25);
       font-weight: bold;
       line-height: 1.2;
       text-transform: uppercase;
@@ -253,7 +259,7 @@
       align-items: center;
 
       li {
-        font-size: pxToRem(25);
+        font-size: pxToRem(20);
         font-weight: normal;
         line-height: 1.2;
         text-align: left;
@@ -286,13 +292,23 @@
     padding: pxToRem(50) 0;
 
     p {
-      font-size: pxToRem(20);
+      font-size: pxToRem(14);
       font-weight: normal;
       font-style: normal;
       line-height: 1.5;
       color: $color_black;
-      margin-bottom: pxToRem(25);
+      margin-bottom: pxToRem(20);
+      font-family: 'Montserrat';
     }
+
+    strong {
+      font-size: 20px;
+      font-family: 'Bebas';
+      @media (max-width: 600px) {
+        font-size: 17px;
+      }
+    }
+   
 
     img {
       margin: auto;
@@ -396,13 +412,13 @@
 
   .page-client {
     .container {
-      padding-top: pxToVW(40);
-      padding-bottom: pxToVW(40);
+      padding-top: pxToVW(20);
+      padding-bottom: pxToVW(20);
     }
 
     .page-title {
       height: pxToVW(40);
-      border-radius: pxToVW(6);
+      border-radius: 3px;
       margin-bottom: pxToVW(21);
       padding: pxToVW(6);
       font-size: pxToVW(20);
@@ -680,7 +696,7 @@
     .bg-page-title,
     .detail-top,
     .recent-post {
-      display: none !important;
+      // display: none !important;
     }
 
 

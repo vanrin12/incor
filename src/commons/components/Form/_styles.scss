@@ -97,7 +97,7 @@
 
       .css-1uccc91-singleValue {
         color: $white;
-        font-size: pxToRem(20);
+        font-size: pxToRem(15);
         font-weight: 500;
         line-height: 1.2;
         letter-spacing: pxToRem(0.4);
@@ -109,7 +109,7 @@
         border-radius: pxToRem(10);
         box-shadow: pxToRem(10) pxToRem(10) pxToRem(30) 0 rgba(0, 0, 0, 0.16);
         cursor: pointer;
-        font-size: pxToRem(20);
+        font-size: pxToRem(15);
         font-weight: 500;
         line-height: 1.2;
         letter-spacing: pxToRem(0.4);
@@ -361,7 +361,7 @@
 
   h2 {
     text-align: center;
-    font-size: pxToRem(40);
+    font-size: pxToRem(30);
     font-weight: bold;
     line-height: 0.75;
     letter-spacing: pxToRem(0.4);
@@ -372,7 +372,7 @@
   input,
   textarea {
     border-radius: pxToRem(10);
-    font-size: pxToRem(20);
+    font-size: pxToRem(15);
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: pxToRem(0.4);
@@ -386,7 +386,7 @@
     &::-webkit-input-placeholder {
       color: $color-placeholder;
       font-weight: $regular;
-      font-size: pxToRem(15);
+      font-size: pxToRem(13);
       letter-spacing: pxToRem(-0.25);
       font-style: italic;
     }
@@ -394,7 +394,7 @@
     &::placeholder {
       color: $color-placeholder;
       font-weight: $regular;
-      font-size: pxToRem(15);
+      font-size: pxToRem(13);
       font-style: italic;
       letter-spacing: pxToRem(-0.25);
     }
@@ -402,7 +402,7 @@
     &::-moz-placeholder {
       color: $color-placeholder;
       font-weight: $regular;
-      font-size: pxToRem(15);
+      font-size: pxToRem(13);
       font-style: italic;
       letter-spacing: pxToRem(-0.25);
     }
@@ -410,7 +410,7 @@
     &:-ms-input-placeholder {
       color: $color-placeholder;
       font-weight: $regular;
-      font-size: pxToRem(15);
+      font-size: pxToRem(13);
       font-style: italic;
       letter-spacing: pxToRem(-0.25);
     }
@@ -524,7 +524,7 @@
       height: pxToRem(28);
       padding: pxToRem(6) pxToRem(11) pxToRem(5);
       border-radius: pxToRem(5);
-      background-color: $color_primary;
+      background-color: #b40706;
 
       font-size: pxToRem(14);
       font-weight: 500;

@@ -6,7 +6,6 @@ const ROUTERS = {
   PAGE_CATEGORY_DETAIL: `/:slug`,
   PAGE_BLOG_DETAIL: `/:slug/:id`,
   PAGE_COOPERATION: `/cooperation`,
-  CONTACT_US: `/contact-us`,
   PAGE_RECRUITMENT: `/recruitment`,
   PAGE_SEARCH: `/search`,
   PAGE_SEARCH_DETAIL: `/search/:name`,
@@ -15,7 +14,10 @@ const ROUTERS = {
   PARTNER: '/partner',
   PARTNER_DETAIL: '/partner/:id',
   CHANGE_PASSWORD: '/user/change-password',
-  PRODUCT_LIST: '/san-pham'
+  PRODUCT_LIST: '/san-pham',
+  PRODUCT_DETAIL: `/san-pham/:id`,
+  CONTACT_US: '/lien-he',
+  COOPERATION: '/hop-tac'
 };
 
 export default ROUTERS;

@@ -9,6 +9,7 @@ import ROUTERS from 'constants/router';
 import { API } from '../apis';
 
 import PrivateRoute from './PrivateRoute';
+import ProductDetail from 'modules/products/components/productDetail';
 
 const HomeMain = lazy(() => import('modules/home/components'));
 
@@ -26,6 +27,10 @@ const ProductList = lazy(() => import('modules/products/components'));
 const changePassword = lazy(() =>
   import('modules/accounts/components/changePass')
 );
+const Cooperation = lazy(() =>
+  import('modules/cooperation/components')
+);
+const ContactUs = lazy(() => import('modules/contactUs/components'))
 const Router = () => {
   const token = useSelector((state) => state?.account?.token);
 
@@ -45,11 +50,19 @@ const Router = () => {
             component={PageSearch}
             // isAuthenticated={isAuthenticated}
           />
+          <Route exact path={ROUTERS.CONTACT_US} component={ContactUs}/>
+          <Route exact path={ROUTERS.COOPERATION} component={Cooperation}/>
+
           <Route
             exact
             path={ROUTERS.PRODUCT_LIST}
             component={ProductList}
             // isAuthenticated={isAuthenticated}
+          />
+          <Route 
+            exact
+            path={ROUTERS.PRODUCT_DETAIL}
+            component={ProductDetail}
           />
           <Route
             exact

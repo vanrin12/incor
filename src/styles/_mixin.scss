@@ -83,7 +83,25 @@
 }
 
 @mixin breakpoint($point) {
+  @if ($point==lgmax) {
+    @media (max-width: 1920px) {
+      @content;
+    }
+  }
+
+  @if ($point==lgmax18) {
+    @media (max-width: 1800px) {
+      @content;
+    }
+  }
+
   @if ($point==lgmax17) {
+    @media (max-width: 1700px) {
+      @content;
+    }
+  }
+
+  @if ($point==lgmax16) {
     @media (max-width: 1700px) {
       @content;
     }

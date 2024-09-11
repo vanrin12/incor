@@ -27,6 +27,14 @@ const images = {
   imgPhone: require('../assets/imgs/phone.png'),
   avatar: require('../assets/imgs/customer.jpg'),
   imgPhone1: require('../assets/imgs/icon-1.png'),
+  product01: require('../assets/imgs/product-01.jpg'),
+  product02: require('../assets/imgs/product-02.jpg'),
+  product03: require('../assets/imgs/product-03.jpg'),
+  // product04: require('../assets/imgs/product-04.jpg'),
+  prev: require('../assets/imgs/previous.png'),
+  next: require('../assets/imgs/next-slide.png'),
+  cooperationBanner: require('../assets/imgs/cooperation-banner.jpg')
+
 };
 
 export default images;

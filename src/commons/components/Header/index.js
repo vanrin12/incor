@@ -88,7 +88,7 @@ const Header = ({ location, history, dataConstant }: Props) => {
           }}
           tabIndex={0}
           role="menuitem"
-          onKeyPress={() => {}}
+          onKeyPress={() => { }}
           ref={iconRef}
         />
       </header>
@@ -98,14 +98,13 @@ const Header = ({ location, history, dataConstant }: Props) => {
         }}
         tabIndex={0}
         role="menuitem"
-        onKeyPress={() => {}}
+        onKeyPress={() => { }}
         ref={iconRef}
         className={`click-off ${isOpen ? 'open' : ''}`}
       />
       <div
-        className={`menu-mobile ${isOpenModalMobile ? 'login-open' : ''} ${
-          isOpen ? 'open' : ''
-        }`}
+        className={`menu-mobile ${isOpenModalMobile ? 'login-open' : ''} ${isOpen ? 'open' : ''
+          }`}
       >
         <Link
           to={ROUTERS.MAIN_PAGE}
@@ -113,7 +112,7 @@ const Header = ({ location, history, dataConstant }: Props) => {
           className="logo-blue"
           onClick={() => handleGoToTop()}
         >
-          <img src={IMAGES.logo_blue} alt="Logo" />
+          <img src={IMAGES.logo} alt="Logo" />
         </Link>
         <Menu
           location={location}
@@ -129,4 +128,4 @@ const Header = ({ location, history, dataConstant }: Props) => {
   );
 };
 
-export default withRouter(memo<Props>(Header));
+export default withRouter(memo < Props > (Header));

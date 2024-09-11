@@ -88,7 +88,7 @@
   .css-1wa3eu0-placeholder {
     color: $color-placeholder;
     font-weight: $regular;
-    font-size: pxToRem(15);
+    font-size: pxToRem(13);
     letter-spacing: pxToRem(-0.25);
     font-style: italic;
   }
@@ -96,7 +96,7 @@
   .css-1uccc91-singleValue {
     overflow: initial;
     cursor: pointer;
-    font-size: pxToRem(20);
+    font-size: pxToRem(13);
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: pxToRem(0.4);
@@ -172,7 +172,7 @@
       padding: pxToRem(5) !important;
       background-color: transparent;
       cursor: pointer;
-      font-size: pxToRem(20);
+      font-size: pxToRem(15);
       font-weight: 500;
       line-height: 1.2;
       letter-spacing: pxToRem(0.4);
@@ -219,6 +219,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       font-weight: $regular;
+      border-radius: 5px;
 
       &:last-child {
         display: none !important;
@@ -335,7 +336,7 @@
 
       >div>div {
         padding: pxToVW(5) !important;
-        font-size: pxToVW(15);
+        font-size: pxToVW(13);
         letter-spacing: pxToVW(0.4);
       }
     }

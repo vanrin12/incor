@@ -145,10 +145,9 @@ const MainLayout = ({
         />
         <meta
           property="og:title"
-          content={`${
-            dataSeo?.title ||
+          content={`${dataSeo?.title ||
             'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
-          }`}
+            }`}
         />
         <meta
           name="geo.region"
@@ -172,10 +171,9 @@ const MainLayout = ({
         />
         <meta
           name="twitter:title"
-          content={`${
-            dataSeo?.title ||
+          content={`${dataSeo?.title ||
             'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
-          }`}
+            }`}
         />
 
         <meta
@@ -215,9 +213,8 @@ const MainLayout = ({
           content={dataSeo?.urlImage || IMAGES.logo_blue2}
         />
 
-        <title>{`${dataConstant?.nameWebsite || 'INCOR'} - ${
-          dataConstant.tagline || ''
-        }`}</title>
+        <title>{`${dataConstant?.nameWebsite || 'INCOR'} - ${dataConstant.tagline || ''
+          }`}</title>
         <meta
           name="description"
           content={dataConstant?.tagline || description}
@@ -390,7 +387,7 @@ const MainLayout = ({
             </div>
           </>
         )}
-        <div
+        {/* <div
           className="btn-go-to-top"
           onClick={() => handleGoToTop()}
           tabIndex={0}
@@ -398,7 +395,7 @@ const MainLayout = ({
           onKeyPress={() => {}}
         >
           <img src={IMAGES.imgBackToTop} alt="" />
-        </div>
+        </div> */}
       </div>
     </>
   );
@@ -411,4 +408,4 @@ MainLayout.defaultProps = {
   headTitle: '',
   dataSeo: {},
 };
-export default memo<Props>(MainLayout);
+export default memo < Props > (MainLayout);

@@ -1,14 +1,14 @@
 .button.btn {
   height: pxToRem(55);
-  background: rgb(42, 82, 153);
-  background: linear-gradient(-90deg, rgba(42, 82, 153, 1) 0%, rgba(21, 41, 77, 1) 100%);
-  border-radius: pxToRem(15);
+  background: #b40706;
+  background: linear-gradient(-90deg, #b40706 0%, #b40706 100%);
   box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
   border: 0;
   min-width: pxToRem(100);
   letter-spacing: pxToRem(0.5);
   color: $white;
   font-size: pxToRem(22);
+  cursor: pointer;
 
   &.big {
     width: pxToRem(390);
@@ -23,6 +23,7 @@
 
 .app-fixed-footer {
   height: 0;
+  display: none;
 
   .btn-fix.button.btn-primary {
 
@@ -34,7 +35,7 @@
       padding: 19px 38px 18px;
       border-radius: 31px;
       border: solid 5px #d8e4ff !important;
-      background-image: linear-gradient(87deg, #2466d9 29%, #12336d 91%);
+      background-image: linear-gradient(87deg, #b40706 29%, #b40706 91%);
       justify-content: center;
 
       img {
@@ -110,6 +111,7 @@
 
 @include breakpoint(xm480) {
   .app-fixed-footer {
+    display: block;
     .btn-fix.button.btn-primary {
       width: 35%;
       font-size: 12px;

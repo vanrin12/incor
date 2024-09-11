@@ -13,7 +13,7 @@
 
     .main_logo {
       img {
-        width: pxToRem(150);
+        width: pxToRem(130);
         height: auto;
       }
     }
@@ -34,9 +34,9 @@
           margin-left: pxToRem(35);
 
           a {
-            border-bottom: pxToRem(2) solid transparent;
-            padding: 10px 0;
-            font-size: pxToRem(20);
+            border-bottom: pxToRem(4) solid transparent;
+            padding: 5px 0;
+            font-size: pxToRem(17);
             font-weight: 500;
             line-height: pxToRem(24);
             letter-spacing: pxToRem(2);
@@ -47,7 +47,8 @@
           &:active,
           &.active {
             a {
-              border-bottom: pxToRem(2) solid $bg-red;
+              border-bottom: pxToRem(4) solid $bg-red;
+              text-decoration: none;
             }
           }
         }
@@ -191,7 +192,7 @@
 
       .btn-outline {
 
-        font-size: pxToVW(20);
+        font-size: pxToVW(17);
         font-weight: 500;
         line-height: 1.2;
         letter-spacing: pxToVW(0.4);

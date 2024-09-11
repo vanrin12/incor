@@ -37,7 +37,7 @@
     .company-desc {
       opacity: 0.9;
       margin-bottom: pxToRem(30);
-      font-size: pxToRem(20);
+      font-size: pxToRem(15);
       font-style: italic;
       line-height: 1.5;
       text-align: left;
@@ -50,16 +50,27 @@
     }
 
     .address-title {
-      font-size: pxToRem(30);
+      font-size: pxToRem(20);
       font-weight: 500;
       line-height: 1.23;
       margin-bottom: pxToRem(10);
     }
 
+    .address-branch {
+      li {
+        list-style: disc;
+        margin-left: 17px;
+        @media (max-width: 600px) {
+         margin-left: 10px;
+        }
+      }
+    }
+
     .address-name {
-      font-size: pxToRem(20);
+      font-size: pxToRem(15);
       line-height: 1.5;
       opacity: 0.9;
+      font-family: 'Montserrat';
     }
 
     .address-company {
@@ -181,7 +192,7 @@
 
     .info-company {
       h3 {
-        font-size: pxToVW(15);
+        font-size: pxToVW(13);
         margin-bottom: pxToVW(15);
       }
 

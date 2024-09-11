@@ -19,9 +19,6 @@ const SlideMainSale = ({ history, itemObj, slug }: Props) => {
       <div className="slide-content">
         <div
           className="bg-image"
-          // style={{
-          //   backgroundImage: `url(${itemObj?.image})`,
-          // }}
           onClick={() =>
             history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
           }
@@ -38,17 +35,19 @@ const SlideMainSale = ({ history, itemObj, slug }: Props) => {
             style={{ width: '100%' }}
           />
         </div>
+
         <Link to={`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`}>
           <h3>{itemObj?.name}</h3>
         </Link>
 
-        <Button
-          onClick={() =>
+        <div className="wrapper-slide-action">
+          <p className="product-price">4.999.999</p>
+          <button className="btn-buy"  onClick={() =>
             history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
-          }
-        >
-          XEM
-        </Button>
+          }>
+            Mua Ngay
+          </button>
+        </div>
       </div>
     </>
   );

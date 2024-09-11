@@ -33,7 +33,7 @@ const ItemConsultancy = ({ history, itemObj, slug }: Props) => {
       <Link to={`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`}>
         <h3>{itemObj?.name}</h3>
       </Link>
-      <p className="desc">{itemObj?.description}</p>
+      <p className="desc">{itemObj?.desc}</p>
       <Link
         to={`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`}
         className="row-right"
@@ -44,4 +44,4 @@ const ItemConsultancy = ({ history, itemObj, slug }: Props) => {
   );
 };
 
-export default memo<Props>(ItemConsultancy);
+export default memo < Props > (ItemConsultancy);
