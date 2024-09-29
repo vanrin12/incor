@@ -9,6 +9,7 @@ import ROUTERS from 'constants/router';
 import LoginForm from '../../../modules/accounts/components';
 import Menu from './Menu';
 import useClickOutside from '../../../customHooks/useClickOutSide';
+import { Toast } from 'react-bootstrap';
 
 type Props = {
   location: Object,
@@ -16,9 +17,11 @@ type Props = {
     push: Function,
   },
   dataConstant: Object,
+  showSuccessToast: Boolean,
+  handleCloseToast: Function,
 };
 
-const Header = ({ location, history, dataConstant }: Props) => {
+const Header = ({ location, history, dataConstant, handleCloseToast, showSuccessToast }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const refMenu = useRef(null);
   const iconRef = useRef(null);
@@ -68,6 +71,27 @@ const Header = ({ location, history, dataConstant }: Props) => {
   return (
     <div className="header-main">
       <header className="header d-flex align-items-center">
+        <Toast
+          show={showSuccessToast}
+          onClose={handleCloseToast}
+          style={{
+            position: 'absolute',
+            top: '60px',
+            right: '0',
+          }}
+        >
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded mr-2"
+              alt=""
+            />
+            <strong className="mr-auto">Kích Hoạt Bảo Hành Thành Công</strong>
+          </Toast.Header>
+          <Toast.Body>
+            KANET cảm ơn bạn! Bạn đã kích hoạt bảo hành điện tử thành công.
+          </Toast.Body>
+        </Toast>
         <div className="main_logo">
           <Link
             to={ROUTERS.MAIN_PAGE}
@@ -88,7 +112,7 @@ const Header = ({ location, history, dataConstant }: Props) => {
           }}
           tabIndex={0}
           role="menuitem"
-          onKeyPress={() => { }}
+          onKeyPress={() => {}}
           ref={iconRef}
         />
       </header>
@@ -98,13 +122,14 @@ const Header = ({ location, history, dataConstant }: Props) => {
         }}
         tabIndex={0}
         role="menuitem"
-        onKeyPress={() => { }}
+        onKeyPress={() => {}}
         ref={iconRef}
         className={`click-off ${isOpen ? 'open' : ''}`}
       />
       <div
-        className={`menu-mobile ${isOpenModalMobile ? 'login-open' : ''} ${isOpen ? 'open' : ''
-          }`}
+        className={`menu-mobile ${isOpenModalMobile ? 'login-open' : ''} ${
+          isOpen ? 'open' : ''
+        }`}
       >
         <Link
           to={ROUTERS.MAIN_PAGE}
@@ -128,4 +153,4 @@ const Header = ({ location, history, dataConstant }: Props) => {
   );
 };
 
-export default withRouter(memo < Props > (Header));
+export default withRouter(memo<Props>(Header));

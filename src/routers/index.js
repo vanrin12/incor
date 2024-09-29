@@ -31,6 +31,7 @@ const Cooperation = lazy(() =>
   import('modules/cooperation/components')
 );
 const ContactUs = lazy(() => import('modules/contactUs/components'))
+const warranty = lazy(() => import('modules/warranty/components'));
 const Router = () => {
   const token = useSelector((state) => state?.account?.token);
 
@@ -52,7 +53,7 @@ const Router = () => {
           />
           <Route exact path={ROUTERS.CONTACT_US} component={ContactUs}/>
           <Route exact path={ROUTERS.COOPERATION} component={Cooperation}/>
-
+          <Route exact path={ROUTERS.WARRANTY} component={warranty}/>
           <Route
             exact
             path={ROUTERS.PRODUCT_LIST}

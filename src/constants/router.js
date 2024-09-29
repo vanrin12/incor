@@ -17,7 +17,8 @@ const ROUTERS = {
   PRODUCT_LIST: '/san-pham',
   PRODUCT_DETAIL: `/san-pham/:id`,
   CONTACT_US: '/lien-he',
-  COOPERATION: '/hop-tac'
+  COOPERATION: '/hop-tac',
+  WARRANTY: '/bao-hanh',
 };
 
 export default ROUTERS;

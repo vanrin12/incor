@@ -73,7 +73,6 @@
       height: pxToRem(72);
 
       * {
-
         cursor: pointer;
         border: 0 !important;
       }
@@ -81,11 +80,11 @@
       &:after {
         position: absolute;
         right: pxToRem(-10);
-        content: "";
+        content: '';
         background-size: contain;
         background-repeat: no-repeat;
         z-index: 9;
-        background-image: url("../../../assets/imgs/ic-back-white.png");
+        background-image: url('../../../assets/imgs/ic-back-white.png');
         width: pxToRem(25);
         height: pxToRem(25);
         background-size: contain;
@@ -117,7 +116,7 @@
         color: $color-light4;
         height: auto !important;
 
-        >div>div {
+        > div > div {
           padding: pxToRem(5) !important;
           background-color: transparent;
           cursor: pointer;
@@ -155,8 +154,7 @@
       }
 
       .css-2b097c-container {
-
-        >div {
+        > div {
           height: pxToRem(72);
         }
       }
@@ -166,7 +164,7 @@
         border: 0;
         height: pxToRem(72);
 
-        >div {
+        > div {
           border: 0 !important;
         }
 
@@ -326,7 +324,7 @@
         color: $color-black;
 
         &:after {
-          background-image: url("../../../assets/imgs/arrow-up.png");
+          background-image: url('../../../assets/imgs/arrow-up.png');
           @include transform-rotate(0);
         }
 
@@ -459,8 +457,7 @@
 
       .css-yk16xz-control,
       .css-1pahdxg-control {
-
-        >div {
+        > div {
           border-top: 0;
           border-right: 0;
           border-left: 0;
@@ -491,11 +488,10 @@
         max-width: pxToRem(150);
         background-size: pxToRem(15);
         background-repeat: no-repeat;
-        background-image: url("../../../assets/imgs/arrow-up.png");
+        background-image: url('../../../assets/imgs/arrow-up.png');
         background-position: right bottom pxToRem(5);
       }
     }
-
   }
 
   .group-btn-file {
@@ -503,7 +499,7 @@
     z-index: 0;
 
     * {
-      cursor: pointer
+      cursor: pointer;
     }
 
     .d-group {
@@ -551,8 +547,6 @@
   }
 
   .group-rating {
-
-
     .group-btn-rating {
       margin-left: pxToRem(-5);
     }
@@ -692,7 +686,7 @@
           font-size: pxToVW(12);
           letter-spacing: pxToVW(0.4);
 
-          >div>div {
+          > div > div {
             padding: pxToVW(5) !important;
             font-size: pxToVW(12);
             letter-spacing: pxToVW(0.4);
@@ -711,8 +705,7 @@
         }
 
         .css-2b097c-container {
-
-          >div {
+          > div {
             height: pxToVW(40);
           }
         }
@@ -731,7 +724,6 @@
       padding-bottom: pxToVW(30);
 
       .form-group {
-
         .input__box {
           input {
             border-radius: pxToVW(5);
@@ -791,7 +783,6 @@
       }
 
       .btn-wrap {
-
         button {
           margin-top: 0;
           width: pxToVW(78);
@@ -866,7 +857,6 @@
           background-position: right bottom pxToVW(5);
         }
       }
-
     }
 
     .group-btn-file {
@@ -924,4 +914,30 @@
 
 .select__single-value {
   overflow: initial !important;
+}
+
+.form-submit-warranty {
+  background-color: #d9d9d9;
+  padding: 10px 20px;
+
+  h3 {
+    font-family: 'Bebas';
+    font-size: 17px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.74;
+    letter-spacing: normal;
+    text-align: left;
+    color: #b40706;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+
+  .btn-submit {
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+    background-color: rgba(183, 4, 4, 0.9);
+    cursor: pointer;
+  }
 }

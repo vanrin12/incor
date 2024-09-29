@@ -29,6 +29,8 @@ type Props = {
   description?: string,
   headTitle?: string,
   dataSeo?: Object,
+  showSuccessToast?: any,
+  handleClose?: any,
 };
 
 const MainLayout = ({
@@ -37,6 +39,8 @@ const MainLayout = ({
   isShowModalContact = null,
   description = ERROR_MESSAGE.DESC_SEO || '',
   dataSeo = {},
+  showSuccessToast = null,
+  handleClose = null,
 }: Props) => {
   const dispatch = useDispatch();
 
@@ -226,7 +230,7 @@ const MainLayout = ({
       </Helmet>
       {dataConstant?.favicon && <Favicon url={dataConstant?.favicon || ''} />}
       <div className={`main-layout ${customClass} ${token ? '' : 'no-token'}`}>
-        <Header dataConstant={dataConstant} />
+        <Header dataConstant={dataConstant} showSuccessToast={showSuccessToast} handleCloseToast={handleClose}/>
         {children}
         <Footer dataConstant={dataConstant} />
 

@@ -33,8 +33,9 @@ const images = {
   // product04: require('../assets/imgs/product-04.jpg'),
   prev: require('../assets/imgs/previous.png'),
   next: require('../assets/imgs/next-slide.png'),
-  cooperationBanner: require('../assets/imgs/cooperation-banner.jpg')
-
+  cooperationBanner: require('../assets/imgs/cooperation-banner.jpg'),
+  warrantyBanner: require('../assets/imgs/warranty-banner.jpg'),
+  chevronDown: require('../assets/imgs/chevron-down.svg'),
 };
 
 export default images;
