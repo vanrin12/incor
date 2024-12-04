@@ -87,6 +87,22 @@ export const getTotalAmountPaid = (arrayPrice: Array<{}>) => {
   return total.toLocaleString('en');
 };
 
+export function formatPhoneNumber(number) {
+  // Ensure the input is a string
+  if (number) {
+    number = number.toString();
+
+    // Use substring to format the number
+    const formatted =
+      number.substring(0, 4) +
+      '.' +
+      number.substring(4, 7) +
+      '.' +
+      number.substring(7);
+    return formatted;
+  }
+}
+
 export default {
   isNumberKey,
   isOnPasteNumber,
@@ -95,4 +111,5 @@ export default {
   removeVietnameseTones,
   getTotalAmountPrice,
   getTotalAmountPaid,
+  formatPhoneNumber
 };

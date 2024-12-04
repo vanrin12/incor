@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 const images = {
   // eslint-disable-next-line global-require
-  logo: require('../assets/imgs/logo.jpg'),
+  logo: require('../assets/imgs/memu-logo-mobile.png'),
   imageSlideUrl: require('../assets/imgs/main-slide.jpg'),
   logoFooter: require('../assets/imgs/logo-footer.png'),
   logoCopyright: require('../assets/imgs/copyright.png'),

@@ -289,43 +289,43 @@ const HomeMain = ({ history }: Props) => {
                 <div class="pt-sm-5 pt-4">
                   <div class="row">
                     <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-kanet">
+                      <div class="item-KANET">
                         <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img src="https://korest.vn/wp-content/uploads/2021/12/icon-baohanh.png" class="img-fluid lazyloaded" alt=" Bảo hành lâu dài" data-ll-status="loaded" />
                         </p>
                         <p class="title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Bảo hành lâu dài
                         </p>
-                        <p class="ct-pro-kanet text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">KANET sử dụng công nghệ bảo hành điện tử duy nhất và độc quyền. Thời gian bảo hành từ 3 năm - 15 năm. KANET là thương hiệu hiếm hoi bảo hành bộ xả bồn cầu lên tới 8 năm.</p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">KANET sử dụng công nghệ bảo hành điện tử duy nhất và độc quyền. Thời gian bảo hành từ 3-5 năm. KANET là thương hiệu hiếm hoi bảo hành khóa thông minh cửa nhôm, cửa gỗ… lên tới 5 năm.</p>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-kanet">
+                      <div class="item-KANET">
                         <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img src="https://korest.vn/wp-content/uploads/2021/12/icon-yentamsudung.png" class="img-fluid lazyloaded" alt=" Yên tâm khi sử dụng" data-ll-status="loaded" />
                         </p>
                         <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Yên tâm khi sử dụng
                         </p>
-                        <p class="ct-pro-kanet text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Chúng tôi hiểu điều gì là tốt nhất đối với mỗi sản phẩm, một sản phẩm kém chất lượng làm KANET rất khó chịu, vậy nên chúng tôi làm ra sản phẩm chính chúng tôi cảm thấy yên tâm và thoải mái...</p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Chúng tôi hiểu điều gì là tốt nhất với mỗi sản phẩm, một sản phẩm kém chất lượng làm KANET rất khó chịu, vậy nên chúng tôi làm ra sản phẩm chính chúng tôi cảm thấy yên tâm và thoải mái.</p>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-kanet">
+                      <div class="item-KANET">
                         <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img src="https://korest.vn/wp-content/uploads/2021/12/icon-dadangluachon.png" class="img-fluid lazyloaded" alt=" Đa dạng lựa chọn" data-ll-status="loaded" />
                         </p>
                         <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Đa dạng lựa chọn
                         </p>
-                        <p class="ct-pro-kanet text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Bạn có biết thiết bị vệ sinh KANET là một trong những thương hiệu thiết bị vệ sinh có số lượng sản phẩm nhiều hàng đầu trên thị trường?</p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Khóa thông minh KANET là 1 trong số ít thương hiệu có đầy đủ dải sản phẩm: khóa thông minh cửa nhôm, khóa thông minh cửa gỗ, khóa thông minh cửa biệt thự, khóa thông minh cửa khách sạn/căn hộ, và khóa thông minh cửa kính, cổng… </p>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3 wow fadeInLeft">
-                      <div class="item-kanet">
+                      <div class="item-KANET">
                         <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img src="https://korest.vn/wp-content/uploads/2021/12/icon-tieuchuanchauau.png" class="img-fluid lazyloaded" alt=" Tiêu chuẩn Châu Âu" data-ll-status="loaded" />
                         </p>
                         <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Tiêu chuẩn Châu Âu
                         </p>
-                        <p class="ct-pro-kanet text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Tiêu chuẩn UPC xuất USA, Tiêu chuẩn CE đối với sản phẩm được bán trong khu vực kinh tế Châu Âu (EEA), Tiêu chuẩn ISO 9001, Tiêu chuẩn RoHS quy định của liên minh Châu Âu về sử dụng chất độc hại,......</p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Tiêu chuẩn CE đối với sản phẩm được bán trong khu vực kinh tế Châu Âu (EEA), tiêu chuẩn ISO 9001, tiêu chuẩn ROHS quy định của liên minh Châu Âu về sử dụng chất độc hại</p>
                       </div>
                     </div>
                   </div>

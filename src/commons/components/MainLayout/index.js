@@ -17,10 +17,11 @@ import {
   getListHashTag,
   getDataPageHome,
 } from 'modules/home/redux';
-
+import { useHistory } from 'react-router-dom';
 import { getDetailLayout, getListPartner } from 'commons/redux';
 import Footer from '../Footer';
 import Header from '../Header';
+import {formatPhoneNumber} from 'helpers/validate';
 
 type Props = {
   children: any,
@@ -56,7 +57,7 @@ const MainLayout = ({
   const { token } = useSelector((state) => state?.account);
   const { keywordHashTag, dataConstant } = useSelector((state) => state?.home);
   const { type } = useSelector((state) => state?.home);
-
+  const history = useHistory();
   // custom header sticky
   useEffect(() => {
     const elementHeader = document.getElementById('root');
@@ -284,7 +285,7 @@ const MainLayout = ({
               </div>
               <div className="hotline-bar">
                 <a href={`tel:${dataConstant?.phone}`}>
-                  <span className="text-hotline">{dataConstant?.phone}</span>
+                  <span className="text-hotline">{formatPhoneNumber(dataConstant?.phone)}</span>
                 </a>
               </div>
             </div>
@@ -381,9 +382,10 @@ const MainLayout = ({
                 <img src={IMAGES.imgPhone1} alt="" />
                 Gọi điện
               </a>
+              
               <Button
                 customClass="big btn-fix"
-                onClick={() => setIsOpenModalClient(true)}
+                onClick={() => history.push('/hop-tac')}
               >
                 <img src={IMAGES.imgContact} alt="" />
                 YÊU CẦU TƯ VẤN

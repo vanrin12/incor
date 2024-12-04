@@ -2,13 +2,27 @@
   &__banner {
     background-image: url('../../../assets/imgs/cooperation-banner.jpg');
     width: 100%;
-    height: 60vh;
+    height: 680px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    margin-top: pxToRem(40);
+    @include breakpoint(lgmax) {
+      height: calc(100vh - pxToRem(75));
+      margin-top: pxToRem(60);
+    }
+    @include breakpoint(lgmax17) {
+      margin-top: pxToRem(25);
+    }
+    @include breakpoint(xl600) {
+      margin-top: pxToRem(15);
+    }
+    @include breakpoint(xl500) {
+      margin-top: 0;
+    }
     @media (max-width: 600px) {
       background-size: contain;
-      height: 35vh;
+      height: 33vh;
     }
   }
 
