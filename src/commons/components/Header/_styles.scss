@@ -2,16 +2,18 @@
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.16);
   @include bgMain2();
   padding: 0 pxToRem(58);
-  height: pxToRem(144);
+  height: pxToRem(75);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 999;
 
   .header {
+    height: 100%;
+
     .main_logo {
       img {
-        width: pxToRem(226);
+        width: pxToRem(130);
         height: auto;
       }
     }
@@ -32,20 +34,21 @@
           margin-left: pxToRem(35);
 
           a {
-            border-bottom: pxToRem(2) solid transparent;
-            padding: 10px 0;
-            font-size: pxToRem(20);
+            border-bottom: pxToRem(4) solid transparent;
+            padding: 5px 0;
+            font-size: pxToRem(17);
             font-weight: 500;
             line-height: pxToRem(24);
             letter-spacing: pxToRem(2);
-            color: $white;
+            color: $text-black;
           }
 
           &:hover,
           &:active,
           &.active {
             a {
-              border-bottom: pxToRem(2) solid $white;
+              border-bottom: pxToRem(4) solid $bg-red;
+              text-decoration: none;
             }
           }
         }
@@ -60,7 +63,7 @@
   height: pxToVW(18);
   position: absolute;
   right: pxToVW(20);
-  border-bottom: pxToVW(2.5) solid $white;
+  border-bottom: pxToVW(3.5) solid $text-black;
   cursor: pointer;
   outline: none;
 
@@ -68,7 +71,7 @@
     content: '';
     position: absolute;
     top: 0;
-    background-color: $white;
+    background-color: $text-black;
     width: pxToVW(30);
     height: pxToVW(2.5);
   }
@@ -77,7 +80,7 @@
     content: '';
     position: absolute;
     top: pxToVW(8);
-    background-color: $white;
+    background-color: $text-black;
     width: pxToVW(30);
     height: pxToVW(2.5);
   }
@@ -94,17 +97,26 @@
   height: 100vh;
   @include transition(0.4s all);
   background-color: rgba($color-black, 0.4);
+
   &.open {
-  opacity: 1;
-  visibility: visible;
-  left: 0;
-}
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+  }
 }
 
+.form-content {
+
+  .icon-close,
+  .text-login-mobile,
+  .logo-login {
+    display: none;
+  }
+}
 
 .menu-mobile {
-  opacity: 0;
-  visibility: hidden;
+  overflow: visible;
+  opacity: 1;
   position: fixed;
   z-index: 9999999;
   top: 0;
@@ -112,7 +124,7 @@
   width: 70%;
   height: 100vh;
   background-color: $white;
-  padding: pxToVW(28) 0 pxToVW(50) pxToVW(30);
+  padding: pxToVW(0) 0 pxToVW(50) pxToVW(30);
   overflow-y: auto;
   @include transition(0.4s all);
 
@@ -126,7 +138,8 @@
     display: block;
     text-align: right;
     margin-right: pxToVW(20);
-    margin-bottom: pxToVW(30);
+    max-width: 70%;
+    margin-left: auto;
   }
 
   img {
@@ -138,29 +151,36 @@
     margin-left: auto;
 
     li {
-      padding: pxToVW(6) pxToVW(35);
+      padding: pxToVW(6) pxToVW(35) pxToVW(6) pxToVW(15);
       line-height: pxToVW(35);
       font-size: pxToVW(20);
       font-weight: 500;
       line-height: 1.2;
       letter-spacing: pxToVW(0.4);
       text-align: right;
-      margin-bottom: pxToVW(15);
+      margin-bottom: pxToVW(10);
       border-radius: pxToVW(5);
 
-      &.active {
+      &.active,
+      &:hover,
+      &:active {
         background-color: $bg-main;
         color: $white;
+
+        a {
+          color: $white;
+        }
       }
     }
   }
 
   .from-login {
     margin-top: 10%;
+    right: 0;
 
     @media screen and(max-width:600px) {
       position: absolute;
-      bottom: pxToVW(50);
+      bottom: pxToVW(20);
     }
 
     .user-info {
@@ -172,12 +192,12 @@
 
       .btn-outline {
 
-        font-size: pxToVW(20);
+        font-size: pxToVW(17);
         font-weight: 500;
         line-height: 1.2;
         letter-spacing: pxToVW(0.4);
         text-align: right;
-        color: $bg-main;
+        color: $text-black;
         padding: 0 0 pxToVW(12) 0;
         position: relative;
         display: block;
@@ -198,7 +218,7 @@
   }
 
   .modal-info-user {
-    display: block !important;
+    display: block;
     position: relative;
     top: auto;
     height: auto;
@@ -237,6 +257,111 @@
 }
 
 @include breakpoint(sm992) {
+  .mb-mt-5 {
+    margin-top: 50px !important;
+  }
+
+  .modal-info-user.nickName {
+    display: block !important;
+  }
+
+  .login-open {
+    display: block;
+    overflow: visible;
+    opacity: 1;
+
+    &::after {
+      content: "";
+      background-color: rgba($color-black, 0.4);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+    }
+
+    .icon-close,
+    .text-login-mobile,
+    .logo-login {
+      display: block;
+    }
+
+    .icon-close {
+      width: pxToVW(30);
+      height: pxToVW(30);
+      position: absolute;
+      top: pxToVW(-10);
+      right: pxToVW(-10);
+      z-index: 99;
+    }
+
+    .text-login-mobile {
+      margin-top: pxToVW(10);
+      font-size: pxToVW(30);
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.23;
+      letter-spacing: pxToVW(-0.6);
+      text-align: center;
+      color: $bg-main;
+      margin-bottom: pxToVW(20);
+    }
+
+    .logo-login {
+      text-align: center;
+
+      img {
+        margin: auto;
+        width: pxToVW(160);
+        height: pxToVW(155);
+      }
+    }
+
+    .from-login {
+
+      .form-content {
+        border-radius: pxToVW(20);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        @include transform-translate(-50%, -50%);
+        width: calc(100% - #{pxToVW(60)});
+        padding: pxToVW(34);
+        z-index: 999;
+
+        &.d-none {
+          display: none !important;
+        }
+
+        &.d-block {
+          display: block !important;
+        }
+
+        .input__error-msg {
+          font-size: pxToVW(15);
+        }
+
+        .input__box {
+          input {
+            height: pxToVW(44);
+          }
+        }
+
+        .btn-wrap {
+          margin-top: pxToVW(20);
+
+          button {
+            min-width: pxToVW(150);
+            height: pxToVW(40);
+            font-size: pxToVW(15);
+            border-radius: pxToVW(10);
+          }
+        }
+      }
+    }
+  }
+
   .icon-menu {
     display: block !important;
   }

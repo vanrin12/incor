@@ -83,7 +83,25 @@
 }
 
 @mixin breakpoint($point) {
+  @if ($point==lgmax) {
+    @media (max-width: 1920px) {
+      @content;
+    }
+  }
+
+  @if ($point==lgmax18) {
+    @media (max-width: 1800px) {
+      @content;
+    }
+  }
+
   @if ($point==lgmax17) {
+    @media (max-width: 1700px) {
+      @content;
+    }
+  }
+
+  @if ($point==lgmax16) {
     @media (max-width: 1700px) {
       @content;
     }
@@ -247,11 +265,13 @@
 }
 
 @mixin bgMain() {
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.16);
-  background: linear-gradient(-90deg, rgba(42, 82, 153, 1) 0%, rgba(21, 41, 77, 1) 100%);
+  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+  background-color: rgba(183, 4, 4, 0.9);
+  // box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.16);
+  // background: linear-gradient(-90deg, rgba(42, 82, 153, 1) 0%, rgba(21, 41, 77, 1) 100%);
 }
 
 @mixin bgMain2() {
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.16);
-  background: linear-gradient(-90deg, rgba(42, 82, 153, 0.9) 0%, rgba(21, 41, 77, 0.9) 100%);
+  background: #fff;
 }

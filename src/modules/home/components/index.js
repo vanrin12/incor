@@ -1,7 +1,6 @@
 // @flow
 
-import React, { memo, useState, useRef } from 'react';
-import IMAGES from 'themes/images';
+import React, { memo, useState, useEffect } from 'react';
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -9,25 +8,21 @@ import SwiperCore, {
   A11y,
   Autoplay,
 } from 'swiper';
-import ReactPlayer from 'react-player';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Button from '../../../commons/components/Button';
-import MainLayout from '../../../commons/components/MainLayout';
-import ERROR_MESSAGE from '../../../constants/errorMsg';
-import ModalPopup from '../../../commons/components/Modal';
+import { useSelector, useDispatch } from 'react-redux';
+import MainLayout from 'commons/components/MainLayout';
+import { removeVietnameseTones } from 'helpers/validate';
 import ItemSlideSale from './ItemSlideSale';
 import ItemSlideMain from './itemSlideMain';
-import ItemClient from './ItemClient';
 import ItemConsultancy from './ItemConsultancy';
-import FormSearchMain from '../../../commons/components/Form/FormSearchMain';
-import FormContactUs from '../../../commons/components/Form/FormContactUs';
+import Loading from '../../../commons/components/Loading';
+import { resetGetSearchProduct } from '../redux';
+import useWindowDimensions from '../../../customHooks/useWindowDimensions '
 import {
   listSlideHome,
-  listClientHome,
   listSlideConsultancy,
-  listSlideMain,
-  listAutocompleteSearch,
 } from '../../../mockData/dataSlide';
+import ProductIem from 'commons/components/ProductItem';
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -36,12 +31,21 @@ type Props = {
   history: {
     push: Function,
   },
-  isLoading: boolean,
 };
 
-const HomeMain = ({ history, isLoading }: Props) => {
+const HomeMain = ({ history }: Props) => {
+  const [isShowModalContact, setIsShowModalContact] = useState(null);
+  const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
-  const [isShowVideo, setIsShowVideo] = useState(false);
+  const [updateListHashTags, setUpdateListHashTags] = useState([]);
+  const { height, width } = useWindowDimensions();
+  const {
+    dataListHashTags,
+    sliderMain,
+    isProcessing,
+  } = useSelector((state) => state?.home);
+  const { dataPartner } = useSelector((state) => state?.commonSlice);
+  // const { token } = useSelector((state) => state?.account);
   const paramsOptionSlideMain = {
     loop: true,
     slidesPerView: 1,
@@ -53,16 +57,19 @@ const HomeMain = ({ history, isLoading }: Props) => {
       disableOnInteraction: false,
     },
   };
-
   // Options in Swiper
   const params = {
     loop: true,
-    slidesPerView: 3,
-    spaceBetween: 35,
+    slidesPerView: 4,
+    spaceBetween: 15,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       '1024': {
-        slidesPerView: 3,
-        spaceBetween: 35,
+        slidesPerView: 4,
+        spaceBetween: 15,
       },
       '768': {
         slidesPerView: 2,
@@ -78,9 +85,35 @@ const HomeMain = ({ history, isLoading }: Props) => {
       disableOnInteraction: false,
     },
   };
-
-  const paramsOptionSlide = {
+  const params2 = {
     loop: true,
+    slidesPerView: 4,
+    spaceBetween: 15,
+    navigation: {
+      nextEl: '.swiper-button-next2',
+      prevEl: '.swiper-button-prev2',
+    },
+    breakpoints: {
+      '1024': {
+        slidesPerView: 4,
+        spaceBetween: 15,
+      },
+      '768': {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+      '320': {
+        slidesPerView: 2,
+        spaceBetween: 0,
+      },
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  };
+  const paramsOptionSlide = {
+    // loop: true,
     slidesPerView: 2,
     spaceBetween: 0,
     slidesPerGroup: 2,
@@ -90,61 +123,81 @@ const HomeMain = ({ history, isLoading }: Props) => {
     },
   };
 
-  // Modal client
-  const [openSuccessClient, setOpenSuccessClient] = useState({
-    isShow: false,
-    content: ERROR_MESSAGE.TEXT_SUCCUSS,
-  });
-
-  // Modal client
-  const [isOpenModalClient, setIsOpenModalClient] = useState(false);
-
   // Select Search
   const [optionSearchDefault, setOptionSearchDefault] = useState({
     value: 'product',
     label: 'Sản phẩm',
   });
+  // handle search
+  const inputSearch = removeVietnameseTones(valueSearch.trim()).toLowerCase();
+  useEffect(() => {
+    dispatch(resetGetSearchProduct());
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    const listFilter = dataListHashTags.filter(
+      (item) =>
+        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
+        -1
+    );
+    const listFilterCompany = dataPartner.filter(
+      (item) =>
+        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
+        -1
+    );
+
+    if (optionSearchDefault?.value === 'company') {
+      setUpdateListHashTags(inputSearch ? listFilterCompany : dataPartner);
+    } else {
+      setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
+    }
+    // eslint-disable-next-line
+  }, [
+    optionSearchDefault.value,
+    // eslint-disable-next-line
+    dataListHashTags && dataListHashTags.length,
+    valueSearch,
+  ]);
 
   const handleSelectChange = (option) => {
     setOptionSearchDefault(option);
   };
-  // handle search
-  const typingTimeOut = useRef(null);
   // onsubmit call api
-
   const handleChangeInput = (value) => {
     setValueSearch(value);
-    if (typingTimeOut.current) {
-      clearTimeout(typingTimeOut.current);
-    }
-    typingTimeOut.current = setTimeout(() => {
-      // code sau 0.3s thi goi api
-    }, 300);
-  };
-  // close modal Tu van khach hang
-  const handleCloseModal = () => {
-    setIsOpenModalClient(false);
   };
 
-  // handleSubmitForm Tu van khach hang
-  const handleSubmitForm = (object) => {
-    console.log(object);
-    setIsOpenModalClient(false);
-    setOpenSuccessClient({
-      ...openSuccessClient,
-      isShow: true,
-    });
+  const handleIsOpenModalClient = () => {
+    setIsShowModalContact(!isShowModalContact);
   };
+
   // render list slide Main top
   const renderListSlideMain =
-    listSlideMain.length > 0 &&
-    listSlideMain.map((item) => (
+    sliderMain &&
+    sliderMain.uploads &&
+    sliderMain.uploads.length > 0 &&
+    sliderMain.uploads.map((item) => (
       <SwiperSlide key={item.id}>
         <ItemSlideMain itemObj={item} />
       </SwiperSlide>
     ));
 
   // render list slide
+  const renderListPromotionMain =
+    listSlideConsultancy &&
+    listSlideConsultancy.posts &&
+    listSlideConsultancy.posts.length > 0 &&
+    listSlideConsultancy.posts.map((item) => (
+      <SwiperSlide key={item.id}>
+        <ItemSlideSale
+          itemObj={item}
+          history={history}
+        // slug={listSlideConsultancy?.slug}
+        />
+      </SwiperSlide>
+    ));
+
   const renderListSlideSale =
     listSlideHome.length > 0 &&
     listSlideHome.map((item) => (
@@ -152,16 +205,7 @@ const HomeMain = ({ history, isLoading }: Props) => {
         <ItemSlideSale itemObj={item} history={history} />
       </SwiperSlide>
     ));
-  // Render list client
-  const renderListClientMain =
-    listClientHome.length > 0 &&
-    listClientHome.map((item) => (
-      <SwiperSlide key={item.id}>
-        <ItemClient itemObj={item} key={item.id} />
-      </SwiperSlide>
-    ));
 
-  // render list slide Consultancy
   const renderListSlideConsultancy =
     listSlideConsultancy.length > 0 &&
     listSlideConsultancy.map((item) => (
@@ -169,131 +213,144 @@ const HomeMain = ({ history, isLoading }: Props) => {
         <ItemConsultancy itemObj={item} history={history} />
       </SwiperSlide>
     ));
-
+  
   return (
-    <MainLayout>
-      <div className="session-slide">
-        <div className="slider-home">
-          <Swiper {...paramsOptionSlideMain}>{renderListSlideMain}</Swiper>
-        </div>
-        {/* Session panner */}
-        <div className="slide-info">
-          <div className="title-slide">
-            Giải pháp xây dựng cho ngôi nhà của bạn
-          </div>
-          <div className="search-main">
-            <FormSearchMain
-              handleChangeInput={handleChangeInput}
-              handleSelectChange={handleSelectChange}
-              valueSearch={valueSearch}
-              optionSelect={optionSearchDefault}
-              history={history}
-              listAutocompleteSearch={listAutocompleteSearch}
-              isLoading={isLoading}
-            />
-          </div>
-          <Button customClass="big" onClick={() => setIsOpenModalClient(true)}>
-            YÊU CẦU TƯ VẤN
-          </Button>
-        </div>
-      </div>
-
-      <div className="session-promotions">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            CHƯƠNG TRÌNH KHUYẾN MÃI
-          </div>
-          <div className="slide-promotions">
-            <Swiper {...params} navigation>
-              {renderListSlideSale}
-            </Swiper>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-client">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            CẢM NHẬN KHÁCH HÀNG
-          </div>
-          <div className="client">
-            <div className="row">
-              <Swiper {...paramsOptionSlide}>{renderListClientMain}</Swiper>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-promotions consultancy">
-        <div className="container-fluid">
-          <div className="heading-title text-uppercase text-center">
-            TƯ VẤN XÂY DỰNG
-          </div>
-          <div className="slide-promotions">
-            <Swiper {...params} navigation>
-              {renderListSlideConsultancy}
-            </Swiper>
-          </div>
-        </div>
-      </div>
-
-      <div className="session-video">
-        <div className="video-info">
-          <h3>Về chúng tôi</h3>
-          <div className="desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            ultrices accumsan ornare. Phasellus tristique ullamcorper luctus.
-            Nunc varius ullamcorper felis. Nulla nibh ipsum, rutrum.
-          </div>
-        </div>
-        {isShowVideo ? (
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=CTcoCHKnkT8"
-            width="100%"
-            className="video-play"
-            height="100%"
-            playing
-            onPause={() => setIsShowVideo(false)}
-          />
+    <MainLayout
+      handleIsOpenModalClient={handleIsOpenModalClient}
+      isShowModalContact={isShowModalContact}
+      customClass="home-main"
+      headTitle="Trang chủ"
+    >
+      <div className="main-wrap">
+        {isProcessing ? (
+          <Loading />
         ) : (
-          <div
-            className="bg-session-video"
-            style={{ backgroundImage: `url(${IMAGES.imageSlideUrl})` }}
-          >
-            <div
-              onClick={() => setIsShowVideo(true)}
-              onKeyDown={() => setIsShowVideo(true)}
-              role="button"
-              tabIndex={0}
-            >
-              <img src={IMAGES.iconPlay} alt="" className="icon-play" />
+          <>
+            <div className="banner" style={{
+              backgroundImage: `url(${width > 1280 ? sliderMain?.uploads?.[0]?.image : sliderMain?.uploads?.[1]?.image})`
+            }} />
+            <div className="section-slide session-promotions">
+              <div className="container">
+                <div className="heading-title text-uppercase text-center title-slide color-white">
+                  SẢN PHẨM nổi bật
+                </div>
+                <div className="slide-promotions">
+                  <Swiper {...params} navigation>
+                    {renderListSlideSale}
+                  </Swiper>
+                </div>
+                <div className='more-product'><a href="/products">xem thêm sản phẩm</a></div>
+              </div>
             </div>
-          </div>
+
+            <div className="section-slide session-product">
+              <div className="container">
+                <div className="heading-title text-uppercase text-center title-slide color-red">
+                  khóa thông minh cửa NHÔM
+                </div>
+                <div className="slide-promotions">
+                  <Swiper {...params} navigation>
+                    {renderListSlideSale}
+                  </Swiper>
+                </div>
+                <div className='more-product'><a className='color-red' href="/products">xem thêm sản phẩm</a></div>
+              </div>
+            </div>
+
+            <div className="section-slide session-product bg-brown">
+              <div className="container">
+                <div className="heading-title text-uppercase text-center title-slide color-red">
+                  khóa thông minh cửa KÍNH
+                </div>
+                <div className="slide-promotions">
+                  <Swiper {...params} navigation>
+                    {renderListSlideSale}
+                  </Swiper>
+                </div>
+                <div className='more-product'><a className='color-red' href="/products">xem thêm sản phẩm</a></div>
+              </div>
+            </div>
+            <div className="section-slide session-product">
+              <div className="container">
+                <div className="heading-title text-uppercase text-center title-slide color-red">
+                  khóa thông minh BIỆT THỰ - KHÁCH SẠN
+                </div>
+                <div className="slide-promotions">
+                  <Swiper {...params} navigation>
+                    {renderListSlideSale}
+                  </Swiper>
+                </div>
+                <div className='more-product'><a className='color-red' href="/products">xem thêm sản phẩm</a></div>
+              </div>
+            </div>
+            <div class="section-commit">
+              <div class="container">
+                <p class="title-page-all1 font38 d-block text-center title-slide color-white">Sử dụng sản phẩm Kanet</p>
+                <div class="pt-sm-5 pt-4">
+                  <div class="row">
+                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div class="item-KANET">
+                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-baohanh.png" class="img-fluid lazyloaded" alt=" Bảo hành lâu dài" data-ll-status="loaded" />
+                        </p>
+                        <p class="title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Bảo hành lâu dài
+                        </p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">KANET sử dụng công nghệ bảo hành điện tử duy nhất và độc quyền. Thời gian bảo hành từ 3-5 năm. KANET là thương hiệu hiếm hoi bảo hành khóa thông minh cửa nhôm, cửa gỗ… lên tới 5 năm.</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div class="item-KANET">
+                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-yentamsudung.png" class="img-fluid lazyloaded" alt=" Yên tâm khi sử dụng" data-ll-status="loaded" />
+                        </p>
+                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Yên tâm khi sử dụng
+                        </p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Chúng tôi hiểu điều gì là tốt nhất với mỗi sản phẩm, một sản phẩm kém chất lượng làm KANET rất khó chịu, vậy nên chúng tôi làm ra sản phẩm chính chúng tôi cảm thấy yên tâm và thoải mái.</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div class="item-KANET">
+                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-dadangluachon.png" class="img-fluid lazyloaded" alt=" Đa dạng lựa chọn" data-ll-status="loaded" />
+                        </p>
+                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Đa dạng lựa chọn
+                        </p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Khóa thông minh KANET là 1 trong số ít thương hiệu có đầy đủ dải sản phẩm: khóa thông minh cửa nhôm, khóa thông minh cửa gỗ, khóa thông minh cửa biệt thự, khóa thông minh cửa khách sạn/căn hộ, và khóa thông minh cửa kính, cổng… </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3 wow fadeInLeft">
+                      <div class="item-KANET">
+                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-tieuchuanchauau.png" class="img-fluid lazyloaded" alt=" Tiêu chuẩn Châu Âu" data-ll-status="loaded" />
+                        </p>
+                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Tiêu chuẩn Châu Âu
+                        </p>
+                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Tiêu chuẩn CE đối với sản phẩm được bán trong khu vực kinh tế Châu Âu (EEA), tiêu chuẩn ISO 9001, tiêu chuẩn ROHS quy định của liên minh Châu Âu về sử dụng chất độc hại</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="session-promotions consultancy">
+              <div className="container-fluid">
+                <div className="heading-title text-uppercase text-center title-slide color-red">
+                  TẠP CHÍ KHÓA KANET
+                </div>
+                <div className="slide-promotions">
+                  <Swiper {...params2} navigation>
+                    {renderListSlideConsultancy}
+                  </Swiper>
+                </div>
+              </div>
+            </div>
+          </>
         )}
       </div>
-      {/* Modal form contact Us */}
-      <FormContactUs
-        handleSubmitForm={handleSubmitForm}
-        isOpenModalClient={isOpenModalClient}
-        handleCloseModal={handleCloseModal}
-      />
-      {/* Modal success */}
-      <ModalPopup
-        isOpen={openSuccessClient.isShow}
-        isShowFooter
-        textBtnRight="ĐÓNG"
-        handleClose={() => {
-          setOpenSuccessClient({
-            ...openSuccessClient,
-            isShow: false,
-          });
-        }}
-      >
-        <h2 className="modal-title">CẢM ƠN BẠN !</h2>
-        <div className="text-modal-content">{openSuccessClient.content}</div>
-      </ModalPopup>
     </MainLayout>
   );
 };
 
-export default memo<Props>(HomeMain);
+export default memo < Props > (HomeMain);

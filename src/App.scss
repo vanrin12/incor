@@ -5,7 +5,8 @@
 @import './styles/variables';
 @import './styles/core';
 @import './styles/theme';
-
+@import './styles/navigation';
+@import 'assets/css/animate.min.css';
 // Header
 @import './commons/components/Header/styles';
 // Loading
@@ -30,27 +31,27 @@
 @import './commons/components/Modal/styles';
 // Form
 @import './commons/components/Form/styles';
+// ProductItem
+@import './commons/components/ProductItem/style';
 
 //Main
 @import './modules/home/components/styles';
+
+@import './modules//products//components/styles';
 //Login
 @import "./modules/accounts/components/styles";
 //Page construction
 @import "./modules/construction/components/styles";
-//Page client
-@import "./modules/clientManager/components/styles";
-//Page aboutUs
-@import "./modules/aboutUs/components/styles";
-//Page contactUs
-@import "./modules/contactUs/components/styles";
-//Page cooperation
-@import "./modules/cooperation/components/styles";
-//Page recruitment
-@import "./modules/recruitment/components/styles";
-//Page service
-@import "./modules/service/components/styles";
+//Page blog
+@import "./modules/blog/components/styles";
 //Page Search
 @import "./modules/searchPage/components/styles";
 
 //Page Partner
-@import "./modules/partner/components/styles"
+@import "./modules/partner/components/styles";
+
+//cooperation
+@import './modules/cooperation/components/styles';
+
+//warranty
+@import './modules/warranty/components/styles';

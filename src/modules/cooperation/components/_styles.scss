@@ -1,0 +1,156 @@
+.cooperation {
+  &__banner {
+    background-image: url('../../../assets/imgs/cooperation-banner.jpg');
+    width: 100%;
+    height: 680px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top: pxToRem(40);
+    @include breakpoint(lgmax) {
+      height: calc(100vh - pxToRem(75));
+      margin-top: pxToRem(60);
+    }
+    @include breakpoint(lgmax17) {
+      margin-top: pxToRem(25);
+    }
+    @include breakpoint(xl600) {
+      margin-top: pxToRem(15);
+    }
+    @include breakpoint(xl500) {
+      margin-top: 0;
+    }
+    @media (max-width: 600px) {
+      background-size: contain;
+      height: 33vh;
+    }
+  }
+
+  &__benefit {
+    padding: 25px 140px;
+    h1 {
+      font-family: 'Bebas';
+      font-size: 30px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: normal;
+      text-align: center;
+      color: #b40706;
+    }
+    .description {
+      font-family: 'Montserrat';
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      color: #030303;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 600px) {
+      padding: 10px 20px;
+      margin-top: -10px;
+      h1 {
+        font-size: 25px;
+      }
+
+      .description {
+        font-size: 13px;
+      }
+    }
+  }
+  &__section {
+    .title {
+      margin-top: 10px;
+      font-family: 'Bebas';
+      font-size: 15px;
+    }
+    .detail {
+      margin-top: 10px;
+      font-family: 'Montserrat';
+      font-size: 13px;
+    }
+    @media (max-width: 600px) {
+      text-align: center;
+    }
+  }
+  &__contactUs {
+    background-image: url('https://free-comic.s3.us-west-1.amazonaws.com/category/11/1724162867_nhslidewebsitebohnh.jpg');
+    width: 100%;
+    height: 60vh;
+    margin-bottom: 80px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    @media (max-width: 600px) {
+      height: auto;
+      position: unset;
+      padding: 0;
+    }
+
+    &__form-content {
+      padding: 28px 32px 20px 31.5px;
+      box-shadow: 0 3px 49.5px 0 rgba(0, 0, 0, 0.44);
+      background-color: #fff;
+      position: absolute;
+      left: 90px;
+      top: -20px;
+      @media (max-width: 600px) {
+        position: unset;
+        left: 0;
+        top: 0;
+      }
+      h2 {
+        font-family: 'Bebas';
+        font-size: 30px;
+        line-height: 0.5;
+        letter-spacing: 0.3px;
+        text-align: center;
+        color: #b40706;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+.button-checkbox {
+  .btn-group {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .btn {
+    flex: 1;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+
+    &:first-child {
+      border-right: 1px solid #ccc;
+    }
+
+    &:hover, &:focus {
+      background-color: #f8f9fa;
+      color: black;
+    }
+
+    &.active {
+      background-color: #d32f2f;
+      color: white;
+
+      &:hover, &:focus {
+        background-color: #d32f2f;
+        color: white;
+      }
+    }
+  }
+}

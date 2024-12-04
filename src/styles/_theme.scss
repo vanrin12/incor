@@ -6,7 +6,7 @@
 
 .input__box .css-1wa3eu0-placeholder {
   // color: $color-placeholder;
-  font-size: pxToVW(16);
+  font-size: pxToVW(13);
 }
 
 a,
@@ -30,8 +30,28 @@ body p {
   line-height: 1.2;
 }
 
+@media screen and (min-width: 1600px) {
+  .container {
+    max-width: 1260px;
+  }
+}
+
+@include breakpoint(xm480) {
+  .no-token {
+    margin-bottom: 50px;
+
+    &.home-main {
+      margin-bottom: 50px;
+    }
+  }
+
+  .home-main {
+    margin-bottom: 0;
+  }
+}
+
 .heading-title {
-  font-size: pxToRem(40);
+  font-size: pxToRem(35);
   font-weight: bold;
   line-height: 1.2;
   color: $color_primary;
@@ -44,12 +64,305 @@ body p {
 }
 
 .swiper-button-prev,
-.swiper-button-next {
+.swiper-button-next,
+.swiper-button-prev2,
+.swiper-button-next2 {
   font-weight: 900;
   color: $color-light2;
   @include transition(0.3s all);
 
   &:hover {
-    color: $color_primary;
+    color: #b40706;
   }
+}
+
+.btn-go-to-top {
+  position: fixed;
+  display: none;
+  border: 0;
+  outline: none;
+  z-index: 99;
+  right: 15px;
+  bottom: 120px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+  }
+
+  @include breakpoint(sm992) {
+    bottom: 60px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.go-to-top {
+  .btn-go-to-top {
+    display: block;
+  }
+}
+
+.pt-page {
+  min-height: 500px;
+}
+
+.h-80vh {
+  min-height: 80vh !important;
+}
+
+.table-responsive {
+  box-shadow: 0 0.3125vw 0.3125vw 0 $btn-color;
+  border-radius: .52083vw;
+  border: .05208vw solid $color-border;
+  overflow: auto;
+}
+
+@media (min-width: 600px) {
+  .home-main {
+
+    .hotline-phone-ring-wrap,
+    .app-fixed-footer,
+    .messages-fb {
+      display: none;
+    }
+  }
+
+  .show-button-contact {
+    .home-main {
+
+      .hotline-phone-ring-wrap,
+      .app-fixed-footer,
+      .messages-fb {
+        display: block;
+      }
+    }
+  }
+}
+
+.hotline-phone-ring-wrap {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  z-index: 999999;
+
+  @media (max-width: 600px) {
+    display: none !important;
+  }
+
+}
+
+.hotline-phone-ring {
+  position: relative;
+  visibility: visible;
+  background-color: transparent;
+  width: 110px;
+  height: 110px;
+  cursor: pointer;
+  z-index: 11;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transition: visibility .5s;
+  left: 0;
+  bottom: 0;
+  display: block
+}
+
+.hotline-phone-ring-circle {
+  width: 87px;
+  height: 87px;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  background-color: transparent;
+  border-radius: 100%;
+  border: 2px solid #b40706;
+  -webkit-animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
+  animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
+  transition: all .5s;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: .5
+}
+
+.hotline-phone-ring-circle-fill {
+  width: 60px;
+  height: 60px;
+  top: 25px;
+  left: 25px;
+  position: absolute;
+  background-color: #b40706;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+  animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+  transition: all .5s;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%
+}
+
+.hotline-phone-ring-img-circle {
+  background-color: #b40706;
+  width: 50px;
+  height: 50px;
+  top: 29px;
+  left: 29px;
+  position: absolute;
+  background-size: 20px;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+  animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.hotline-phone-ring-img-circle .pps-btn-img {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex
+}
+
+.hotline-phone-ring-img-circle .pps-btn-img img {
+  width: 40px;
+  height: 40px
+}
+
+.hotline-bar {
+  position: absolute;
+  background: #ffffff;
+  height: 50px;
+  width: 200px;
+  line-height: 50px;
+  border-radius: 3px;
+  padding: 0 10px;
+  background-size: 100%;
+  cursor: pointer;
+  transition: all 0.8s;
+  -webkit-transition: all 0.8s;
+  z-index: 9;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .1);
+  border-radius: 50px !important;
+  left: 33px;
+  bottom: 31px;
+  border: solid 2px #d8e4ff;
+}
+
+.hotline-bar>a {
+  color: #b40706 !important;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  text-indent: 60px;
+  display: block;
+  letter-spacing: 1px;
+  line-height: 45px;
+
+}
+
+.hotline-bar>a:hover,
+.hotline-bar>a:active {
+  color: #fff
+}
+
+
+@keyframes phonering-alo-circle-anim {
+  0% {
+    -webkit-transform: rotate(0) scale(.5) skew(1deg);
+    -webkit-opacity: .1
+  }
+
+  30% {
+    -webkit-transform: rotate(0) scale(.7) skew(1deg);
+    -webkit-opacity: .5;
+  }
+
+  100% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+    -webkit-opacity: .1;
+  }
+}
+
+@keyframes phonering-alo-circle-fill-anim {
+  0% {
+    -webkit-transform: rotate(0) scale(.7) skew(1deg);
+    opacity: .6
+  }
+
+  50% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+    opacity: .6
+  }
+
+  100% {
+    -webkit-transform: rotate(0) scale(.7) skew(1deg);
+    opacity: .6
+  }
+}
+
+@keyframes phonering-alo-circle-img-anim {
+  0% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg)
+  }
+
+  10% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  20% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg)
+  }
+
+  30% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+
+  40% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg)
+  }
+
+  100% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+.messages-fb {
+  position: fixed;
+  right: 90px;
+  bottom: 60px;
+  z-index: 99;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.bg-brown {
+  background-color: #f6f6f6 !important;
+}
+
+.color-red {
+  color: #b40706 !important;
+}
+
+.color-white {
+  color: #fff !important;
 }

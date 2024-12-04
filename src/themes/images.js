@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 const images = {
   // eslint-disable-next-line global-require
-  logo: require('../assets/imgs/logo.png'),
+  logo: require('../assets/imgs/memu-logo-mobile.png'),
   imageSlideUrl: require('../assets/imgs/main-slide.jpg'),
   logoFooter: require('../assets/imgs/logo-footer.png'),
   logoCopyright: require('../assets/imgs/copyright.png'),
@@ -18,6 +18,24 @@ const images = {
   img_product: require('../assets/imgs/product.jpg'),
   img_Search: require('../assets/imgs/icon-filter.png'),
   logo_blue: require('../assets/imgs/logo-blue.png'),
+  logo_blue2: require('../assets/imgs/logo-blue2.png'),
+  icon_close2: require('../assets/imgs/icon-close.png'),
+  iconLoading: require('../assets/imgs/loading.gif'),
+  imgNotFound: require('../assets/imgs/image-not-found.jpg'),
+  imgBackToTop: require('../assets/imgs/back-to-top.png'),
+  imgContact: require('../assets/imgs/form.png'),
+  imgPhone: require('../assets/imgs/phone.png'),
+  avatar: require('../assets/imgs/customer.jpg'),
+  imgPhone1: require('../assets/imgs/icon-1.png'),
+  product01: require('../assets/imgs/product-01.jpg'),
+  product02: require('../assets/imgs/product-02.jpg'),
+  product03: require('../assets/imgs/product-03.jpg'),
+  // product04: require('../assets/imgs/product-04.jpg'),
+  prev: require('../assets/imgs/previous.png'),
+  next: require('../assets/imgs/next-slide.png'),
+  cooperationBanner: require('../assets/imgs/cooperation-banner.jpg'),
+  warrantyBanner: require('../assets/imgs/warranty-banner.jpg'),
+  chevronDown: require('../assets/imgs/chevron-down.svg'),
 };
 
 export default images;

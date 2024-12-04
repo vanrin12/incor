@@ -89,13 +89,14 @@ video {
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
-  font-family: 'Roboto', 'sans-serif';
+  font-family: 'Bebas', 'Montserrat';
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  word-break: break-word;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -146,16 +147,10 @@ input {
 }
 
 a {
-  text-decoration: none !important;
+  // text-decoration: none !important;
   -webkit-transform: ease 0.4s all;
   -ms-transform: ease 0.4s all;
   transition: ease 0.4s all;
-}
-
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: pxToRem(1185);
-  }
 }
 
 .noto-font {
