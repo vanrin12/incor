@@ -14,7 +14,7 @@ function ProductIem({ product, history }) {
           <Card.Img variant="top" src={product.image} />
           <Card.Title className='product-item__title'>Khóa thông minh cửa nhôm KANEX Elite KNX001</Card.Title>
           <div className='d-flex justify-content-around align-items-center'>
-            <Card.Text className='product-item__price'>4.999.999</Card.Text>
+            <Card.Text className='product-item__price'>{product.price}</Card.Text>
             <button
               // onClick={() =>
                 // history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)

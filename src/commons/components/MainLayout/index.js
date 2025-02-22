@@ -146,12 +146,12 @@ const MainLayout = ({
         <meta charSet="utf-8" />
         <link
           rel="canonical"
-          href={`https://incor.vn${dataSeo?.urlSite || ''}`}
+          href={`https://kanet.vn${dataSeo?.urlSite || ''}`}
         />
         <meta
           property="og:title"
           content={`${dataSeo?.title ||
-            'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
+            'KANET - Khoá thông minh chuẩn Châu Âu'
             }`}
         />
         <meta
@@ -160,7 +160,7 @@ const MainLayout = ({
         />
         <meta
           property="og:url"
-          content={`https://incor.vn${dataSeo?.urlSite || ''}`}
+          content={`https://kanet.vn${dataSeo?.urlSite || ''}`}
         />
         <meta
           property="og:image"
@@ -172,12 +172,12 @@ const MainLayout = ({
         />
         <meta
           property="og:image:alt"
-          content={`https://incor.vn${dataSeo?.urlSite || ''}`}
+          content={`https://kanet.vn${dataSeo?.urlSite || ''}`}
         />
         <meta
           name="twitter:title"
           content={`${dataSeo?.title ||
-            'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
+            'KANET - Khoá thông minh chuẩn Châu Âu'
             }`}
         />
 
@@ -218,7 +218,7 @@ const MainLayout = ({
           content={dataSeo?.urlImage || IMAGES.logo_blue2}
         />
 
-        <title>{`${dataConstant?.nameWebsite || 'INCOR'} - ${dataConstant.tagline || ''
+        <title>{`${dataConstant?.nameWebsite || 'KANET'} - ${dataConstant.tagline || ''
           }`}</title>
         <meta
           name="description"
@@ -292,7 +292,7 @@ const MainLayout = ({
 
             <div className="messages-fb">
               <a
-                href="http://m.me/incor.vn"
+                href="http://m.me/kanet.vn"
                 title="MESSENGER"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -334,7 +334,7 @@ const MainLayout = ({
 
             <div className="app-fixed-footer">
               <a
-                href="http://m.me/incor.vn"
+                href="http://m.me/kanet.vn"
                 className="button btn btn-primary big btn-fix messages"
                 title="Massager"
                 target="_blank"

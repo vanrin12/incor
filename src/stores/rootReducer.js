@@ -7,6 +7,7 @@ import projectScales from 'modules/construction/redux';
 import partnerSlice from 'modules/partner/redux';
 
 import commonSlice from 'commons/redux';
+import productsSlice from 'modules/products/redux'
 
 const appReducer = combineReducers({
   account: accountReducer,
@@ -16,6 +17,7 @@ const appReducer = combineReducers({
   project: projectScales,
   partner: partnerSlice,
   commonSlice: commonSlice,
+  products: productsSlice
 });
 
 export default appReducer;

@@ -153,10 +153,7 @@ function Cooperation() {
           <div className="cooperation__benefit">
             <h1>ƯU ĐIỂM KHI HỢP TÁC VỚI KANEt</h1>
             <p className='description'>
-              KANET lấy nền tảng của trí tuệ để đưa ra những giải pháp thông
-              minh cho khách hàng. Những kỹ sư của Kanet nghiên cứu, thiết kế,
-              liên kết những sản phẩm CHẤT LƯỢNG HẠNG A - DỊCH VỤ HẠNG A nhằm
-              mang đến cho khách hàng của Kanet sự “ An tâm số 1".
+              KANET Việt Nam- Khoá thông minh chuẩn Châu Âu
             </p>
             <div className='cooperation__section'>
               <div className='row'>
