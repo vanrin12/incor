@@ -35,6 +35,8 @@ import changePasswordSaga from 'modules/accounts/sagas/changePasswordSaga';
 
 import getListLayoutSaga from 'commons/sagas/getListLayoutSaga';
 import getListPartnerSaga from 'commons/sagas/getListPartnerSaga';
+import getProductsSaga from 'modules/products/sagas/getProductsSaga';
+import getProductDetailSaga from 'modules/products/sagas/getProductDetailSaga';
 
 export default function* RootSagas() {
   yield all([
@@ -61,5 +63,7 @@ export default function* RootSagas() {
     getListGallery(),
     getDataPageHomeSaga(),
     getListPartnerSaga(),
+    getProductsSaga(),
+    getProductDetailSaga()
   ]);
 }

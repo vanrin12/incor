@@ -1,0 +1,37 @@
+
+.product-item {
+    &__title {
+        font-family: 'Montserrat';
+        font-size: 13px;
+        font-weight: 600;
+        color: #000;
+        opacity: 0.8;
+        text-align: center;
+    }
+    &__price {
+        font-family: 'Bebas';
+        font-size: 20px;
+        line-height: 1.25;
+        letter-spacing: 0.5px;
+        color: #b40706;
+        @media (max-width: 600px) {
+            font-size: 17px;
+        }
+    }
+
+    &__btn-buy {
+        box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+        border: solid 0.5px #707070;
+        background-color: #fff;
+        height: 30px;
+        font-size: 13px;
+        color: #000;
+        object-fit: contain;
+        cursor: pointer;
+        letter-spacing: 0.31px;
+
+        @media (max-width: 600px) {
+            font-size: 10px;
+        }
+    }
+}

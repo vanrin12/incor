@@ -17,10 +17,11 @@ import {
   getListHashTag,
   getDataPageHome,
 } from 'modules/home/redux';
-
+import { useHistory } from 'react-router-dom';
 import { getDetailLayout, getListPartner } from 'commons/redux';
 import Footer from '../Footer';
 import Header from '../Header';
+import {formatPhoneNumber} from 'helpers/validate';
 
 type Props = {
   children: any,
@@ -29,6 +30,8 @@ type Props = {
   description?: string,
   headTitle?: string,
   dataSeo?: Object,
+  showSuccessToast?: any,
+  handleClose?: any,
 };
 
 const MainLayout = ({
@@ -37,6 +40,8 @@ const MainLayout = ({
   isShowModalContact = null,
   description = ERROR_MESSAGE.DESC_SEO || '',
   dataSeo = {},
+  showSuccessToast = null,
+  handleClose = null,
 }: Props) => {
   const dispatch = useDispatch();
 
@@ -52,7 +57,7 @@ const MainLayout = ({
   const { token } = useSelector((state) => state?.account);
   const { keywordHashTag, dataConstant } = useSelector((state) => state?.home);
   const { type } = useSelector((state) => state?.home);
-
+  const history = useHistory();
   // custom header sticky
   useEffect(() => {
     const elementHeader = document.getElementById('root');
@@ -141,14 +146,13 @@ const MainLayout = ({
         <meta charSet="utf-8" />
         <link
           rel="canonical"
-          href={`https://incor.vn${dataSeo?.urlSite || ''}`}
+          href={`https://kanet.vn${dataSeo?.urlSite || ''}`}
         />
         <meta
           property="og:title"
-          content={`${
-            dataSeo?.title ||
-            'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
-          }`}
+          content={`${dataSeo?.title ||
+            'KANET - Khoá thông minh chuẩn Châu Âu'
+            }`}
         />
         <meta
           name="geo.region"
@@ -156,7 +160,7 @@ const MainLayout = ({
         />
         <meta
           property="og:url"
-          content={`https://incor.vn${dataSeo?.urlSite || ''}`}
+          content={`https://kanet.vn${dataSeo?.urlSite || ''}`}
         />
         <meta
           property="og:image"
@@ -168,14 +172,13 @@ const MainLayout = ({
         />
         <meta
           property="og:image:alt"
-          content={`https://incor.vn${dataSeo?.urlSite || ''}`}
+          content={`https://kanet.vn${dataSeo?.urlSite || ''}`}
         />
         <meta
           name="twitter:title"
-          content={`${
-            dataSeo?.title ||
-            'Incor.vn - Nền tảng kết nối khách hàng với công ty thiết kế xây dựng, nội thất. | WEBSITE CHÍNH THỨC'
-          }`}
+          content={`${dataSeo?.title ||
+            'KANET - Khoá thông minh chuẩn Châu Âu'
+            }`}
         />
 
         <meta
@@ -215,9 +218,8 @@ const MainLayout = ({
           content={dataSeo?.urlImage || IMAGES.logo_blue2}
         />
 
-        <title>{`${dataConstant?.nameWebsite || 'INCOR'} - ${
-          dataConstant.tagline || ''
-        }`}</title>
+        <title>{`${dataConstant?.nameWebsite || 'KANET'} - ${dataConstant.tagline || ''
+          }`}</title>
         <meta
           name="description"
           content={dataConstant?.tagline || description}
@@ -229,7 +231,7 @@ const MainLayout = ({
       </Helmet>
       {dataConstant?.favicon && <Favicon url={dataConstant?.favicon || ''} />}
       <div className={`main-layout ${customClass} ${token ? '' : 'no-token'}`}>
-        <Header dataConstant={dataConstant} />
+        <Header dataConstant={dataConstant} showSuccessToast={showSuccessToast} handleCloseToast={handleClose}/>
         {children}
         <Footer dataConstant={dataConstant} />
 
@@ -283,14 +285,14 @@ const MainLayout = ({
               </div>
               <div className="hotline-bar">
                 <a href={`tel:${dataConstant?.phone}`}>
-                  <span className="text-hotline">{dataConstant?.phone}</span>
+                  <span className="text-hotline">{formatPhoneNumber(dataConstant?.phone)}</span>
                 </a>
               </div>
             </div>
 
             <div className="messages-fb">
               <a
-                href="http://m.me/incor.vn"
+                href="http://m.me/kanet.vn"
                 title="MESSENGER"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -332,7 +334,7 @@ const MainLayout = ({
 
             <div className="app-fixed-footer">
               <a
-                href="http://m.me/incor.vn"
+                href="http://m.me/kanet.vn"
                 className="button btn btn-primary big btn-fix messages"
                 title="Massager"
                 target="_blank"
@@ -380,9 +382,10 @@ const MainLayout = ({
                 <img src={IMAGES.imgPhone1} alt="" />
                 Gọi điện
               </a>
+              
               <Button
                 customClass="big btn-fix"
-                onClick={() => setIsOpenModalClient(true)}
+                onClick={() => history.push('/hop-tac')}
               >
                 <img src={IMAGES.imgContact} alt="" />
                 YÊU CẦU TƯ VẤN
@@ -390,7 +393,7 @@ const MainLayout = ({
             </div>
           </>
         )}
-        <div
+        {/* <div
           className="btn-go-to-top"
           onClick={() => handleGoToTop()}
           tabIndex={0}
@@ -398,7 +401,7 @@ const MainLayout = ({
           onKeyPress={() => {}}
         >
           <img src={IMAGES.imgBackToTop} alt="" />
-        </div>
+        </div> */}
       </div>
     </>
   );
@@ -411,4 +414,4 @@ MainLayout.defaultProps = {
   headTitle: '',
   dataSeo: {},
 };
-export default memo<Props>(MainLayout);
+export default memo < Props > (MainLayout);

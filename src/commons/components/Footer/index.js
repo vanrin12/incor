@@ -3,9 +3,10 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import IMAGES from 'themes/images';
 import ROUTERS from 'constants/router';
+import {formatPhoneNumber} from 'helpers/validate';
 
 type Props = {
-  dataConstant: Object,
+  dataConstant: Object
 };
 
 const Footer = ({ dataConstant }: Props) => {
@@ -58,13 +59,19 @@ const Footer = ({ dataConstant }: Props) => {
               <div className="company-desc">{dataConstant?.descCompany}</div>
               <div className="address">
                 <div className="address-title">Địa chỉ văn phòng</div>
-                <div className="address-name">{dataConstant?.address}</div>
+                {/* <div className="address-name">{dataConstant?.address}</div> */}
+                <ul className='address-branch'>
+                  <li className="address-name">Hồ Chí Minh: 3A đường số 1, P. Trường Thọ, TP. Thủ Đức, Hồ Chí Minh</li>
+                  <li className="address-name">Đà Nẵng : K71/24 đường Bình Kỳ, P. Hòa Quý, Q. Ngũ Hành Sơn, TP Đà Nẵng</li>
+                  <li className="address-name">Quảng Ngãi: 1134 Quang Trung, P. Nghĩa Chánh Nam, Q. Nghĩa Chánh, TP Quảng Ngãi</li>
+                  <li className="address-name">Hà Nội : Toà Green Phương Đông, số 1 Trần Thủ Độ, P. Hoàng Liệt, Q. Hoàng Mai, Hà Nội</li>
+                </ul>
               </div>
               <div className="address-company">
                 <ul className="d-flex align-items-center">
                   <li>
                     <div className="address-title">Điện thoại</div>
-                    <div className="address-name">{dataConstant?.phone}</div>
+                    <div className="address-name">{formatPhoneNumber(dataConstant?.phone)}</div>
                   </li>
                   <li>
                     <div className="address-title">Email</div>
@@ -118,4 +125,4 @@ const Footer = ({ dataConstant }: Props) => {
   );
 };
 
-export default memo<Props>(Footer);
+export default memo < Props > (Footer);

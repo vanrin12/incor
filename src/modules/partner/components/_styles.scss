@@ -657,11 +657,11 @@
   }
 
   .swiper-button-prev {
-    left: 0;
+    left: 3px;
   }
 
   .swiper-button-next {
-    right: 0;
+    right: 3px;
   }
 
   .swiper-button-prev,
@@ -670,14 +670,14 @@
   .swiper-button-next2 {
     &::after {
       font-size: pxToVW(30);
-      color: $bg-main;
+      color: #b40706;
     }
   }
 }
 
 .more-btn {
   cursor: pointer;
-  color: $bg-main;
+  color: #b40706;
   text-decoration: underline;
   font-weight: 300;
 }

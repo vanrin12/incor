@@ -258,7 +258,7 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
             />
           </div>
         </div>
-        <div className="form-group d-flex style-line">
+        {/* <div className="form-group d-flex style-line">
           <p className="input__label">Loại hình không gian</p>
           <SelectDropdown
             name="selectType"
@@ -350,7 +350,7 @@ const FormContactUs = ({ isOpenModalClient, handleCloseModal }: Props) => {
             YÊU CẦU TƯ VẤN
             {isProcessing && <Loading />}
           </Button>
-        </div>
+        </div> */}
       </div>
     </ModalPopup>
   );

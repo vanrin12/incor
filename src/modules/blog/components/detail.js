@@ -128,7 +128,7 @@ const ClientDetailManager = ({ match, history }: Props) => {
               <div className="content-detail">
                 <div className="row">
                   <div className="row-left col-12 col-lg-8">
-                    <p>
+                    <p className='content-render'>
                       {dataDetailBlog?.content &&
                         parse(dataDetailBlog?.content)}
                     </p>

@@ -1,0 +1,279 @@
+.line-space {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+
+    p {
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+        background-color: rgba(183, 4, 4, 0.9);
+        color: #fff;
+        font-size: 25px;
+        font-weight: 400;
+        font-family: Roboto;
+        width: 65%;
+        cursor: pointer;
+    }
+}
+
+.product-detail-wrap {
+    padding: 100px 0 40px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-image: url("../../../assets/imgs/next-slide.png");
+    width: 50px;
+    height: 50px;
+}
+
+.carousel-control-prev-icon {
+    transform: rotate(180deg)
+}
+
+.product-detail-tittle {
+    font-size: 25px;
+    color: #030303;
+    font-weight: 500;
+    font-family: 'Bebas';
+
+    @media (max-width: 600px) {
+        font-size: 20px;
+    }
+}
+
+.price {
+    margin-top: 13px;
+
+    h2 {
+        font-size: 28px;
+        color: #b40706;
+        font-family: 'Bebas';
+        margin-top: 5px;
+
+        @media (max-width: 600px) {
+            font-size: 23px;
+        }
+    }
+
+    .btn-contact {
+        font-size: 15px;
+        text-transform: uppercase;
+        width: 100px;
+        height: 40px;
+        border-radius: 0;
+        background-color: #b40706;
+        background: linear-gradient(-90deg, #b40706 0%, #b40706 100%);
+        box-shadow: 0 pxToRem(3) pxToRem(6) 0 rgba(0, 0, 0, 0.16);
+        border: 0;
+        color: $white;
+        letter-spacing: 0.3;
+        cursor: pointer;
+        font-family: 'Bebas';
+
+        @media (max-width: 600px) {
+            width: 70px;
+            height: 30px;
+            font-size: 13px;
+        }
+    }
+}
+
+.promotion {
+    border: solid 0.5px #b40706;
+    margin-top: 22px;
+
+    .label {
+        background-color: #b40706;
+        color: #fff;
+        font-size: 15px;
+        width: 80px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-family: 'Bebas';
+
+        @media (max-width: 600px) {
+            font-size: 10px;
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+
+    .promotion-detail {
+        padding: 13px;
+
+        p {
+            text-align: left;
+            color: #030303;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Montserrat';
+            line-height: 1.67;
+        }
+    }
+}
+
+.feature-detail {
+    background-color: #fff;
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+    margin-top: 30px;
+    padding: 20px 10px;
+    font-family: 'Montserrat';
+
+    h2 {
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: 'Bebas';
+    }
+
+    .feature-list {
+        font-size: 15px;
+        color: #030303;
+
+        @media (max-width: 600px) {
+            font-size: 13px;
+        }
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    ul.dashed {
+        list-style-type: none;
+    }
+
+    ul.dashed>li {
+        text-indent: -5px;
+        margin-top: 10px;
+        font-family: 'Montserrat';
+    }
+
+    ul.dashed>li:before {
+        content: "-";
+        text-indent: -5px;
+        margin-right: 5px;
+        margin-left: 8px;
+    }
+}
+
+.custom-main-layout {
+    background-color: #fafafa;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    font-family: 'Bebas';
+    font-size: 20px;
+
+    @media (max-width: 600px) {
+        font-size: 13px;
+    }
+
+    a {
+        &:hover {
+            color: #b40706;
+        }
+    }
+
+    .breadcrumb-item.active {
+        color: #b40706 !important;
+    }
+
+}
+
+.tabs-wrap {
+    margin-top: 40px;
+    @media (max-width: 600px) {
+        margin-top: 20px;
+    }
+    .nav-tabs {
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 1.23;
+        letter-spacing: 0.3px;
+        text-align: center;
+        color: #000;
+        border: solid 0.5px #707070;
+        margin-right: 10px;
+        border-radius: 0;
+        padding: 10px 15px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 600px) {
+        .nav-tabs .nav-link {
+            margin-right: 3px;
+            padding: 5px 8px;
+        }
+    }
+
+    .nav-tabs .nav-link.active {
+        background-color: #b40706;
+        color: #fff;
+    }
+
+    .image-post {
+        width: 400px;
+        height: 250px;
+        margin-top: 10px;
+
+        @media (max-width: 600px) {
+            width: 300px;
+            height: 150px;
+        }
+    }
+
+    .content-post {
+        font-family: 'Montserrat';
+        font-size: 14px;
+    }
+
+    .product-specs {
+        max-width: 80%;
+        // margin: 0 auto;
+        @media (max-width: 600px) {
+            max-width: 100%;
+        }
+    }
+
+    .specs-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+
+        th,
+        td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+            font-family: 'Montserrat';
+        }
+
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+            width: 30%;
+            font-family: 'Bebas';
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f2f2f2;
+        }
+    }
+}

@@ -7,7 +7,7 @@
   }
 
   &__label {
-    font-size: pxToRem(20);
+    font-size: pxToRem(15);
     font-weight: 500;
     line-height: 1.5;
     color: $color-black;
@@ -153,6 +153,10 @@
   }
 }
 
+.input-change {
+  border-radius: 5px;
+}
+
 input,
 textarea {
   -webkit-appearance: none;
@@ -179,7 +183,7 @@ textarea {
     }
 
     &__label {
-      font-size: pxToVW(15);
+      font-size: pxToVW(13);
       margin-bottom: pxToVW(5);
     }
 

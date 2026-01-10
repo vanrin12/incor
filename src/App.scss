@@ -31,9 +31,13 @@
 @import './commons/components/Modal/styles';
 // Form
 @import './commons/components/Form/styles';
+// ProductItem
+@import './commons/components/ProductItem/style';
 
 //Main
 @import './modules/home/components/styles';
+
+@import './modules//products//components/styles';
 //Login
 @import "./modules/accounts/components/styles";
 //Page construction
@@ -44,4 +48,10 @@
 @import "./modules/searchPage/components/styles";
 
 //Page Partner
-@import "./modules/partner/components/styles"
+@import "./modules/partner/components/styles";
+
+//cooperation
+@import './modules/cooperation/components/styles';
+
+//warranty
+@import './modules/warranty/components/styles';

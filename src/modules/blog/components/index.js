@@ -77,7 +77,8 @@ const ClientManager = ({ history, match }: Props) => {
     });
     // eslint-disable-next-line
   }, [handleGetListBlogOffCategory, paginationIndex]);
-
+  console.log('listBlogOffCategory', listBlogOffCategory);
+  
   // Render list item
   const renderListBlogCategory =
     listBlogOffCategory && listBlogOffCategory.length > 0 ? (
@@ -98,7 +99,8 @@ const ClientManager = ({ history, match }: Props) => {
     urlImage: imageCategory || IMAGES.bg_title_client,
     urlSite: history?.location?.pathname,
   };
-
+  console.log('renderListBlogCategory', renderListBlogCategory);
+  
   return (
     <MainLayout headTitle={`Blog - ${nameCategory || label}`} dataSeo={dataSeo}>
       <div className="page-client wrap-slide">

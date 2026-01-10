@@ -29,6 +29,8 @@ export const ROUTES = {
   API_GET_LIST_LAYOUT: (layout) =>
     `/admin/constants/data-maps/layout?layout=${layout}`,
   API_GET_PARTNER_MANAGEMENT: `/admin/partners`,
+  API_PRODUCTS: `/site/products`,
+  API_PRODUCT_DETAIL: (id) => `/site/products/${id}`
 };
 
 export const API = create({
