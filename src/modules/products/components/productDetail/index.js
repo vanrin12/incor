@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from 'commons/components/MainLayout';
+import { useDispatch, useSelector } from 'react-redux';
+import parse from 'html-react-parser';
 import SliderPreview from './SliderPreview'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import IMAGES from 'themes/images';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-const ProductDetail = ({ id }) => {
+import { getProductDetail } from 'modules/products/redux';
+import { useParams } from 'react-router-dom';
 
+const ProductDetail = () => {
+  const dispatch = useDispatch();
+  const { productDetail } = useSelector(state => state.products)
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(getProductDetail(id))
+  }, [id]);
   return (
     <MainLayout
-      headTitle="Sản Phẩm Chi Tiết"
+      headTitle="Sản Phẩm Chi Tiết"p
       customClass='custom-main-layout'
     >
       <div className="container product-detail-wrap">

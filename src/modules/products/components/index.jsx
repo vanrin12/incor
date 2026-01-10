@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLayout from 'commons/components/MainLayout';
 import Loading from '../../../commons/components/Loading';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,6 +9,7 @@ import ReactPaginate from 'react-paginate';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import { CATEGORIES } from 'constants/listCategories';
+import { getProducts } from '../redux'
 type Props = {
   history: {
     push: Function,
@@ -21,11 +22,21 @@ type Props = {
 const ProductList = ({ history }: props) => {
   const { height, width } = useWindowDimensions();
   const [paginationIndex, setPaginationIndex] = useState(null);
-  const { dataListHashTags, sliderMain, isProcessing } = useSelector(
+  const dispatch = useDispatch();
+  
+  const { sliderMain } = useSelector(
     (state) => state?.home
   );
 
-  const renderProductList = productList.map((p) => {
+  const { products, isProcessing } = useSelector(
+    (state) => state?.products
+  );
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [])
+
+  const renderProductList = products && products.map((p) => {
     return <ProductIem product={p} history={history} />;
   });
 

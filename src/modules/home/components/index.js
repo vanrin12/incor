@@ -43,6 +43,7 @@ const HomeMain = ({ history }: Props) => {
     dataListHashTags,
     sliderMain,
     isProcessing,
+    categoriesData
   } = useSelector((state) => state?.home);
   const { dataPartner } = useSelector((state) => state?.commonSlice);
   // const { token } = useSelector((state) => state?.account);

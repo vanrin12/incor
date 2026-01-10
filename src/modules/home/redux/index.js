@@ -195,6 +195,7 @@ const homeSlice = createSlice({
         promotion,
         slider,
         customer_experience_name,
+        categories
       } = action.data;
       state.type = action.type;
       state.isProcessing = false;
@@ -204,6 +205,7 @@ const homeSlice = createSlice({
       state.customerExperience = customer_experience;
       state.customerExperienceName = customer_experience_name;
       state.promotionMain = promotion;
+      state.categoriesData = categories
     },
     getDataPageHomeFailed: (state, action) => {
       state.type = action.type;
