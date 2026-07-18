@@ -1,11 +1,13 @@
 // @flow
 
-import React, { lazy, memo, Suspense, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet';
 import ModalPopup from 'commons/components/Modal';
 import Favicon from 'react-favicon';
 import Button from 'commons/components/Button';
+import FormContactUs from 'commons/components/Form/FormContactUs';
+import FormContactUsMobile from 'commons/components/Form/FormContacUsMobile';
 import ERROR_MESSAGE from 'constants/errorMsg';
 import IMAGES from 'themes/images';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,13 +22,6 @@ import { getDetailLayout, getListPartner } from 'commons/redux';
 import Footer from '../Footer';
 import Header from '../Header';
 import {formatPhoneNumber} from 'helpers/validate';
-
-const FormContactUs = lazy(() =>
-  import('commons/components/Form/FormContactUs')
-);
-const FormContactUsMobile = lazy(() =>
-  import('commons/components/Form/FormContacUsMobile')
-);
 
 type Props = {
   children: any,
@@ -67,7 +62,7 @@ const MainLayout = ({
   useEffect(() => {
     const elementHeader = document.getElementById('root');
     const sticky = elementHeader?.offsetTop;
-    const handleScroll = () => {
+    const scrollCallBack = window.addEventListener('scroll', () => {
       if (window && window.pageYOffset > sticky + 300) {
         elementHeader.classList.add('go-to-top');
       } else {
@@ -78,10 +73,9 @@ const MainLayout = ({
       } else {
         elementHeader.classList.remove('show-button-contact');
       }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', scrollCallBack);
     };
     // eslint-disable-next-line
   }, []);
@@ -241,24 +235,20 @@ const MainLayout = ({
         {children}
         <Footer dataConstant={dataConstant} />
 
-        {isOpenModalClient && (
-          <Suspense fallback={null}>
-            {/* Modal form contact Us */}
-            <div className="FormContactUs">
-              <FormContactUs
-                isOpenModalClient={isOpenModalClient}
-                handleCloseModal={handleCloseModal}
-              />
-            </div>
-            {/* Modal form contact Us on Mobile */}
-            <div className="FormContactUsMobile">
-              <FormContactUsMobile
-                isOpenModalClient={isOpenModalClient}
-                handleCloseModal={handleCloseModal}
-              />
-            </div>
-          </Suspense>
-        )}
+        {/* Modal form contact Us */}
+        <div className="FormContactUs">
+          <FormContactUs
+            isOpenModalClient={isOpenModalClient}
+            handleCloseModal={handleCloseModal}
+          />
+        </div>
+        {/* Modal form contact Us on Mobile */}
+        <div className="FormContactUsMobile">
+          <FormContactUsMobile
+            isOpenModalClient={isOpenModalClient}
+            handleCloseModal={handleCloseModal}
+          />
+        </div>
         {/* Modal success */}
         <ModalPopup
           isOpen={openSuccessClient.isShow}

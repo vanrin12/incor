@@ -9,10 +9,9 @@ import ROUTERS from 'constants/router';
 import { API } from '../apis';
 
 import PrivateRoute from './PrivateRoute';
+import ProductDetail from 'modules/products/components/productDetail';
+
 const HomeMain = lazy(() => import('modules/home/components'));
-const ProductDetail = lazy(() =>
-  import('modules/products/components/productDetail')
-);
 
 const Construction = lazy(() => import('modules/construction/components'));
 const ConstructionDetail = lazy(() =>
@@ -43,7 +42,7 @@ const Router = () => {
 
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Suspense fallback={<div className="d-none" aria-live="polite">Loading</div>}>
+      <Suspense>
         <Switch>
           <Route exact path={ROUTERS.MAIN_PAGE} component={HomeMain} />
           <Route
