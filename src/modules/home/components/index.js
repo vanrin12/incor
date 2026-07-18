@@ -284,49 +284,49 @@ const HomeMain = ({ history }: Props) => {
                 <div className='more-product'><a className='color-red' href="/products">xem thêm sản phẩm</a></div>
               </div>
             </div>
-            <div class="section-commit">
-              <div class="container">
-                <p class="title-page-all1 font38 d-block text-center title-slide color-white">Sử dụng sản phẩm Kanet</p>
-                <div class="pt-sm-5 pt-4">
-                  <div class="row">
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
-                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-baohanh.png" class="img-fluid lazyloaded" alt=" Bảo hành lâu dài" data-ll-status="loaded" />
+            <div className="section-commit">
+              <div className="container">
+                <p className="title-page-all1 font38 d-block text-center title-slide color-white">Sử dụng sản phẩm Kanet</p>
+                <div className="pt-sm-5 pt-4">
+                  <div className="row">
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-baohanh.png" className="img-fluid" alt="Bảo hành lâu dài" loading="lazy" decoding="async" />
                         </p>
-                        <p class="title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Bảo hành lâu dài
+                        <p className="title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Bảo hành lâu dài
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">KANET sử dụng công nghệ bảo hành điện tử duy nhất và độc quyền. Thời gian bảo hành từ 3-5 năm. KANET là thương hiệu hiếm hoi bảo hành khóa thông minh cửa nhôm, cửa gỗ… lên tới 5 năm.</p>
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">KANET sử dụng công nghệ bảo hành điện tử duy nhất và độc quyền. Thời gian bảo hành từ 3-5 năm. KANET là thương hiệu hiếm hoi bảo hành khóa thông minh cửa nhôm, cửa gỗ… lên tới 5 năm.</p>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
-                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-yentamsudung.png" class="img-fluid lazyloaded" alt=" Yên tâm khi sử dụng" data-ll-status="loaded" />
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-yentamsudung.png" className="img-fluid" alt="Yên tâm khi sử dụng" loading="lazy" decoding="async" />
                         </p>
-                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Yên tâm khi sử dụng
+                        <p className=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Yên tâm khi sử dụng
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Chúng tôi hiểu điều gì là tốt nhất với mỗi sản phẩm, một sản phẩm kém chất lượng làm KANET rất khó chịu, vậy nên chúng tôi làm ra sản phẩm chính chúng tôi cảm thấy yên tâm và thoải mái.</p>
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Chúng tôi hiểu điều gì là tốt nhất với mỗi sản phẩm, một sản phẩm kém chất lượng làm KANET rất khó chịu, vậy nên chúng tôi làm ra sản phẩm chính chúng tôi cảm thấy yên tâm và thoải mái.</p>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
-                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-dadangluachon.png" class="img-fluid lazyloaded" alt=" Đa dạng lựa chọn" data-ll-status="loaded" />
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-dadangluachon.png" className="img-fluid" alt="Đa dạng lựa chọn" loading="lazy" decoding="async" />
                         </p>
-                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Đa dạng lựa chọn
+                        <p className=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Đa dạng lựa chọn
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Khóa thông minh KANET là 1 trong số ít thương hiệu có đầy đủ dải sản phẩm: khóa thông minh cửa nhôm, khóa thông minh cửa gỗ, khóa thông minh cửa biệt thự, khóa thông minh cửa khách sạn/căn hộ, và khóa thông minh cửa kính, cổng… </p>
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Khóa thông minh KANET là 1 trong số ít thương hiệu có đầy đủ dải sản phẩm: khóa thông minh cửa nhôm, khóa thông minh cửa gỗ, khóa thông minh cửa biệt thự, khóa thông minh cửa khách sạn/căn hộ, và khóa thông minh cửa kính, cổng… </p>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3 wow fadeInLeft">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
-                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-tieuchuanchauau.png" class="img-fluid lazyloaded" alt=" Tiêu chuẩn Châu Âu" data-ll-status="loaded" />
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3 wow fadeInLeft">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                          <img src="https://korest.vn/wp-content/uploads/2021/12/icon-tieuchuanchauau.png" className="img-fluid" alt="Tiêu chuẩn Châu Âu" loading="lazy" decoding="async" />
                         </p>
-                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Tiêu chuẩn Châu Âu
+                        <p className=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">Tiêu chuẩn Châu Âu
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Tiêu chuẩn CE đối với sản phẩm được bán trong khu vực kinh tế Châu Âu (EEA), tiêu chuẩn ISO 9001, tiêu chuẩn ROHS quy định của liên minh Châu Âu về sử dụng chất độc hại</p>
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">Tiêu chuẩn CE đối với sản phẩm được bán trong khu vực kinh tế Châu Âu (EEA), tiêu chuẩn ISO 9001, tiêu chuẩn ROHS quy định của liên minh Châu Âu về sử dụng chất độc hại</p>
                       </div>
                     </div>
                   </div>

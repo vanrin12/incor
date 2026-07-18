@@ -16,11 +16,15 @@ type Props = {
 const ItemConsultancy = ({ history, itemObj, slug }: Props) => {
   return (
     <div className="slide-content">
-      <div
+      <img
         className="bg-image"
-        style={{
-          backgroundImage: `url(${itemObj?.image})`,
-        }}
+        src={itemObj?.image}
+        alt={itemObj?.name || ''}
+        loading="lazy"
+        decoding="async"
+        width="400"
+        height="300"
+        style={{ objectFit: 'cover' }}
         onClick={() =>
           history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
         }

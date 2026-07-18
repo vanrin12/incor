@@ -32,6 +32,10 @@ const SlideMainSale = ({ history, itemObj, slug }: Props) => {
           <img
             src={itemObj?.image}
             alt={itemObj?.name || ''}
+            loading="lazy"
+            decoding="async"
+            width="800"
+            height="800"
             style={{ width: '100%' }}
           />
         </div>

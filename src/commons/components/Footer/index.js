@@ -58,13 +58,15 @@ const Footer = ({ dataConstant }: Props) => {
               <h3>{dataConstant?.companyName}</h3>
               <div className="company-desc">{dataConstant?.descCompany}</div>
               <div className="address">
-                <div className="address-title">Địa chỉ văn phòng</div>
+                <div className="address-title">TRUNG TÂM PHÂN PHỐI BÁN HÀNG VÀ BẢO HÀNH</div>
                 {/* <div className="address-name">{dataConstant?.address}</div> */}
                 <ul className='address-branch'>
-                  <li className="address-name">Hồ Chí Minh: 3A đường số 1, P. Trường Thọ, TP. Thủ Đức, Hồ Chí Minh</li>
-                  <li className="address-name">Đà Nẵng : K71/24 đường Bình Kỳ, P. Hòa Quý, Q. Ngũ Hành Sơn, TP Đà Nẵng</li>
-                  <li className="address-name">Quảng Ngãi: 1134 Quang Trung, P. Nghĩa Chánh Nam, Q. Nghĩa Chánh, TP Quảng Ngãi</li>
-                  <li className="address-name">Hà Nội : Toà Green Phương Đông, số 1 Trần Thủ Độ, P. Hoàng Liệt, Q. Hoàng Mai, Hà Nội</li>
+                  <li className="address-name">Đà Nẵng : K71/24 Đường Bình Kỳ, Phường Ngũ Hành Sơn, Thành Phố Đà Nẵng</li>
+                  <li className="address-name">Hà Nội: Toà Green Phương Đông, số 1 Trần Thủ Độ, Phường Hoàng Mai, Hà Nội</li>
+                  <li className="address-name">Nha Trang: 01 Nguyễn Xiễn, Phường Bắc Nha Trang, Tỉnh Khánh Hòa</li>
+                  <li className="address-name">Quảng Ngãi: 1134 Đường Quang Trung, Phường Cẩm Thành, Tỉnh Quảng Ngãi</li>
+                  <li className="address-name">Quảng Trị: 14 Đường Trần Quý Cáp, Phường Nam Đông Hà, Tỉnh Quảng Trị</li>
+                  <li className="address-name">Nghệ An: 133 Đường Cao Xuân Huy, Phường Trường Vinh, Tỉnh Nghệ An</li>
                 </ul>
               </div>
               <div className="address-company">
