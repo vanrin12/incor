@@ -11,17 +11,10 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSelector, useDispatch } from 'react-redux';
 import MainLayout from 'commons/components/MainLayout';
-import { removeVietnameseTones } from 'helpers/validate';
 import ItemSlideSale from './ItemSlideSale';
-import ItemSlideMain from './itemSlideMain';
 import ItemConsultancy from './ItemConsultancy';
 import Loading from '../../../commons/components/Loading';
-import { resetGetSearchProduct } from '../redux';
 import useWindowDimensions from '../../../customHooks/useWindowDimensions ';
-import {
-  listSlideHome,
-  listSlideConsultancy,
-} from '../../../mockData/dataSlide';
 import { getListBlogOffCategory } from '../../blog/redux';
 import { ROUTES, API_URI } from '../../../apis';
 // install Swiper components
@@ -36,34 +29,14 @@ type Props = {
 const HomeMain = ({ history }: Props) => {
   const [isShowModalContact, setIsShowModalContact] = useState(null);
   const dispatch = useDispatch();
-  const [valueSearch, setValueSearch] = useState('');
-  const [updateListHashTags, setUpdateListHashTags] = useState([]);
-  const { height, width } = useWindowDimensions();
-  const {
-    dataListHashTags,
-    sliderMain,
-    isProcessing,
-    categoriesData,
-  } = useSelector((state) => state?.home);
-  const { dataPartner } = useSelector((state) => state?.commonSlice);
+  const { width } = useWindowDimensions();
+  const { sliderMain, isProcessing } = useSelector((state) => state?.home);
   const { listBlogOffCategory } = useSelector((state) => state?.blog);
   const [productsPopular, setProductsPopular] = useState([]);
   const [productsByWoodWindow, setProductsByWoodWindow] = useState([]);
   const [productsByAluminumWindow, setProductsByAluminumWindow] = useState([]);
   const [productsByHotel, setProductsByHotel] = useState([]);
 
-  // const { token } = useSelector((state) => state?.account);
-  const paramsOptionSlideMain = {
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 0,
-    slidesPerGroup: 1,
-    centeredSlides: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-  };
   // Options in Swiper
   const params = {
     loop: true,
@@ -119,26 +92,7 @@ const HomeMain = ({ history }: Props) => {
       disableOnInteraction: false,
     },
   };
-  const paramsOptionSlide = {
-    // loop: true,
-    slidesPerView: 2,
-    spaceBetween: 0,
-    slidesPerGroup: 2,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-  };
-
-  // Select Search
-  const [optionSearchDefault, setOptionSearchDefault] = useState({
-    value: 'product',
-    label: 'Sản phẩm',
-  });
-  // handle search
-  const inputSearch = removeVietnameseTones(valueSearch.trim()).toLowerCase();
   useEffect(() => {
-    dispatch(resetGetSearchProduct());
     dispatch(
       getListBlogOffCategory({
         slug_or_id: 'tap-chi-kanet',
@@ -150,97 +104,42 @@ const HomeMain = ({ history }: Props) => {
   }, []);
 
   useEffect(() => {
-    // Simulate multiple category fetches without hardcoding categories
+    const controller = new AbortController();
     const categoriesToFetch = [20, 21, 25, 19];
 
     const categoryRequests = categoriesToFetch.map((category) =>
       fetch(
-        `${API_URI}${ROUTES?.API_PRODUCTS}?product_category_id=${category}`
-      ).then((res) => res.json())
+        `${API_URI}${ROUTES.API_PRODUCTS}?product_category_id=${category}`,
+        { signal: controller.signal }
+      ).then((response) => {
+        if (!response.ok) throw new Error('Unable to load products');
+        return response.json();
+      })
     );
 
     Promise.all(categoryRequests)
       .then((results) => {
-        console.log('Results:', results?.[2]?.data?.product?.data);
-        setProductsPopular(results?.[0]?.data?.product?.data);
-        setProductsByWoodWindow(results?.[1]?.data?.product?.data);
-        setProductsByHotel(results?.[2]?.data?.product?.data);
-        setProductsByAluminumWindow(results?.[3]?.data?.product?.data);
+        setProductsPopular(results?.[0]?.data?.product?.data || []);
+        setProductsByWoodWindow(results?.[1]?.data?.product?.data || []);
+        setProductsByHotel(results?.[2]?.data?.product?.data || []);
+        setProductsByAluminumWindow(results?.[3]?.data?.product?.data || []);
       })
-      .catch((error) => console.error('Error fetching products:', error))
-      .finally();
+      .catch((error) => {
+        if (error.name !== 'AbortError') {
+          setProductsPopular([]);
+          setProductsByWoodWindow([]);
+          setProductsByHotel([]);
+          setProductsByAluminumWindow([]);
+        }
+      });
+
+    return () => controller.abort();
   }, []);
-
-  useEffect(() => {
-    const listFilter = dataListHashTags.filter(
-      (item) =>
-        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
-        -1
-    );
-    const listFilterCompany = dataPartner.filter(
-      (item) =>
-        removeVietnameseTones(item.value).toLowerCase().indexOf(inputSearch) >
-        -1
-    );
-
-    if (optionSearchDefault?.value === 'company') {
-      setUpdateListHashTags(inputSearch ? listFilterCompany : dataPartner);
-    } else {
-      setUpdateListHashTags(inputSearch ? listFilter : dataListHashTags);
-    }
-    // eslint-disable-next-line
-  }, [
-    optionSearchDefault.value,
-    // eslint-disable-next-line
-    dataListHashTags && dataListHashTags.length,
-    valueSearch,
-  ]);
-
-  const handleSelectChange = (option) => {
-    setOptionSearchDefault(option);
-  };
-  // onsubmit call api
-  const handleChangeInput = (value) => {
-    setValueSearch(value);
-  };
 
   const handleIsOpenModalClient = () => {
     setIsShowModalContact(!isShowModalContact);
   };
 
-  // render list slide Main top
-  const renderListSlideMain =
-    sliderMain &&
-    sliderMain.uploads &&
-    sliderMain.uploads.length > 0 &&
-    sliderMain.uploads.map((item) => (
-      <SwiperSlide key={item.id}>
-        <ItemSlideMain itemObj={item} />
-      </SwiperSlide>
-    ));
-  console.log('popular', productsPopular);
-  // render list slide
-  const renderListPromotionMain =
-    listSlideConsultancy &&
-    listSlideConsultancy.posts &&
-    listSlideConsultancy.posts.length > 0 &&
-    listSlideConsultancy.posts.map((item) => (
-      <SwiperSlide key={item.id}>
-        <ItemSlideSale
-          itemObj={item}
-          history={history}
-          // slug={listSlideConsultancy?.slug}
-        />
-      </SwiperSlide>
-    ));
-
-  const renderListSlideSale =
-    listSlideHome.length > 0 &&
-    listSlideHome.map((item) => (
-      <SwiperSlide key={item.id}>
-        <ItemSlideSale itemObj={item} history={history} />
-      </SwiperSlide>
-    ));
   const renderProductListByCategory = (products) => {
     return (
       products?.length > 0 &&
@@ -365,27 +264,30 @@ const HomeMain = ({ history }: Props) => {
                 </div>
               </div>
             </div>
-            <div class="section-commit">
-              <div class="container">
-                <p class="title-page-all1 font38 d-block text-center title-slide color-white">
+            <div className="section-commit">
+              <div className="container">
+                <p className="title-page-all1 font38 d-block text-center title-slide color-white">
                   Sử dụng sản phẩm Kanet
                 </p>
-                <div class="pt-sm-5 pt-4">
-                  <div class="row">
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                <div className="pt-sm-5 pt-4">
+                  <div className="row">
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img
                             src="https://korest.vn/wp-content/uploads/2021/12/icon-baohanh.png"
-                            class="img-fluid lazyloaded"
-                            alt=" Bảo hành lâu dài"
-                            data-ll-status="loaded"
+                            className="img-fluid"
+                            alt="Bảo hành lâu dài"
+                            loading="lazy"
+                            decoding="async"
+                            width="80"
+                            height="80"
                           />
                         </p>
-                        <p class="title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
+                        <p className="title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
                           Bảo hành lâu dài
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
                           KANET sử dụng công nghệ bảo hành điện tử duy nhất và
                           độc quyền. Thời gian bảo hành từ 3-5 năm. KANET là
                           thương hiệu hiếm hoi bảo hành khóa thông minh cửa
@@ -393,20 +295,23 @@ const HomeMain = ({ history }: Props) => {
                         </p>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img
                             src="https://korest.vn/wp-content/uploads/2021/12/icon-yentamsudung.png"
-                            class="img-fluid lazyloaded"
-                            alt=" Yên tâm khi sử dụng"
-                            data-ll-status="loaded"
+                            className="img-fluid"
+                            alt="Yên tâm khi sử dụng"
+                            loading="lazy"
+                            decoding="async"
+                            width="80"
+                            height="80"
                           />
                         </p>
-                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
+                        <p className=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
                           Yên tâm khi sử dụng
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
                           Chúng tôi hiểu điều gì là tốt nhất với mỗi sản phẩm,
                           một sản phẩm kém chất lượng làm KANET rất khó chịu,
                           vậy nên chúng tôi làm ra sản phẩm chính chúng tôi cảm
@@ -414,20 +319,23 @@ const HomeMain = ({ history }: Props) => {
                         </p>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img
                             src="https://korest.vn/wp-content/uploads/2021/12/icon-dadangluachon.png"
-                            class="img-fluid lazyloaded"
-                            alt=" Đa dạng lựa chọn"
-                            data-ll-status="loaded"
+                            className="img-fluid"
+                            alt="Đa dạng lựa chọn"
+                            loading="lazy"
+                            decoding="async"
+                            width="80"
+                            height="80"
                           />
                         </p>
-                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
+                        <p className=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
                           Đa dạng lựa chọn
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
                           Khóa thông minh KANET là 1 trong số ít thương hiệu có
                           đầy đủ dải sản phẩm: khóa thông minh cửa nhôm, khóa
                           thông minh cửa gỗ, khóa thông minh cửa biệt thự, khóa
@@ -436,20 +344,23 @@ const HomeMain = ({ history }: Props) => {
                         </p>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 mt-lg-0 mt-3 wow fadeInLeft">
-                      <div class="item-KANET">
-                        <p class="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
+                    <div className="col-lg-3 col-sm-6 mt-lg-0 mt-3 wow fadeInLeft">
+                      <div className="item-KANET">
+                        <p className="icon-img mb-lg-4 mb-3 w-100 text-lg-left text-center">
                           <img
                             src="https://korest.vn/wp-content/uploads/2021/12/icon-tieuchuanchauau.png"
-                            class="img-fluid lazyloaded"
-                            alt=" Tiêu chuẩn Châu Âu"
-                            data-ll-status="loaded"
+                            className="img-fluid"
+                            alt="Tiêu chuẩn Châu Âu"
+                            loading="lazy"
+                            decoding="async"
+                            width="80"
+                            height="80"
                           />
                         </p>
-                        <p class=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
+                        <p className=" title-pro-kanet1 b_UTMAvo cl_white font18 line_h22 text-lg-left text-center">
                           Tiêu chuẩn Châu Âu
                         </p>
-                        <p class="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
+                        <p className="ct-pro-KANET text-line6 text-justify cl_c8 f_UTMAvo font15 line_h22 my-3 text-lg-left text-center">
                           Tiêu chuẩn CE đối với sản phẩm được bán trong khu vực
                           kinh tế Châu Âu (EEA), tiêu chuẩn ISO 9001, tiêu chuẩn
                           ROHS quy định của liên minh Châu Âu về sử dụng chất

@@ -1,7 +1,6 @@
 // @flow
 
 import React, { memo } from 'react';
-import Button from '../../../commons/components/Button';
 import { Link } from 'react-router-dom';
 import ROUTERS from 'constants/router';
 
@@ -40,6 +39,10 @@ const SlideMainSale = ({ history, itemObj, slug }: Props) => {
           <img
             src={itemObj?.images?.[0]?.image || ''}
             alt={itemObj?.name || ''}
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="600"
             style={{ width: '100%' }}
           />
         </div>

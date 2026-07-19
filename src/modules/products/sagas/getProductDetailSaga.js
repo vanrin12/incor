@@ -7,8 +7,6 @@ function* getProductDetail(action) {
     const response = yield call(() =>
         API.get(ROUTES.API_PRODUCT_DETAIL(action?.payload))
     );
-    console.log('response', response);
-    
     if (response.ok) {
       const { data } = response?.data;
 

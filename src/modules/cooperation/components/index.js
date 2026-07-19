@@ -4,7 +4,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import ERROR_MESSAGE from '../../../constants/errorMsg';
 import REGEX from 'constants/regexs';
-import moment from 'moment';
 import Input from '../../../commons/components/Input';
 import SelectDropdown from '../../../commons/components/Select';
 import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';

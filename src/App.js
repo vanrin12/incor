@@ -15,8 +15,9 @@ import Router from 'routers';
 
 import createStore from './stores/createStore';
 
+const { store, persistor } = createStore();
+
 function App() {
-  const { store, persistor } = createStore();
   return (
     <div className="App">
       <PersistGate loading={null} persistor={persistor}>

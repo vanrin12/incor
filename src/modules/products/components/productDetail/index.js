@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import MainLayout from 'commons/components/MainLayout';
 import { useDispatch, useSelector } from 'react-redux';
-import parse from 'html-react-parser';
 import SliderPreview from './SliderPreview';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import IMAGES from 'themes/images';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { getProductDetail } from 'modules/products/redux';
 import { useParams } from 'react-router-dom';
@@ -16,7 +14,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   useEffect(() => {
     dispatch(getProductDetail(id));
-  }, [id]);
+  }, [dispatch, id]);
   const imgList = productDetail?.images?.map(item => item.image);
 
 
@@ -50,9 +48,9 @@ const ProductDetail = () => {
           </div>
           <div className="col-md-6">
             <h1 className="product-detail-tittle">{productDetail.name}</h1>
-            <div class="price d-flex align-items-center">
+            <div className="price d-flex align-items-center">
               <h2 className="text-danger">{formatCurrency(String(Math.round(Number(productDetail?.price))))}</h2>
-              <button type="submit" class="btn-contact ml-3">
+              <button type="submit" className="btn-contact ml-3">
                 Liên Hệ
               </button>
             </div>

@@ -3,6 +3,7 @@ const images = {
   // eslint-disable-next-line global-require
   logo: require('../assets/imgs/memu-logo-mobile.png'),
   imageSlideUrl: require('../assets/imgs/main-slide.jpg'),
+  logoFooter: require('../assets/imgs/logo-footer.png'),
   logoCopyright: require('../assets/imgs/copyright.png'),
   facebook: require('../assets/imgs/facebook.png'),
   youtube: require('../assets/imgs/youtube.png'),
@@ -16,6 +17,7 @@ const images = {
   img_client: require('../assets/imgs/client3.jpg'),
   img_product: require('../assets/imgs/product.jpg'),
   img_Search: require('../assets/imgs/icon-filter.png'),
+  logo_blue2: require('../assets/imgs/logo-blue2.png'),
   icon_close2: require('../assets/imgs/icon-close.png'),
   iconLoading: require('../assets/imgs/loading.gif'),
   imgNotFound: require('../assets/imgs/image-not-found.jpg'),

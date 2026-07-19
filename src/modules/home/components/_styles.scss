@@ -422,12 +422,24 @@
         }
 
         .row-right {
-          margin: pxToRem(30) pxToRem(25) 0 pxToRem(20);
-          text-align: right;
+          margin: pxToRem(24) pxToRem(25) 0 auto;
           display: block;
+          width: fit-content;
+          transition: opacity 0.2s ease, transform 0.2s ease;
 
           img {
-            width: pxToRem(30);
+            width: pxToRem(22);
+            filter: brightness(0);
+          }
+
+          &:hover {
+            opacity: 0.65;
+            transform: translateX(pxToRem(2));
+          }
+
+          &:focus-visible {
+            outline: 2px solid #231f20;
+            outline-offset: 2px;
           }
         }
       }

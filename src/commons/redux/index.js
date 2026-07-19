@@ -16,7 +16,6 @@ const commonSlice = createSlice({
     },
     getDetailLayoutSuccess: (state, action) => {
       const { data } = action;
-      console.log('data', data);
       state.type = action.type;
       state.isProcessing = false;
       state.layoutHeader = data && data?.map;

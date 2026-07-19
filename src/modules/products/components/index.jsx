@@ -3,7 +3,6 @@ import MainLayout from 'commons/components/MainLayout';
 import Loading from '../../../commons/components/Loading';
 import { useSelector, useDispatch } from 'react-redux';
 import useWindowDimensions from '../../../customHooks/useWindowDimensions ';
-import { productList } from '../../../mockData/dataSlide';
 import ProductIem from '../../../commons/components/ProductItem';
 import ReactPaginate from 'react-paginate';
 import Tabs from 'react-bootstrap/Tabs';
@@ -19,8 +18,8 @@ type Props = {
   },
 };
 
-const ProductList = ({ history }: props) => {
-  const { height, width } = useWindowDimensions();
+const ProductList = ({ history }: Props) => {
+  const { width } = useWindowDimensions();
   const [paginationIndex, setPaginationIndex] = useState(null);
   const dispatch = useDispatch();
   const [category, setCategory] = useState(CATEGORIES[0]?.id);
@@ -37,7 +36,7 @@ const ProductList = ({ history }: props) => {
         paged: 12,
       })
     );
-  }, [category, paginationIndex]);
+  }, [category, dispatch, paginationIndex]);
 
   const renderProductList =
     products &&

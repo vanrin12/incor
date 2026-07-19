@@ -20,7 +20,15 @@ function ProductIem({ product, history }) {
         onClick={() => history.push(`${ROUTERS.PRODUCT_LIST}/${product.id}`)}
       >
         <Card.Body>
-          <Card.Img variant="top" src={product?.images[0]?.image} />
+          <Card.Img
+            variant="top"
+            src={product?.images?.[0]?.image}
+            alt={product?.name || 'Sản phẩm KANET'}
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="600"
+          />
           <Card.Title className='product-item__title'>{product.name}</Card.Title>
           <div className='d-flex justify-content-around align-items-center'>
             <Card.Text className='product-item__price'>{formatCurrency(String(Math.round(Number(product?.price))))}</Card.Text>

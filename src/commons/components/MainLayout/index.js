@@ -62,18 +62,23 @@ const MainLayout = ({
   useEffect(() => {
     const elementHeader = document.getElementById('root');
     const sticky = elementHeader?.offsetTop;
-    const scrollCallBack = window.addEventListener('scroll', () => {
-      if (window && window.pageYOffset > sticky + 300) {
-        elementHeader.classList.add('go-to-top');
-      } else {
-        elementHeader.classList.remove('go-to-top');
-      }
-      if (window && window.pageYOffset > 760) {
-        elementHeader.classList.add('show-button-contact');
-      } else {
-        elementHeader.classList.remove('show-button-contact');
-      }
-    });
+    let isTicking = false;
+    const scrollCallBack = () => {
+      if (isTicking || !elementHeader) return;
+      isTicking = true;
+      window.requestAnimationFrame(() => {
+        elementHeader.classList.toggle(
+          'go-to-top',
+          window.pageYOffset > sticky + 300
+        );
+        elementHeader.classList.toggle(
+          'show-button-contact',
+          window.pageYOffset > 760
+        );
+        isTicking = false;
+      });
+    };
+    window.addEventListener('scroll', scrollCallBack, { passive: true });
     return () => {
       window.removeEventListener('scroll', scrollCallBack);
     };
@@ -109,10 +114,11 @@ const MainLayout = ({
   }, [isShowModalContact]);
 
   useEffect(() => {
-    dispatch(getListAreas());
-    dispatch(getListSpaceType());
-    // eslint-disable-next-line
-  }, []);
+    if (isOpenModalClient) {
+      dispatch(getListAreas());
+      dispatch(getListSpaceType());
+    }
+  }, [dispatch, isOpenModalClient]);
 
   useEffect(() => {
     switch (type) {
@@ -131,13 +137,6 @@ const MainLayout = ({
   // close modal Tu van khach hang
   const handleCloseModal = () => {
     setIsOpenModalClient(false);
-  };
-
-  const handleGoToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
   };
 
   return (

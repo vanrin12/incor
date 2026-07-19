@@ -23,10 +23,10 @@ ionic.config.json
 
 # misc
 .DS_Store
-# .env.local
-# .env.development.local
-# .env.test.local
-# .env.production.local
+# local environment variables and secrets
+.env
+.env.*
+!.env.example
 
 npm-debug.log*
 yarn-debug.log*

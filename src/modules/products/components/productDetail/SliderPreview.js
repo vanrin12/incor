@@ -1,9 +1,7 @@
 import React from "react";
 import { Carousel } from 'react-bootstrap';
-import IMAGES from 'themes/images';
 
 function SliderPreview({imgList}) {
-    console.log(imgList);
     return (
         <Carousel>
             {
@@ -13,6 +11,10 @@ function SliderPreview({imgList}) {
                             className="d-block w-100"
                             src={img}
                             alt="Smart Lock"
+                            loading={index === 0 ? 'eager' : 'lazy'}
+                            decoding="async"
+                            width="800"
+                            height="800"
                         />
                     </Carousel.Item>
                 ))
