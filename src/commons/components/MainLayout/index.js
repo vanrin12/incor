@@ -151,7 +151,7 @@ const MainLayout = ({
         <meta
           property="og:title"
           content={`${dataSeo?.title ||
-            'KANET - Khoá thông minh chuẩn Châu Âu'
+            'KANET- Khoá thông minh chuẩn Châu Âu'
             }`}
         />
         <meta
@@ -177,7 +177,7 @@ const MainLayout = ({
         <meta
           name="twitter:title"
           content={`${dataSeo?.title ||
-            'KANET - Khoá thông minh chuẩn Châu Âu'
+            'KANET - Khóa an tâm số 1'
             }`}
         />
 
@@ -292,7 +292,7 @@ const MainLayout = ({
 
             <div className="messages-fb">
               <a
-                href="http://m.me/kanet.vn"
+                href="https://m.me/kanetvietnam"
                 title="MESSENGER"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -334,7 +334,7 @@ const MainLayout = ({
 
             <div className="app-fixed-footer">
               <a
-                href="http://m.me/kanet.vn"
+                href="http://m.me/kanetvietnam"
                 className="button btn btn-primary big btn-fix messages"
                 title="Massager"
                 target="_blank"

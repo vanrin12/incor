@@ -22,20 +22,20 @@ const ItemConsultancy = ({ history, itemObj, slug }: Props) => {
           backgroundImage: `url(${itemObj?.image})`,
         }}
         onClick={() =>
-          history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
+          history.push(`${ROUTERS.PAGE_BLOG}/tap-chi-kanet/${itemObj?.id}`)
         }
         onKeyDown={() =>
-          history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)
+          history.push(`${ROUTERS.PAGE_BLOG}/tap-chi-kanet/${itemObj?.id}`)
         }
         role="button"
         tabIndex={0}
       />
-      <Link to={`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`}>
+      <Link to={`${ROUTERS.PAGE_BLOG}/tap-chi-kanet/${itemObj?.id}`}>
         <h3>{itemObj?.name}</h3>
       </Link>
       <p className="desc">{itemObj?.desc}</p>
       <Link
-        to={`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`}
+        to={`${ROUTERS.PAGE_BLOG}/tap-chi-kanet/${itemObj?.id}`}
         className="row-right"
       >
         <img src={IMAGES.arrowRight} alt="Xem chi tiết" />

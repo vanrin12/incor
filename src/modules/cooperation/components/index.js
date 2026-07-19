@@ -153,7 +153,7 @@ function Cooperation() {
           <div className="cooperation__benefit">
             <h1>ƯU ĐIỂM KHI HỢP TÁC VỚI KANEt</h1>
             <p className='description'>
-              KANET Việt Nam- Khoá thông minh chuẩn Châu Âu
+              KANET Việt Nam- Khóa an tâm số 1
             </p>
             <div className='cooperation__section'>
               <div className='row'>

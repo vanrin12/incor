@@ -3,6 +3,15 @@ import Card from 'react-bootstrap/Card';
 import ROUTERS from 'constants/router';
 
 function ProductIem({ product, history }) {
+  const formatCurrency = (value) => {
+    if (!value) return ""; // Handle empty input
+  
+    // Convert to a string and remove all non-numeric characters except for a possible decimal point
+    const numericValue = value.toString().replace(/\D/g, "");
+  
+    // Format as Vietnamese currency
+    return new Intl.NumberFormat("vi-VN").format(Number(numericValue));
+  };
   return (
     <div className='col-6 col-md-3 p-2 product-item'>
       <Card style={{
@@ -11,10 +20,10 @@ function ProductIem({ product, history }) {
         onClick={() => history.push(`${ROUTERS.PRODUCT_LIST}/${product.id}`)}
       >
         <Card.Body>
-          <Card.Img variant="top" src={product.image} />
-          <Card.Title className='product-item__title'>Khóa thông minh cửa nhôm KANEX Elite KNX001</Card.Title>
+          <Card.Img variant="top" src={product?.images[0]?.image} />
+          <Card.Title className='product-item__title'>{product.name}</Card.Title>
           <div className='d-flex justify-content-around align-items-center'>
-            <Card.Text className='product-item__price'>{product.price}</Card.Text>
+            <Card.Text className='product-item__price'>{formatCurrency(String(Math.round(Number(product?.price))))}</Card.Text>
             <button
               // onClick={() =>
                 // history.push(`${ROUTERS.PAGE_BLOG}/${slug}/${itemObj?.id}`)

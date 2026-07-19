@@ -18,13 +18,8 @@ const productsSlice = createSlice({
     getProductsSuccess: (state, action) => {
       state.type = action.type;
       state.isProcessing = false;
-      state.products = action?.data?.product?.data.map(p => ({
-        id: p.id,
-        name: p.name,
-        image: p.image,
-        price: p.price
-      }))
-
+      state.products = action?.data?.product?.data
+      state.total = action?.data?.product?.total
     },
     getProductsFailed: (state, action) => {
       state.type = action.type;

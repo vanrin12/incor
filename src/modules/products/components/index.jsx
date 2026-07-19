@@ -9,7 +9,7 @@ import ReactPaginate from 'react-paginate';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import { CATEGORIES } from 'constants/listCategories';
-import { getProducts } from '../redux'
+import { getProducts } from '../redux';
 type Props = {
   history: {
     push: Function,
@@ -23,27 +23,42 @@ const ProductList = ({ history }: props) => {
   const { height, width } = useWindowDimensions();
   const [paginationIndex, setPaginationIndex] = useState(null);
   const dispatch = useDispatch();
-  
-  const { sliderMain } = useSelector(
-    (state) => state?.home
-  );
+  const [category, setCategory] = useState(CATEGORIES[0]?.id);
 
-  const { products, isProcessing } = useSelector(
-    (state) => state?.products
-  );
+  const { sliderMain } = useSelector((state) => state?.home);
+
+  const { products, isProcessing, total } = useSelector((state) => state?.products);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [])
+    dispatch(
+      getProducts({
+        product_category_id: category,
+        page: paginationIndex + 1,
+        paged: 12,
+      })
+    );
+  }, [category, paginationIndex]);
 
-  const renderProductList = products && products.map((p) => {
-    return <ProductIem product={p} history={history} />;
-  });
+  const renderProductList =
+    products &&
+    products.map((p) => {
+      return <ProductIem product={p} history={history} />;
+    });
 
+  const handleSelectCategory = (selectedCategory) => {
+    if (selectedCategory !== category) {
+      setCategory(selectedCategory);
+      setPaginationIndex(0); // ✅ Reset to first page when category changes
+    }
+  };
+
+  const handleSelectPagination = (eventKey) => {
+    setPaginationIndex(eventKey.selected);
+  };
   return (
     <MainLayout headTitle="Sản Phẩm">
       <div className="main-wrap">
-        {false ? (
+        {isProcessing ? (
           <Loading />
         ) : (
           <>
@@ -59,26 +74,27 @@ const ProductList = ({ history }: props) => {
             />
             <div className="line-space tabs-wrap">
               <Tabs
-                defaultActiveKey={1}
-                id="uncontrolled-tab-example"
+                activeKey={category} // ✅ Ensures correct tab is active
+                id="tab-categories"
+                onSelect={(eventKey) => handleSelectCategory(eventKey)}
               >
                 {CATEGORIES.map((item) => (
-                  <Tab eventKey={item.id} title={item.name} />
+                  <Tab eventKey={item.id} title={item.name} key={item.id} />
                 ))}
               </Tabs>
             </div>
-            <div className='container'>
-              <div className='row'>
-                {renderProductList}
-              </div>
-              {productList.length > 6 && (
+            <div className="container">
+              <div className="row">{renderProductList}</div>
+              {/* {products.length > 12 && ( */}
                 <div className="wrapper-pagination">
                   <ReactPaginate
                     previousLabel="Trang trước"
                     nextLabel="Trang sau"
                     breakLabel={<span className="gap">...</span>}
-                    pageCount={Math.ceil(productList.length / 6)}
-                    onPageChange={(eventKey) => { }}
+                    pageCount={Math.ceil(total / 12)}
+                    onPageChange={(eventKey) =>
+                      handleSelectPagination(eventKey)
+                    }
                     forcePage={paginationIndex || 0}
                     containerClassName="pagination"
                     disabledClassName="disabled"
@@ -94,7 +110,7 @@ const ProductList = ({ history }: props) => {
                     marginPagesDisplayed={1}
                   />
                 </div>
-              )}
+              {/* )} */}
             </div>
           </>
         )}

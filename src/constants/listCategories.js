@@ -1,31 +1,36 @@
 const CATEGORIES = [
     {
-        id: 1,
+        id: '',
+        name: 'Tất Cả',
+        searchParam: ''
+    },
+    {
+        id: 19,
         name: 'Khóa Cửa Nhôm',
         searchParam: 'khoa-nhom'
     },
     {
-        id: 2,
+        id: 23,
         name: 'Khóa Cửa Kính',
         searchParam: 'khoa-kinh'
     },
     {
-        id: 3,
+        id: 21,
         name: 'Khóa Cửa Gỗ',
         searchParam: 'khoa-gỗ'
     },
     {
-        id: 4,
+        id: 24,
         name: 'Khóa Cửa Cổng',
         searchParam: 'khoa-cổng'
     },
     {
-        id: 5,
+        id: 22,
         name: 'Khóa Biệt Thự',
         searchParam: 'khoa-biet-thu'
     },
     {
-        id: 6,
+        id: 25,
         name: 'Khóa Khách Sạn',
         searchParam: 'khoa-khach-san'
     }
